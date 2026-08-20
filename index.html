@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Permitting Coordination Timeline — Prototype</title>
+<style>
+  :root {
+    --ink: #14181f;
+    --muted: #5d6674;
+    --line: #d8dde5;
+    --bg: #f7f8fa;
+    --panel: #ffffff;
+    --blm: #7a5c2e;
+    --fws: #2f6b4f;
+    --shpo: #6b4a6b;
+    --epa: #2b5a7a;
+    --state: #8a4b3c;
+    --crit: #b3261e;
+    --sim: #b06a00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    padding: 20px 28px 16px;
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; font-weight: 650; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .banner {
+    background: #fff4e0;
+    border-bottom: 1px solid #e8cfa0;
+    color: #6b4a00;
+    font-size: 12.5px;
+    padding: 9px 28px;
+  }
+  .banner b { font-weight: 650; }
+  main { display: grid; grid-template-columns: 1fr 380px; gap: 0; align-items: start; }
+  @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+  .left { padding: 24px 28px 60px; min-width: 0; }
+  .right {
+    padding: 24px 28px 60px;
+    border-left: 1px solid var(--line);
+    background: var(--panel);
+    min-height: calc(100vh - 130px);
+  }
+  @media (max-width: 960px) { .right { border-left: none; border-top: 1px solid var(--line); min-height: 0; } }
+
+  .controls {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+  }
+  .field { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+  label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 5px; font-weight: 600; }
+  input[type=text] {
+    font: inherit; padding: 7px 10px; border: 1px solid var(--line);
+    border-radius: 5px; background: #fff; color: var(--ink); min-width: 210px;
+  }
+  button {
+    font: inherit; font-weight: 600; padding: 8px 18px; border: none;
+    border-radius: 5px; background: var(--ink); color: #fff; cursor: pointer;
+  }
+  button:disabled { opacity: .45; cursor: default; }
+  button.ghost { background: none; color: var(--muted); border: 1px solid var(--line); font-weight: 500; }
+
+  .steps { margin: 0 0 22px; }
+  .step {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 7px 0; border-bottom: 1px dotted var(--line);
+    font-size: 13.5px; opacity: .28; transition: opacity .18s;
+  }
+  .step.on { opacity: 1; }
+  .step .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); flex: none; position: relative; top: -1px; }
+  .step.on .dot { background: var(--fws); }
+  .step .src { color: var(--muted); font-size: 12px; margin-left: auto; font-variant-numeric: tabular-nums; }
+  .step .name { font-weight: 550; }
+  .step .detail { color: var(--muted); }
+
+  .headline {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px 18px; margin-bottom: 20px; display: none;
+  }
+  .headline.on { display: block; }
+  .metrics { display: flex; gap: 34px; flex-wrap: wrap; }
+  .metric .n { font-size: 26px; font-weight: 660; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .metric .l { font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+
+  .gantt { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 0 14px; display: none; }
+  .gantt.on { display: block; }
+  .grow {
+    display: grid; grid-template-columns: 300px 1fr; gap: 14px;
+    align-items: center; padding: 5px 18px; cursor: pointer;
+  }
+  .grow:hover { background: #f2f4f7; }
+  .grow.sel { background: #eef2f7; }
+  .glabel { font-size: 13px; min-width: 0; }
+  .glabel .nm { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 520; }
+  .glabel .ag { color: var(--muted); font-size: 11.5px; }
+  .track { position: relative; height: 22px; background: #f0f2f5; border-radius: 3px; }
+  .bar { position: absolute; top: 3px; height: 16px; border-radius: 3px; opacity: .9; }
+  .bar.crit { outline: 2px solid var(--crit); outline-offset: 1px; }
+  .axis {
+    display: grid; grid-template-columns: 300px 1fr; gap: 14px;
+    padding: 4px 18px 0; font-size: 11px; color: var(--muted);
+    border-top: 1px solid var(--line); margin-top: 8px;
+  }
+  .ticks { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 12px 18px 0; font-size: 11.5px; color: var(--muted); }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+
+  .right h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; font-weight: 650; }
+  .prov { font-size: 13px; }
+  .prov .empty { color: var(--muted); font-style: italic; }
+  .kv { margin-bottom: 12px; }
+  .kv .k { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+  .kv .v { font-variant-numeric: tabular-nums; }
+  .cite { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  pre {
+    background: #f4f6f8; border: 1px solid var(--line); border-radius: 6px;
+    padding: 10px 12px; font-size: 11.5px; line-height: 1.45; overflow: auto;
+    max-height: 340px; margin: 6px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 650; padding: 1px 6px;
+    border-radius: 3px; letter-spacing: .03em; text-transform: uppercase;
+  }
+  .tag.sim { background: #ffe9c7; color: var(--sim); }
+  .tag.live { background: #e2efe6; color: var(--fws); }
+  .tag.crit { background: #fbe4e2; color: var(--crit); }
+  footer { padding: 22px 28px 50px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); background: var(--panel); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <b>Prototype.</b> Not an official product of the U.S. Department of Energy or any agency. Source-system responses shown here were captured on 20 August 2026 by local Model Context Protocol servers querying public federal APIs. Lease and well records are <b>simulated</b> and are marked as such. Nothing on this page is authoritative for any permitting decision.
+</div>
+
+<header>
+  <h1>Permitting Coordination Timeline</h1>
+  <div class="sub">Federating authorization status, species screening, and regulatory content across four sources to produce a single coordination view.</div>
+</header>
+
+<main>
+<div class="left">
+
+  <div class="controls">
+    <div class="field">
+      <div>
+        <label for="loc">Project location</label>
+        <input id="loc" type="text" value="Dixie Valley, Churchill County, NV" readonly>
+      </div>
+      <div>
+        <label for="ser">BLM serial number</label>
+        <input id="ser" type="text" value="NVN-091234" readonly>
+      </div>
+      <button id="run">Build coordination timeline</button>
+      <button id="reset" class="ghost">Reset</button>
+    </div>
+  </div>
+
+  <div class="steps" id="steps"></div>
+
+  <div class="headline" id="headline">
+    <div class="metrics">
+      <div class="metric"><div class="n" id="mDays">—</div><div class="l">Days to APD</div></div>
+      <div class="metric"><div class="n" id="mMonths">—</div><div class="l">Months</div></div>
+      <div class="metric"><div class="n" id="mRev">—</div><div class="l">Reviews triggered</div></div>
+      <div class="metric"><div class="n" id="mAg">—</div><div class="l">Agencies involved</div></div>
+    </div>
+  </div>
+
+  <div class="gantt" id="gantt">
+    <div id="rows"></div>
+    <div class="axis"><div></div><div class="ticks" id="ticks"></div></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+</div>
+
+<div class="right">
+  <h2>Provenance</h2>
+  <div class="prov" id="prov"><div class="empty">Select a review to see where each fact came from.</div></div>
+</div>
+</main>
+
+<footer>
+  Four Model Context Protocol servers produced these responses: <code>ecfr</code> (eCFR and Federal Register APIs), <code>ipac</code> (USFWS IPaC Location API), <code>sepi-stub</code> (simulated BLM MLRS and AFMSS response shapes), and <code>gpcp-timeline</code> (deterministic critical-path computation over an encoded dependency rule set). Sequence and duration logic is computed from the rule set, not generated by a language model. Rule set v0.2.0.
+</footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// Captured MCP server responses. Each retains the source and retrieval stamp
+// emitted by the server that produced it.
+// ---------------------------------------------------------------------------
+
+const IPAC = {
+  data: {
+    total_species_returned: 2,
+    section7_triggered: true,
+    triggering_species: [
+      { common_name: "Monarch butterfly", scientific_name: "Danaus plexippus",
+        group: "Insects", listing_status: "Proposed Threatened", listing_code: "PT",
+        population: "Wherever found" },
+      { common_name: "Dixie Valley Toad", scientific_name: "Anaxyrus williamsi",
+        group: "Amphibians", listing_status: "Endangered", listing_code: "E",
+        population: "There is only one population that exists in Dixie Meadows wetlands. Churchill County Nevada" }
+    ],
+    determination_basis: "16 U.S.C. 1536(a)(2); 50 CFR 402.14"
+  },
+  source: "USFWS IPaC Location API",
+  url: "https://ipac.ecosphere.fws.gov/location/api/resources",
+  retrieved: "2026-08-20T21:32:04.391Z"
+};
+
+const SEPI_LEASE = {
+  data: { found: true, lease: {
+    serial_number: "NVN-091234", case_type: "Geothermal Lease", status: "Authorized",
+    effective_date: "2019-03-01", expiration_date: "2029-02-28", acres: 2560,
+    county: "Churchill", state: "NV", admin_office: "Stillwater Field Office",
+    lessee: "Example Geothermal Operations LLC" } },
+  source: "SEPI (simulated)",
+  disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+  retrieved: "2026-08-20T21:30:40.245Z"
+};
+
+const SEPI_WELLS = {
+  data: { serial_number: "NVN-091234", count: 2, wells: [
+    { api_number: "27-001-90001", well_name: "DV 21-14", type: "Production",
+      status: "APD Approved", apd_approved: "2024-06-11", spud_date: null },
+    { api_number: "27-001-90002", well_name: "DV 22-14", type: "Injection",
+      status: "APD Pending", apd_submitted: "2026-02-03", spud_date: null } ] },
+  source: "SEPI (simulated)",
+  disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+  retrieved: "2026-08-20T21:30:52.110Z"
+};
+
+const FR = {
+  data: { cfr_title: 43, count: 20, documents: [
+    { title: "Natural Resource Damages for Hazardous Substances", type: "Rule", date: "2026-07-13",
+      url: "https://www.federalregister.gov/documents/2026/07/13/2026-14052/natural-resource-damages-for-hazardous-substances" },
+    { title: "Royalty for Oil and Gas Lost From Onshore Federal and Indian Leases", type: "Proposed Rule", date: "2026-06-24",
+      url: "https://www.federalregister.gov/documents/2026/06/24/2026-12738/royalty-for-oil-and-gas-lost-from-onshore-federal-and-indian-leases" },
+    { title: "Oil and Gas Leasing", type: "Proposed Rule", date: "2026-06-24",
+      url: "https://www.federalregister.gov/documents/2026/06/24/2026-12734/oil-and-gas-leasing" },
+    { title: "National Environmental Policy Act Implementing Regulations", type: "Rule", date: "2026-02-24",
+      url: "https://www.federalregister.gov/documents/2026/02/24/2026-03708/national-environmental-policy-act-implementing-regulations" },
+    { title: "Rescission of Conservation and Landscape Health Rule", type: "Rule", date: "2026-05-12",
+      url: "https://www.federalregister.gov/documents/2026/05/12/2026-09386/rescission-of-conservation-and-landscape-health-rule" }
+  ] },
+  source: "Federal Register",
+  url: "https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest&conditions[cfr][title]=43&conditions[publication_date][gte]=2025-08-20",
+  retrieved: "2026-08-20T21:27:35.681Z"
+};
+
+const TIMELINE = {
+  data: {
+    conditions_evaluated: ["federal_action","listed_species_present","federal_nexus",
+      "likely_to_adversely_affect","federal_undertaking","drilling_proposed",
+      "injection_proposed","water_use_proposed"],
+    reviews_triggered: 9,
+    total_duration_days: 800,
+    total_duration_months: 26,
+    critical_path: ["nepa_ea","esa_section7_informal","esa_section7_formal","nepa_decision","apd_approval"],
+    schedule: [
+      { id:"nhpa_section106", name:"NHPA Section 106 review", agency:"BLM / SHPO",
+        authority:"54 U.S.C. 306108; 36 CFR 800", start_day:0, duration_days:120,
+        finish_day:120, blocks:["nepa_decision"], on_critical_path:false },
+      { id:"uic_permit", name:"UIC Class V injection well permit", agency:"EPA or delegated state",
+        authority:"42 U.S.C. 300h; 40 CFR 144", start_day:0, duration_days:270,
+        finish_day:270, blocks:[], on_critical_path:false },
+      { id:"nepa_ea", name:"NEPA Environmental Assessment", agency:"BLM",
+        authority:"42 U.S.C. 4332; 43 CFR 46", start_day:0, duration_days:365,
+        finish_day:365, blocks:["nepa_decision"], on_critical_path:true },
+      { id:"biological_assessment", name:"Biological assessment and survey seasons", agency:"Applicant / BLM",
+        authority:"50 CFR 402.12", start_day:0, duration_days:365, finish_day:365,
+        blocks:["esa_section7_informal","esa_section7_formal"], on_critical_path:false },
+      { id:"nv_water_right", name:"Nevada water right application", agency:"NDWR",
+        authority:"NRS 533", start_day:0, duration_days:365, finish_day:365,
+        blocks:[], on_critical_path:false },
+      { id:"esa_section7_informal", name:"ESA Section 7 informal consultation", agency:"USFWS",
+        authority:"16 U.S.C. 1536(a)(2); 50 CFR 402.13", start_day:365, duration_days:60,
+        finish_day:425, blocks:["esa_section7_formal","nepa_decision"], on_critical_path:true },
+      { id:"esa_section7_formal", name:"ESA Section 7 formal consultation", agency:"USFWS",
+        authority:"16 U.S.C. 1536(a)(2); 50 CFR 402.14", start_day:425, duration_days:135,
+        finish_day:560, blocks:["nepa_decision"], on_critical_path:true },
+      { id:"nepa_decision", name:"NEPA decision document (FONSI or ROD)", agency:"BLM",
+        authority:"43 CFR 46.325", start_day:560, duration_days:60, finish_day:620,
+        blocks:["apd_approval"], on_critical_path:true },
+      { id:"apd_approval", name:"Application for Permit to Drill approval", agency:"BLM",
+        authority:"43 CFR 3261", start_day:620, duration_days:180, finish_day:800,
+        blocks:[], on_critical_path:true }
+    ]
+  },
+  source: "GPCP dependency rules v0.2.0",
+  note: "Deterministic computation over encoded rules. Not model-generated.",
+  retrieved: "2026-08-20T21:37:50.057Z"
+};
+
+// Which captured response supports which review row.
+const EVIDENCE = {
+  nepa_ea:               ["FR"],
+  biological_assessment: ["IPAC"],
+  esa_section7_informal: ["IPAC"],
+  esa_section7_formal:   ["IPAC"],
+  nhpa_section106:       [],
+  nepa_decision:         ["FR"],
+  apd_approval:          ["SEPI_LEASE","SEPI_WELLS"],
+  uic_permit:            [],
+  nv_water_right:        []
+};
+
+const PAYLOADS = { IPAC, SEPI_LEASE, SEPI_WELLS, FR };
+
+const AGENCY_COLOR = {
+  "BLM": "var(--blm)",
+  "USFWS": "var(--fws)",
+  "BLM / SHPO": "var(--shpo)",
+  "EPA or delegated state": "var(--epa)",
+  "NDWR": "var(--state)",
+  "Applicant / BLM": "var(--blm)"
+};
+
+const STEPS = [
+  { name: "sepi.get_authorization_status",
+    detail: "NVN-091234 — Geothermal Lease, Authorized, 2,560 acres, Stillwater FO",
+    src: "SIMULATED" },
+  { name: "sepi.get_well_records",
+    detail: "2 wells — one APD approved, one APD pending",
+    src: "SIMULATED" },
+  { name: "fws.screen_species",
+    detail: "2 species returned — Dixie Valley Toad (Endangered). Section 7 triggered.",
+    src: "IPaC" },
+  { name: "ecfr.check_pending_rulemaking",
+    detail: "Title 43 — 20 documents in the last 12 months, incl. NEPA implementing regulations",
+    src: "Fed. Register" },
+  { name: "gpcp.build_timeline",
+    detail: "8 conditions evaluated against rule set v0.2.0 — 9 reviews triggered",
+    src: "rules v0.2.0" }
+];
+
+// ---------------------------------------------------------------------------
+
+const $ = id => document.getElementById(id);
+let selected = null;
+
+function renderSteps(activeCount) {
+  $("steps").innerHTML = STEPS.map((s, i) => `
+    <div class="step ${i < activeCount ? "on" : ""}">
+      <span class="dot"></span>
+      <span><span class="name">${s.name}</span> &nbsp;<span class="detail">${i < activeCount ? s.detail : "…"}</span></span>
+      <span class="src">${i < activeCount ? s.src : ""}</span>
+    </div>`).join("");
+}
+
+function renderTimeline() {
+  const d = TIMELINE.data;
+  const max = d.total_duration_days;
+  const agencies = new Set(d.schedule.map(s => s.agency.split(" / ")[0].replace(/^Applicant$/, "BLM")));
+
+  $("mDays").textContent = d.total_duration_days;
+  $("mMonths").textContent = d.total_duration_months;
+  $("mRev").textContent = d.reviews_triggered;
+  $("mAg").textContent = agencies.size;
+  $("headline").classList.add("on");
+
+  $("rows").innerHTML = d.schedule.map(s => {
+    const left = (s.start_day / max * 100).toFixed(2);
+    const w = Math.max(s.duration_days / max * 100, 1.2).toFixed(2);
+    return `<div class="grow" data-id="${s.id}">
+      <div class="glabel">
+        <span class="nm">${s.name}</span>
+        <span class="ag">${s.agency} · ${s.duration_days} days${s.on_critical_path ? " · critical path" : ""}</span>
+      </div>
+      <div class="track">
+        <div class="bar ${s.on_critical_path ? "crit" : ""}"
+             style="left:${left}%; width:${w}%; background:${AGENCY_COLOR[s.agency] || "var(--muted)"}"></div>
+      </div>
+    </div>`;
+  }).join("");
+
+  $("ticks").innerHTML = [0, 200, 400, 600, 800]
+    .map(t => `<span>day ${t}</span>`).join("");
+
+  $("legend").innerHTML =
+    Object.entries({ "BLM": "var(--blm)", "USFWS": "var(--fws)", "SHPO": "var(--shpo)",
+                     "EPA / state": "var(--epa)", "NDWR": "var(--state)" })
+      .map(([k, v]) => `<span><i class="sw" style="background:${v}"></i>${k}</span>`).join("")
+    + `<span><i class="sw" style="background:#fff;outline:2px solid var(--crit);outline-offset:-1px"></i>Critical path</span>`;
+
+  $("gantt").classList.add("on");
+
+  document.querySelectorAll(".grow").forEach(el =>
+    el.addEventListener("click", () => selectRow(el.dataset.id)));
+}
+
+function selectRow(id) {
+  selected = id;
+  document.querySelectorAll(".grow").forEach(el =>
+    el.classList.toggle("sel", el.dataset.id === id));
+
+  const s = TIMELINE.data.schedule.find(x => x.id === id);
+  const keys = EVIDENCE[id] || [];
+
+  let html = `
+    <div class="kv"><div class="k">Review</div><div class="v">${s.name}</div></div>
+    <div class="kv"><div class="k">Responsible</div><div class="v">${s.agency}</div></div>
+    <div class="kv"><div class="k">Authority</div><div class="v cite">${s.authority}</div></div>
+    <div class="kv"><div class="k">Window</div><div class="v">Day ${s.start_day} to day ${s.finish_day} (${s.duration_days} days)</div></div>
+    <div class="kv"><div class="k">Blocks</div><div class="v">${s.blocks.length ? s.blocks.join(", ") : "nothing downstream in this rule set"}</div></div>
+    <div class="kv"><div class="k">Status</div><div class="v">${s.on_critical_path
+        ? '<span class="tag crit">On critical path</span>'
+        : "Has float"}</div></div>
+    <div class="kv"><div class="k">Sequence source</div>
+      <div class="v">${TIMELINE.source}<br><span class="cite" style="color:var(--muted)">${TIMELINE.note}</span></div></div>
+  `;
+
+  if (keys.length === 0) {
+    html += `<div class="kv"><div class="k">Source-system evidence</div>
+      <div class="v" style="color:var(--muted)">No connector in this prototype returns records for this review. This is the gap the connector inventory addresses.</div></div>`;
+  } else {
+    keys.forEach(k => {
+      const p = PAYLOADS[k];
+      const sim = !!p.disclaimer;
+      html += `<div class="kv">
+        <div class="k">Source-system evidence</div>
+        <div class="v">${p.source} ${sim ? '<span class="tag sim">Simulated</span>' : '<span class="tag live">Live API</span>'}</div>
+        <div class="v cite" style="color:var(--muted);font-size:11.5px">Retrieved ${p.retrieved}</div>
+        ${p.url ? `<div class="v cite" style="font-size:11px;word-break:break-all"><a href="${p.url}" target="_blank" rel="noopener">${p.url}</a></div>` : ""}
+        <pre>${JSON.stringify(p.data, null, 2)}</pre>
+      </div>`;
+    });
+  }
+
+  $("prov").innerHTML = html;
+}
+
+function reset() {
+  selected = null;
+  renderSteps(0);
+  $("headline").classList.remove("on");
+  $("gantt").classList.remove("on");
+  $("prov").innerHTML = '<div class="empty">Select a review to see where each fact came from.</div>';
+  $("run").disabled = false;
+}
+
+$("run").addEventListener("click", () => {
+  $("run").disabled = true;
+  reset();
+  $("run").disabled = true;
+  let i = 0;
+  const tick = () => {
+    i++;
+    renderSteps(i);
+    if (i < STEPS.length) {
+      setTimeout(tick, 620);
+    } else {
+      setTimeout(() => { renderTimeline(); selectRow("esa_section7_formal"); }, 450);
+    }
+  };
+  setTimeout(tick, 250);
+});
+
+$("reset").addEventListener("click", reset);
+
+renderSteps(0);
+</script>
+</body>
+</html>
