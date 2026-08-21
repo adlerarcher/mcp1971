@@ -1,0 +1,193 @@
+{
+  "source": {
+    "dataset": "PNNL/NEPATEC2.0",
+    "url": "https://huggingface.co/datasets/PNNL/NEPATEC2.0",
+    "retrieved": "2026-08-20T22:00:00.000Z",
+    "tier": "extracted",
+    "disclaimer": "EXTRACTED - LLM-extracted metadata from PNNL/NEPATEC2.0. Not an authoritative agency record."
+  },
+  "selection": {
+    "process_type": "Environmental Assessment",
+    "lead_agency": "Bureau of Land Management",
+    "criterion": "Geothermal Environmental Assessments in NEPATEC2.0 with BLM as lead agency",
+    "n_projects": 8
+  },
+  "findings": {
+    "nevada_geothermal_ea_count": 0,
+    "nevada_adjacent_project_ID": "nepatec-blm-geo-08",
+    "nevada_note": "This corpus contains no Nevada geothermal Environmental Assessment. The one Nevada-adjacent record is a lease sale administered from the Malheur Field Office in Oregon."
+  },
+  "projects": [
+    {
+      "project_ID": "nepatec-blm-geo-01",
+      "project_title": { "value": "Deep Rose geothermal exploration, Coso" },
+      "project_sponsor": { "value": "Deep Rose LLC" },
+      "location": { "value": "Inyo County, California (36.195, -117.795)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "California Desert District" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Surface Transportation - Other",
+          "Threatened and Endangered Species Management"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-CA-650-2005-086_EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 164 },
+        { "file_name": "DOI-BLM-CA-650-2005-086_FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 12 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-02",
+      "project_title": { "value": "Glass Mountain geothermal well field" },
+      "project_sponsor": { "value": "Calpine Corporation / CPN Telephone Flat Inc." },
+      "location": { "value": "Siskiyou County, California (41.602, -121.610)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Northern California District" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Electricity Transmission",
+          "Pipelines",
+          "Threatened and Endangered Species Management"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-CA-EA-2002-GlassMountain_EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 248 },
+        { "file_name": "DOI-BLM-CA-EA-2002-GlassMountain_Appendix.pdf", "document_title": { "value": "Appendix — biological assessment" }, "document_type": { "value": "Appendix" }, "page_count": 86 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-03",
+      "project_title": { "value": "Long Valley geothermal well-field expansion" },
+      "project_sponsor": { "value": "Mammoth Pacific LP" },
+      "location": { "value": "Mono County, California (37.648, -118.863)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Bishop Field Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Pipelines",
+          "Water Resources - Other",
+          "Surface Transportation - Other"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-CA-017-05-051_EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 191 },
+        { "file_name": "DOI-BLM-CA-017-05-051_FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 8 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-04",
+      "project_title": { "value": "Newberry geothermal exploration wells" },
+      "project_sponsor": { "value": "Davenport Power LLC" },
+      "location": { "value": "Deschutes County, Oregon (43.722, -121.234)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Prineville District Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Surface Transportation - Other",
+          "Threatened and Endangered Species Management",
+          "Vegetation and Fuels Management"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-OR-P000-2010-0003-EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 176 },
+        { "file_name": "DOI-BLM-OR-P000-2010-0003-FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 14 },
+        { "file_name": "DOI-BLM-OR-P000-2010-0003-DR.pdf", "document_title": { "value": "Decision record" }, "document_type": { "value": "Decision Record" }, "page_count": 9 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-05",
+      "project_title": { "value": "Glass Buttes geothermal exploration" },
+      "project_sponsor": { "value": "Ormat Technologies Inc." },
+      "location": { "value": "Lake County, Oregon (43.548, -120.022)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Burns District Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Surface Transportation - Other",
+          "Vegetation and Fuels Management",
+          "Rangeland Management"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-OR-P040-0021-EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 203 },
+        { "file_name": "DOI-BLM-OR-P040-0021-FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 11 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-06",
+      "project_title": { "value": "Raft River geothermal exploration" },
+      "project_sponsor": { "value": "Agua Caliente LLC" },
+      "location": { "value": "Cassia County, Idaho (42.097, -113.385)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Twin Falls District Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Water Resources - Irrigation and Water Supply",
+          "Surface Transportation - Other",
+          "Electricity Transmission"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-ID-220-2009-EA-3709.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 142 },
+        { "file_name": "DOI-BLM-ID-220-2009-EA-3709_FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 7 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-07",
+      "project_title": { "value": "Cove Fort geothermal development" },
+      "project_sponsor": { "value": "ENEL Green Power North America" },
+      "location": { "value": "Millard County, Utah (38.564, -112.580)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Color Country District Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Electricity Transmission",
+          "Pipelines",
+          "Land Development - Other",
+          "Water Resources - Other"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-UT-C010-2010-0042-EA.pdf", "document_title": { "value": "Environmental Assessment" }, "document_type": { "value": "EA" }, "page_count": 312 },
+        { "file_name": "DOI-BLM-UT-C010-2010-0042_Appendix_A.pdf", "document_title": { "value": "Appendix A — well field and plant layout" }, "document_type": { "value": "Appendix" }, "page_count": 44 },
+        { "file_name": "DOI-BLM-UT-C010-2010-0042_FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 16 }
+      ]
+    },
+    {
+      "project_ID": "nepatec-blm-geo-08",
+      "nevada_adjacent": true,
+      "project_title": { "value": "Malheur Field Office competitive geothermal lease sale" },
+      "project_sponsor": { "value": "Bureau of Land Management" },
+      "location": { "value": "Malheur County, Oregon (43.282, -117.226)" },
+      "lead_agency": { "value": "Bureau of Land Management" },
+      "admin_office": { "value": "Malheur Field Office" },
+      "process_type": { "value": "Environmental Assessment" },
+      "project_type": {
+        "value": [
+          "Renewable Energy Production - Geothermal",
+          "Laws, Policies, Regulations, and Guidance",
+          "Land Use or Forest Management Plan"
+        ]
+      },
+      "documents": [
+        { "file_name": "DOI-BLM-OR-V000-2025-lease-sale_EA.pdf", "document_title": { "value": "Environmental Assessment — geothermal lease sale" }, "document_type": { "value": "EA" }, "page_count": 118 },
+        { "file_name": "DOI-BLM-OR-V000-2025-lease-sale_FONSI.pdf", "document_title": { "value": "Finding of No Significant Impact" }, "document_type": { "value": "FONSI" }, "page_count": 10 },
+        { "file_name": "ORWA-GEO-notice-071025.pdf", "document_title": { "value": "Notice of competitive geothermal internet lease sale" }, "document_type": { "value": "Notice" }, "page_count": 22 }
+      ]
+    }
+  ]
+}

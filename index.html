@@ -25,6 +25,7 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
+  [x-cloak] { display: none !important; }
   body {
     background: var(--white);
     color: var(--navy);
@@ -32,6 +33,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.42;
+    font-variant-numeric: tabular-nums;
   }
   .page { padding: 0 88px 64px; }
   .mast {
@@ -99,9 +101,7 @@
     from { transform: scale(1.04) translateX(0); }
     to { transform: scale(1.1) translateX(-2.4%); }
   }
-  @keyframes mastBar {
-    to { height: 148px; }
-  }
+  @keyframes mastBar { to { height: 148px; } }
   @keyframes mastIn {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: none; }
@@ -170,7 +170,7 @@
     flex: none;
   }
   .meta dd {
-    font-family: var(--title); font-weight: 700;
+    font-family: var(--body); font-weight: 400;
     font-size: clamp(16px, 1.5vw, 22px);
     line-height: 1.12;
     margin: 0;
@@ -193,11 +193,77 @@
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: none; }
   }
-  @keyframes metaRule {
-    to { width: 2.25rem; }
-  }
+  @keyframes metaRule { to { width: 2.25rem; } }
 
-  .actions { display: flex; gap: 18px; align-items: center; margin: 0 0 22px; }
+  .kicker {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    margin: 0 0 14px; color: var(--navy);
+  }
+  .projects {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 0 0 22px;
+  }
+  .projects button { padding: 9px 16px; }
+  .projects button.on {
+    background: var(--gold); color: var(--navy); border-color: var(--gold);
+  }
+  .projects button.on::after { display: none; }
+
+  .controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, .8fr);
+    gap: 22px;
+    margin: 0 0 22px;
+  }
+  .checks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 18px;
+  }
+  .checks label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; cursor: pointer; line-height: 1.12;
+  }
+  .checks input {
+    appearance: none;
+    width: 13px; height: 13px; margin: 0;
+    border: 1px solid var(--navy);
+    background: var(--white);
+    flex: none;
+  }
+  .checks input:checked {
+    background: var(--gold);
+  }
+  .side-controls { display: flex; flex-direction: column; gap: 16px; }
+  .band { display: flex; gap: 8px; flex-wrap: wrap; }
+  .band button { padding: 8px 14px; }
+  .band button.on {
+    background: var(--gold); color: var(--navy); border-color: var(--gold);
+  }
+  .band button.on::after { display: none; }
+  .date-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .date-row input[type="date"] {
+    font-family: var(--body);
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    padding: 8px 10px;
+    background: var(--white);
+  }
+  .range {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .range b {
+    font-family: var(--title); font-weight: 700;
+    color: var(--navy); font-size: 18px;
+  }
+  .actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   button {
     position: relative;
     font-family: var(--label); font-weight: 700;
@@ -217,6 +283,11 @@
     background: var(--white); color: var(--navy);
   }
   button.ghost::after { display: none; }
+  .delta {
+    margin: 0;
+    font-size: 14px;
+    color: var(--navy);
+  }
 
   .board {
     display: grid;
@@ -261,8 +332,7 @@
     text-align: right; color: var(--navy);
   }
 
-  .headline { display: none; margin-top: 22px; }
-  .headline.on { display: block; }
+  .headline { margin-top: 22px; }
   .metrics { display: flex; gap: 36px; flex-wrap: wrap; }
   .metric .n {
     font-family: var(--title); font-weight: 700;
@@ -275,69 +345,192 @@
     margin-top: 6px;
   }
 
-  .gantt { display: none; margin-top: 22px; padding-left: 31px; padding-right: 31px; }
-  .gantt.on { display: block; }
-  .gantt-kicker {
-    font-family: var(--label); font-weight: 700;
-    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-    margin: 0 0 14px; color: var(--navy);
+  .gantt { margin-top: 22px; }
+  .gantt-head { margin: 0 0 22px; }
+  .gantt-lead {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 22px 28px;
+    align-items: end;
   }
-  .gantt-plot { position: relative; }
-  .hairlines {
-    position: absolute; left: 268px; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: space-between; pointer-events: none;
-  }
-  .hairlines i { width: 1px; background: var(--navy); opacity: .2; }
-  .grow {
-    display: grid; grid-template-columns: 256px 1fr; gap: 12px;
-    align-items: center; padding: 3px 0; cursor: pointer;
-  }
-  .grow:hover .nm { text-decoration: underline; text-underline-offset: 2px; }
-  .grow.sel .glabel { border-left: 5px solid var(--gold); padding-left: 8px; margin-left: -13px; }
-  .glabel { font-size: 13px; min-width: 0; line-height: 1.12; }
-  .glabel .nm {
-    display: block; font-family: var(--title); font-weight: 700;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    font-size: 14px;
-  }
-  .glabel .ag {
-    font-family: var(--label); font-weight: 700;
-    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  .track { position: relative; height: 12px; background: transparent; }
-  .bar {
-    position: absolute; top: 3px; height: 6px;
-    border-radius: 0;
-  }
-  .bar.crit { outline: 2px solid var(--gold); outline-offset: 1px; }
-  .axis {
-    display: grid; grid-template-columns: 256px 1fr; gap: 12px;
-    margin-top: 8px; padding-top: 8px;
-    border-top: 1px solid var(--navy);
-  }
-  .ticks {
-    display: flex; justify-content: space-between;
+  .gantt-stat { display: flex; align-items: baseline; gap: 12px; line-height: 1; }
+  .gantt-stat .n {
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(52px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.03em;
     font-variant-numeric: tabular-nums;
   }
-  .ticks span {
-    display: flex; flex-direction: column; gap: 2px;
+  .gantt-stat .u {
     font-family: var(--label); font-weight: 700;
-    font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted);
+    position: relative; top: -8px;
+  }
+  .gantt-span {
+    margin: 0 0 8px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
     color: var(--navy);
   }
-  .ticks i { font-style: normal; font-family: var(--body); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--muted); }
+  .gantt-chain {
+    margin: 0;
+    max-width: 46em;
+    font-size: 16px;
+    line-height: 1.42;
+    color: var(--navy);
+  }
+  .gantt-figure {
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    gap: 0 28px;
+    align-items: stretch;
+  }
+  .gantt-labels { display: flex; flex-direction: column; }
+  .gantt-label-head, .axis-top, .axis-svg { height: 40px; }
+  .gantt-label-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--navy);
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .gantt-well {
+    position: relative;
+    background: var(--navy);
+    border: 1px solid var(--navy);
+    z-index: 1;
+    margin: 0 6px 6px 0;
+  }
+  .gantt-well::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  .gantt-tracks { position: relative; min-height: 12px; }
+  .gantt-grid, .axis-svg, .axis-top { display: block; width: 100%; }
+  .gantt-grid {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .axis-top, .axis-svg { overflow: visible; }
+  .axis-top text {
+    fill: var(--gold);
+    font-family: var(--label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+  }
+  .axis-svg .domain, .axis-svg .tick line { display: none; }
+  .axis-svg .tick text {
+    fill: var(--white);
+    font-family: var(--label);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .grow {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) 42px;
+    gap: 8px;
+    align-items: center;
+    height: 64px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(10, 26, 79, .12);
+  }
+  .gantt-tracks .grow {
+    display: block;
+    border-bottom: none;
+    height: 64px;
+  }
+  .grow:last-child { border-bottom: none; }
+  .grow:hover .nm { color: var(--navy); }
+  .gantt-tracks .grow.sel { background: rgba(245, 184, 25, .1); }
+  .gantt-labels .grow.sel .ix { color: var(--gold); }
+  .gdur.onpath { color: var(--gold); }
+  .grow.dim { opacity: .28; }
+  .ix {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .glabel { min-width: 0; line-height: 1.12; }
+  .glabel .nm {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--title); font-weight: 700;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-size: 15px; line-height: 1.12;
+  }
+  .glabel .nm span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .glabel .ag {
+    display: block;
+    margin-top: 5px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .gdur {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .track { position: relative; height: 64px; width: 100%; }
+  .track-cap { display: none; }
+  .bar {
+    position: absolute; top: 22px; height: 20px;
+    border-radius: 0;
+    display: flex; align-items: center;
+    padding: 0 8px;
+    min-width: 2px;
+  }
+  .bar.held {
+    top: 18px; height: 28px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.55);
+    opacity: 1;
+    padding: 0;
+  }
+  .bar.crit { background: var(--gold); color: var(--navy); }
+  .bar-n {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .bar-date {
+    position: absolute;
+    top: 8px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    margin-left: 10px;
+    pointer-events: none;
+    font-variant-numeric: tabular-nums;
+  }
   .legend {
-    display: flex; gap: 16px; flex-wrap: wrap;
-    padding-top: 14px;
+    display: flex; gap: 18px; flex-wrap: wrap;
+    padding-top: 22px;
     font-family: var(--label); font-weight: 700;
-    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
     color: var(--navy);
   }
-  .legend span { display: flex; align-items: center; gap: 6px; }
-  .sw { width: 8px; height: 8px; display: inline-block; border-radius: 0; }
+  .legend span { display: flex; align-items: center; gap: 8px; }
+  .sw { width: 10px; height: 10px; display: inline-block; border-radius: 0; }
 
-  .prov-card h2 {
+  .prov-card h2, .cov-card h2, .sheet h2, .corpus-card h2 {
     font-family: var(--title); font-weight: 700;
     font-size: 22px; line-height: 1.12; margin: 0 0 16px;
     white-space: nowrap; overflow: hidden;
@@ -359,7 +552,7 @@
     border-radius: 0;
     padding: 12px 14px;
     font-size: 11.5px; line-height: 1.42;
-    overflow: auto; max-height: 340px; margin: 6px 0 0;
+    overflow: auto; max-height: 280px; margin: 6px 0 0;
     font-family: var(--mono); color: var(--navy);
   }
   .tag {
@@ -371,7 +564,173 @@
   }
   .tag.sim { background: var(--gold); color: var(--navy); }
   .tag.live { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
-  .tag.crit { background: var(--gold); color: var(--navy); }
+  .tag.none { background: var(--white); color: var(--muted); border: 1px solid var(--navy); }
+  .tag.extract { background: var(--gold); color: var(--navy); }
+  .tag.type {
+    text-transform: none;
+    letter-spacing: .03em;
+    background: var(--white);
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    margin: 0 6px 6px 0;
+  }
+  .tag.gap { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+
+  .corpus-card { margin-top: 22px; }
+  .corpus-lede { margin: 0 0 16px; max-width: 52em; }
+  .corpus-find {
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 16px 22px;
+    margin: 0 0 22px;
+    max-width: 52em;
+  }
+  .corpus-find p { margin: 0; }
+  .corpus-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+    gap: 22px;
+    align-items: start;
+  }
+  .corpus-map {
+    position: relative;
+    height: 280px;
+    background: var(--navy);
+    border: 1px solid var(--navy);
+    margin: 0 6px 6px 0;
+  }
+  .corpus-map::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  .corpus-map-inner { position: relative; height: 100%; }
+  .corpus-pt {
+    position: absolute;
+    width: 9px; height: 9px;
+    margin: -4px 0 0 -4px;
+    padding: 0;
+    background: var(--white);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .corpus-pt::after { display: none; }
+  .corpus-pt.adj { background: var(--gold); border-radius: 0; }
+  .corpus-pt.on {
+    background: var(--gold);
+    border-radius: 0;
+    width: 11px; height: 11px;
+    margin: -5px 0 0 -5px;
+  }
+  .corpus-pt-lab {
+    position: absolute;
+    left: 12px; top: -6px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .corpus-axis {
+    position: absolute;
+    font-family: var(--label); font-weight: 700;
+    font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--gold);
+    pointer-events: none;
+  }
+  .corpus-axis.n { top: 10px; left: 12px; }
+  .corpus-axis.s { bottom: 10px; left: 12px; }
+  .corpus-axis.w { bottom: 10px; left: 40px; }
+  .corpus-axis.e { bottom: 10px; right: 12px; }
+  .corpus-list { margin: 0; padding: 0; list-style: none; }
+  .corpus-item {
+    border-bottom: 1px solid var(--navy);
+    padding: 14px 0 14px 12px;
+    cursor: pointer;
+  }
+  .corpus-item:last-child { border-bottom: none; }
+  .corpus-item.on { border-left: 5px solid var(--gold); padding-left: 7px; }
+  .corpus-item h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 17px; line-height: 1.12;
+    margin: 0 0 8px;
+  }
+  .corpus-meta {
+    display: grid;
+    grid-template-columns: 9em minmax(0, 1fr);
+    gap: 3px 12px;
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+  .corpus-meta dt {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .corpus-meta dd { margin: 0; }
+  .corpus-docs { margin: 12px 0 0; padding: 0; list-style: none; }
+  .corpus-docs li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 5em;
+    gap: 10px;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+  .corpus-docs .fn { font-family: var(--mono); font-size: 12px; word-break: break-all; }
+  .corpus-docs .pg { text-align: right; font-variant-numeric: tabular-nums; }
+  .gap-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  .gap-table th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--navy);
+  }
+  .gap-table td { padding: 10px; border-bottom: 1px solid var(--navy); vertical-align: top; }
+  .chips { display: flex; flex-wrap: wrap; margin-top: 4px; }
+
+  .cov-card { margin-top: 22px; }
+  table.cov {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.cov th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--navy);
+  }
+  table.cov td {
+    padding: 10px;
+    border-bottom: 1px solid var(--navy);
+    vertical-align: top;
+  }
+  table.cov tr { cursor: pointer; }
+  table.cov tr.hl td:first-child { box-shadow: inset 5px 0 0 var(--gold); }
+  table.cov tr.dim { opacity: .32; }
+  table.cov .holds { color: var(--muted); font-size: 13px; }
+  table.cov .deps { font-size: 13px; }
+
+  .sheet {
+    position: fixed; inset: 0;
+    z-index: 20;
+    background: var(--white);
+    overflow: auto;
+    padding: 38px 88px 64px;
+  }
+  .rules-grid { display: grid; gap: 16px; }
+  .rule {
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 21px 31px;
+  }
+  .rule h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 20px; line-height: 1.12; margin: 0 0 12px;
+  }
+  .rule .id { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 
   footer {
     margin: 36px 0 0;
@@ -390,13 +749,15 @@
     .meta-item { flex: 1 1 calc(33.333% - 1px); min-width: 12em; border-bottom: 1px solid rgba(245, 184, 25, .45); }
     .meta-item:nth-child(3n) { border-right: none; }
     .meta-item:nth-last-child(-n+3) { border-bottom: none; }
-    .board { grid-template-columns: 1fr; }
-    .hairlines { left: 220px; }
-    .grow, .axis { grid-template-columns: 208px 1fr; }
+    .board, .controls { grid-template-columns: 1fr; }
+    .gantt-figure { grid-template-columns: 280px minmax(0, 1fr); }
+    .gantt-lead { grid-template-columns: 1fr; gap: 10px; }
+    .corpus-layout { grid-template-columns: 1fr; }
     .step { grid-template-columns: 10px minmax(160px, 24ch) minmax(0, 1fr) 10ch; }
   }
   @media (max-width: 800px) {
     .page { padding: 0 24px 48px; }
+    .sheet { padding: 28px 24px 48px; }
     .mast { margin: 0 -24px; padding: 0 24px; height: auto; min-height: 260px; }
     .mast-art { object-position: 18% center; }
     .eyebrow, h1, .lede { position: relative; top: auto; left: auto; right: auto; max-width: 36em; z-index: 1; }
@@ -410,10 +771,23 @@
     .meta-item:nth-last-child(-n+2) { border-bottom: none; }
     .card { padding: 18px 20px; }
     .kv { grid-template-columns: 1fr; }
-    .hairlines { display: none; }
-    .grow, .axis { grid-template-columns: 1fr; }
+    .gantt-figure { grid-template-columns: 1fr; }
+    .gantt-labels { display: none; }
+    .track-cap {
+      display: block;
+      position: absolute; left: 10px; top: 4px;
+      font-family: var(--title); font-weight: 700;
+      font-size: 12px; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: calc(100% - 20px);
+      pointer-events: none;
+    }
+    .bar { top: 24px; }
+    .bar.held { top: 21px; }
+    .bar-date { top: 4px; }
     .step { grid-template-columns: 10px 1fr auto; }
     .step .detail { grid-column: 2 / 3; }
+    .checks { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .meta-item { animation: none; }
@@ -424,7 +798,7 @@
   }
 </style>
 </head>
-<body>
+<body x-data="app" x-cloak>
 <div class="page">
   <header class="mast">
     <img class="mast-art" src="header.png" alt="">
@@ -436,42 +810,296 @@
 
   <div class="stage">
     <div class="meta-wrap">
-      <dl class="meta" id="meta"></dl>
+      <dl class="meta">
+        <template x-for="row in metaRows" :key="row.k">
+          <div class="meta-item">
+            <dt x-text="row.k"></dt>
+            <dd :class="{ serial: row.serial }" x-text="row.v"></dd>
+          </div>
+        </template>
+      </dl>
     </div>
 
-    <div class="actions">
-      <button id="run">Assemble timeline</button>
-      <button id="reset" class="ghost">Clear</button>
+    <p class="kicker">Nevada cases</p>
+    <div class="projects">
+      <template x-for="p in projects" :key="p.id">
+        <button type="button" :class="{ on: projectId === p.id }" @click="selectProject(p.id)" x-text="projectLabel(p)"></button>
+      </template>
+    </div>
+
+    <div class="controls">
+      <div class="card mark">
+        <p class="kicker">Conditions</p>
+        <div class="checks">
+          <template x-for="key in conditionKeys" :key="key">
+            <label>
+              <input type="checkbox" :checked="conditions[key]" @change="setCondition(key, $event.target.checked)">
+              <span x-text="conditionLabels[key]"></span>
+            </label>
+          </template>
+        </div>
+      </div>
+      <div class="card mark side-controls">
+        <div>
+          <p class="kicker">Duration band</p>
+          <div class="band">
+            <template x-for="b in bands" :key="b">
+              <button type="button" :class="{ on: band === b }" @click="setBand(b)" x-text="b"></button>
+            </template>
+          </div>
+          <p class="range" x-show="result">
+            <b x-text="result.total_duration_days"></b>
+            <span x-text="' days · ' + band"></span>
+            <span x-text="' · range ' + range.low + '–' + range.high"></span>
+          </p>
+        </div>
+        <div>
+          <p class="kicker">Start date</p>
+          <div class="date-row">
+            <input type="date" x-model="startDate" @change="drawChart()">
+          </div>
+        </div>
+        <div class="actions">
+          <button type="button" @click="runSequence()">Assemble sequence</button>
+          <button type="button" class="ghost" @click="clearView()">Clear the view</button>
+          <button type="button" class="ghost" @click="pinSchedule()" x-text="pinned ? 'Release hold' : 'Hold this schedule'"></button>
+          <button type="button" class="ghost" @click="rulesOpen = true">Rule set</button>
+          <button type="button" class="ghost" @click="exportCsv()">Download csv</button>
+          <button type="button" class="ghost" @click="exportJson()">Download json</button>
+        </div>
+        <p class="delta" x-show="baseline && result" x-text="deltaCopy"></p>
+      </div>
     </div>
 
     <div class="board">
       <div class="left">
         <div class="card">
-          <div class="steps" id="steps"></div>
+          <div class="steps">
+            <template x-for="(s, i) in steps" :key="s.name">
+              <div class="step" :class="{ on: i < logActive }">
+                <span class="dot"></span>
+                <span class="name" x-text="s.name"></span>
+                <span class="detail" x-text="i < logActive ? s.detail : '…'"></span>
+                <span class="src" x-text="i < logActive ? s.src : ''"></span>
+              </div>
+            </template>
+          </div>
         </div>
-        <div class="card mark headline" id="headline">
+
+        <div class="card mark headline" x-show="result && logActive >= steps.length">
           <div class="metrics">
-            <div class="metric"><div class="n" id="mDays">—</div><div class="l">Days to APD</div></div>
-            <div class="metric"><div class="n" id="mMonths">—</div><div class="l">Months</div></div>
-            <div class="metric"><div class="n" id="mRev">—</div><div class="l">Reviews triggered</div></div>
-            <div class="metric"><div class="n" id="mAg">—</div><div class="l">Agencies involved</div></div>
+            <div class="metric"><div class="n" x-text="result.total_duration_days"></div><div class="l">Days to APD</div></div>
+            <div class="metric"><div class="n" x-text="result.total_duration_months"></div><div class="l">Months</div></div>
+            <div class="metric"><div class="n" x-text="result.reviews_triggered"></div><div class="l">Reviews triggered</div></div>
+            <div class="metric"><div class="n" x-text="agencyCount"></div><div class="l">Agencies involved</div></div>
           </div>
-        </div>
-        <div class="card mark gantt" id="gantt">
-          <p class="gantt-kicker" id="ganttKicker">Critical path</p>
-          <div class="gantt-plot">
-            <div class="hairlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            <div id="rows"></div>
-          </div>
-          <div class="axis"><div></div><div class="ticks" id="ticks"></div></div>
-          <div class="legend" id="legend"></div>
         </div>
       </div>
 
       <aside class="card mark prov-card">
         <h2>Provenance</h2>
-        <div class="prov" id="prov"><div class="empty">No review is selected.</div></div>
+        <div class="prov">
+          <div class="empty" x-show="!selectedReview">No review is selected.</div>
+          <template x-if="selectedReview && selectedRow">
+            <div>
+              <div class="kv"><div class="k">Review</div><div class="v" x-text="selectedRow.name"></div></div>
+              <div class="kv"><div class="k">Agency</div><div class="v" x-text="selectedRow.agency"></div></div>
+              <div class="kv"><div class="k">Authority</div><div class="v cite" x-text="selectedRow.authority"></div></div>
+              <div class="kv"><div class="k">Window</div><div class="v" x-text="windowCopy(selectedRow)"></div></div>
+              <div class="kv">
+                <div class="k">Critical path</div>
+                <div class="v"><span class="tag crit" x-show="selectedRow.on_critical_path">On the critical path</span><span x-show="!selectedRow.on_critical_path">Not on the critical path</span></div>
+              </div>
+              <template x-if="evidenceFor(selectedReview).length === 0">
+                <div class="kv">
+                  <div class="k">Source-system evidence</div>
+                  <div class="v">No connector. The review is on the schedule from the rule set; no captured payload supports it.</div>
+                </div>
+              </template>
+              <template x-for="(payload, pi) in evidenceFor(selectedReview)" :key="pi">
+                <div>
+                  <div class="kv">
+                    <div class="k">Source</div>
+                    <div class="v">
+                      <span x-text="payload.source"></span>
+                      <span class="tag" :class="isLive(payload) ? 'live' : 'sim'" x-text="isLive(payload) ? 'Live API' : 'Simulated'"></span>
+                    </div>
+                  </div>
+                  <div class="kv"><div class="k">Retrieved</div><div class="v cite" x-text="payload.retrieved"></div></div>
+                  <div class="kv" x-show="payload.url"><div class="k">Citation</div><div class="v cite" x-text="payload.url"></div></div>
+                  <div class="kv" x-show="payload.disclaimer"><div class="k">Disclaimer</div><div class="v" x-text="payload.disclaimer"></div></div>
+                  <div class="kv">
+                    <div class="k">Payload</div>
+                    <pre x-text="JSON.stringify(payload.data, null, 2)"></pre>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
       </aside>
+    </div>
+
+    <div class="card mark gantt" x-show="result && logActive >= steps.length">
+      <header class="gantt-head">
+        <p class="kicker">Critical path</p>
+        <div class="gantt-lead">
+          <div class="gantt-stat">
+            <span class="n" x-text="result.total_duration_days"></span>
+            <span class="u">Days</span>
+          </div>
+          <div>
+            <p class="gantt-span" x-text="spanCopy"></p>
+            <p class="gantt-chain" x-text="pathCopy"></p>
+          </div>
+        </div>
+      </header>
+      <div class="gantt-figure">
+        <div class="gantt-labels">
+          <div class="gantt-label-head"><span>Review</span><span>Days</span></div>
+          <template x-for="(row, i) in overlayRows" :key="row.id">
+            <div class="grow" :class="rowClass(row.id)" @click="selectReview(row.id)">
+              <span class="ix" x-text="idx(i)"></span>
+              <div class="glabel">
+                    <span class="nm"><i class="sq" x-show="row.current && row.current.on_critical_path"></i><span x-text="chartName(row)"></span></span>
+                <span class="ag" x-text="row.agency"></span>
+              </div>
+              <span class="gdur" :class="{ onpath: row.current && row.current.on_critical_path }" x-text="row.current ? row.current.duration_days : '—'"></span>
+            </div>
+          </template>
+        </div>
+        <div class="gantt-well">
+          <svg class="axis-top" x-ref="axisTop" aria-hidden="true"></svg>
+          <div class="gantt-tracks" x-ref="tracks">
+            <svg class="gantt-grid" x-ref="grid" aria-hidden="true"></svg>
+            <template x-for="row in overlayRows" :key="row.id">
+              <div class="grow" :class="rowClass(row.id)" @click="selectReview(row.id)">
+                <div class="track">
+                  <span class="track-cap" x-text="chartName(row)"></span>
+                  <div class="bar held" x-show="row.held" :style="barStyle(row.held)"></div>
+                  <div class="bar" x-show="row.current" :class="{ crit: row.current && row.current.on_critical_path }" :style="barStyle(row.current, row.current && row.current.on_critical_path ? null : row.agency)"></div>
+                  <span class="bar-date" x-show="row.current && row.current.on_critical_path" :style="dateStyle(row.current)" x-text="row.current ? endLabel(row.current) : ''"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+          <svg class="axis-svg" x-ref="axis" aria-hidden="true"></svg>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:#F5B819"></i>Critical path</span>
+        <span><i class="sw" style="background:#8B9BC8"></i>BLM</span>
+        <span><i class="sw" style="background:#A3B0D4"></i>USFWS</span>
+        <span><i class="sw" style="background:#B7C2DC"></i>SHPO</span>
+        <span><i class="sw" style="background:#C5CEE0"></i>EPA / state</span>
+        <span><i class="sw" style="background:#DDE2EE"></i>NDWR</span>
+        <span x-show="baseline"><i class="sw" style="border:1px solid #0A1A4F;background:transparent"></i>Compared schedule</span>
+      </div>
+    </div>
+
+    <div class="card mark corpus-card">
+      <h2>NEPA document corpus</h2>
+      <p class="corpus-lede">Eight BLM geothermal Environmental Assessments drawn from PNNL/NEPATEC2.0. Every field is extracted, not authoritative. Source: <a href="https://huggingface.co/datasets/PNNL/NEPATEC2.0">huggingface.co/datasets/PNNL/NEPATEC2.0</a>. <span class="tag extract">Extracted</span></p>
+      <div class="corpus-find">
+        <p>This corpus contains no Nevada geothermal Environmental Assessment. The one Nevada-adjacent record is a lease sale administered from the Malheur Field Office in Oregon. That absence is a finding, not a gap in the extract.</p>
+      </div>
+      <p class="kicker" x-show="corpusError" x-text="corpusError"></p>
+      <div class="corpus-layout" x-show="corpusProjects.length">
+        <div>
+          <p class="kicker">Projects</p>
+          <ul class="corpus-list">
+            <template x-for="p in corpusProjects" :key="p.project_ID">
+              <li class="corpus-item" :class="{ on: selectedCorpusId === p.project_ID }" @click="selectedCorpusId = selectedCorpusId === p.project_ID ? null : p.project_ID">
+                <h3 x-text="fieldVal(p.project_title)"></h3>
+                <dl class="corpus-meta">
+                  <dt>Sponsor</dt><dd x-text="fieldVal(p.project_sponsor)"></dd>
+                  <dt>Location</dt><dd x-text="fieldVal(p.location)"></dd>
+                  <dt>Lead agency</dt><dd x-text="fieldVal(p.lead_agency) + (p.admin_office ? ' · ' + fieldVal(p.admin_office) : '')"></dd>
+                  <dt>Documents</dt><dd x-text="(p.documents || []).length + ' · ' + corpusPages(p) + ' pages'"></dd>
+                </dl>
+                <div class="chips">
+                  <template x-for="t in corpusTypes(p)" :key="t">
+                    <span class="tag type" x-text="t"></span>
+                  </template>
+                </div>
+                <template x-if="selectedCorpusId === p.project_ID">
+                  <ul class="corpus-docs">
+                    <template x-for="(d, di) in (p.documents || [])" :key="di">
+                      <li>
+                        <span class="fn" x-text="d.file_name"></span>
+                        <span class="pg" x-text="d.page_count + ' pp.'"></span>
+                      </li>
+                    </template>
+                  </ul>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </div>
+        <div>
+          <p class="kicker">Location scatter</p>
+          <div class="corpus-map">
+            <div class="corpus-map-inner">
+              <span class="corpus-axis n">North</span>
+              <span class="corpus-axis s">South</span>
+              <span class="corpus-axis w">West</span>
+              <span class="corpus-axis e">East</span>
+              <template x-for="pt in corpusPoints" :key="pt.id">
+                <button type="button" class="corpus-pt" :class="{ on: selectedCorpusId === pt.id, adj: pt.adjacent }" :style="'left:' + pt.x + '%;top:' + pt.y + '%'" :title="pt.title" @click="selectedCorpusId = pt.id">
+                  <span class="corpus-pt-lab" x-text="pt.short"></span>
+                </button>
+              </template>
+            </div>
+          </div>
+          <p class="kicker" style="margin-top:22px">Rule set against the EAs</p>
+          <p class="corpus-lede">Reviews the current timeline predicts, set against the activity types these Environmental Assessments actually cover. Where the rule set has no corresponding review, the row is a gap in the rule set.</p>
+          <table class="gap-table">
+            <thead>
+              <tr>
+                <th>Activity type in the EAs</th>
+                <th>Matching review in the rule set</th>
+                <th>On the current timeline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="row in typeComparison" :key="row.type">
+                <tr>
+                  <td x-text="row.type"></td>
+                  <td>
+                    <span class="tag gap" x-show="row.gap">Gap in the rule set</span>
+                    <span x-show="!row.gap" x-text="row.reviews.join('; ')"></span>
+                  </td>
+                  <td x-text="row.gap ? '—' : row.onTimeline"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mark cov-card">
+      <h2>Connector coverage</h2>
+      <table class="cov">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>State</th>
+            <th>Holds</th>
+            <th>Reviews on the current timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="c in connectors" :key="c.id">
+            <tr :class="sourceClass(c)" @click="selectSource(c.id)">
+              <td x-text="c.name"></td>
+              <td><span class="tag" :class="c.state === 'live' ? 'live' : c.state === 'simulated' ? 'sim' : 'none'" x-text="c.state === 'live' ? 'Live API' : c.state === 'simulated' ? 'Simulated' : 'No connector'"></span></td>
+              <td class="holds" x-text="c.holds"></td>
+              <td class="deps" x-text="sourceDeps(c)"></td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -481,11 +1109,147 @@
   </footer>
 </div>
 
+<div class="sheet" x-show="rulesOpen" x-cloak @keydown.escape.window="rulesOpen = false">
+  <div class="actions" style="margin-bottom:22px">
+    <button type="button" class="ghost" @click="rulesOpen = false">Close the rule set</button>
+  </div>
+  <h2>Rule set v0.2.0</h2>
+  <p>Read-only. Closing this view does not change the timeline.</p>
+  <div class="rules-grid">
+    <template x-for="r in rules" :key="r.id">
+      <article class="rule">
+        <div class="id" x-text="r.id"></div>
+        <h3 x-text="r.name"></h3>
+        <div class="kv"><div class="k">Agency</div><div class="v" x-text="r.agency"></div></div>
+        <div class="kv"><div class="k">Triggering conditions</div><div class="v" x-text="r.triggers.map(t => conditionLabels[t]).join(', ')"></div></div>
+        <div class="kv"><div class="k">Prerequisites</div><div class="v" x-text="r.prerequisites.length ? r.prerequisites.join(', ') : 'None'"></div></div>
+        <div class="kv"><div class="k">Blocks</div><div class="v" x-text="r.blocks.length ? r.blocks.join(', ') : 'None'"></div></div>
+        <div class="kv"><div class="k">Duration days</div><div class="v" x-text="'Low ' + r.duration.low + ' · typical ' + r.duration.typical + ' · high ' + r.duration.high"></div></div>
+        <div class="kv"><div class="k">Authority</div><div class="v cite" x-text="r.authority"></div></div>
+      </article>
+    </template>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script>if (typeof d3 === "undefined") { document.write('<script src="vendor/d3.min.js"><\/script>'); }</script>
 <script>
-// ---------------------------------------------------------------------------
-// Captured MCP server responses. Each retains the source and retrieval stamp
-// emitted by the server that produced it.
-// ---------------------------------------------------------------------------
+const RULE_SET_VERSION = "v0.2.0";
+const CONDITION_KEYS = [
+  "federal_action", "listed_species_present", "federal_nexus",
+  "likely_to_adversely_affect", "federal_undertaking", "drilling_proposed",
+  "injection_proposed", "water_use_proposed"
+];
+const CONDITION_LABELS = {
+  federal_action: "Federal action",
+  listed_species_present: "Listed species present",
+  federal_nexus: "Federal nexus",
+  likely_to_adversely_affect: "Likely to adversely affect",
+  federal_undertaking: "Federal undertaking",
+  drilling_proposed: "Drilling proposed",
+  injection_proposed: "Injection proposed",
+  water_use_proposed: "Water use proposed"
+};
+const AGENCY_COLOR = {
+  "BLM": "#8B9BC8",
+  "USFWS": "#A3B0D4",
+  "BLM / SHPO": "#B7C2DC",
+  "EPA or delegated state": "#C5CEE0",
+  "NDWR": "#DDE2EE",
+  "Applicant / BLM": "#8B9BC8"
+};
+
+const RULES = [
+  { id: "nhpa_section106", name: "NHPA Section 106 review", agency: "BLM / SHPO",
+    authority: "54 U.S.C. 306108; 36 CFR 800",
+    triggers: ["federal_undertaking"], prerequisites: [], blocks: ["nepa_decision"],
+    duration: { low: 90, typical: 120, high: 180 } },
+  { id: "uic_permit", name: "UIC Class V injection well permit", agency: "EPA or delegated state",
+    authority: "42 U.S.C. 300h; 40 CFR 144",
+    triggers: ["injection_proposed"], prerequisites: [], blocks: [],
+    duration: { low: 180, typical: 270, high: 365 } },
+  { id: "nepa_ea", name: "NEPA Environmental Assessment", agency: "BLM",
+    authority: "42 U.S.C. 4332; 43 CFR 46",
+    triggers: ["federal_action"], prerequisites: [], blocks: ["nepa_decision"],
+    duration: { low: 270, typical: 365, high: 540 } },
+  { id: "biological_assessment", name: "Biological assessment and survey seasons", agency: "Applicant / BLM",
+    authority: "50 CFR 402.12",
+    triggers: ["listed_species_present"], prerequisites: [],
+    blocks: ["esa_section7_informal", "esa_section7_formal"],
+    duration: { low: 270, typical: 365, high: 540 } },
+  { id: "nv_water_right", name: "Nevada water right application", agency: "NDWR",
+    authority: "NRS 533",
+    triggers: ["water_use_proposed"], prerequisites: [], blocks: [],
+    duration: { low: 270, typical: 365, high: 540 } },
+  { id: "esa_section7_informal", name: "ESA Section 7 informal consultation", agency: "USFWS",
+    authority: "16 U.S.C. 1536(a)(2); 50 CFR 402.13",
+    triggers: ["listed_species_present", "federal_nexus"],
+    prerequisites: ["biological_assessment"],
+    blocks: ["esa_section7_formal", "nepa_decision"],
+    duration: { low: 45, typical: 60, high: 90 } },
+  { id: "esa_section7_formal", name: "ESA Section 7 formal consultation", agency: "USFWS",
+    authority: "16 U.S.C. 1536(a)(2); 50 CFR 402.14",
+    triggers: ["listed_species_present", "federal_nexus", "likely_to_adversely_affect"],
+    prerequisites: ["esa_section7_informal"],
+    blocks: ["nepa_decision"],
+    duration: { low: 90, typical: 135, high: 180 } },
+  { id: "nepa_decision", name: "NEPA decision document (FONSI or ROD)", agency: "BLM",
+    authority: "43 CFR 46.325",
+    triggers: ["federal_action"], prerequisites: ["nepa_ea"], blocks: ["apd_approval"],
+    duration: { low: 45, typical: 60, high: 90 } },
+  { id: "apd_approval", name: "Application for Permit to Drill approval", agency: "BLM",
+    authority: "43 CFR 3261",
+    triggers: ["drilling_proposed"], prerequisites: ["nepa_decision"], blocks: [],
+    duration: { low: 120, typical: 180, high: 270 } }
+];
+
+const NEPATEC_TYPE_TO_RULES = {
+  "Renewable Energy Production - Geothermal": ["nepa_ea", "nepa_decision", "apd_approval"],
+  "Threatened and Endangered Species Management": ["biological_assessment", "esa_section7_informal", "esa_section7_formal"],
+  "Water Resources - Irrigation and Water Supply": ["nv_water_right"],
+  "Water Resources - Other": ["nv_water_right"],
+  "Land Development - Other": ["nepa_ea"],
+  "Electricity Transmission": [],
+  "Pipelines": [],
+  "Surface Transportation - Other": [],
+  "Vegetation and Fuels Management": [],
+  "Rangeland Management": [],
+  "Laws, Policies, Regulations, and Guidance": [],
+  "Land Use or Forest Management Plan": []
+};
+
+const CONNECTORS = [
+  { id: "ipac", name: "USFWS IPaC", state: "live",
+    holds: "Listed species and the Section 7 trigger at a location.",
+    reviews: ["biological_assessment", "esa_section7_informal", "esa_section7_formal"] },
+  { id: "ecfr", name: "eCFR", state: "live",
+    holds: "Codified Title 43 implementing regulations.",
+    reviews: ["nepa_ea", "nepa_decision", "apd_approval"] },
+  { id: "fr", name: "Federal Register", state: "live",
+    holds: "Recent Title 43 rules and proposed rules.",
+    reviews: ["nepa_ea", "nepa_decision"] },
+  { id: "mlrs", name: "BLM MLRS", state: "simulated",
+    holds: "Lease serial, status, acreage, and administrative office.",
+    reviews: ["apd_approval"] },
+  { id: "afmss", name: "BLM AFMSS", state: "simulated",
+    holds: "Well records and APD status.",
+    reviews: ["apd_approval"] },
+  { id: "eplanning", name: "BLM ePlanning", state: "none",
+    holds: "NEPA documents and project dockets.",
+    reviews: ["nepa_ea", "nepa_decision"] },
+  { id: "epa", name: "EPA UIC / SDWIS", state: "none",
+    holds: "Underground injection control permits.",
+    reviews: ["uic_permit"] },
+  { id: "ndwr", name: "Nevada Division of Water Resources", state: "none",
+    holds: "Water-right applications and decrees.",
+    reviews: ["nv_water_right"] },
+  { id: "ndep", name: "Nevada Division of Environmental Protection", state: "none",
+    holds: "State UIC and water-pollution permits.",
+    reviews: ["uic_permit"] },
+  { id: "shpo", name: "Nevada SHPO", state: "none",
+    holds: "Historic-property consultation under Section 106.",
+    reviews: ["nhpa_section106"] }
+];
 
 const IPAC = {
   data: {
@@ -546,243 +1310,755 @@ const FR = {
   retrieved: "2026-08-20T21:27:35.681Z"
 };
 
-const TIMELINE = {
-  data: {
-    conditions_evaluated: ["federal_action","listed_species_present","federal_nexus",
-      "likely_to_adversely_affect","federal_undertaking","drilling_proposed",
-      "injection_proposed","water_use_proposed"],
-    reviews_triggered: 9,
-    total_duration_days: 800,
-    total_duration_months: 26,
-    critical_path: ["nepa_ea","esa_section7_informal","esa_section7_formal","nepa_decision","apd_approval"],
-    schedule: [
-      { id:"nhpa_section106", name:"NHPA Section 106 review", agency:"BLM / SHPO",
-        authority:"54 U.S.C. 306108; 36 CFR 800", start_day:0, duration_days:120,
-        finish_day:120, blocks:["nepa_decision"], on_critical_path:false },
-      { id:"uic_permit", name:"UIC Class V injection well permit", agency:"EPA or delegated state",
-        authority:"42 U.S.C. 300h; 40 CFR 144", start_day:0, duration_days:270,
-        finish_day:270, blocks:[], on_critical_path:false },
-      { id:"nepa_ea", name:"NEPA Environmental Assessment", agency:"BLM",
-        authority:"42 U.S.C. 4332; 43 CFR 46", start_day:0, duration_days:365,
-        finish_day:365, blocks:["nepa_decision"], on_critical_path:true },
-      { id:"biological_assessment", name:"Biological assessment and survey seasons", agency:"Applicant / BLM",
-        authority:"50 CFR 402.12", start_day:0, duration_days:365, finish_day:365,
-        blocks:["esa_section7_informal","esa_section7_formal"], on_critical_path:false },
-      { id:"nv_water_right", name:"Nevada water right application", agency:"NDWR",
-        authority:"NRS 533", start_day:0, duration_days:365, finish_day:365,
-        blocks:[], on_critical_path:false },
-      { id:"esa_section7_informal", name:"ESA Section 7 informal consultation", agency:"USFWS",
-        authority:"16 U.S.C. 1536(a)(2); 50 CFR 402.13", start_day:365, duration_days:60,
-        finish_day:425, blocks:["esa_section7_formal","nepa_decision"], on_critical_path:true },
-      { id:"esa_section7_formal", name:"ESA Section 7 formal consultation", agency:"USFWS",
-        authority:"16 U.S.C. 1536(a)(2); 50 CFR 402.14", start_day:425, duration_days:135,
-        finish_day:560, blocks:["nepa_decision"], on_critical_path:true },
-      { id:"nepa_decision", name:"NEPA decision document (FONSI or ROD)", agency:"BLM",
-        authority:"43 CFR 46.325", start_day:560, duration_days:60, finish_day:620,
-        blocks:["apd_approval"], on_critical_path:true },
-      { id:"apd_approval", name:"Application for Permit to Drill approval", agency:"BLM",
-        authority:"43 CFR 3261", start_day:620, duration_days:180, finish_day:800,
-        blocks:[], on_critical_path:true }
-    ]
+const ECFR = {
+  data: { cfr_title: 43, note: "Pending Title 43 rulemaking was checked through the Federal Register API in this capture." },
+  source: "eCFR",
+  url: "https://www.ecfr.gov/current/title-43",
+  retrieved: "2026-08-20T21:27:35.681Z"
+};
+
+const ALL_TRUE = {
+  federal_action: true, listed_species_present: true, federal_nexus: true,
+  likely_to_adversely_affect: true, federal_undertaking: true,
+  drilling_proposed: true, injection_proposed: true, water_use_proposed: true
+};
+
+const PROJECTS = [
+  {
+    id: "dixie",
+    name: "Dixie Valley",
+    conditions: Object.assign({}, ALL_TRUE),
+    lease: SEPI_LEASE,
+    wells: SEPI_WELLS,
+    species: IPAC
   },
-  source: "GPCP dependency rules v0.2.0",
-  note: "Deterministic computation over encoded rules. Not model-generated.",
-  retrieved: "2026-08-20T21:37:50.057Z"
-};
-
-// Which captured response supports which review row.
-const EVIDENCE = {
-  nepa_ea:               ["FR"],
-  biological_assessment: ["IPAC"],
-  esa_section7_informal: ["IPAC"],
-  esa_section7_formal:   ["IPAC"],
-  nhpa_section106:       [],
-  nepa_decision:         ["FR"],
-  apd_approval:          ["SEPI_LEASE","SEPI_WELLS"],
-  uic_permit:            [],
-  nv_water_right:        []
-};
-
-const PAYLOADS = { IPAC, SEPI_LEASE, SEPI_WELLS, FR };
-
-const AGENCY_COLOR = {
-  "BLM": "var(--blm)",
-  "USFWS": "var(--fws)",
-  "BLM / SHPO": "var(--shpo)",
-  "EPA or delegated state": "var(--epa)",
-  "NDWR": "var(--state)",
-  "Applicant / BLM": "var(--blm)"
-};
-
-const STEPS = [
-  { name: "sepi.get_authorization_status",
-    detail: "NVN-091234 — Geothermal Lease, Authorized, 2,560 acres, Stillwater FO",
-    src: "SIMULATED" },
-  { name: "sepi.get_well_records",
-    detail: "2 wells — one APD approved, one APD pending",
-    src: "SIMULATED" },
-  { name: "fws.screen_species",
-    detail: "2 species returned — Dixie Valley Toad (Endangered). Section 7 triggered.",
-    src: "IPaC" },
-  { name: "ecfr.check_pending_rulemaking",
-    detail: "Title 43 — 20 documents in the last 12 months, incl. NEPA implementing regulations",
-    src: "Fed. Register" },
-  { name: "gpcp.build_timeline",
-    detail: "8 conditions evaluated against rule set v0.2.0 — 9 reviews triggered",
-    src: "rules v0.2.0" }
+  {
+    id: "pershing",
+    name: "Pershing County",
+    conditions: Object.assign({}, ALL_TRUE, {
+      listed_species_present: false,
+      likely_to_adversely_affect: false
+    }),
+    lease: {
+      data: { found: true, lease: {
+        serial_number: "NVN-088401", case_type: "Geothermal Lease", status: "Authorized",
+        effective_date: "2020-07-01", expiration_date: "2030-06-30", acres: 1920,
+        county: "Pershing", state: "NV", admin_office: "Winnemucca Field Office",
+        lessee: "Humboldt Range Geothermal LLC" } },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:40.245Z"
+    },
+    wells: {
+      data: { serial_number: "NVN-088401", count: 1, wells: [
+        { api_number: "27-027-90010", well_name: "PR 11-22", type: "Production",
+          status: "APD Approved", apd_approved: "2025-04-18", spud_date: null } ] },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:52.110Z"
+    },
+    species: {
+      data: {
+        total_species_returned: 0,
+        section7_triggered: false,
+        triggering_species: [],
+        determination_basis: "16 U.S.C. 1536(a)(2); 50 CFR 402.14"
+      },
+      source: "USFWS IPaC Location API",
+      disclaimer: "SIMULATED - IPaC response shape. Not a live retrieval.",
+      url: "https://ipac.ecosphere.fws.gov/location/api/resources",
+      retrieved: "2026-08-20T21:32:04.391Z"
+    }
+  },
+  {
+    id: "elko",
+    name: "Elko County",
+    conditions: Object.assign({}, ALL_TRUE, { injection_proposed: false }),
+    lease: {
+      data: { found: true, lease: {
+        serial_number: "NVN-094112", case_type: "Geothermal Lease", status: "Authorized",
+        effective_date: "2018-11-01", expiration_date: "2028-10-31", acres: 3200,
+        county: "Elko", state: "NV", admin_office: "Tuscarora Field Office",
+        lessee: "Ruby Valley Geothermal LLC" } },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:40.245Z"
+    },
+    wells: {
+      data: { serial_number: "NVN-094112", count: 1, wells: [
+        { api_number: "27-007-90040", well_name: "EK 24-8", type: "Production",
+          status: "APD Pending", apd_submitted: "2026-01-15", spud_date: null } ] },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:52.110Z"
+    },
+    species: {
+      data: {
+        total_species_returned: 1,
+        section7_triggered: true,
+        triggering_species: [
+          { common_name: "Lahontan cutthroat trout", scientific_name: "Oncorhynchus clarkii henshawi",
+            group: "Fishes", listing_status: "Threatened", listing_code: "T",
+            population: "Lahontan basin, including Humboldt River tributaries in Elko County, Nevada" }
+        ],
+        determination_basis: "16 U.S.C. 1536(a)(2); 50 CFR 402.14"
+      },
+      source: "USFWS IPaC Location API",
+      disclaimer: "SIMULATED - IPaC response shape. Not a live retrieval.",
+      url: "https://ipac.ecosphere.fws.gov/location/api/resources",
+      retrieved: "2026-08-20T21:32:04.391Z"
+    }
+  },
+  {
+    id: "washoe",
+    name: "Washoe County",
+    conditions: Object.assign({}, ALL_TRUE, { likely_to_adversely_affect: false }),
+    lease: {
+      data: { found: true, lease: {
+        serial_number: "NVN-090550", case_type: "Geothermal Lease", status: "Authorized",
+        effective_date: "2021-04-01", expiration_date: "2031-03-31", acres: 1440,
+        county: "Washoe", state: "NV",
+        admin_office: "Carson City Field Office / Nevada Division of State Lands",
+        lessee: "Steamboat Hills Operations LLC" } },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:40.245Z"
+    },
+    wells: {
+      data: { serial_number: "NVN-090550", count: 2, wells: [
+        { api_number: "27-031-90007", well_name: "WA 12-3", type: "Production",
+          status: "APD Approved", apd_approved: "2023-09-09", spud_date: null },
+        { api_number: "27-031-90008", well_name: "WA 13-3", type: "Injection",
+          status: "APD Pending", apd_submitted: "2026-03-21", spud_date: null } ] },
+      source: "SEPI (simulated)",
+      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      retrieved: "2026-08-20T21:30:52.110Z"
+    },
+    species: {
+      data: {
+        total_species_returned: 1,
+        section7_triggered: true,
+        triggering_species: [
+          { common_name: "Cui-ui", scientific_name: "Chasmistes cujus",
+            group: "Fishes", listing_status: "Endangered", listing_code: "E",
+            population: "Pyramid Lake, Washoe County, Nevada" }
+        ],
+        determination_basis: "16 U.S.C. 1536(a)(2); 50 CFR 402.14"
+      },
+      source: "USFWS IPaC Location API",
+      disclaimer: "SIMULATED - IPaC response shape. Not a live retrieval.",
+      url: "https://ipac.ecosphere.fws.gov/location/api/resources",
+      retrieved: "2026-08-20T21:32:04.391Z"
+    }
+  }
 ];
 
-// ---------------------------------------------------------------------------
+function computeSchedule(conditions, band) {
+  const active = RULES.filter(r => r.triggers.every(k => conditions[k]));
+  const byId = Object.fromEntries(active.map(r => [r.id, r]));
+  const preds = {};
+  active.forEach(r => {
+    preds[r.id] = new Set(r.prerequisites.filter(id => byId[id]));
+  });
+  active.forEach(r => {
+    r.blocks.forEach(b => { if (byId[b]) preds[b].add(r.id); });
+  });
+  const succs = {};
+  active.forEach(r => { succs[r.id] = new Set(); });
+  Object.keys(preds).forEach(id => {
+    preds[id].forEach(p => succs[p].add(id));
+  });
 
-const $ = id => document.getElementById(id);
-let selected = null;
-const START = new Date(2026, 9, 1);
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-function axisDate(days) {
-  const d = new Date(START.getTime());
-  d.setDate(d.getDate() + days);
-  return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
-}
-
-function renderMeta() {
-  const L = SEPI_LEASE.data.lease;
-  const rows = [
-    ["Project", L.case_type],
-    ["County", L.county],
-    ["State", L.state],
-    ["Administrative office", L.admin_office],
-    ["Lease serial", L.serial_number],
-    ["Lease status", L.status]
-  ];
-  $("meta").innerHTML = rows.map(([k, v]) =>
-    `<div class="meta-item"><dt>${k}</dt><dd${k === "Lease serial" ? ' class="serial"' : ""}>${v}</dd></div>`).join("");
-}
-
-function renderSteps(activeCount) {
-  $("steps").innerHTML = STEPS.map((s, i) => `
-    <div class="step ${i < activeCount ? "on" : ""}">
-      <span class="dot"></span>
-      <span class="name">${s.name}</span>
-      <span class="detail">${i < activeCount ? s.detail : "…"}</span>
-      <span class="src">${i < activeCount ? s.src : ""}</span>
-    </div>`).join("");
-}
-
-function renderTimeline() {
-  const d = TIMELINE.data;
-  const max = d.total_duration_days;
-  const agencies = new Set(d.schedule.map(s => s.agency.split(" / ")[0].replace(/^Applicant$/, "BLM")));
-
-  $("mDays").textContent = d.total_duration_days;
-  $("mMonths").textContent = d.total_duration_months;
-  $("mRev").textContent = d.reviews_triggered;
-  $("mAg").textContent = agencies.size;
-  $("ganttKicker").textContent = "Critical path · " + d.total_duration_days + " days";
-  $("headline").classList.add("on");
-
-  $("rows").innerHTML = d.schedule.map(s => {
-    const left = (s.start_day / max * 100).toFixed(2);
-    const w = Math.max(s.duration_days / max * 100, 1.2).toFixed(2);
-    return `<div class="grow" data-id="${s.id}">
-      <div class="glabel">
-        <span class="nm">${s.name}</span>
-        <span class="ag">${s.agency} · ${s.duration_days} days${s.on_critical_path ? " · critical path" : ""}</span>
-      </div>
-      <div class="track">
-        <div class="bar ${s.on_critical_path ? "crit" : ""}"
-             style="left:${left}%; width:${w}%; background:${AGENCY_COLOR[s.agency] || "var(--muted)"}"></div>
-      </div>
-    </div>`;
-  }).join("");
-
-  $("ticks").innerHTML = [0, 200, 400, 600, 800]
-    .map(t => `<span>${t}<i>${axisDate(t)}</i></span>`).join("");
-
-  $("legend").innerHTML =
-    Object.entries({ "BLM": "var(--blm)", "USFWS": "var(--fws)", "SHPO": "var(--shpo)",
-                     "EPA / state": "var(--epa)", "NDWR": "var(--state)" })
-      .map(([k, v]) => `<span><i class="sw" style="background:${v}"></i>${k}</span>`).join("")
-    + `<span><i class="sw" style="background:var(--gold)"></i>Critical path</span>`;
-
-  $("gantt").classList.add("on");
-
-  document.querySelectorAll(".grow").forEach(el =>
-    el.addEventListener("click", () => selectRow(el.dataset.id)));
-}
-
-function selectRow(id) {
-  selected = id;
-  document.querySelectorAll(".grow").forEach(el =>
-    el.classList.toggle("sel", el.dataset.id === id));
-
-  const s = TIMELINE.data.schedule.find(x => x.id === id);
-  const keys = EVIDENCE[id] || [];
-
-  let html = `
-    <div class="kv"><div class="k">Review</div><div class="v">${s.name}</div></div>
-    <div class="kv"><div class="k">Responsible</div><div class="v">${s.agency}</div></div>
-    <div class="kv"><div class="k">Authority</div><div class="v cite">${s.authority}</div></div>
-    <div class="kv"><div class="k">Window</div><div class="v">Day ${s.start_day} to day ${s.finish_day} (${s.duration_days} days)</div></div>
-    <div class="kv"><div class="k">Blocks</div><div class="v">${s.blocks.length ? s.blocks.join(", ") : "nothing downstream in this rule set"}</div></div>
-    <div class="kv"><div class="k">Status</div><div class="v">${s.on_critical_path
-        ? '<span class="tag crit">Critical path</span>'
-        : "Has float"}</div></div>
-    <div class="kv"><div class="k">Sequence source</div>
-      <div class="v">${TIMELINE.source}<br><span class="cite">${TIMELINE.note}</span></div></div>
-  `;
-
-  if (keys.length === 0) {
-    html += `<div class="kv"><div class="k">Source-system evidence</div>
-      <div class="v">No connector in this prototype returns records for this review. That gap is what the connector inventory addresses.</div></div>`;
-  } else {
-    keys.forEach(k => {
-      const p = PAYLOADS[k];
-      const sim = !!p.disclaimer;
-      html += `<div class="kv">
-        <div class="k">Source-system evidence</div>
-        <div class="v">${p.source} ${sim ? '<span class="tag sim">Simulated</span>' : '<span class="tag live">Live API</span>'}</div>
-        <div class="k">Retrieved</div>
-        <div class="v cite">${p.retrieved}</div>
-        ${p.url ? `<div class="k">Endpoint</div><div class="v cite"><a href="${p.url}" target="_blank" rel="noopener">${p.url}</a></div>` : ""}
-        <pre>${JSON.stringify(p.data, null, 2)}</pre>
-      </div>`;
-    });
+  const earliest = {};
+  const visiting = new Set();
+  function forward(id) {
+    if (earliest[id]) return earliest[id];
+    if (visiting.has(id)) throw new Error("cycle " + id);
+    visiting.add(id);
+    let start = 0;
+    preds[id].forEach(p => { start = Math.max(start, forward(p).finish_day); });
+    visiting.delete(id);
+    const duration_days = byId[id].duration[band];
+    earliest[id] = { start_day: start, duration_days, finish_day: start + duration_days };
+    return earliest[id];
   }
+  active.forEach(r => forward(r.id));
+  const total = active.length ? Math.max.apply(null, active.map(r => earliest[r.id].finish_day)) : 0;
 
-  $("prov").innerHTML = html;
+  const latest = {};
+  function backward(id) {
+    if (latest[id] != null) return latest[id];
+    const ss = Array.from(succs[id]);
+    const lf = ss.length === 0 ? total : Math.min.apply(null, ss.map(s => backward(s) - earliest[s].duration_days));
+    latest[id] = lf;
+    return lf;
+  }
+  active.forEach(r => backward(r.id));
+
+  const schedule = active.map(r => {
+    const e = earliest[r.id];
+    return {
+      id: r.id,
+      name: r.name,
+      agency: r.agency,
+      authority: r.authority,
+      start_day: e.start_day,
+      duration_days: e.duration_days,
+      finish_day: e.finish_day,
+      blocks: r.blocks.filter(id => byId[id]),
+      on_critical_path: e.finish_day === latest[r.id]
+    };
+  }).sort((a, b) => a.start_day - b.start_day || a.finish_day - b.finish_day || a.name.localeCompare(b.name));
+
+  const critical_path = schedule.filter(s => s.on_critical_path).map(s => s.id);
+
+  return {
+    conditions_evaluated: CONDITION_KEYS.filter(k => conditions[k]),
+    reviews_triggered: schedule.length,
+    total_duration_days: total,
+    total_duration_months: Math.round(total / 30.44),
+    critical_path,
+    schedule
+  };
 }
 
-function reset() {
-  selected = null;
-  renderSteps(0);
-  $("headline").classList.remove("on");
-  $("gantt").classList.remove("on");
-  $("prov").innerHTML = '<div class="empty">No review is selected.</div>';
-  $("run").disabled = false;
+function parseISODate(s) {
+  const p = (s || "2026-10-01").split("-").map(Number);
+  return new Date(p[0], p[1] - 1, p[2]);
+}
+function addDays(date, n) {
+  const d = new Date(date.getTime());
+  d.setDate(d.getDate() + n);
+  return d;
+}
+function fmtDate(d) {
+  const m = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return d.getDate() + " " + m[d.getMonth()] + " " + d.getFullYear();
+}
+function isLive(payload) {
+  return !(payload.disclaimer && /SIMULATED/i.test(payload.disclaimer));
+}
+function csvEscape(v) {
+  const s = String(v == null ? "" : v);
+  return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+function fieldVal(x) {
+  if (x == null) return "";
+  if (typeof x === "object" && x.value != null) return x.value;
+  return x;
+}
+function parseLocation(str) {
+  const m = String(str || "").match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);
+  return m ? { lat: +m[1], lon: +m[2] } : null;
 }
 
-$("run").addEventListener("click", () => {
-  $("run").disabled = true;
-  reset();
-  $("run").disabled = true;
-  let i = 0;
-  const tick = () => {
-    i++;
-    renderSteps(i);
-    if (i < STEPS.length) {
-      setTimeout(tick, 620);
-    } else {
-      setTimeout(() => { renderTimeline(); selectRow("esa_section7_formal"); }, 450);
+function app() {
+  return {
+    projects: PROJECTS,
+    rules: RULES,
+    connectors: CONNECTORS,
+    conditionKeys: CONDITION_KEYS,
+    conditionLabels: CONDITION_LABELS,
+    bands: ["low", "typical", "high"],
+    projectId: "dixie",
+    conditions: Object.assign({}, PROJECTS[0].conditions),
+    band: "typical",
+    startDate: "2026-10-01",
+    result: null,
+    range: { low: 0, high: 0 },
+    baseline: null,
+    pinned: false,
+    selectedReview: null,
+    selectedSource: null,
+    logActive: 0,
+    seqToken: 0,
+    rulesOpen: false,
+    corpus: null,
+    corpusError: "",
+    selectedCorpusId: null,
+    _ro: null,
+
+    get project() {
+      return this.projects.find(p => p.id === this.projectId) || this.projects[0];
+    },
+    projectLabel(p) {
+      const county = p.lease.data.lease.county;
+      if (p.name === county + " County") return p.name;
+      return p.name + ", " + county + " County";
+    },
+    get metaRows() {
+      const L = this.project.lease.data.lease;
+      return [
+        { k: "Project", v: L.case_type },
+        { k: "County", v: L.county },
+        { k: "State", v: L.state },
+        { k: "Administrative office", v: L.admin_office },
+        { k: "Lease serial", v: L.serial_number, serial: true },
+        { k: "Lease status", v: L.status }
+      ];
+    },
+    get steps() {
+      const p = this.project;
+      const L = p.lease.data.lease;
+      const wells = p.wells.data;
+      const sp = p.species.data;
+      const liveIpac = isLive(p.species);
+      const spDetail = sp.total_species_returned
+        ? (sp.total_species_returned + " species returned — " +
+            (sp.triggering_species[0] ? sp.triggering_species[0].common_name : "") +
+            (sp.triggering_species[0] && sp.triggering_species[0].listing_status ? " (" + sp.triggering_species[0].listing_status + ")" : "") +
+            ". Section 7 " + (sp.section7_triggered ? "triggered" : "not triggered") + ".")
+        : "No listed species returned. Section 7 not triggered.";
+      const n = this.result ? this.result.reviews_triggered : 0;
+      const c = this.result ? this.result.conditions_evaluated.length : 0;
+      return [
+        { name: "sepi.get_authorization_status",
+          detail: L.serial_number + " — " + L.case_type + ", " + L.status + ", " + L.acres.toLocaleString("en-US") + " acres, " + L.admin_office,
+          src: "SIMULATED" },
+        { name: "sepi.get_well_records",
+          detail: wells.count + " well" + (wells.count === 1 ? "" : "s") + " — " + wells.wells.map(w => w.status).join(", "),
+          src: "SIMULATED" },
+        { name: "fws.screen_species",
+          detail: spDetail,
+          src: liveIpac ? "IPaC" : "SIMULATED" },
+        { name: "ecfr.check_pending_rulemaking",
+          detail: "Title 43 — " + FR.data.count + " documents in the last 12 months, incl. NEPA implementing regulations",
+          src: "Fed. Register" },
+        { name: "gpcp.build_timeline",
+          detail: c + " conditions evaluated against rule set " + RULE_SET_VERSION + " — " + n + " reviews triggered",
+          src: "rules v0.2.0" }
+      ];
+    },
+    get overlayRows() {
+      if (!this.result) return [];
+      const held = this.baseline ? this.baseline.schedule : [];
+      const ids = [];
+      const seen = {};
+      RULES.forEach(r => {
+        const current = this.result.schedule.find(s => s.id === r.id);
+        const h = held.find(s => s.id === r.id);
+        if (current || h) {
+          ids.push({ id: r.id, name: r.name, agency: r.agency, current: current || null, held: h || null });
+          seen[r.id] = true;
+        }
+      });
+      return ids;
+    },
+    get agencyCount() {
+      if (!this.result) return 0;
+      const set = new Set(this.result.schedule.map(s => s.agency.split(" / ")[0].replace(/^Applicant$/, "BLM")));
+      return set.size;
+    },
+    get selectedRow() {
+      if (!this.result || !this.selectedReview) return null;
+      return this.result.schedule.find(s => s.id === this.selectedReview) || null;
+    },
+    get domainDays() {
+      const a = this.result ? this.result.total_duration_days : 0;
+      const b = this.baseline ? this.baseline.total_duration_days : 0;
+      return Math.max(a, b, 1);
+    },
+    get deltaCopy() {
+      if (!this.baseline || !this.result) return "";
+      const d = this.result.total_duration_days - this.baseline.total_duration_days;
+      const abs = Math.abs(d);
+      const rel = d === 0 ? "unchanged" : (d < 0 ? abs + " days shorter" : abs + " days longer");
+      return "Current total is " + this.result.total_duration_days + " days. Compared schedule is " +
+        this.baseline.total_duration_days + " days. Difference: " + rel + ".";
+    },
+    get spanCopy() {
+      if (!this.result) return "";
+      const start = parseISODate(this.startDate);
+      const end = addDays(start, this.result.total_duration_days);
+      return fmtDate(start) + " – " + fmtDate(end) + " · " + this.band +
+        " · range " + this.range.low + "–" + this.range.high + " days";
+    },
+    get pathCopy() {
+      if (!this.result) return "";
+      const short = {
+        nhpa_section106: "NHPA Section 106",
+        uic_permit: "UIC permit",
+        nepa_ea: "NEPA environmental assessment",
+        biological_assessment: "biological assessment",
+        nv_water_right: "Nevada water right",
+        esa_section7_informal: "ESA informal consultation",
+        esa_section7_formal: "ESA formal consultation",
+        nepa_decision: "NEPA decision",
+        apd_approval: "APD approval"
+      };
+      const names = this.result.schedule.filter(s => s.on_critical_path).map(s => short[s.id] || s.name);
+      if (!names.length) return "No review sits on the critical path under the current conditions.";
+      return "Longest chain: " + names.join(" · ") + ".";
+    },
+    get corpusProjects() {
+      return (this.corpus && this.corpus.projects) ? this.corpus.projects : [];
+    },
+    get corpusPoints() {
+      const rows = this.corpusProjects.map(p => {
+        const loc = fieldVal(p.location);
+        const c = parseLocation(loc);
+        if (!c) return null;
+        const title = fieldVal(p.project_title);
+        const short = title.replace(/\s+geothermal.*$/i, "").replace(/\s+competitive.*$/i, "");
+        return {
+          id: p.project_ID,
+          title,
+          short,
+          adjacent: !!p.nevada_adjacent,
+          lat: c.lat,
+          lon: c.lon
+        };
+      }).filter(Boolean);
+      if (!rows.length) return [];
+      const lats = rows.map(r => r.lat);
+      const lons = rows.map(r => r.lon);
+      const lat0 = Math.min.apply(null, lats) - 0.9;
+      const lat1 = Math.max.apply(null, lats) + 0.9;
+      const lon0 = Math.min.apply(null, lons) - 0.9;
+      const lon1 = Math.max.apply(null, lons) + 0.9;
+      return rows.map(r => Object.assign({}, r, {
+        x: ((r.lon - lon0) / (lon1 - lon0) * 82 + 9).toFixed(2),
+        y: ((1 - (r.lat - lat0) / (lat1 - lat0)) * 78 + 11).toFixed(2)
+      }));
+    },
+    get typeComparison() {
+      const seen = {};
+      const types = [];
+      this.corpusProjects.forEach(p => {
+        this.corpusTypes(p).forEach(t => {
+          if (!seen[t]) { seen[t] = true; types.push(t); }
+        });
+      });
+      types.sort();
+      const on = this.result ? new Set(this.result.schedule.map(s => s.id)) : new Set();
+      return types.map(type => {
+        const ids = NEPATEC_TYPE_TO_RULES.hasOwnProperty(type) ? NEPATEC_TYPE_TO_RULES[type] : [];
+        const gap = !ids.length;
+        const names = ids.map(id => {
+          const r = RULES.find(x => x.id === id);
+          return r ? r.name : id;
+        });
+        const present = ids.filter(id => on.has(id)).map(id => {
+          const r = RULES.find(x => x.id === id);
+          return r ? r.name : id;
+        });
+        return {
+          type,
+          gap,
+          reviews: names,
+          onTimeline: gap ? "—" : (present.length ? present.join("; ") : "Not triggered under current conditions")
+        };
+      });
+    },
+
+    init() {
+      this.recompute();
+      this.runSequence();
+      this.loadCorpus();
+      this.$nextTick(() => {
+        this.drawChart();
+        if (this.$refs.tracks && window.ResizeObserver) {
+          this._ro = new ResizeObserver(() => this.drawChart());
+          this._ro.observe(this.$refs.tracks);
+        }
+      });
+    },
+    fieldVal: fieldVal,
+    corpusTypes(p) {
+      const v = fieldVal(p.project_type);
+      if (Array.isArray(v)) return v;
+      if (!v) return [];
+      return String(v).split(/;\s*/);
+    },
+    corpusPages(p) {
+      return (p.documents || []).reduce((n, d) => n + (Number(d.page_count) || 0), 0);
+    },
+    async loadCorpus() {
+      try {
+        const res = await fetch("./nepatec-blm-geothermal.json");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        this.corpus = await res.json();
+      } catch (err) {
+        this.corpusError = "The NEPATEC extract could not be loaded.";
+      }
+    },
+    snapshot() {
+      if (this.pinned) return;
+      if (this.result) this.baseline = JSON.parse(JSON.stringify(this.result));
+    },
+    recompute() {
+      this.result = computeSchedule(this.conditions, this.band);
+      this.range = {
+        low: computeSchedule(this.conditions, "low").total_duration_days,
+        high: computeSchedule(this.conditions, "high").total_duration_days
+      };
+      if (this.selectedReview && !this.result.schedule.some(s => s.id === this.selectedReview)) {
+        this.selectedReview = null;
+      }
+      this.$nextTick(() => this.drawChart());
+    },
+    selectProject(id) {
+      if (id === this.projectId) {
+        this.runSequence();
+        return;
+      }
+      this.snapshot();
+      this.projectId = id;
+      this.conditions = Object.assign({}, this.project.conditions);
+      this.selectedReview = null;
+      this.selectedSource = null;
+      this.recompute();
+      this.runSequence();
+    },
+    setCondition(key, val) {
+      this.snapshot();
+      this.conditions[key] = val;
+      this.recompute();
+    },
+    setBand(b) {
+      if (b === this.band) return;
+      this.snapshot();
+      this.band = b;
+      this.recompute();
+    },
+    pinSchedule() {
+      if (this.pinned) {
+        this.pinned = false;
+        return;
+      }
+      if (this.result) {
+        this.baseline = JSON.parse(JSON.stringify(this.result));
+        this.pinned = true;
+      }
+    },
+    clearView() {
+      this.projectId = "dixie";
+      this.conditions = Object.assign({}, PROJECTS[0].conditions);
+      this.band = "typical";
+      this.startDate = "2026-10-01";
+      this.baseline = null;
+      this.pinned = false;
+      this.selectedReview = null;
+      this.selectedSource = null;
+      this.recompute();
+      this.runSequence();
+    },
+    runSequence() {
+      const token = ++this.seqToken;
+      this.logActive = 0;
+      const n = this.steps.length;
+      const tick = i => {
+        if (token !== this.seqToken) return;
+        this.logActive = i;
+        if (i < n) setTimeout(() => tick(i + 1), 280);
+        else this.$nextTick(() => this.drawChart());
+      };
+      setTimeout(() => tick(1), 60);
+    },
+    selectReview(id) {
+      this.selectedReview = this.selectedReview === id ? null : id;
+      this.selectedSource = null;
+    },
+    selectSource(id) {
+      this.selectedSource = this.selectedSource === id ? null : id;
+      this.selectedReview = null;
+    },
+    rowClass(id) {
+      const hl = this.isRowHighlighted(id);
+      const dim = (this.selectedSource || this.selectedReview) && !hl;
+      return { sel: this.selectedReview === id, dim: dim };
+    },
+    isRowHighlighted(id) {
+      if (this.selectedSource) {
+        const c = CONNECTORS.find(x => x.id === this.selectedSource);
+        return !!(c && c.reviews.indexOf(id) >= 0);
+      }
+      return this.selectedReview === id;
+    },
+    sourceClass(c) {
+      let hl = false;
+      if (this.selectedSource) hl = this.selectedSource === c.id;
+      else if (this.selectedReview) hl = c.reviews.indexOf(this.selectedReview) >= 0;
+      return { hl: hl, dim: (this.selectedReview || this.selectedSource) ? !hl : false };
+    },
+    sourceDeps(c) {
+      if (!this.result) return "None on the current schedule.";
+      const names = c.reviews
+        .map(id => this.result.schedule.find(s => s.id === id))
+        .filter(Boolean)
+        .map(s => s.name);
+      return names.length ? names.join("; ") : "None on the current schedule.";
+    },
+    idx(i) {
+      return String(i + 1).padStart(2, "0");
+    },
+    chartName(row) {
+      const short = {
+        nhpa_section106: "NHPA Section 106",
+        uic_permit: "UIC Class V permit",
+        nepa_ea: "NEPA environmental assessment",
+        biological_assessment: "Biological assessment",
+        nv_water_right: "Nevada water right",
+        esa_section7_informal: "ESA informal consultation",
+        esa_section7_formal: "ESA formal consultation",
+        nepa_decision: "NEPA decision",
+        apd_approval: "APD approval"
+      };
+      return short[row.id] || row.name;
+    },
+    barFits(s) {
+      return !!(s && s.duration_days / this.domainDays >= 0.11);
+    },
+    endLabel(s) {
+      return fmtDate(addDays(parseISODate(this.startDate), s.finish_day));
+    },
+    dateStyle(s) {
+      if (!s) return "";
+      const pct = s.finish_day / this.domainDays * 100;
+      if (pct > 86) return "left:auto;right:" + (100 - pct).toFixed(2) + "%;margin-left:0;margin-right:10px";
+      return "left:" + pct.toFixed(3) + "%";
+    },
+    barStyle(s, agency) {
+      if (!s) return "";
+      const max = this.domainDays;
+      const left = (s.start_day / max * 100).toFixed(3);
+      const w = Math.max(s.duration_days / max * 100, 0.8).toFixed(3);
+      const bg = agency ? (AGENCY_COLOR[agency] || "#8B9BC8") : "";
+      return "left:" + left + "%;width:" + w + "%;" + (bg ? "background:" + bg + ";" : "");
+    },
+    windowCopy(s) {
+      const start = parseISODate(this.startDate);
+      return s.start_day + "–" + s.finish_day + " days · " +
+        fmtDate(addDays(start, s.start_day)) + " to " + fmtDate(addDays(start, s.finish_day));
+    },
+    evidenceFor(id) {
+      const p = this.project;
+      const map = {
+        nepa_ea: [FR, ECFR],
+        nepa_decision: [FR],
+        biological_assessment: [p.species],
+        esa_section7_informal: [p.species],
+        esa_section7_formal: [p.species],
+        apd_approval: [p.lease, p.wells],
+        nhpa_section106: [],
+        uic_permit: [],
+        nv_water_right: []
+      };
+      return map[id] || [];
+    },
+    isLive: isLive,
+    drawChart() {
+      const d3g = window.d3;
+      const tracks = this.$refs.tracks;
+      const grid = this.$refs.grid;
+      const axisEl = this.$refs.axis;
+      const axisTop = this.$refs.axisTop;
+      if (!d3g || !tracks || !grid || !axisEl || !axisTop || !this.result) return;
+      const width = tracks.clientWidth;
+      const height = tracks.clientHeight;
+      if (width < 8 || height < 8) return;
+      const start = parseISODate(this.startDate);
+      const end = addDays(start, this.domainDays);
+      const x = d3g.scaleTime().domain([start, end]).range([0, width]);
+      const ticks = x.ticks(d3g.timeMonth.every(3));
+
+      const fyBands = [];
+      let fyStart = new Date(start.getMonth() >= 9 ? start.getFullYear() : start.getFullYear() - 1, 9, 1);
+      while (fyStart < end) {
+        const next = new Date(fyStart.getFullYear() + 1, 9, 1);
+        const a = fyStart < start ? start : fyStart;
+        const b = next > end ? end : next;
+        if (a < b) fyBands.push({ start: a, end: b, year: fyStart.getFullYear() + 1, edge: fyStart });
+        fyStart = next;
+      }
+
+      const svg = d3g.select(grid);
+      svg.attr("width", width).attr("height", height);
+      svg.selectAll("*").remove();
+      svg.selectAll("rect.fyband").data(fyBands).join("rect")
+        .attr("x", d => x(d.start))
+        .attr("width", d => Math.max(0, x(d.end) - x(d.start)))
+        .attr("y", 0).attr("height", height)
+        .attr("fill", (d, i) => i % 2 ? "#10245C" : "#0A1A4F");
+      svg.selectAll("line.tick").data(ticks).join("line")
+        .attr("x1", d => x(d)).attr("x2", d => x(d))
+        .attr("y1", 0).attr("y2", height)
+        .attr("stroke", "#F5B819").attr("stroke-opacity", 0.18).attr("stroke-width", 1);
+      const rowH = 64;
+      const nRows = this.overlayRows.length;
+      svg.selectAll("line.hrow").data(d3g.range(1, nRows)).join("line")
+        .attr("x1", 0).attr("x2", width)
+        .attr("y1", d => d * rowH).attr("y2", d => d * rowH)
+        .attr("stroke", "#F5B819").attr("stroke-opacity", 0.14).attr("stroke-width", 1);
+      svg.selectAll("line.fy").data(fyBands.filter(d => d.edge > start && d.edge < end)).join("line")
+        .attr("x1", d => x(d.edge)).attr("x2", d => x(d.edge))
+        .attr("y1", 0).attr("y2", height)
+        .attr("stroke", "#F5B819").attr("stroke-opacity", 0.7).attr("stroke-width", 1);
+
+      const top = d3g.select(axisTop);
+      top.attr("width", width).attr("height", 40);
+      top.selectAll("*").remove();
+      top.selectAll("text.fy").data(fyBands).join("text")
+        .attr("x", d => x(d.start) + 10)
+        .attr("y", 26)
+        .text(d => "FY " + d.year);
+
+      const axisSvg = d3g.select(axisEl);
+      axisSvg.attr("width", width).attr("height", 40);
+      axisSvg.selectAll("*").remove();
+      const axis = d3g.axisBottom(x).tickValues(ticks).tickFormat(d3g.timeFormat("%b %Y")).tickSize(0).tickPadding(12);
+      axisSvg.append("g").attr("transform", "translate(0,4)").call(axis);
+    },
+    exportCsv() {
+      if (!this.result) return;
+      const start = parseISODate(this.startDate);
+      const cols = ["id","name","agency","start_day","finish_day","duration_days","start_date","finish_date","on_critical_path","authority"];
+      const lines = [cols.join(",")];
+      this.result.schedule.forEach(s => {
+        lines.push([
+          s.id, s.name, s.agency, s.start_day, s.finish_day, s.duration_days,
+          fmtDate(addDays(start, s.start_day)), fmtDate(addDays(start, s.finish_day)),
+          s.on_critical_path, s.authority
+        ].map(csvEscape).join(","));
+      });
+      this.downloadBlob(lines.join("\n"), "text/csv", this.project.id + "-schedule-" + this.band + ".csv");
+    },
+    exportJson() {
+      if (!this.result) return;
+      const payload = {
+        project: this.project.id,
+        project_name: this.project.name,
+        lease_serial: this.project.lease.data.lease.serial_number,
+        conditions: Object.assign({}, this.conditions),
+        band: this.band,
+        start_date: this.startDate,
+        schedule: this.result.schedule,
+        critical_path: this.result.critical_path,
+        total_duration_days: this.result.total_duration_days,
+        range_days: this.range,
+        rule_set_version: RULE_SET_VERSION
+      };
+      this.downloadBlob(JSON.stringify(payload, null, 2), "application/json", this.project.id + "-state-" + this.band + ".json");
+    },
+    downloadBlob(text, type, name) {
+      const blob = new Blob([text], { type: type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
   };
-  setTimeout(tick, 250);
+}
+
+document.addEventListener("alpine:init", () => {
+  Alpine.data("app", app);
 });
-
-$("reset").addEventListener("click", reset);
-
-renderMeta();
-renderSteps(0);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" integrity="sha384-X9kJyAubVxnP0hcA+AMMs21U445qsnqhnUF8EBlEpP3a42Kh/JwWjlv2ZcvGfphb" crossorigin="anonymous"></script>
+<script>if (typeof Alpine === "undefined") { document.write('<script src="vendor/alpine.min.js"><\/script>'); }</script>
 </body>
 </html>
