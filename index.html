@@ -4,205 +4,482 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Permitting Coordination Timeline — Prototype</title>
+<title>Permitting coordination timeline</title>
 <style>
   :root {
-    --ink: #14181f;
-    --muted: #5d6674;
-    --line: #d8dde5;
-    --bg: #f7f8fa;
-    --panel: #ffffff;
-    --blm: #7a5c2e;
-    --fws: #2f6b4f;
-    --shpo: #6b4a6b;
-    --epa: #2b5a7a;
-    --state: #8a4b3c;
-    --crit: #b3261e;
-    --sim: #b06a00;
+    --navy: #0A1A4F;
+    --gold: #F5B819;
+    --white: #ffffff;
+    --blm: #0A1A4F;
+    --fws: #243A72;
+    --shpo: #3D548A;
+    --epa: #5A6FA3;
+    --state: #7A8CB8;
+    --crit: #F5B819;
+    --line: #0A1A4F;
+    --muted: #3D4A73;
+    --title: Cambria, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --body: Calibri, "Segoe UI", Candara, Arial, sans-serif;
+    --label: Figtree, Calibri, "Segoe UI", Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
+  html, body { margin: 0; }
   body {
-    margin: 0;
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.5;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.42;
   }
-  header {
-    background: var(--panel);
-    border-bottom: 1px solid var(--line);
-    padding: 20px 28px 16px;
+  .page { padding: 0 88px 64px; }
+  .mast {
+    position: relative;
+    height: 280px;
+    margin: 0 -88px;
+    padding: 0 88px;
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden;
   }
-  h1 { font-size: 20px; margin: 0 0 4px; font-weight: 650; letter-spacing: -0.01em; }
-  .sub { color: var(--muted); font-size: 13px; }
+  .mast-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    display: block;
+    z-index: 0;
+    transform-origin: 78% 50%;
+    animation: mastReveal 1.15s cubic-bezier(.2,.7,.2,1) both, mastDrift 22s 1.15s ease-in-out infinite alternate;
+  }
+  .mast-rule {
+    position: absolute;
+    left: 88px;
+    top: 36px;
+    width: 5px;
+    height: 0;
+    background: var(--gold);
+    z-index: 1;
+    animation: mastBar .7s .12s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .eyebrow {
+    position: absolute; top: 38px; left: 106px; right: 46%; margin: 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); line-height: 1;
+    z-index: 1;
+    animation: mastIn .5s .18s ease both;
+  }
+  h1 {
+    position: absolute; top: 79px; left: 106px; right: 46%; margin: 0;
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(22px, 3.2vw, 38px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    white-space: nowrap; overflow: hidden; text-overflow: clip;
+    z-index: 1;
+    animation: mastTitle .7s .28s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .lede {
+    position: absolute; top: 144px; left: 106px; margin: 0;
+    max-width: min(34em, 46%);
+    font-size: 17px; line-height: 1.42;
+    color: var(--white);
+    z-index: 1;
+    animation: mastIn .55s .48s ease both;
+  }
+  @keyframes mastReveal {
+    from { opacity: 0; transform: scale(1.1) translateX(3%); }
+    to { opacity: 1; transform: scale(1.04) translateX(0); }
+  }
+  @keyframes mastDrift {
+    from { transform: scale(1.04) translateX(0); }
+    to { transform: scale(1.1) translateX(-2.4%); }
+  }
+  @keyframes mastBar {
+    to { height: 148px; }
+  }
+  @keyframes mastIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes mastTitle {
+    from { clip-path: inset(0 100% 0 0); opacity: 0; }
+    to { clip-path: inset(0 0 0 0); opacity: 1; }
+  }
+  .stage { padding-top: 0; position: relative; z-index: 2; }
   .banner {
-    background: #fff4e0;
-    border-bottom: 1px solid #e8cfa0;
-    color: #6b4a00;
-    font-size: 12.5px;
-    padding: 9px 28px;
+    margin: 14px 0 0;
+    padding: 0;
+    border: none;
+    font-size: 13px;
+    color: var(--muted);
   }
-  .banner b { font-weight: 650; }
-  main { display: grid; grid-template-columns: 1fr 380px; gap: 0; align-items: start; }
-  @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
-  .left { padding: 24px 28px 60px; min-width: 0; }
-  .right {
-    padding: 24px 28px 60px;
-    border-left: 1px solid var(--line);
-    background: var(--panel);
-    min-height: calc(100vh - 130px);
-  }
-  @media (max-width: 960px) { .right { border-left: none; border-top: 1px solid var(--line); min-height: 0; } }
 
-  .controls {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px 18px;
-    margin-bottom: 22px;
+  .meta-wrap {
+    position: relative;
+    z-index: 3;
+    margin: -42px 0 32px;
   }
-  .field { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
-  label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 5px; font-weight: 600; }
-  input[type=text] {
-    font: inherit; padding: 7px 10px; border: 1px solid var(--line);
-    border-radius: 5px; background: #fff; color: var(--ink); min-width: 210px;
+  .meta-wrap::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: 0;
   }
+  .meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    background: var(--navy);
+    color: var(--white);
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 0;
+    overflow-x: auto;
+  }
+  .meta-item {
+    flex: 1 1 0;
+    min-width: 9.5em;
+    padding: 21px 22px;
+    border-right: 1px solid rgba(245, 184, 25, .45);
+    animation: metaIn .55s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .meta-item:nth-child(1) { animation-delay: .04s; }
+  .meta-item:nth-child(2) { animation-delay: .12s; }
+  .meta-item:nth-child(3) { animation-delay: .2s; }
+  .meta-item:nth-child(4) { animation-delay: .28s; }
+  .meta-item:nth-child(5) { animation-delay: .36s; }
+  .meta-item:nth-child(6) { animation-delay: .44s; }
+  .meta-item:last-child { border-right: none; }
+  .meta dt {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 10px; line-height: 1;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .meta dt::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--gold);
+    flex: none;
+  }
+  .meta dd {
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(16px, 1.5vw, 22px);
+    line-height: 1.12;
+    margin: 0;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .meta dd::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    margin-top: 10px;
+    background: var(--gold);
+    animation: metaRule .45s .55s ease forwards;
+  }
+  .meta dd.serial { font-family: var(--mono); font-weight: 400; font-size: 15px; letter-spacing: .04em; }
+  @keyframes metaIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes metaRule {
+    to { width: 2.25rem; }
+  }
+
+  .actions { display: flex; gap: 18px; align-items: center; margin: 0 0 22px; }
   button {
-    font: inherit; font-weight: 600; padding: 8px 18px; border: none;
-    border-radius: 5px; background: var(--ink); color: #fff; cursor: pointer;
+    position: relative;
+    font-family: var(--label); font-weight: 700;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    padding: 11px 22px; border: 1px solid var(--navy);
+    background: var(--navy); color: var(--white); cursor: pointer;
+    border-radius: 0;
   }
-  button:disabled { opacity: .45; cursor: default; }
-  button.ghost { background: none; color: var(--muted); border: 1px solid var(--line); font-weight: 500; }
+  button::after {
+    content: "";
+    position: absolute; top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold); z-index: -1;
+  }
+  button:disabled { opacity: .4; cursor: default; }
+  button:disabled::after { display: none; }
+  button.ghost {
+    background: var(--white); color: var(--navy);
+  }
+  button.ghost::after { display: none; }
 
-  .steps { margin: 0 0 22px; }
+  .board {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 22px;
+    align-items: start;
+  }
+  .card {
+    border: 1px solid var(--navy);
+    background: var(--white);
+    padding: 21px 31px;
+  }
+  .card.mark { border-left: 5px solid var(--gold); }
+
+  .steps { margin: 0; }
   .step {
-    display: flex; align-items: baseline; gap: 10px;
-    padding: 7px 0; border-bottom: 1px dotted var(--line);
-    font-size: 13.5px; opacity: .28; transition: opacity .18s;
+    display: grid;
+    grid-template-columns: 10px minmax(220px, 32ch) minmax(0, 1fr) 12ch;
+    gap: 12px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--navy);
+    font-size: 13px;
+    opacity: .32;
   }
+  .step:last-child { border-bottom: none; }
   .step.on { opacity: 1; }
-  .step .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); flex: none; position: relative; top: -1px; }
-  .step.on .dot { background: var(--fws); }
-  .step .src { color: var(--muted); font-size: 12px; margin-left: auto; font-variant-numeric: tabular-nums; }
-  .step .name { font-weight: 550; }
-  .step .detail { color: var(--muted); }
-
-  .headline {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
-    padding: 16px 18px; margin-bottom: 20px; display: none;
+  .step .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--navy); opacity: .25;
+    position: relative; top: -1px;
   }
+  .step.on .dot { background: var(--gold); opacity: 1; }
+  .step .name {
+    font-family: var(--mono); font-size: 12px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .step .detail { color: var(--muted); min-width: 0; }
+  .step .src {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    text-align: right; color: var(--navy);
+  }
+
+  .headline { display: none; margin-top: 22px; }
   .headline.on { display: block; }
-  .metrics { display: flex; gap: 34px; flex-wrap: wrap; }
-  .metric .n { font-size: 26px; font-weight: 660; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-  .metric .l { font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+  .metrics { display: flex; gap: 36px; flex-wrap: wrap; }
+  .metric .n {
+    font-family: var(--title); font-weight: 700;
+    font-size: 28px; line-height: 1.12;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric .l {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    margin-top: 6px;
+  }
 
-  .gantt { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 0 14px; display: none; }
+  .gantt { display: none; margin-top: 22px; padding-left: 31px; padding-right: 31px; }
   .gantt.on { display: block; }
+  .gantt-kicker {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    margin: 0 0 14px; color: var(--navy);
+  }
+  .gantt-plot { position: relative; }
+  .hairlines {
+    position: absolute; left: 268px; right: 0; top: 0; bottom: 0;
+    display: flex; justify-content: space-between; pointer-events: none;
+  }
+  .hairlines i { width: 1px; background: var(--navy); opacity: .2; }
   .grow {
-    display: grid; grid-template-columns: 300px 1fr; gap: 14px;
-    align-items: center; padding: 5px 18px; cursor: pointer;
+    display: grid; grid-template-columns: 256px 1fr; gap: 12px;
+    align-items: center; padding: 3px 0; cursor: pointer;
   }
-  .grow:hover { background: #f2f4f7; }
-  .grow.sel { background: #eef2f7; }
-  .glabel { font-size: 13px; min-width: 0; }
-  .glabel .nm { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 520; }
-  .glabel .ag { color: var(--muted); font-size: 11.5px; }
-  .track { position: relative; height: 22px; background: #f0f2f5; border-radius: 3px; }
-  .bar { position: absolute; top: 3px; height: 16px; border-radius: 3px; opacity: .9; }
-  .bar.crit { outline: 2px solid var(--crit); outline-offset: 1px; }
+  .grow:hover .nm { text-decoration: underline; text-underline-offset: 2px; }
+  .grow.sel .glabel { border-left: 5px solid var(--gold); padding-left: 8px; margin-left: -13px; }
+  .glabel { font-size: 13px; min-width: 0; line-height: 1.12; }
+  .glabel .nm {
+    display: block; font-family: var(--title); font-weight: 700;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-size: 14px;
+  }
+  .glabel .ag {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .track { position: relative; height: 12px; background: transparent; }
+  .bar {
+    position: absolute; top: 3px; height: 6px;
+    border-radius: 0;
+  }
+  .bar.crit { outline: 2px solid var(--gold); outline-offset: 1px; }
   .axis {
-    display: grid; grid-template-columns: 300px 1fr; gap: 14px;
-    padding: 4px 18px 0; font-size: 11px; color: var(--muted);
-    border-top: 1px solid var(--line); margin-top: 8px;
+    display: grid; grid-template-columns: 256px 1fr; gap: 12px;
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--navy);
   }
-  .ticks { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+  .ticks {
+    display: flex; justify-content: space-between;
+    font-variant-numeric: tabular-nums;
+  }
+  .ticks span {
+    display: flex; flex-direction: column; gap: 2px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .ticks i { font-style: normal; font-family: var(--body); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 12px; color: var(--muted); }
+  .legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    padding-top: 14px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .sw { width: 8px; height: 8px; display: inline-block; border-radius: 0; }
 
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 12px 18px 0; font-size: 11.5px; color: var(--muted); }
-  .legend span { display: flex; align-items: center; gap: 5px; }
-  .sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
-
-  .right h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; font-weight: 650; }
-  .prov { font-size: 13px; }
-  .prov .empty { color: var(--muted); font-style: italic; }
-  .kv { margin-bottom: 12px; }
-  .kv .k { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
-  .kv .v { font-variant-numeric: tabular-nums; }
-  .cite { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  .prov-card h2 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px; line-height: 1.12; margin: 0 0 16px;
+    white-space: nowrap; overflow: hidden;
+  }
+  .prov { font-size: 15px; }
+  .prov .empty { color: var(--muted); }
+  .kv { margin: 0 0 12px; display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 4px 14px; align-items: baseline; }
+  .kv .k {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--navy); line-height: 1.12;
+  }
+  .kv .v { font-variant-numeric: tabular-nums; min-width: 0; }
+  .cite { font-family: var(--mono); font-size: 12px; word-break: break-all; }
   pre {
-    background: #f4f6f8; border: 1px solid var(--line); border-radius: 6px;
-    padding: 10px 12px; font-size: 11.5px; line-height: 1.45; overflow: auto;
-    max-height: 340px; margin: 6px 0 0;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    grid-column: 1 / -1;
+    background: var(--white);
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    padding: 12px 14px;
+    font-size: 11.5px; line-height: 1.42;
+    overflow: auto; max-height: 340px; margin: 6px 0 0;
+    font-family: var(--mono); color: var(--navy);
   }
   .tag {
-    display: inline-block; font-size: 10.5px; font-weight: 650; padding: 1px 6px;
-    border-radius: 3px; letter-spacing: .03em; text-transform: uppercase;
+    display: inline-block;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 3px 10px; line-height: 1.2;
+    border-radius: 15.5px;
   }
-  .tag.sim { background: #ffe9c7; color: var(--sim); }
-  .tag.live { background: #e2efe6; color: var(--fws); }
-  .tag.crit { background: #fbe4e2; color: var(--crit); }
-  footer { padding: 22px 28px 50px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); background: var(--panel); }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+  .tag.sim { background: var(--gold); color: var(--navy); }
+  .tag.live { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+  .tag.crit { background: var(--gold); color: var(--navy); }
+
+  footer {
+    margin: 36px 0 0;
+    padding: 21px 0 0;
+    border-top: 1px solid var(--navy);
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.42;
+  }
+  footer p { margin: 0 0 10px; }
+  footer p:last-child { margin-bottom: 0; }
+  a { color: var(--navy); }
+
+  @media (max-width: 1100px) {
+    .meta { flex-wrap: wrap; }
+    .meta-item { flex: 1 1 calc(33.333% - 1px); min-width: 12em; border-bottom: 1px solid rgba(245, 184, 25, .45); }
+    .meta-item:nth-child(3n) { border-right: none; }
+    .meta-item:nth-last-child(-n+3) { border-bottom: none; }
+    .board { grid-template-columns: 1fr; }
+    .hairlines { left: 220px; }
+    .grow, .axis { grid-template-columns: 208px 1fr; }
+    .step { grid-template-columns: 10px minmax(160px, 24ch) minmax(0, 1fr) 10ch; }
+  }
+  @media (max-width: 800px) {
+    .page { padding: 0 24px 48px; }
+    .mast { margin: 0 -24px; padding: 0 24px; height: auto; min-height: 260px; }
+    .mast-art { object-position: 18% center; }
+    .eyebrow, h1, .lede { position: relative; top: auto; left: auto; right: auto; max-width: 36em; z-index: 1; }
+    .eyebrow { padding-top: 38px; }
+    h1 { margin-top: 18px; white-space: normal; }
+    .lede { margin-top: 18px; padding-bottom: 28px; }
+    .meta-item { flex: 1 1 50%; padding: 18px 20px; }
+    .meta-item:nth-child(3n) { border-right: 1px solid rgba(245, 184, 25, .45); }
+    .meta-item:nth-child(even) { border-right: none; }
+    .meta-item:nth-last-child(-n+3) { border-bottom: 1px solid rgba(245, 184, 25, .45); }
+    .meta-item:nth-last-child(-n+2) { border-bottom: none; }
+    .card { padding: 18px 20px; }
+    .kv { grid-template-columns: 1fr; }
+    .hairlines { display: none; }
+    .grow, .axis { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 10px 1fr auto; }
+    .step .detail { grid-column: 2 / 3; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .meta-item { animation: none; }
+    .meta dd::after { animation: none; width: 2.25rem; }
+    .mast-art, .mast-rule, .eyebrow, h1, .lede { animation: none; }
+    .mast-rule { height: 148px; }
+    h1 { clip-path: none; }
+  }
 </style>
 </head>
 <body>
+<div class="page">
+  <header class="mast">
+    <img class="mast-art" src="header.png" alt="">
+    <span class="mast-rule" aria-hidden="true"></span>
+    <p class="eyebrow">Coordination view</p>
+    <h1>Permitting coordination timeline</h1>
+    <p class="lede">Authorization status, species screening, and regulatory content from four sources, assembled as a single coordination view.</p>
+  </header>
 
-<div class="banner">
-  <b>Prototype.</b> Not an official product of the U.S. Department of Energy or any agency. Source-system responses shown here were captured on 20 August 2026 by local Model Context Protocol servers querying public federal APIs. Lease and well records are <b>simulated</b> and are marked as such. Nothing on this page is authoritative for any permitting decision.
-</div>
+  <div class="stage">
+    <div class="meta-wrap">
+      <dl class="meta" id="meta"></dl>
+    </div>
 
-<header>
-  <h1>Permitting Coordination Timeline</h1>
-  <div class="sub">Federating authorization status, species screening, and regulatory content across four sources to produce a single coordination view.</div>
-</header>
+    <div class="actions">
+      <button id="run">Assemble timeline</button>
+      <button id="reset" class="ghost">Clear</button>
+    </div>
 
-<main>
-<div class="left">
-
-  <div class="controls">
-    <div class="field">
-      <div>
-        <label for="loc">Project location</label>
-        <input id="loc" type="text" value="Dixie Valley, Churchill County, NV" readonly>
+    <div class="board">
+      <div class="left">
+        <div class="card">
+          <div class="steps" id="steps"></div>
+        </div>
+        <div class="card mark headline" id="headline">
+          <div class="metrics">
+            <div class="metric"><div class="n" id="mDays">—</div><div class="l">Days to APD</div></div>
+            <div class="metric"><div class="n" id="mMonths">—</div><div class="l">Months</div></div>
+            <div class="metric"><div class="n" id="mRev">—</div><div class="l">Reviews triggered</div></div>
+            <div class="metric"><div class="n" id="mAg">—</div><div class="l">Agencies involved</div></div>
+          </div>
+        </div>
+        <div class="card mark gantt" id="gantt">
+          <p class="gantt-kicker" id="ganttKicker">Critical path</p>
+          <div class="gantt-plot">
+            <div class="hairlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <div id="rows"></div>
+          </div>
+          <div class="axis"><div></div><div class="ticks" id="ticks"></div></div>
+          <div class="legend" id="legend"></div>
+        </div>
       </div>
-      <div>
-        <label for="ser">BLM serial number</label>
-        <input id="ser" type="text" value="NVN-091234" readonly>
-      </div>
-      <button id="run">Build coordination timeline</button>
-      <button id="reset" class="ghost">Reset</button>
+
+      <aside class="card mark prov-card">
+        <h2>Provenance</h2>
+        <div class="prov" id="prov"><div class="empty">No review is selected.</div></div>
+      </aside>
     </div>
   </div>
 
-  <div class="steps" id="steps"></div>
-
-  <div class="headline" id="headline">
-    <div class="metrics">
-      <div class="metric"><div class="n" id="mDays">—</div><div class="l">Days to APD</div></div>
-      <div class="metric"><div class="n" id="mMonths">—</div><div class="l">Months</div></div>
-      <div class="metric"><div class="n" id="mRev">—</div><div class="l">Reviews triggered</div></div>
-      <div class="metric"><div class="n" id="mAg">—</div><div class="l">Agencies involved</div></div>
-    </div>
-  </div>
-
-  <div class="gantt" id="gantt">
-    <div id="rows"></div>
-    <div class="axis"><div></div><div class="ticks" id="ticks"></div></div>
-    <div class="legend" id="legend"></div>
-  </div>
-
+  <footer>
+    <p class="banner">Prototype. Not a DOE or agency product. Captured 20 August 2026. Lease and well records are simulated. Not for permitting decisions.</p>
+    <p>Responses were produced by four Model Context Protocol servers: <code>ecfr</code> (eCFR and Federal Register APIs), <code>ipac</code> (USFWS IPaC Location API), <code>sepi-stub</code> (simulated BLM MLRS and AFMSS response shapes), and <code>gpcp-timeline</code> (deterministic critical-path computation over an encoded dependency rule set). Sequence and duration logic is computed from the rule set, not generated by a language model. Rule set v0.2.0.</p>
+  </footer>
 </div>
-
-<div class="right">
-  <h2>Provenance</h2>
-  <div class="prov" id="prov"><div class="empty">Select a review to see where each fact came from.</div></div>
-</div>
-</main>
-
-<footer>
-  Four Model Context Protocol servers produced these responses: <code>ecfr</code> (eCFR and Federal Register APIs), <code>ipac</code> (USFWS IPaC Location API), <code>sepi-stub</code> (simulated BLM MLRS and AFMSS response shapes), and <code>gpcp-timeline</code> (deterministic critical-path computation over an encoded dependency rule set). Sequence and duration logic is computed from the rule set, not generated by a language model. Rule set v0.2.0.
-</footer>
 
 <script>
 // ---------------------------------------------------------------------------
@@ -359,12 +636,35 @@ const STEPS = [
 
 const $ = id => document.getElementById(id);
 let selected = null;
+const START = new Date(2026, 9, 1);
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function axisDate(days) {
+  const d = new Date(START.getTime());
+  d.setDate(d.getDate() + days);
+  return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+}
+
+function renderMeta() {
+  const L = SEPI_LEASE.data.lease;
+  const rows = [
+    ["Project", L.case_type],
+    ["County", L.county],
+    ["State", L.state],
+    ["Administrative office", L.admin_office],
+    ["Lease serial", L.serial_number],
+    ["Lease status", L.status]
+  ];
+  $("meta").innerHTML = rows.map(([k, v]) =>
+    `<div class="meta-item"><dt>${k}</dt><dd${k === "Lease serial" ? ' class="serial"' : ""}>${v}</dd></div>`).join("");
+}
 
 function renderSteps(activeCount) {
   $("steps").innerHTML = STEPS.map((s, i) => `
     <div class="step ${i < activeCount ? "on" : ""}">
       <span class="dot"></span>
-      <span><span class="name">${s.name}</span> &nbsp;<span class="detail">${i < activeCount ? s.detail : "…"}</span></span>
+      <span class="name">${s.name}</span>
+      <span class="detail">${i < activeCount ? s.detail : "…"}</span>
       <span class="src">${i < activeCount ? s.src : ""}</span>
     </div>`).join("");
 }
@@ -378,6 +678,7 @@ function renderTimeline() {
   $("mMonths").textContent = d.total_duration_months;
   $("mRev").textContent = d.reviews_triggered;
   $("mAg").textContent = agencies.size;
+  $("ganttKicker").textContent = "Critical path · " + d.total_duration_days + " days";
   $("headline").classList.add("on");
 
   $("rows").innerHTML = d.schedule.map(s => {
@@ -396,13 +697,13 @@ function renderTimeline() {
   }).join("");
 
   $("ticks").innerHTML = [0, 200, 400, 600, 800]
-    .map(t => `<span>day ${t}</span>`).join("");
+    .map(t => `<span>${t}<i>${axisDate(t)}</i></span>`).join("");
 
   $("legend").innerHTML =
     Object.entries({ "BLM": "var(--blm)", "USFWS": "var(--fws)", "SHPO": "var(--shpo)",
                      "EPA / state": "var(--epa)", "NDWR": "var(--state)" })
       .map(([k, v]) => `<span><i class="sw" style="background:${v}"></i>${k}</span>`).join("")
-    + `<span><i class="sw" style="background:#fff;outline:2px solid var(--crit);outline-offset:-1px"></i>Critical path</span>`;
+    + `<span><i class="sw" style="background:var(--gold)"></i>Critical path</span>`;
 
   $("gantt").classList.add("on");
 
@@ -425,15 +726,15 @@ function selectRow(id) {
     <div class="kv"><div class="k">Window</div><div class="v">Day ${s.start_day} to day ${s.finish_day} (${s.duration_days} days)</div></div>
     <div class="kv"><div class="k">Blocks</div><div class="v">${s.blocks.length ? s.blocks.join(", ") : "nothing downstream in this rule set"}</div></div>
     <div class="kv"><div class="k">Status</div><div class="v">${s.on_critical_path
-        ? '<span class="tag crit">On critical path</span>'
+        ? '<span class="tag crit">Critical path</span>'
         : "Has float"}</div></div>
     <div class="kv"><div class="k">Sequence source</div>
-      <div class="v">${TIMELINE.source}<br><span class="cite" style="color:var(--muted)">${TIMELINE.note}</span></div></div>
+      <div class="v">${TIMELINE.source}<br><span class="cite">${TIMELINE.note}</span></div></div>
   `;
 
   if (keys.length === 0) {
     html += `<div class="kv"><div class="k">Source-system evidence</div>
-      <div class="v" style="color:var(--muted)">No connector in this prototype returns records for this review. This is the gap the connector inventory addresses.</div></div>`;
+      <div class="v">No connector in this prototype returns records for this review. That gap is what the connector inventory addresses.</div></div>`;
   } else {
     keys.forEach(k => {
       const p = PAYLOADS[k];
@@ -441,8 +742,9 @@ function selectRow(id) {
       html += `<div class="kv">
         <div class="k">Source-system evidence</div>
         <div class="v">${p.source} ${sim ? '<span class="tag sim">Simulated</span>' : '<span class="tag live">Live API</span>'}</div>
-        <div class="v cite" style="color:var(--muted);font-size:11.5px">Retrieved ${p.retrieved}</div>
-        ${p.url ? `<div class="v cite" style="font-size:11px;word-break:break-all"><a href="${p.url}" target="_blank" rel="noopener">${p.url}</a></div>` : ""}
+        <div class="k">Retrieved</div>
+        <div class="v cite">${p.retrieved}</div>
+        ${p.url ? `<div class="k">Endpoint</div><div class="v cite"><a href="${p.url}" target="_blank" rel="noopener">${p.url}</a></div>` : ""}
         <pre>${JSON.stringify(p.data, null, 2)}</pre>
       </div>`;
     });
@@ -456,7 +758,7 @@ function reset() {
   renderSteps(0);
   $("headline").classList.remove("on");
   $("gantt").classList.remove("on");
-  $("prov").innerHTML = '<div class="empty">Select a review to see where each fact came from.</div>';
+  $("prov").innerHTML = '<div class="empty">No review is selected.</div>';
   $("run").disabled = false;
 }
 
@@ -479,6 +781,7 @@ $("run").addEventListener("click", () => {
 
 $("reset").addEventListener("click", reset);
 
+renderMeta();
 renderSteps(0);
 </script>
 </body>
