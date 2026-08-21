@@ -312,31 +312,33 @@
     border-top: 1px solid var(--navy);
     border-bottom: 1px solid var(--navy);
   }
-  .ctrl-lead {
-    flex: 1 1 100%;
-    margin: 0 0 10px;
-    max-width: 46em;
-    font-size: 16px;
-    line-height: 1.38;
-  }
-  .demo-moves {
-    flex: 1 1 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 0 0 8px;
-  }
-  .demo-moves button {
+  .ctrl-speed {
+    position: relative;
+    z-index: 1;
+    padding: 12px 16px 14px;
     background: var(--white);
-    color: var(--navy);
-    padding: 11px 18px;
+    border: 1px solid var(--navy);
+    margin: 0 6px 6px 0;
   }
-  .demo-moves button::after { display: none; }
-  .demo-moves button:hover,
-  .demo-moves button.on {
+  .ctrl-speed::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
     background: var(--gold);
-    border-color: var(--gold);
-    color: var(--navy);
+    z-index: -1;
+  }
+  .ctrl-speed .kicker {
+    font-size: 12px;
+    letter-spacing: .12em;
+  }
+  .ctrl-speed .band button {
+    padding: 11px 18px;
+    font-size: 12px;
+  }
+  .ctrl-speed .band button.on {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
   }
   .ctrl-tools {
     margin-left: auto;
@@ -1655,13 +1657,6 @@
     </nav>
 
     <div class="controls">
-      <p class="ctrl-lead">The estimate below is live. Try a move — the days, the path, and the chart change.</p>
-      <div class="demo-moves">
-        <button type="button" :class="{ on: demoSpeciesOff }" @click="tryMove('species')">What if no listed species?</button>
-        <button type="button" :class="{ on: band === 'high' }" @click="tryMove('slow')">Assume slower reviews</button>
-        <button type="button" :class="{ on: stageView === 'map' }" @click="tryMove('map')">Open the map</button>
-        <button type="button" :class="{ on: !!selectedReview }" @click="tryMove('review')">Inspect a review</button>
-      </div>
       <div class="ctrl">
         <p class="kicker">Which lease</p>
         <select class="menu" :value="projectId" @change="selectProject($event.target.value)">
@@ -1674,8 +1669,8 @@
         <p class="kicker">What applies</p>
         <button type="button" class="ghost" @click="conditionsOpen = !conditionsOpen" :aria-expanded="conditionsOpen" x-text="conditionSummary"></button>
       </div>
-      <div class="ctrl">
-        <p class="kicker">How long each review takes</p>
+      <div class="ctrl ctrl-speed">
+        <p class="kicker">Set the review speed</p>
         <div class="band">
           <template x-for="b in bands" :key="b">
             <button type="button" :class="{ on: band === b }" @click="setBand(b)" x-text="bandCaption(b)"></button>
@@ -2906,9 +2901,6 @@ function app() {
     bandCaption(b) {
       return { low: "Faster", typical: "Typical", high: "Slower" }[b] || b;
     },
-    get demoSpeciesOff() {
-      return this.conditions.listed_species_present === false;
-    },
     projectLabel(p) {
       const county = p.lease.data.lease.county;
       if (p.name === county + " County") return p.name;
@@ -3457,40 +3449,6 @@ function app() {
       if (this.result) {
         this.baseline = JSON.parse(JSON.stringify(this.result));
         this.pinned = true;
-      }
-    },
-    tryMove(id) {
-      if (id === "species") {
-        if (this.stageView !== "sequence") this.showStage("sequence");
-        this.holdBaseline();
-        if (this.conditions.listed_species_present) {
-          this.setCondition("listed_species_present", false);
-          this.setCondition("likely_to_adversely_affect", false);
-        } else {
-          this.setCondition("listed_species_present", this.project.conditions.listed_species_present);
-          this.setCondition("likely_to_adversely_affect", this.project.conditions.likely_to_adversely_affect);
-        }
-        return;
-      }
-      if (id === "slow") {
-        if (this.stageView !== "sequence") this.showStage("sequence");
-        this.holdBaseline();
-        this.setBand(this.band === "high" ? "typical" : "high");
-        return;
-      }
-      if (id === "map") {
-        this.showStage("map");
-        return;
-      }
-      if (id === "review") {
-        if (this.stageView !== "sequence") this.showStage("sequence");
-        const idPick = this.result && this.result.schedule.some(s => s.id === "biological_assessment")
-          ? "biological_assessment"
-          : (this.pathSteps[0] && this.pathSteps[0].id);
-        if (idPick) this.selectedReview = idPick;
-        const next = Object.assign({}, this.idOpen);
-        next.provenance = true;
-        this.idOpen = next;
       }
     },
     clearView() {
