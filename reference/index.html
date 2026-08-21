@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Regulatory reference</title>
+<style>
+  :root {
+    --navy: #0A1A4F;
+    --gold: #F5B819;
+    --white: #ffffff;
+    --muted: #3D4A73;
+    --title: Cambria, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --body: Calibri, "Segoe UI", Candara, Arial, sans-serif;
+    --label: Figtree, Calibri, "Segoe UI", Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  [x-cloak] { display: none !important; }
+  body {
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.42;
+  }
+  .page { padding: 0 88px 64px; }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 28px;
+    flex-wrap: wrap;
+    margin: 0 -88px;
+    padding: 14px 88px;
+    background: var(--white);
+    border-bottom: 5px solid var(--gold);
+    position: relative;
+    z-index: 6;
+  }
+  .site-nav .brand {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .site-nav nav { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: flex-end; }
+  .site-nav nav a {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy); text-decoration: none;
+    padding-bottom: 2px; border-bottom: 2px solid transparent;
+  }
+  .site-nav nav a:hover, .site-nav nav a[aria-current="page"] { border-bottom-color: var(--gold); }
+  .mast {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 5px minmax(280px, 1fr);
+    min-height: min(48vh, 420px);
+    margin: 0 -88px;
+    padding: 0 0 0 88px;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .mast-copy {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 64px 48px 48px 22px;
+    max-width: 46em;
+  }
+  .mast-join { grid-column: 2; background: var(--gold); }
+  .mast-visual { position: relative; grid-column: 3; overflow: hidden; }
+  .mast-art {
+    position: absolute; inset: 0; width: 118%; height: 118%;
+    object-fit: cover; object-position: 82% 46%;
+  }
+  .mast-rule {
+    position: absolute; left: 88px; top: 0; width: 5px; height: 100%;
+    background: var(--gold);
+  }
+  .eyebrow {
+    margin: 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  h1 {
+    margin: 18px 0 0;
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(34px, 4.6vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+  .lede { margin: 16px 0 0; max-width: 34em; font-size: 18px; line-height: 1.38; }
+  .article { max-width: 52em; padding-top: 42px; }
+  .kicker {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy); margin: 0 0 8px;
+    display: block;
+  }
+  .corpus-lede { margin: 0 0 16px; }
+  select.menu {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    padding: 8px 12px;
+    background: var(--white);
+    min-width: min(28em, 100%);
+    max-width: 100%;
+    margin: 0 0 22px;
+  }
+  .rapid-sum { margin: 0 0 14px; }
+  .rapid-sum .kicker { margin: 0 0 6px; }
+  .wiki { font-size: 15px; }
+  .wiki p { margin: 0 0 10px; }
+  .wiki p:last-child { margin-bottom: 0; }
+  .wiki p:empty { display: none; }
+  .tag {
+    display: inline-block;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 3px 10px; line-height: 1.2;
+    border-radius: 15.5px;
+  }
+  .tag.captured { background: var(--navy); color: var(--white); }
+  .tag.modelled { background: var(--navy); color: var(--white); }
+  .tag.gap { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+  .topic { border-top: 1px solid var(--navy); }
+  .fold-head {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 18px;
+    gap: 16px;
+    align-items: start;
+    text-align: left;
+    background: transparent;
+    color: var(--navy);
+    border: none;
+    padding: 14px 0;
+    cursor: pointer;
+  }
+  .fold-head::after { display: none; }
+  .topic .fold-head h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1.12; margin: 0;
+  }
+  .fold-sign {
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px; line-height: 1;
+    color: var(--gold);
+    justify-self: end;
+  }
+  .topic-body { padding: 0 0 16px; }
+  .miss { margin-top: 10px; }
+  .gap-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  .gap-table th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--navy);
+  }
+  .gap-table td { padding: 10px; border-bottom: 1px solid var(--navy); vertical-align: top; }
+  a { color: var(--navy); }
+  footer {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 5px solid var(--gold);
+    max-width: 52em;
+  }
+  footer p { margin: 0; font-size: 13px; color: var(--muted); }
+  @media (max-width: 800px) {
+    .page { padding: 0 24px 48px; }
+    .site-nav { margin: 0 -24px; padding: 14px 24px; }
+    .mast { display: block; margin: 0 -24px; padding: 0 24px; min-height: 280px; }
+    .mast-join { display: none; }
+    .mast-visual { position: absolute; inset: 0; }
+    .mast-art { width: 100%; height: 100%; opacity: .28; }
+    .mast-copy { padding: 56px 0 32px; }
+    .mast-rule { left: 24px; }
+  }
+</style>
+</head>
+<body x-data="app" x-cloak>
+<div class="page">
+  <div class="site-nav">
+    <a class="brand" href="../">Coordination view</a>
+    <nav aria-label="Site">
+      <a href="../">Timeline</a>
+      <a href="../about/">About</a>
+      <a href="../coverage/">Coverage and gaps</a>
+      <a href="./" aria-current="page">Regulatory reference</a>
+      <a href="../glossary/">Glossary</a>
+    </nav>
+  </div>
+  <header class="mast">
+    <div class="mast-copy">
+      <p class="eyebrow">Coordination view</p>
+      <h1>Regulatory reference</h1>
+      <p class="lede">OpenEI RAPID geothermal toolkit. Topics modelled in the rule set are marked.</p>
+    </div>
+    <span class="mast-join" aria-hidden="true"></span>
+    <div class="mast-visual">
+      <img class="mast-art" src="../header.png" alt="">
+    </div>
+    <span class="mast-rule" aria-hidden="true"></span>
+  </header>
+
+  <div class="article">
+    <p class="corpus-lede">OpenEI RAPID geothermal toolkit. <span x-text="rapidCount"></span> jurisdictions. <span class="tag captured">Captured</span> Source: <a href="https://openei.org/wiki/RAPID/Geothermal">openei.org/wiki/RAPID/Geothermal</a>.</p>
+    <label class="kicker" for="rapid-jur">Jurisdiction</label>
+    <select id="rapid-jur" class="menu" x-model="rapidJur" @change="openTopic = null">
+      <template x-for="name in rapidNames" :key="name">
+        <option :value="name" x-text="name"></option>
+      </template>
+    </select>
+    <div x-show="rapidCurrent">
+      <template x-for="row in rapidSummaryRows" :key="row.k">
+        <div class="rapid-sum">
+          <p class="kicker" x-text="row.k"></p>
+          <div class="wiki" x-html="row.html"></div>
+        </div>
+      </template>
+      <p class="kicker" style="margin-top:22px">Topic narratives</p>
+      <p class="corpus-lede" x-show="rapidTopics.length === 0">No topic narratives in this capture for this jurisdiction.<span x-show="rapidIndexCount"> The RAPID index lists <span x-text="rapidIndexCount"></span> pages.</span></p>
+      <template x-for="t in rapidTopics" :key="t.name">
+        <article class="topic">
+          <button type="button" class="fold-head" @click="toggleTopic(t.name)" :aria-expanded="openTopic === t.name">
+            <h3 x-text="t.name"></h3>
+            <span class="tag modelled" x-show="t.inRules">In the rule set</span>
+            <span class="fold-sign" aria-hidden="true" x-text="openTopic === t.name ? '−' : '+'"></span>
+          </button>
+          <div class="topic-body" x-show="openTopic === t.name" x-cloak>
+            <p class="corpus-lede"><a :href="t.url" x-text="t.url"></a></p>
+            <div class="wiki" x-html="t.html"></div>
+            <div class="miss" x-show="t.nvDrill">
+              <p class="kicker">Nevada drilling against the rule set</p>
+              <table class="gap-table">
+                <thead><tr><th>Named in RAPID</th><th>In the rule set</th></tr></thead>
+                <tbody>
+                  <tr><td>Geothermal Project Area Permit</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Sundry Notice</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Well completion report due within 60 days</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Permit to Drill</td><td>Application for Permit to Drill only</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+
+  <footer>
+    <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
+  </footer>
+</div>
+
+<script>
+const DATA_CACHE = "mcp1971-data-v1";
+const RAPID_TOPIC_TO_RULES = {
+  "Air Quality": [],
+  "Biological": ["biological_assessment", "esa_section7_informal", "esa_section7_formal"],
+  "Cultural": ["nhpa_section106"],
+  "Drilling & Well Development": ["apd_approval"],
+  "Environment": ["nepa_ea", "nepa_decision"],
+  "Exploration": ["apd_approval"],
+  "Land Access": [],
+  "Land Use": [],
+  "Power Plant": [],
+  "Transmission": [],
+  "Waste": ["uic_permit"],
+  "Water Access & Rights": ["nv_water_right"],
+  "Water Quality": []
+};
+function wikiHref(page) {
+  return "https://openei.org/wiki/" + encodeURI(String(page || "").trim().replace(/ /g, "_"));
+}
+function wikiHtml(text) {
+  if (!text) return "";
+  const escaped = String(text)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return escaped
+    .replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (_, p, lab) {
+      return '<a href="' + wikiHref(p) + '">' + lab + "</a>";
+    })
+    .replace(/\[\[([^\]]+)\]\]/g, function (_, p) {
+      return '<a href="' + wikiHref(p) + '">' + p + "</a>";
+    })
+    .replace(/\n\n/g, "</p><p>")
+    .replace(/\n/g, "<br>");
+}
+async function loadCachedJSON(name) {
+  const url = "../data/" + name;
+  const key = "mcp1971:" + name;
+  async function fromCache() {
+    try {
+      const cache = await caches.open(DATA_CACHE);
+      const hit = await cache.match(url);
+      if (hit) return await hit.json();
+    } catch (e) {}
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  }
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    try {
+      const cache = await caches.open(DATA_CACHE);
+      await cache.put(url, new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } }));
+    } catch (e) {}
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+    return data;
+  } catch (e) {
+    const cached = await fromCache();
+    if (cached) return cached;
+    throw e;
+  }
+}
+function app() {
+  return {
+    files: {},
+    rapidJur: "Nevada",
+    openTopic: null,
+    get rapidNames() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return c && c.data ? Object.keys(c.data) : [];
+    },
+    get rapidCount() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return (c && c.jurisdictions) || this.rapidNames.length || "—";
+    },
+    get rapidCurrent() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return c && c.data ? c.data[this.rapidJur] : null;
+    },
+    get rapidSummaryRows() {
+      const cur = this.rapidCurrent;
+      if (!cur || !cur.summary) return [];
+      const skip = { Tech: true, Jurisdiction: true, IsBulkTransmission: true };
+      return Object.keys(cur.summary)
+        .filter(k => !skip[k] && String(cur.summary[k] || "").trim())
+        .map(k => {
+          const inner = wikiHtml(String(cur.summary[k]));
+          return { k: k, html: inner ? "<p>" + inner + "</p>" : "" };
+        })
+        .filter(row => row.html);
+    },
+    get rapidIndexCount() {
+      const idx = this.files["rapid-geothermal-index.json"];
+      const pages = idx && idx.index && idx.index[this.rapidJur];
+      return pages ? pages.length : 0;
+    },
+    get rapidTopics() {
+      const cur = this.rapidCurrent;
+      const topics = cur && cur.topics ? cur.topics : {};
+      return Object.keys(topics).map(name => {
+        const t = topics[name] || {};
+        const mapped = RAPID_TOPIC_TO_RULES.hasOwnProperty(name) ? RAPID_TOPIC_TO_RULES[name] : [];
+        const inner = wikiHtml(t.text || "");
+        return {
+          name: name,
+          url: t.url || ("https://openei.org/wiki/RAPID/Geothermal/" + encodeURIComponent(this.rapidJur) + "/" + encodeURIComponent(name)),
+          html: inner ? "<p>" + inner + "</p>" : "",
+          inRules: mapped.length > 0,
+          nvDrill: this.rapidJur === "Nevada" && name === "Drilling & Well Development"
+        };
+      });
+    },
+    toggleTopic(name) {
+      this.openTopic = this.openTopic === name ? null : name;
+    },
+    async init() {
+      const names = ["rapid-geothermal-content.json", "rapid-geothermal-index.json"];
+      await Promise.all(names.map(async name => {
+        try {
+          const data = await loadCachedJSON(name);
+          this.files = Object.assign({}, this.files, { [name]: data });
+        } catch (e) {}
+      }));
+    }
+  };
+}
+document.addEventListener("alpine:init", () => { Alpine.data("app", app); });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" integrity="sha384-X9kJyAubVxnP0hcA+AMMs21U445qsnqhnUF8EBlEpP3a42Kh/JwWjlv2ZcvGfphb" crossorigin="anonymous"></script>
+<script>if (typeof Alpine === "undefined") { document.write('<script src="../vendor/alpine.min.js"><\/script>'); }</script>
+</body>
+</html>

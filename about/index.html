@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>About this prototype</title>
+<style>
+  :root {
+    --navy: #0A1A4F;
+    --gold: #F5B819;
+    --white: #ffffff;
+    --muted: #3D4A73;
+    --title: Cambria, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --body: Calibri, "Segoe UI", Candara, Arial, sans-serif;
+    --label: Figtree, Calibri, "Segoe UI", Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.42;
+    font-variant-numeric: tabular-nums;
+  }
+  .page { padding: 0 88px 64px; }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 28px;
+    flex-wrap: wrap;
+    margin: 0 -88px;
+    padding: 14px 88px;
+    background: var(--white);
+    border-bottom: 5px solid var(--gold);
+    position: relative;
+    z-index: 6;
+  }
+  .site-nav .brand {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .site-nav nav { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: flex-end; }
+  .site-nav nav a {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy); text-decoration: none;
+    padding-bottom: 2px; border-bottom: 2px solid transparent;
+  }
+  .site-nav nav a:hover, .site-nav nav a[aria-current="page"] { border-bottom-color: var(--gold); }
+  .mast {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 5px minmax(280px, 1fr);
+    align-items: stretch;
+    min-height: min(62vh, 620px);
+    margin: 0 -88px;
+    padding: 0 0 0 88px;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .mast-copy {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 88px 56px 56px 22px;
+    max-width: 48em;
+  }
+  .mast-join {
+    grid-column: 2;
+    grid-row: 1;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: mastJoin .85s .15s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .mast-visual {
+    position: relative;
+    grid-column: 3;
+    grid-row: 1;
+    overflow: hidden;
+    min-height: min(62vh, 620px);
+  }
+  .mast-art {
+    position: absolute;
+    inset: 0;
+    width: 118%;
+    height: 118%;
+    object-fit: cover;
+    object-position: 82% 46%;
+    display: block;
+    animation: mastReveal 1.35s cubic-bezier(.2,.7,.2,1) both, mastDrift 28s 1.35s ease-in-out infinite alternate;
+  }
+  .mast-scan {
+    position: absolute;
+    left: 0; right: 0;
+    height: 5px;
+    background: var(--gold);
+    top: -5px;
+    z-index: 1;
+    animation: mastScan 3.8s 1.1s cubic-bezier(.2,.7,.2,1) infinite;
+  }
+  .mast-rule {
+    position: absolute;
+    left: 88px;
+    top: 0;
+    width: 5px;
+    height: 0;
+    background: var(--gold);
+    z-index: 1;
+    animation: mastBar 1s .08s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .eyebrow {
+    margin: 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1;
+    animation: mastIn .55s .2s ease both;
+  }
+  .mast-nav {
+    position: absolute;
+    top: 38px;
+    right: 32px;
+    z-index: 2;
+    display: flex;
+    gap: 20px;
+  }
+  .mast-nav a {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .mast-nav a:hover { color: var(--white); }
+  .mast-nav a[aria-current="page"] { color: var(--white); }
+  h1 {
+    margin: 22px 0 0;
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(40px, 5.6vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+  h1 .mast-line { display: block; overflow: hidden; }
+  h1 .mast-line span {
+    display: block;
+    animation: mastTitle .8s cubic-bezier(.2,.7,.2,1) both;
+  }
+  h1 .mast-line:nth-child(1) span { animation-delay: .28s; }
+  h1 .mast-line:nth-child(2) span { animation-delay: .42s; }
+  .lede {
+    margin: 22px 0 0;
+    max-width: 32em;
+    font-size: 19px;
+    line-height: 1.38;
+    color: var(--white);
+    animation: mastIn .6s .7s ease both;
+  }
+  @keyframes mastReveal {
+    from { opacity: 0; transform: scale(1.16) translate(4%, 2%); }
+    to { opacity: 1; transform: scale(1.06) translate(0, 0); }
+  }
+  @keyframes mastDrift {
+    from { transform: scale(1.06) translate(0, 0); }
+    to { transform: scale(1.16) translate(-3.2%, -1.6%); }
+  }
+  @keyframes mastBar { to { height: 100%; } }
+  @keyframes mastJoin { to { transform: scaleY(1); } }
+  @keyframes mastScan {
+    0% { top: -5px; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+  @keyframes mastIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes mastTitle {
+    from { transform: translateY(110%); }
+    to { transform: translateY(0); }
+  }
+  .article {
+    max-width: 46em;
+    padding-top: 48px;
+  }
+  .article h2 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 28px; line-height: 1.12;
+    margin: 42px 0 16px;
+    padding-left: 16px;
+    border-left: 5px solid var(--gold);
+  }
+  .article h2:first-child { margin-top: 0; }
+  .article h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px; line-height: 1.12;
+    margin: 28px 0 12px;
+    scroll-margin-top: 24px;
+  }
+  .article p { margin: 0 0 14px; }
+  .article ul {
+    margin: 0 0 16px;
+    padding: 0 0 0 1.2em;
+    list-style: none;
+  }
+  .article li {
+    position: relative;
+    margin: 0 0 8px;
+    padding-left: 8px;
+  }
+  .article li::before {
+    content: "";
+    position: absolute;
+    left: -1.05em;
+    top: .55em;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+  }
+  .article strong { font-weight: 700; }
+  .article code {
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .article a { color: var(--navy); }
+  .kicker {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy);
+    margin: 0 0 6px;
+  }
+  .tier {
+    margin: 0 0 14px;
+    padding-left: 16px;
+    border-left: 5px solid var(--gold);
+  }
+  .tier p { margin: 0; }
+  .implication {
+    position: relative;
+    margin: 0 0 22px;
+    padding: 21px 31px;
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    z-index: 1;
+  }
+  .implication::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  .implication p { margin: 0; }
+  .source {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .null {
+    margin: 0 0 16px;
+    padding-left: 16px;
+    border-left: 5px solid var(--gold);
+  }
+  table.cov {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 18px;
+    font-size: 15px;
+  }
+  table.cov th, table.cov td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--navy);
+  }
+  table.cov th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .tag {
+    display: inline-block;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    border-radius: 15.5px;
+    padding: 3px 10px;
+    line-height: 1.2;
+  }
+  .tag.live { color: var(--navy); border: 1px solid var(--navy); background: var(--white); }
+  .tag.captured { background: var(--navy); color: var(--white); }
+  .tag.extract { background: var(--white); color: var(--navy); border: 1px dashed var(--navy); }
+  .tag.sim { background: var(--gold); color: var(--navy); }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    margin: 0 0 18px;
+  }
+  footer {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 5px solid var(--gold);
+    max-width: 46em;
+  }
+  footer p { margin: 0; font-size: 13px; color: var(--muted); }
+  footer a { color: var(--navy); }
+  @media (max-width: 800px) {
+    .page { padding: 0 24px 48px; }
+    .site-nav { margin: 0 -24px; padding: 14px 24px; }
+    .mast {
+      display: block;
+      margin: 0 -24px;
+      padding: 0 24px;
+      height: auto;
+      min-height: 62vh;
+    }
+    .mast-join, .mast-scan { display: none; }
+    .mast-visual {
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+    }
+    .mast-nav { right: 24px; }
+    .mast-art {
+      width: 100%;
+      height: 100%;
+      opacity: .28;
+      object-position: right center;
+    }
+    .mast-copy { padding: 72px 0 40px; max-width: 36em; }
+    .mast-rule { left: 24px; }
+    h1 { font-size: clamp(36px, 11vw, 56px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mast-art, .mast-rule, .mast-join, .mast-scan, .eyebrow, h1 .mast-line span, .lede { animation: none; }
+    .mast-rule { height: 100%; }
+    .mast-join { transform: none; }
+    .mast-scan { display: none; }
+    h1 .mast-line span { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="site-nav">
+    <a class="brand" href="../">Coordination view</a>
+    <nav aria-label="Site">
+      <a href="../">Timeline</a>
+      <a href="./" aria-current="page">About</a>
+      <a href="../coverage/">Coverage and gaps</a>
+      <a href="../reference/">Regulatory reference</a>
+      <a href="../glossary/">Glossary</a>
+    </nav>
+  </div>
+  <header class="mast">
+    <div class="mast-copy">
+      <p class="eyebrow">Coordination view</p>
+      <h1>
+        <span class="mast-line"><span>About this</span></span>
+        <span class="mast-line"><span>prototype</span></span>
+      </h1>
+      <p class="lede">What this page is, how it was assembled, and the four gaps found against the rule set.</p>
+    </div>
+    <span class="mast-join" aria-hidden="true"></span>
+    <div class="mast-visual">
+      <img class="mast-art" src="../header.png" alt="">
+      <span class="mast-scan" aria-hidden="true"></span>
+    </div>
+    <span class="mast-rule" aria-hidden="true"></span>
+  </header>
+
+  <article class="article">
+    <h2 id="what-this-is">What this is</h2>
+    <p>A working prototype of one coordination capability, built against public federal sources over a single working session. It answers a question no single government system answers today: for a given geothermal project, which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
+    <p>It is not an official product of the U.S. Department of Energy or any agency. Lease and well records shown here are simulated and are marked as such. All other data comes from public federal sources, captured 20 August 2026. Nothing here is authoritative for any permitting decision.</p>
+
+    <h2 id="two-layers">Two layers, and which one this is</h2>
+    <p><strong>SEPI</strong>, the Subsurface Energy Permitting Index, is a federation layer. It surfaces authoritative status from systems of record across agencies and points back to those systems rather than holding records itself. It does not exist yet.</p>
+    <p><strong>GPCP</strong>, the Geothermal Permitting Coordination Platform, is a coordination layer. It consumes SEPI and other services to produce a view no single source system holds.</p>
+    <p>This prototype is a GPCP capability running against a simulated SEPI. The two servers standing in for BLM systems return fabricated data in the response shapes those systems would use. They exist to show the shape of a connector that has not been built, which turns a general statement about integration needs into a specific one.</p>
+
+    <h2 id="how-it-was-assembled">How it was assembled</h2>
+    <p>Four Model Context Protocol servers. Each wraps one source and exposes read-only tools with typed inputs. Each response carries its source name, endpoint, and retrieval timestamp.</p>
+    <table class="cov">
+      <thead>
+        <tr><th>Server</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>ecfr</code></td><td>eCFR and Federal Register public APIs</td></tr>
+        <tr><td><code>ipac</code></td><td>USFWS IPaC Location API</td></tr>
+        <tr><td><code>sepi-stub</code></td><td>Simulated BLM MLRS and AFMSS response shapes</td></tr>
+        <tr><td><code>gpcp-timeline</code></td><td>Encoded dependency rule set</td></tr>
+      </tbody>
+    </table>
+    <p>Sequencing comes from an encoded rule set rather than model output; the rule set is where domain knowledge lives and where errors live. It is a data file: nine reviews, each with triggering conditions, prerequisites, what it blocks, three duration estimates, and a statutory citation. The schedule is computed by topological sort over that graph. Same input, same output, every time.</p>
+    <p>MCP servers are local processes and a static host cannot run them. What is published here is what those servers produced, captured with provenance intact, alongside geospatial and reference data pulled directly from federal services.</p>
+
+    <h2 id="provenance-tiers">Provenance tiers</h2>
+    <p>Every fact on the site carries one of four markers.</p>
+    <div class="legend">
+      <span><span class="tag live">Live API</span></span>
+      <span><span class="tag captured">Captured</span></span>
+      <span><span class="tag extract">Extracted</span></span>
+      <span><span class="tag sim">Simulated</span></span>
+    </div>
+    <div class="tier"><p class="kicker">Live API</p><p>Returned by a public federal endpoint during a session.</p></div>
+    <div class="tier"><p class="kicker">Captured</p><p>Returned by a public federal endpoint on 20 August 2026 and stored.</p></div>
+    <div class="tier"><p class="kicker">Extracted</p><p>Derived from a published dataset by a third party, including machine extraction that may not have been human reviewed.</p></div>
+    <div class="tier"><p class="kicker">Simulated</p><p>Fabricated. Represents the response shape of a system with no available interface.</p></div>
+
+    <h2 id="four-gaps">Four gaps in the rule set</h2>
+    <p>Each was found by comparing the rule set against real federal data, not by review.</p>
+
+    <h3 id="wilderness-study-areas">1. Wilderness Study Areas</h3>
+    <p>Three Wilderness Study Areas sit adjacent to the project area: Clan Alpine Mountains, Stillwater Range, and Job Peak, together roughly 381,000 acres, all BLM-managed.</p>
+    <p>BLM manages Wilderness Study Areas under non-impairment standards. Proximity bears on visual resource management, route access, and the scope of NEPA analysis. The rule set contains no corresponding review.</p>
+    <p class="source">Source: USGS PAD-US, Federal Management Agencies.</p>
+    <div class="implication">
+      <p class="kicker">Implication</p>
+      <p>Add a WSA proximity review with a trigger keyed to spatial adjacency rather than to a declared condition.</p>
+    </div>
+
+    <h3 id="tribal-consultation">2. Tribal consultation</h3>
+    <p>Eight federal reservations fall within consultation range, including the Fallon Paiute-Shoshone Reservation and Colony.</p>
+    <p>The rule set models NHPA Section 106 with SHPO as the reviewing party and has no tribal consultation row. Section 106 requires consultation with Tribes that attach religious and cultural significance to affected properties, and that consultation runs on its own clock with its own predecessors.</p>
+    <p class="source">Source: Census TIGERweb, American Indian, Alaska Native, and Native Hawaiian Areas.</p>
+    <div class="implication">
+      <p class="kicker">Implication</p>
+      <p>Separate tribal consultation from SHPO review as a distinct row with distinct duration. The governance question of how Tribes participate in a coordination platform precedes the technical question of how to model it.</p>
+    </div>
+
+    <h3 id="activity-types">3. Activity types in real Environmental Assessments</h3>
+    <p>Eight BLM geothermal Environmental Assessments in the PNNL NEPATEC 2.0 corpus cover, in addition to geothermal production: pipelines, electricity transmission, surface transportation, waste management, vegetation and fuels management, and ecosystem restoration.</p>
+    <p>The rule set has reviews for none of these.</p>
+    <p class="source">Source: PNNL NEPATEC 2.0, extracted.</p>
+    <div class="implication">
+      <p class="kicker">Implication</p>
+      <p>The rule set models a well, not a project. A geothermal development is a set of co-located actions with distinct authorizations, and the schedule is the envelope across all of them.</p>
+    </div>
+
+    <h3 id="state-permits">4. State permits not modelled</h3>
+    <p>The RAPID Toolkit's Nevada drilling and well development page names a Permit to Drill, a Geothermal Project Area Permit for multi-well developments, a Sundry Notice for changes to existing wells, and a Geothermal Well Completion Report due within 60 days of completion or cessation.</p>
+    <p>The rule set contains a single Application for Permit to Drill row and nothing else at state level.</p>
+    <p class="source">Source: OpenEI RAPID Toolkit, DOE.</p>
+    <div class="implication">
+      <p class="kicker">Implication</p>
+      <p>RAPID covers 53 jurisdictions across 20 permitting categories. It is a validated reference against which any rule set of this kind should be checked before it is used for anything.</p>
+    </div>
+
+    <h2 id="three-null-results">Three null results</h2>
+    <p>Reported because absence is a finding.</p>
+    <div class="null">
+      <p><strong>No Nevada geothermal Environmental Assessment appears in NEPATEC 2.0.</strong> The corpus holds roughly 4,300 BLM, DOE, USDA, and EPA projects, of which eight are geothermal, across Idaho, California, Utah, and one lease sale administered from the Malheur Field Office in Oregon. The state with the largest installed geothermal capacity in the country is unrepresented.</p>
+    </div>
+    <div class="null">
+      <p><strong>No Nevada geothermal litigation appears in PermitTEC v0.1.</strong> The dataset holds 761 NEPA cases. Two records matched a geothermal-and-Nevada filter; both were false positives.</p>
+    </div>
+    <div class="null">
+      <p><strong>No critical habitat is designated at the project location.</strong> The IPaC screening returns an endangered species with a single known population and an empty critical habitat array.</p>
+    </div>
+
+    <h2 id="connector-status">Connector status</h2>
+    <p>Ninety systems were inventoried and endpoints tested where one was published. Twenty returned data. Eight are confirmed broken or without a programmatic interface.</p>
+    <p>Three distinct states, each implying a different remedy:</p>
+    <div class="tier">
+      <p class="kicker">No public surface</p>
+      <p>BLM MLRS and AFMSS sit behind DOI network boundaries and identity management. Access requires an interagency agreement and a connector built inside the agency.</p>
+    </div>
+    <div class="tier">
+      <p class="kicker">Public, no machine interface</p>
+      <p>BLM ePlanning is a public website running on a platform that supports a Web API, with that API not enabled. The data is already public. The remedy is configuration, not construction.</p>
+    </div>
+    <div class="tier">
+      <p class="kicker">Moved or broken</p>
+      <p>The BLM GIS service returns HTTP 500. The Nevada Division of Water Resources GIS host does not resolve. The Data.gov and GeoPlatform catalog APIs have both moved. Four of six federal catalog and service endpoints probed on 20 August 2026 had changed or failed.</p>
+    </div>
+    <p>That last category is the argument for a maintained federation layer. Endpoints drift, and every program that wires up its own connectors absorbs that drift separately.</p>
+
+    <h2 id="sources">Sources</h2>
+    <p>USFWS IPaC · eCFR · Federal Register · USGS PAD-US · USFWS National Wetlands Inventory · USGS National Hydrography Dataset · USGS 3DEP · Census TIGERweb · OpenEI RAPID Toolkit · PNNL NEPATEC 2.0 · PNNL PermitTEC v0.1 · GSA Site Scanning</p>
+    <p>Rule set v0.2.0. Data captured 20 August 2026.</p>
+  </article>
+
+  <footer>
+    <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
