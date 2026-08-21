@@ -222,6 +222,10 @@
     from { transform: translateY(110%); }
     to { transform: translateY(0); }
   }
+  @keyframes seqPop {
+    from { color: var(--gold); transform: translateY(10px); }
+    to { color: var(--navy); transform: none; }
+  }
   .stage { padding-top: 22px; position: relative; z-index: 2; }
   .stage-nav {
     position: sticky;
@@ -310,10 +314,29 @@
   }
   .ctrl-lead {
     flex: 1 1 100%;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
     max-width: 46em;
     font-size: 16px;
     line-height: 1.38;
+  }
+  .demo-moves {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 8px;
+  }
+  .demo-moves button {
+    background: var(--white);
+    color: var(--navy);
+    padding: 11px 18px;
+  }
+  .demo-moves button::after { display: none; }
+  .demo-moves button:hover,
+  .demo-moves button.on {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
   }
   .ctrl-tools {
     margin-left: auto;
@@ -429,6 +452,7 @@
     font-variant-numeric: tabular-nums;
     color: var(--navy);
   }
+  .seq-num.pop { animation: seqPop .45s ease both; }
   .seq-unit {
     display: flex;
     align-items: center;
@@ -537,7 +561,8 @@
   .seq-chain button {
     background: none;
     border: none;
-    padding: 0;
+    border-bottom: 2px solid var(--gold);
+    padding: 0 0 2px;
     color: var(--navy);
     font-family: var(--title); font-weight: 700;
     font-size: 18px;
@@ -546,7 +571,27 @@
     line-height: 1.2;
   }
   .seq-chain button::after { display: none; }
-  .seq-chain button:hover { color: var(--gold); }
+  .seq-chain button:hover,
+  .seq-chain button.on { color: var(--gold); }
+  .seq-pick {
+    margin: 18px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--navy);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 24px;
+    align-items: end;
+  }
+  .seq-pick h3 {
+    margin: 0 0 6px;
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px;
+    line-height: 1.12;
+  }
+  .seq-pick p { margin: 0; }
+  .seq-pick .cite { margin-top: 6px; font-size: 14px; color: var(--muted); }
+  .seq-pick button { padding: 8px 16px; }
+  .seq-pick button::after { display: none; }
   .seq-chain-empty {
     margin: 0;
     font-size: 15px;
@@ -1396,9 +1441,10 @@
       grid-template-columns: 1fr;
       gap: 10px;
     }
+    .seq-pick { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mast-rule, .eyebrow, .mast-top, .mast-kind, .mast-place, .mast-deck, .mast-case, h1 .mast-line span { animation: none; }
+    .mast-rule, .eyebrow, .mast-top, .mast-kind, .mast-place, .mast-deck, .mast-case, h1 .mast-line span, .seq-num.pop { animation: none; }
     .mast-rule { height: calc(100% - 108px); }
     h1 .mast-line span { transform: none; }
   }
@@ -1609,7 +1655,13 @@
     </nav>
 
     <div class="controls">
-      <p class="ctrl-lead">This estimates the required reviews from a start date to an APD — an Application for Permit to Drill. Change the lease, what applies, or how long each review is assumed to take. The sequence updates. Click a review to see its source.</p>
+      <p class="ctrl-lead">The estimate below is live. Try a move — the days, the path, and the chart change.</p>
+      <div class="demo-moves">
+        <button type="button" :class="{ on: demoSpeciesOff }" @click="tryMove('species')">What if no listed species?</button>
+        <button type="button" :class="{ on: band === 'high' }" @click="tryMove('slow')">Assume slower reviews</button>
+        <button type="button" :class="{ on: stageView === 'map' }" @click="tryMove('map')">Open the map</button>
+        <button type="button" :class="{ on: !!selectedReview }" @click="tryMove('review')">Inspect a review</button>
+      </div>
       <div class="ctrl">
         <p class="kicker">Which lease</p>
         <select class="menu" :value="projectId" @change="selectProject($event.target.value)">
@@ -1661,7 +1713,7 @@
       <header class="seq-head">
         <div class="seq-mast">
           <div class="seq-hero">
-            <div class="seq-num" x-text="result.total_duration_days"></div>
+            <div class="seq-num pop" :key="result.total_duration_days" x-text="result.total_duration_days"></div>
             <p class="seq-unit">Days to APD</p>
             <p class="seq-range" x-text="bandCaption(band) + ' · ' + range.low + '–' + range.high"></p>
           </div>
@@ -1684,12 +1736,21 @@
           <ol class="seq-chain" x-show="pathSteps.length">
             <template x-for="step in pathSteps" :key="step.id">
               <li>
-                <button type="button" @click="selectReview(step.id)" x-text="step.name"></button>
+                <button type="button" :class="{ on: selectedReview === step.id }" @click="selectReview(step.id)" x-text="step.name"></button>
               </li>
             </template>
           </ol>
           <p class="seq-chain-empty" x-show="!pathSteps.length">No review sits on the critical path.</p>
         </div>
+        <aside class="seq-pick" x-show="selectedRow" x-cloak>
+          <div>
+            <p class="kicker">Selected review</p>
+            <h3 x-text="selectedRow ? selectedRow.name : ''"></h3>
+            <p x-text="selectedRow ? (selectedRow.duration_days + ' days · ' + selectedRow.agency) : ''"></p>
+            <p class="cite" x-text="selectedRow ? selectedRow.authority : ''"></p>
+          </div>
+          <button type="button" class="ghost" @click="jumpPanel('ids')">See the source</button>
+        </aside>
         <p class="delta" x-show="baseline" x-text="deltaCopy"></p>
       </header>
       <div class="gantt-figure">
@@ -2845,6 +2906,9 @@ function app() {
     bandCaption(b) {
       return { low: "Faster", typical: "Typical", high: "Slower" }[b] || b;
     },
+    get demoSpeciesOff() {
+      return this.conditions.listed_species_present === false;
+    },
     projectLabel(p) {
       const county = p.lease.data.lease.county;
       if (p.name === county + " County") return p.name;
@@ -3386,9 +3450,47 @@ function app() {
         this.pinned = false;
         return;
       }
+      this.holdBaseline();
+    },
+    holdBaseline() {
+      if (this.pinned) return;
       if (this.result) {
         this.baseline = JSON.parse(JSON.stringify(this.result));
         this.pinned = true;
+      }
+    },
+    tryMove(id) {
+      if (id === "species") {
+        if (this.stageView !== "sequence") this.showStage("sequence");
+        this.holdBaseline();
+        if (this.conditions.listed_species_present) {
+          this.setCondition("listed_species_present", false);
+          this.setCondition("likely_to_adversely_affect", false);
+        } else {
+          this.setCondition("listed_species_present", this.project.conditions.listed_species_present);
+          this.setCondition("likely_to_adversely_affect", this.project.conditions.likely_to_adversely_affect);
+        }
+        return;
+      }
+      if (id === "slow") {
+        if (this.stageView !== "sequence") this.showStage("sequence");
+        this.holdBaseline();
+        this.setBand(this.band === "high" ? "typical" : "high");
+        return;
+      }
+      if (id === "map") {
+        this.showStage("map");
+        return;
+      }
+      if (id === "review") {
+        if (this.stageView !== "sequence") this.showStage("sequence");
+        const idPick = this.result && this.result.schedule.some(s => s.id === "biological_assessment")
+          ? "biological_assessment"
+          : (this.pathSteps[0] && this.pathSteps[0].id);
+        if (idPick) this.selectedReview = idPick;
+        const next = Object.assign({}, this.idOpen);
+        next.provenance = true;
+        this.idOpen = next;
       }
     },
     clearView() {
