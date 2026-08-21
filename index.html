@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Permitting coordination timeline</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" integrity="sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V" crossorigin="anonymous" onerror="this.onerror=null;this.href='vendor/maplibre-gl.css'">
 <style>
   :root {
     --navy: #0A1A4F;
@@ -485,6 +486,7 @@
     text-align: right;
     font-variant-numeric: tabular-nums;
   }
+  .gdur .orig { display: block; margin: 4px 0 0; font-size: 8px; }
   .track { position: relative; height: 64px; width: 100%; }
   .track-cap { display: none; }
   .bar {
@@ -530,7 +532,127 @@
   .legend span { display: flex; align-items: center; gap: 8px; }
   .sw { width: 10px; height: 10px; display: inline-block; border-radius: 0; }
 
-  .prov-card h2, .cov-card h2, .sheet h2, .corpus-card h2 {
+  .maplibregl-ctrl-logo, .maplibregl-ctrl-attrib { display: none !important; }
+  .maplibregl-canvas { outline: none; }
+  .orig {
+    display: inline-block;
+    font-family: var(--label); font-weight: 700;
+    font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+    margin-left: 6px; color: var(--muted);
+    vertical-align: middle;
+  }
+  .est-note { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+  .tier-legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin: 0 0 18px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  }
+  .tier-legend span { display: flex; align-items: center; gap: 8px; }
+  .map-card, .rapid-card, .gaps-card { margin-top: 22px; }
+  .map-well {
+    position: relative;
+    height: 460px;
+    background: var(--navy);
+    border: 1px solid var(--navy);
+    margin: 0 6px 6px 0;
+  }
+  .map-well::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  #map { position: absolute; inset: 0; }
+  .map-tools {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 22px;
+    margin-top: 16px;
+  }
+  .layer-list { margin: 0; padding: 0; list-style: none; }
+  .layer-list li {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--navy);
+    cursor: pointer;
+  }
+  .layer-list li:last-child { border-bottom: none; }
+  .layer-list .sq {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    margin-top: 4px;
+  }
+  .layer-list .sq.off { background: transparent; border: 1px solid var(--navy); }
+  .layer-list .sq.find { background: transparent; border: 1px solid var(--gold); }
+  .layer-list .ln {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  }
+  .layer-list .src { font-size: 13px; color: var(--muted); margin-top: 3px; }
+  .layer-list .src a { color: var(--muted); }
+  .map-pick {
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 16px 18px;
+    min-height: 5em;
+    font-size: 14px;
+  }
+  .map-pick .empty { color: var(--muted); }
+  .zooms { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
+  .rapid-select {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    padding: 8px 10px;
+    background: var(--white);
+    max-width: 100%;
+  }
+  .topic {
+    border-top: 1px solid var(--navy);
+    padding: 14px 0;
+  }
+  .topic h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1.12; margin: 0 0 8px;
+  }
+  .topic .miss { margin-top: 10px; }
+  .wiki { font-size: 15px; }
+  .gaps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .gap-card {
+    position: relative;
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 21px 31px;
+    z-index: 1;
+  }
+  .gap-card::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  .gap-card h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px; line-height: 1.12; margin: 0 0 12px;
+  }
+  .gap-card p { margin: 0 0 8px; }
+  .gap-card p:last-child { margin-bottom: 0; }
+  .tag.captured { background: var(--navy); color: var(--white); }
+  .tag.extract { background: var(--white); color: var(--navy); border: 1px dashed var(--navy); }
+  .prov-card h2, .cov-card h2, .sheet h2, .corpus-card h2, .map-card h2, .rapid-card h2, .gaps-card h2 {
     font-family: var(--title); font-weight: 700;
     font-size: 22px; line-height: 1.12; margin: 0 0 16px;
     white-space: nowrap; overflow: hidden;
@@ -752,7 +874,9 @@
     .board, .controls { grid-template-columns: 1fr; }
     .gantt-figure { grid-template-columns: 280px minmax(0, 1fr); }
     .gantt-lead { grid-template-columns: 1fr; gap: 10px; }
-    .corpus-layout { grid-template-columns: 1fr; }
+    .corpus-layout, .map-tools, .gaps-grid { grid-template-columns: 1fr; }
+    .corpus-layout, .map-tools, .gaps-grid { grid-template-columns: 1fr; }
+    .map-well { height: 360px; }
     .step { grid-template-columns: 10px minmax(160px, 24ch) minmax(0, 1fr) 10ch; }
   }
   @media (max-width: 800px) {
@@ -910,6 +1034,7 @@
                 <div class="k">Critical path</div>
                 <div class="v"><span class="tag crit" x-show="selectedRow.on_critical_path">On the critical path</span><span x-show="!selectedRow.on_critical_path">Not on the critical path</span></div>
               </div>
+              <div class="kv"><div class="k">Duration</div><div class="v"><span x-text="selectedRow.duration_days"></span> days <i class="orig" :title="originLabel(selectedRow.id)" x-text="originAbbr(selectedRow.id)"></i></div></div>
               <template x-if="evidenceFor(selectedReview).length === 0">
                 <div class="kv">
                   <div class="k">Source-system evidence</div>
@@ -922,12 +1047,11 @@
                     <div class="k">Source</div>
                     <div class="v">
                       <span x-text="payload.source"></span>
-                      <span class="tag" :class="isLive(payload) ? 'live' : 'sim'" x-text="isLive(payload) ? 'Live API' : 'Simulated'"></span>
+                      <span class="tag" :class="tierClass(payload)" x-text="tierLabel(payload)"></span>
                     </div>
                   </div>
                   <div class="kv"><div class="k">Retrieved</div><div class="v cite" x-text="payload.retrieved"></div></div>
                   <div class="kv" x-show="payload.url"><div class="k">Citation</div><div class="v cite" x-text="payload.url"></div></div>
-                  <div class="kv" x-show="payload.disclaimer"><div class="k">Disclaimer</div><div class="v" x-text="payload.disclaimer"></div></div>
                   <div class="kv">
                     <div class="k">Payload</div>
                     <pre x-text="JSON.stringify(payload.data, null, 2)"></pre>
@@ -951,6 +1075,7 @@
           <div>
             <p class="gantt-span" x-text="spanCopy"></p>
             <p class="gantt-chain" x-text="pathCopy"></p>
+            <p class="est-note">Durations are planning estimates. Citations are statutory.</p>
           </div>
         </div>
       </header>
@@ -964,7 +1089,10 @@
                     <span class="nm"><i class="sq" x-show="row.current && row.current.on_critical_path"></i><span x-text="chartName(row)"></span></span>
                 <span class="ag" x-text="row.agency"></span>
               </div>
-              <span class="gdur" :class="{ onpath: row.current && row.current.on_critical_path }" x-text="row.current ? row.current.duration_days : '—'"></span>
+              <span class="gdur" :class="{ onpath: row.current && row.current.on_critical_path }">
+                <span x-text="row.current ? row.current.duration_days : '—'"></span>
+                <i class="orig" x-show="row.current" :title="originLabel(row.id)" x-text="originAbbr(row.id)"></i>
+              </span>
             </div>
           </template>
         </div>
@@ -997,114 +1125,172 @@
       </div>
     </div>
 
-    <div class="card mark corpus-card">
-      <h2>NEPA document corpus</h2>
-      <p class="corpus-lede">Eight BLM geothermal Environmental Assessments drawn from PNNL/NEPATEC2.0. Every field is extracted, not authoritative. Source: <a href="https://huggingface.co/datasets/PNNL/NEPATEC2.0">huggingface.co/datasets/PNNL/NEPATEC2.0</a>. <span class="tag extract">Extracted</span></p>
-      <div class="corpus-find">
-        <p>This corpus contains no Nevada geothermal Environmental Assessment. The one Nevada-adjacent record is a lease sale administered from the Malheur Field Office in Oregon. That absence is a finding, not a gap in the extract.</p>
+    <div class="card mark map-card">
+      <h2>Spatial context</h2>
+      <div class="zooms">
+        <button type="button" :class="mapMode === 'project' ? '' : 'ghost'" @click="fitProject()">Project extent</button>
+        <button type="button" :class="mapMode === 'west' ? '' : 'ghost'" @click="fitWest()">Western United States</button>
       </div>
-      <p class="kicker" x-show="corpusError" x-text="corpusError"></p>
-      <div class="corpus-layout" x-show="corpusProjects.length">
+      <div class="map-well">
+        <div id="map" x-ref="map" role="img" aria-label="Dixie Valley spatial layers"></div>
+      </div>
+      <div class="map-tools">
         <div>
-          <p class="kicker">Projects</p>
-          <ul class="corpus-list">
-            <template x-for="p in corpusProjects" :key="p.project_ID">
-              <li class="corpus-item" :class="{ on: selectedCorpusId === p.project_ID }" @click="selectedCorpusId = selectedCorpusId === p.project_ID ? null : p.project_ID">
-                <h3 x-text="fieldVal(p.project_title)"></h3>
-                <dl class="corpus-meta">
-                  <dt>Sponsor</dt><dd x-text="fieldVal(p.project_sponsor)"></dd>
-                  <dt>Location</dt><dd x-text="fieldVal(p.location)"></dd>
-                  <dt>Lead agency</dt><dd x-text="fieldVal(p.lead_agency) + (p.admin_office ? ' · ' + fieldVal(p.admin_office) : '')"></dd>
-                  <dt>Documents</dt><dd x-text="(p.documents || []).length + ' · ' + corpusPages(p) + ' pages'"></dd>
-                </dl>
-                <div class="chips">
-                  <template x-for="t in corpusTypes(p)" :key="t">
-                    <span class="tag type" x-text="t"></span>
-                  </template>
+          <p class="kicker">Layers</p>
+          <ul class="layer-list">
+            <template x-for="ly in mapLayers" :key="ly.id">
+              <li @click="ly.finding ? null : toggleLayer(ly.id)">
+                <i class="sq" :class="{ off: !ly.finding && !layersOn[ly.id], find: ly.finding }"></i>
+                <div>
+                  <div class="ln" x-text="ly.name"></div>
+                  <div class="src">
+                    <span x-text="ly.source"></span>
+                    <template x-if="ly.url"><span> · <a :href="ly.url" x-text="ly.url"></a></span></template>
+                  </div>
+                  <div class="src" x-show="ly.note" x-text="ly.note"></div>
                 </div>
-                <template x-if="selectedCorpusId === p.project_ID">
-                  <ul class="corpus-docs">
-                    <template x-for="(d, di) in (p.documents || [])" :key="di">
-                      <li>
-                        <span class="fn" x-text="d.file_name"></span>
-                        <span class="pg" x-text="d.page_count + ' pp.'"></span>
-                      </li>
-                    </template>
-                  </ul>
-                </template>
               </li>
             </template>
           </ul>
         </div>
         <div>
-          <p class="kicker">Location scatter</p>
-          <div class="corpus-map">
-            <div class="corpus-map-inner">
-              <span class="corpus-axis n">North</span>
-              <span class="corpus-axis s">South</span>
-              <span class="corpus-axis w">West</span>
-              <span class="corpus-axis e">East</span>
-              <template x-for="pt in corpusPoints" :key="pt.id">
-                <button type="button" class="corpus-pt" :class="{ on: selectedCorpusId === pt.id, adj: pt.adjacent }" :style="'left:' + pt.x + '%;top:' + pt.y + '%'" :title="pt.title" @click="selectedCorpusId = pt.id">
-                  <span class="corpus-pt-lab" x-text="pt.short"></span>
-                </button>
-              </template>
-            </div>
+          <p class="kicker">Selection</p>
+          <div class="map-pick">
+            <div class="empty" x-show="!mapPick">Select a Wilderness Study Area or a tribal reservation.</div>
+            <template x-if="mapPick">
+              <div>
+                <div class="kv"><div class="k">Name</div><div class="v" x-text="mapPick.name"></div></div>
+                <div class="kv"><div class="k">Managing agency</div><div class="v" x-text="mapPick.agency"></div></div>
+                <div class="kv"><div class="k">Acreage</div><div class="v" x-text="mapPick.acres"></div></div>
+                <div class="kv"><div class="k">Source</div><div class="v"><span x-text="mapPick.source"></span> <span class="tag captured">Captured</span></div></div>
+              </div>
+            </template>
           </div>
-          <p class="kicker" style="margin-top:22px">Rule set against the EAs</p>
-          <p class="corpus-lede">Reviews the current timeline predicts, set against the activity types these Environmental Assessments actually cover. Where the rule set has no corresponding review, the row is a gap in the rule set.</p>
-          <table class="gap-table">
-            <thead>
-              <tr>
-                <th>Activity type in the EAs</th>
-                <th>Matching review in the rule set</th>
-                <th>On the current timeline</th>
-              </tr>
-            </thead>
-            <tbody>
-              <template x-for="row in typeComparison" :key="row.type">
-                <tr>
-                  <td x-text="row.type"></td>
-                  <td>
-                    <span class="tag gap" x-show="row.gap">Gap in the rule set</span>
-                    <span x-show="!row.gap" x-text="row.reviews.join('; ')"></span>
-                  </td>
-                  <td x-text="row.gap ? '—' : row.onTimeline"></td>
-                </tr>
-              </template>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
 
-    <div class="card mark cov-card">
-      <h2>Connector coverage</h2>
+    <div class="card mark gaps-card">
+      <h2>Coverage and gaps</h2>
+      <div class="tier-legend">
+        <span><span class="tag live">Live API</span></span>
+        <span><span class="tag captured">Captured</span></span>
+        <span><span class="tag extract">Extracted</span></span>
+        <span><span class="tag sim">Simulated</span></span>
+      </div>
       <table class="cov">
         <thead>
           <tr>
             <th>Source</th>
             <th>State</th>
-            <th>Holds</th>
-            <th>Reviews on the current timeline</th>
+            <th>What depends on it</th>
           </tr>
         </thead>
         <tbody>
-          <template x-for="c in connectors" :key="c.id">
-            <tr :class="sourceClass(c)" @click="selectSource(c.id)">
+          <template x-for="c in coverage" :key="c.id">
+            <tr>
               <td x-text="c.name"></td>
-              <td><span class="tag" :class="c.state === 'live' ? 'live' : c.state === 'simulated' ? 'sim' : 'none'" x-text="c.state === 'live' ? 'Live API' : c.state === 'simulated' ? 'Simulated' : 'No connector'"></span></td>
-              <td class="holds" x-text="c.holds"></td>
-              <td class="deps" x-text="sourceDeps(c)"></td>
+              <td><span class="tag" :class="stateClass(c.state)" x-text="stateLabel(c.state)"></span></td>
+              <td class="deps" x-text="c.depends"></td>
             </tr>
           </template>
         </tbody>
       </table>
+      <p class="kicker" style="margin-top:28px">Gaps against the rule set</p>
+      <div class="gaps-grid">
+        <template x-for="g in gapFindings" :key="g.title">
+          <article class="gap-card">
+            <h3 x-text="g.title"></h3>
+            <p><span class="kicker">Finding</span><br><span x-text="g.finding"></span></p>
+            <p><span class="kicker">Evidence</span><br><span x-text="g.evidence"></span></p>
+            <p><span class="kicker">Source</span><br><span x-text="g.source"></span> <span class="tag" :class="stateClass(g.tier)" x-text="stateLabel(g.tier)"></span></p>
+          </article>
+        </template>
+      </div>
+    </div>
+
+    <div class="card mark rapid-card">
+      <h2>Regulatory reference</h2>
+      <p class="corpus-lede">OpenEI RAPID geothermal toolkit. <span x-text="rapidCount"></span> jurisdictions. <span class="tag captured">Captured</span> Source: <a href="https://openei.org/wiki/RAPID/Geothermal">openei.org/wiki/RAPID/Geothermal</a>.</p>
+      <label class="kicker" for="rapid-jur">Jurisdiction</label>
+      <div style="margin:8px 0 18px">
+        <select id="rapid-jur" class="rapid-select" x-model="rapidJur">
+          <template x-for="name in rapidNames" :key="name">
+            <option :value="name" x-text="name"></option>
+          </template>
+        </select>
+      </div>
+      <div x-show="rapidCurrent">
+        <template x-for="row in rapidSummaryRows" :key="row.k">
+          <div class="kv"><div class="k" x-text="row.k"></div><div class="v wiki" x-html="row.html"></div></div>
+        </template>
+        <p class="kicker" style="margin-top:22px">Topic narratives</p>
+        <p class="corpus-lede" x-show="rapidTopics.length === 0">No topic narratives in this capture for this jurisdiction.<span x-show="rapidIndexCount"> The RAPID index lists <span x-text="rapidIndexCount"></span> pages.</span></p>
+        <template x-for="t in rapidTopics" :key="t.name">
+          <article class="topic">
+            <h3><a :href="t.url" x-text="t.name"></a></h3>
+            <div class="wiki" x-html="t.html"></div>
+            <div class="miss" x-show="t.gap">
+              <span class="tag gap">Named in RAPID, not in the rule set</span>
+              <span class="src" x-text="t.gapNote"></span>
+            </div>
+            <div class="miss" x-show="t.nvDrill">
+              <p class="kicker">Nevada drilling against the rule set</p>
+              <table class="gap-table">
+                <thead><tr><th>Named in RAPID</th><th>In the rule set</th></tr></thead>
+                <tbody>
+                  <tr><td>Geothermal Project Area Permit</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Sundry Notice</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Well completion report due within 60 days</td><td><span class="tag gap">No corresponding review</span></td></tr>
+                  <tr><td>Permit to Drill</td><td>Application for Permit to Drill only</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </template>
+      </div>
+    </div>
+
+    <div class="card mark corpus-card">
+      <h2>Document corpus</h2>
+      <p class="corpus-lede">Eight BLM geothermal Environmental Assessments from PNNL NEPATEC 2.0. Source: <a href="https://huggingface.co/datasets/PNNL/NEPATEC2.0">huggingface.co/datasets/PNNL/NEPATEC2.0</a>. <span class="tag extract">Extracted</span></p>
+      <div class="corpus-find">
+        <p>This corpus contains no Nevada geothermal Environmental Assessment. The one Nevada-adjacent record is a lease sale administered from the Malheur Field Office in Oregon. That absence is a finding, not a gap in the extract.</p>
+      </div>
+      <p class="kicker" x-show="corpusError" x-text="corpusError"></p>
+      <ul class="corpus-list" x-show="corpusProjects.length">
+        <template x-for="p in corpusProjects" :key="p.project_ID">
+          <li class="corpus-item" :class="{ on: selectedCorpusId === p.project_ID }" @click="selectCorpus(p)">
+            <h3 x-text="p.title"></h3>
+            <dl class="corpus-meta">
+              <dt>Sponsor</dt><dd x-text="p.sponsor"></dd>
+              <dt>Location</dt><dd x-text="p.location"></dd>
+              <dt>Lead agency</dt><dd x-text="p.lead"></dd>
+              <dt>Documents</dt><dd x-text="p.docCount + ' · ' + p.pageCount + ' pages'"></dd>
+            </dl>
+            <div class="chips">
+              <template x-for="t in p.types" :key="t">
+                <span class="tag type" x-text="t"></span>
+              </template>
+            </div>
+            <template x-if="selectedCorpusId === p.project_ID">
+              <ul class="corpus-docs">
+                <template x-for="(d, di) in p.documents" :key="di">
+                  <li>
+                    <span class="fn" x-text="d.file_name"></span>
+                    <span class="pg" x-text="d.page_count + ' pp.'"></span>
+                  </li>
+                </template>
+              </ul>
+            </template>
+          </li>
+        </template>
+      </ul>
     </div>
   </div>
 
   <footer>
-    <p class="banner">Prototype. Not a DOE or agency product. Captured 20 August 2026. Lease and well records are simulated. Not for permitting decisions.</p>
+    <p class="banner">Prototype. Lease and well records simulated. All other data from public federal sources. Captured 20 August 2026.</p>
     <p>Responses were produced by four Model Context Protocol servers: <code>ecfr</code> (eCFR and Federal Register APIs), <code>ipac</code> (USFWS IPaC Location API), <code>sepi-stub</code> (simulated BLM MLRS and AFMSS response shapes), and <code>gpcp-timeline</code> (deterministic critical-path computation over an encoded dependency rule set). Sequence and duration logic is computed from the rule set, not generated by a language model. Rule set v0.2.0.</p>
   </footer>
 </div>
@@ -1124,7 +1310,7 @@
         <div class="kv"><div class="k">Triggering conditions</div><div class="v" x-text="r.triggers.map(t => conditionLabels[t]).join(', ')"></div></div>
         <div class="kv"><div class="k">Prerequisites</div><div class="v" x-text="r.prerequisites.length ? r.prerequisites.join(', ') : 'None'"></div></div>
         <div class="kv"><div class="k">Blocks</div><div class="v" x-text="r.blocks.length ? r.blocks.join(', ') : 'None'"></div></div>
-        <div class="kv"><div class="k">Duration days</div><div class="v" x-text="'Low ' + r.duration.low + ' · typical ' + r.duration.typical + ' · high ' + r.duration.high"></div></div>
+        <div class="kv"><div class="k">Duration days</div><div class="v">Low <span x-text="r.duration.low"></span> · typical <span x-text="r.duration.typical"></span> · high <span x-text="r.duration.high"></span> <i class="orig" :title="ORIGIN_LABEL[r.origin]" x-text="ORIGIN_ABBR[r.origin]"></i></div></div>
         <div class="kv"><div class="k">Authority</div><div class="v cite" x-text="r.authority"></div></div>
       </article>
     </template>
@@ -1133,6 +1319,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
 <script>if (typeof d3 === "undefined") { document.write('<script src="vendor/d3.min.js"><\/script>'); }</script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" integrity="sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj" crossorigin="anonymous"></script>
+<script>if (typeof maplibregl === "undefined") { document.write('<script src="vendor/maplibre-gl.js"><\/script>'); }</script>
 <script>
 const RULE_SET_VERSION = "v0.2.0";
 const CONDITION_KEYS = [
@@ -1163,45 +1351,64 @@ const RULES = [
   { id: "nhpa_section106", name: "NHPA Section 106 review", agency: "BLM / SHPO",
     authority: "54 U.S.C. 306108; 36 CFR 800",
     triggers: ["federal_undertaking"], prerequisites: [], blocks: ["nepa_decision"],
-    duration: { low: 90, typical: 120, high: 180 } },
+    duration: { low: 90, typical: 120, high: 180 }, origin: "assumption" },
   { id: "uic_permit", name: "UIC Class V injection well permit", agency: "EPA or delegated state",
     authority: "42 U.S.C. 300h; 40 CFR 144",
     triggers: ["injection_proposed"], prerequisites: [], blocks: [],
-    duration: { low: 180, typical: 270, high: 365 } },
+    duration: { low: 180, typical: 270, high: 365 }, origin: "assumption" },
   { id: "nepa_ea", name: "NEPA Environmental Assessment", agency: "BLM",
     authority: "42 U.S.C. 4332; 43 CFR 46",
     triggers: ["federal_action"], prerequisites: [], blocks: ["nepa_decision"],
-    duration: { low: 270, typical: 365, high: 540 } },
+    duration: { low: 270, typical: 365, high: 540 }, origin: "agency" },
   { id: "biological_assessment", name: "Biological assessment and survey seasons", agency: "Applicant / BLM",
     authority: "50 CFR 402.12",
     triggers: ["listed_species_present"], prerequisites: [],
     blocks: ["esa_section7_informal", "esa_section7_formal"],
-    duration: { low: 270, typical: 365, high: 540 } },
+    duration: { low: 270, typical: 365, high: 540 }, origin: "assumption" },
   { id: "nv_water_right", name: "Nevada water right application", agency: "NDWR",
     authority: "NRS 533",
     triggers: ["water_use_proposed"], prerequisites: [], blocks: [],
-    duration: { low: 270, typical: 365, high: 540 } },
+    duration: { low: 270, typical: 365, high: 540 }, origin: "assumption" },
   { id: "esa_section7_informal", name: "ESA Section 7 informal consultation", agency: "USFWS",
     authority: "16 U.S.C. 1536(a)(2); 50 CFR 402.13",
     triggers: ["listed_species_present", "federal_nexus"],
     prerequisites: ["biological_assessment"],
     blocks: ["esa_section7_formal", "nepa_decision"],
-    duration: { low: 45, typical: 60, high: 90 } },
+    duration: { low: 45, typical: 60, high: 90 }, origin: "agency" },
   { id: "esa_section7_formal", name: "ESA Section 7 formal consultation", agency: "USFWS",
     authority: "16 U.S.C. 1536(a)(2); 50 CFR 402.14",
     triggers: ["listed_species_present", "federal_nexus", "likely_to_adversely_affect"],
     prerequisites: ["esa_section7_informal"],
     blocks: ["nepa_decision"],
-    duration: { low: 90, typical: 135, high: 180 } },
+    duration: { low: 90, typical: 135, high: 180 }, origin: "statutory" },
   { id: "nepa_decision", name: "NEPA decision document (FONSI or ROD)", agency: "BLM",
     authority: "43 CFR 46.325",
     triggers: ["federal_action"], prerequisites: ["nepa_ea"], blocks: ["apd_approval"],
-    duration: { low: 45, typical: 60, high: 90 } },
+    duration: { low: 45, typical: 60, high: 90 }, origin: "assumption" },
   { id: "apd_approval", name: "Application for Permit to Drill approval", agency: "BLM",
     authority: "43 CFR 3261",
     triggers: ["drilling_proposed"], prerequisites: ["nepa_decision"], blocks: [],
-    duration: { low: 120, typical: 180, high: 270 } }
+    duration: { low: 120, typical: 180, high: 270 }, origin: "assumption" }
 ];
+
+const ORIGIN_LABEL = {
+  statutory: "Statutory clock",
+  agency: "Published agency figure",
+  assumption: "Stated assumption"
+};
+const ORIGIN_ABBR = { statutory: "Stat", agency: "Agency", assumption: "Assume" };
+
+const DATA_FILES = [
+  "rapid-geothermal-content.json",
+  "rapid-geothermal-index.json",
+  "nepatec-blm-geothermal.json",
+  "nwi-dixie-valley.geojson",
+  "padus-dixie-valley.geojson",
+  "nhd-named-dixie-valley.geojson",
+  "tribal-reservations-nv.geojson",
+  "ipac-dixie-valley-crithab.json"
+];
+const DATA_CACHE = "mcp1971-data-v1";
 
 const NEPATEC_TYPE_TO_RULES = {
   "Renewable Energy Production - Geothermal": ["nepa_ea", "nepa_decision", "apd_approval"],
@@ -1213,42 +1420,84 @@ const NEPATEC_TYPE_TO_RULES = {
   "Pipelines": [],
   "Surface Transportation - Other": [],
   "Vegetation and Fuels Management": [],
+  "Waste Management": [],
+  "Ecosystem Management and Restoration": [],
+  "Utilities (electricity, gas, telecommunications)": [],
+  "Conventional Energy Production - Land-based Oil & Gas": [],
   "Rangeland Management": [],
   "Laws, Policies, Regulations, and Guidance": [],
   "Land Use or Forest Management Plan": []
 };
 
-const CONNECTORS = [
-  { id: "ipac", name: "USFWS IPaC", state: "live",
-    holds: "Listed species and the Section 7 trigger at a location.",
-    reviews: ["biological_assessment", "esa_section7_informal", "esa_section7_formal"] },
-  { id: "ecfr", name: "eCFR", state: "live",
+const COVERAGE = [
+  { id: "ipac", name: "USFWS IPaC", state: "captured",
+    holds: "Species screening, field office, wetlands query, and critical habitat array.",
+    url: "https://ipac.ecosphere.fws.gov/location/api/resources",
+    depends: "ESA consultation, biological assessment, project footprint" },
+  { id: "ecfr", name: "eCFR", state: "captured",
     holds: "Codified Title 43 implementing regulations.",
-    reviews: ["nepa_ea", "nepa_decision", "apd_approval"] },
-  { id: "fr", name: "Federal Register", state: "live",
+    url: "https://www.ecfr.gov/current/title-43",
+    depends: "NEPA EA, NEPA decision, APD" },
+  { id: "fr", name: "Federal Register", state: "captured",
     holds: "Recent Title 43 rules and proposed rules.",
-    reviews: ["nepa_ea", "nepa_decision"] },
+    url: "https://www.federalregister.gov/",
+    depends: "NEPA EA, NEPA decision" },
+  { id: "rapid", name: "OpenEI RAPID", state: "captured",
+    holds: "53-jurisdiction geothermal permitting narratives.",
+    url: "https://openei.org/wiki/RAPID/Geothermal",
+    depends: "Regulatory reference panel, Nevada permit gap" },
+  { id: "nepatec", name: "PNNL NEPATEC 2.0", state: "extracted",
+    holds: "Eight BLM geothermal Environmental Assessments.",
+    url: "https://huggingface.co/datasets/PNNL/NEPATEC2.0",
+    depends: "Document corpus, activity-type gaps" },
+  { id: "nwi", name: "USFWS NWI", state: "captured",
+    holds: "Cowardin-classified wetland polygons.",
+    url: "https://www.fws.gov/program/national-wetlands-inventory",
+    depends: "Wetlands map layer" },
+  { id: "padus", name: "USGS PAD-US", state: "captured",
+    holds: "Protected areas, including Wilderness Study Areas.",
+    url: "https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview",
+    depends: "Federal management layer, WSA gap" },
+  { id: "nhd", name: "USGS NHD", state: "captured",
+    holds: "Named flowline segments.",
+    url: "https://www.usgs.gov/national-hydrography/national-hydrography-dataset",
+    depends: "Hydrography map layer" },
+  { id: "tiger", name: "Census TIGERweb", state: "captured",
+    holds: "Federal American Indian reservations.",
+    url: "https://tigerweb.geo.census.gov/",
+    depends: "Tribal reservation layer, consultation gap" },
   { id: "mlrs", name: "BLM MLRS", state: "simulated",
     holds: "Lease serial, status, acreage, and administrative office.",
-    reviews: ["apd_approval"] },
+    url: "",
+    depends: "APD row, metadata strip" },
   { id: "afmss", name: "BLM AFMSS", state: "simulated",
     holds: "Well records and APD status.",
-    reviews: ["apd_approval"] },
+    url: "",
+    depends: "APD row" },
   { id: "eplanning", name: "BLM ePlanning", state: "none",
     holds: "NEPA documents and project dockets.",
-    reviews: ["nepa_ea", "nepa_decision"] },
+    url: "https://eplanning.blm.gov/",
+    depends: "NEPA EA, NEPA decision" },
   { id: "epa", name: "EPA UIC / SDWIS", state: "none",
     holds: "Underground injection control permits.",
-    reviews: ["uic_permit"] },
+    url: "https://www.epa.gov/uic",
+    depends: "UIC permit" },
   { id: "ndwr", name: "Nevada Division of Water Resources", state: "none",
     holds: "Water-right applications and decrees.",
-    reviews: ["nv_water_right"] },
+    url: "https://water.nv.gov/",
+    depends: "Nevada water right" },
   { id: "ndep", name: "Nevada Division of Environmental Protection", state: "none",
     holds: "State UIC and water-pollution permits.",
-    reviews: ["uic_permit"] },
+    url: "https://ndep.nv.gov/",
+    depends: "UIC permit" },
   { id: "shpo", name: "Nevada SHPO", state: "none",
     holds: "Historic-property consultation under Section 106.",
-    reviews: ["nhpa_section106"] }
+    url: "https://shpo.nv.gov/",
+    depends: "NHPA Section 106" },
+  { id: "ndom", name: "Nevada Division of Minerals", state: "none",
+    holds: "Permit to Drill, Geothermal Project Area Permit, Sundry Notice, well completion report.",
+    url: "https://minerals.nv.gov/",
+    depends: "APD row only in the rule set" }
 ];
 
 const IPAC = {
@@ -1502,6 +1751,7 @@ function computeSchedule(conditions, band) {
       name: r.name,
       agency: r.agency,
       authority: r.authority,
+      origin: r.origin,
       start_day: e.start_day,
       duration_days: e.duration_days,
       finish_day: e.finish_day,
@@ -1535,28 +1785,127 @@ function fmtDate(d) {
   const m = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   return d.getDate() + " " + m[d.getMonth()] + " " + d.getFullYear();
 }
-function isLive(payload) {
-  return !(payload.disclaimer && /SIMULATED/i.test(payload.disclaimer));
+function payloadTier(payload) {
+  if (!payload) return "captured";
+  if (payload.tier) return payload.tier;
+  if (payload.disclaimer && /SIMULATED/i.test(payload.disclaimer)) return "simulated";
+  if (payload.disclaimer && /EXTRACTED/i.test(payload.disclaimer)) return "extracted";
+  return "captured";
 }
 function csvEscape(v) {
   const s = String(v == null ? "" : v);
   return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
-function fieldVal(x) {
+function unwrap(x) {
   if (x == null) return "";
-  if (typeof x === "object" && x.value != null) return x.value;
+  if (Array.isArray(x)) return x.map(unwrap).filter(v => v !== "" && v != null);
+  if (typeof x === "object" && Object.prototype.hasOwnProperty.call(x, "value")) return unwrap(x.value);
   return x;
+}
+function asText(x) {
+  const v = unwrap(x);
+  if (Array.isArray(v)) return v.join("; ");
+  return String(v || "");
 }
 function parseLocation(str) {
   const m = String(str || "").match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);
   return m ? { lat: +m[1], lon: +m[2] } : null;
 }
+function wikiHref(page) {
+  return "https://openei.org/wiki/" + encodeURI(String(page || "").trim().replace(/ /g, "_"));
+}
+function wikiHtml(text) {
+  if (!text) return "";
+  const escaped = String(text)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return escaped
+    .replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, function (_, p, lab) {
+      return '<a href="' + wikiHref(p) + '">' + lab + "</a>";
+    })
+    .replace(/\[\[([^\]]+)\]\]/g, function (_, p) {
+      return '<a href="' + wikiHref(p) + '">' + p + "</a>";
+    })
+    .replace(/\n\n/g, "</p><p>")
+    .replace(/\n/g, "<br>");
+}
+function fmtAcres(n) {
+  if (n == null || isNaN(n)) return "—";
+  return Math.round(n).toLocaleString("en-US") + " acres";
+}
+async function loadCachedJSON(name) {
+  const url = "./data/" + name;
+  const key = "mcp1971:" + name;
+  async function fromCache() {
+    try {
+      const cache = await caches.open(DATA_CACHE);
+      const hit = await cache.match(url);
+      if (hit) return await hit.json();
+    } catch (e) {}
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  }
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    try {
+      const cache = await caches.open(DATA_CACHE);
+      await cache.put(url, new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } }));
+    } catch (e) {}
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+    return data;
+  } catch (e) {
+    const cached = await fromCache();
+    if (cached) return cached;
+    throw e;
+  }
+}
+
+const RAPID_TOPIC_TO_RULES = {
+  "Air Quality": [],
+  "Biological": ["biological_assessment", "esa_section7_informal", "esa_section7_formal"],
+  "Cultural": ["nhpa_section106"],
+  "Drilling & Well Development": ["apd_approval"],
+  "Environment": ["nepa_ea", "nepa_decision"],
+  "Exploration": ["apd_approval"],
+  "Land Access": [],
+  "Land Use": [],
+  "Power Plant": [],
+  "Transmission": [],
+  "Waste": ["uic_permit"],
+  "Water Access & Rights": ["nv_water_right"],
+  "Water Quality": []
+};
+
+const MAP_LAYERS = [
+  { id: "hydro", name: "Hydrography", source: "USGS National Hydrography Dataset", url: "https://www.usgs.gov/national-hydrography/national-hydrography-dataset" },
+  { id: "wetlands", name: "Wetlands", source: "USFWS National Wetlands Inventory", url: "https://www.fws.gov/program/national-wetlands-inventory" },
+  { id: "padus", name: "Federal management", source: "USGS PAD-US", url: "https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview" },
+  { id: "tribal", name: "Tribal reservations", source: "Census TIGERweb", url: "https://tigerweb.geo.census.gov/" },
+  { id: "project", name: "Project area", source: "USFWS IPaC", url: "https://ipac.ecosphere.fws.gov/location/api/resources" },
+  { id: "crithab", name: "Critical habitat", finding: true, note: "No critical habitat is designated at this location.", source: "USFWS IPaC", url: "https://ipac.ecosphere.fws.gov/location/api/resources" }
+];
+
+let mapInstance = null;
+const MAP_LAYER_IDS = {
+  hydro: ["nhd-line"],
+  wetlands: ["nwi-fill"],
+  padus: ["padus-fo-fill", "padus-fo-line", "padus-wsa-fill", "padus-wsa-line"],
+  tribal: ["tribal-fill", "tribal-line"],
+  project: ["project-line"],
+  nepatec: ["nepatec-circle"]
+};
 
 function app() {
   return {
     projects: PROJECTS,
     rules: RULES,
-    connectors: CONNECTORS,
+    coverage: COVERAGE,
+    ORIGIN_LABEL: ORIGIN_LABEL,
+    ORIGIN_ABBR: ORIGIN_ABBR,
     conditionKeys: CONDITION_KEYS,
     conditionLabels: CONDITION_LABELS,
     bands: ["low", "typical", "high"],
@@ -1573,10 +1922,16 @@ function app() {
     logActive: 0,
     seqToken: 0,
     rulesOpen: false,
-    corpus: null,
+    files: {},
+    fileErrors: {},
     corpusError: "",
     selectedCorpusId: null,
+    rapidJur: "Nevada",
+    layersOn: { hydro: true, wetlands: true, padus: true, tribal: true, project: true },
+    mapMode: "project",
+    mapPick: null,
     _ro: null,
+    _mapBound: false,
 
     get project() {
       return this.projects.find(p => p.id === this.projectId) || this.projects[0];
@@ -1602,7 +1957,7 @@ function app() {
       const L = p.lease.data.lease;
       const wells = p.wells.data;
       const sp = p.species.data;
-      const liveIpac = isLive(p.species);
+      const ipacTier = payloadTier(p.species);
       const spDetail = sp.total_species_returned
         ? (sp.total_species_returned + " species returned — " +
             (sp.triggering_species[0] ? sp.triggering_species[0].common_name : "") +
@@ -1620,7 +1975,7 @@ function app() {
           src: "SIMULATED" },
         { name: "fws.screen_species",
           detail: spDetail,
-          src: liveIpac ? "IPaC" : "SIMULATED" },
+          src: ipacTier === "simulated" ? "SIMULATED" : "IPaC" },
         { name: "ecfr.check_pending_rulemaking",
           detail: "Title 43 — " + FR.data.count + " documents in the last 12 months, incl. NEPA implementing regulations",
           src: "Fed. Register" },
@@ -1691,70 +2046,133 @@ function app() {
       return "Longest chain: " + names.join(" · ") + ".";
     },
     get corpusProjects() {
-      return (this.corpus && this.corpus.projects) ? this.corpus.projects : [];
-    },
-    get corpusPoints() {
-      const rows = this.corpusProjects.map(p => {
-        const loc = fieldVal(p.location);
-        const c = parseLocation(loc);
-        if (!c) return null;
-        const title = fieldVal(p.project_title);
-        const short = title.replace(/\s+geothermal.*$/i, "").replace(/\s+competitive.*$/i, "");
+      const raw = this.files["nepatec-blm-geothermal.json"];
+      const list = raw && raw.projects ? raw.projects : [];
+      return list.map(item => {
+        const pr = item.project || item;
+        const proc = item.process || {};
+        const docs = (item.documents || []).map(d => {
+          const fm = ((d.meta || {}).file_metadata) || {};
+          return {
+            file_name: asText(fm.file_name) || asText(d.file_name),
+            page_count: Number(unwrap(fm.total_pages)) || Number(d.page_count) || (d.pages ? d.pages.length : 0)
+          };
+        });
+        const loc = asText(pr.location);
+        const coords = parseLocation(loc);
+        const title = asText(pr.project_title);
+        const types = unwrap(pr.project_type);
         return {
-          id: p.project_ID,
-          title,
-          short,
-          adjacent: !!p.nevada_adjacent,
-          lat: c.lat,
-          lon: c.lon
+          project_ID: asText(pr.project_ID) || title,
+          title: title,
+          sponsor: asText(pr.project_sponsor),
+          location: loc,
+          lead: asText(proc.lead_agency),
+          types: Array.isArray(types) ? types : (types ? [types] : []),
+          documents: docs,
+          docCount: docs.length,
+          pageCount: docs.reduce((n, d) => n + (Number(d.page_count) || 0), 0),
+          lat: coords ? coords.lat : null,
+          lon: coords ? coords.lon : null,
+          adjacent: /nevada/i.test(loc) && /oregon|malheur/i.test(title + loc + asText(pr.project_sponsor) + asText(proc.lead_agency))
         };
-      }).filter(Boolean);
-      if (!rows.length) return [];
-      const lats = rows.map(r => r.lat);
-      const lons = rows.map(r => r.lon);
-      const lat0 = Math.min.apply(null, lats) - 0.9;
-      const lat1 = Math.max.apply(null, lats) + 0.9;
-      const lon0 = Math.min.apply(null, lons) - 0.9;
-      const lon1 = Math.max.apply(null, lons) + 0.9;
-      return rows.map(r => Object.assign({}, r, {
-        x: ((r.lon - lon0) / (lon1 - lon0) * 82 + 9).toFixed(2),
-        y: ((1 - (r.lat - lat0) / (lat1 - lat0)) * 78 + 11).toFixed(2)
+      });
+    },
+    get mapLayers() {
+      return MAP_LAYERS;
+    },
+    get rapidNames() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return c && c.data ? Object.keys(c.data) : [];
+    },
+    get rapidCount() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return (c && c.jurisdictions) || this.rapidNames.length || "—";
+    },
+    get rapidCurrent() {
+      const c = this.files["rapid-geothermal-content.json"];
+      return c && c.data ? c.data[this.rapidJur] : null;
+    },
+    get rapidSummaryRows() {
+      const cur = this.rapidCurrent;
+      if (!cur || !cur.summary) return [];
+      return Object.keys(cur.summary).filter(k => cur.summary[k]).map(k => ({
+        k: k,
+        html: "<p>" + wikiHtml(String(cur.summary[k])) + "</p>"
       }));
     },
-    get typeComparison() {
-      const seen = {};
-      const types = [];
-      this.corpusProjects.forEach(p => {
-        this.corpusTypes(p).forEach(t => {
-          if (!seen[t]) { seen[t] = true; types.push(t); }
-        });
-      });
-      types.sort();
-      const on = this.result ? new Set(this.result.schedule.map(s => s.id)) : new Set();
-      return types.map(type => {
-        const ids = NEPATEC_TYPE_TO_RULES.hasOwnProperty(type) ? NEPATEC_TYPE_TO_RULES[type] : [];
-        const gap = !ids.length;
-        const names = ids.map(id => {
-          const r = RULES.find(x => x.id === id);
-          return r ? r.name : id;
-        });
-        const present = ids.filter(id => on.has(id)).map(id => {
-          const r = RULES.find(x => x.id === id);
-          return r ? r.name : id;
-        });
+    get rapidIndexCount() {
+      const idx = this.files["rapid-geothermal-index.json"];
+      const pages = idx && idx.index && idx.index[this.rapidJur];
+      return pages ? pages.length : 0;
+    },
+    get rapidTopics() {
+      const cur = this.rapidCurrent;
+      const topics = cur && cur.topics ? cur.topics : {};
+      return Object.keys(topics).map(name => {
+        const t = topics[name] || {};
+        const mapped = RAPID_TOPIC_TO_RULES.hasOwnProperty(name) ? RAPID_TOPIC_TO_RULES[name] : [];
+        const gap = mapped.length === 0;
         return {
-          type,
-          gap,
-          reviews: names,
-          onTimeline: gap ? "—" : (present.length ? present.join("; ") : "Not triggered under current conditions")
+          name: name,
+          url: t.url || ("https://openei.org/wiki/RAPID/Geothermal/" + encodeURIComponent(this.rapidJur) + "/" + encodeURIComponent(name)),
+          html: "<p>" + wikiHtml(t.text || "") + "</p>",
+          gap: gap,
+          gapNote: gap ? "No corresponding review in the rule set." : "",
+          nvDrill: this.rapidJur === "Nevada" && name === "Drilling & Well Development"
         };
       });
+    },
+    get gapFindings() {
+      const pad = this.files["padus-dixie-valley.geojson"];
+      const wsas = pad ? pad.features.filter(f => (f.properties || {}).Des_Tp === "WSA") : [];
+      const wsaNames = wsas.map(f => f.properties.Unit_Nm).join("; ") ||
+        "Clan Alpine Mountains Wilderness Study Area; Stillwater Range Wilderness Study Area; Job Peak Wilderness Study Area";
+      const trib = this.files["tribal-reservations-nv.geojson"];
+      const tnames = trib ? trib.features.map(f => (f.properties || {}).NAME).join("; ") : "";
+      const types = [];
+      const seen = {};
+      this.corpusProjects.forEach(p => {
+        p.types.forEach(t => { if (!seen[t]) { seen[t] = true; types.push(t); } });
+      });
+      const uncovered = ["Pipelines", "Electricity Transmission", "Surface Transportation - Other", "Waste Management", "Vegetation and Fuels Management"]
+        .filter(t => types.indexOf(t) >= 0 || types.length === 0);
+      return [
+        {
+          title: "Wilderness Study Areas",
+          finding: "Three Wilderness Study Areas sit adjacent to the project. The rule set has no WSA review.",
+          evidence: wsaNames + ". Managing agency: BLM.",
+          source: "USGS PAD-US",
+          tier: "captured"
+        },
+        {
+          title: "Tribal consultation",
+          finding: "Eight federal reservations fall within consultation range. The rule set models NHPA Section 106 with SHPO only and has no tribal consultation row.",
+          evidence: tnames || "Eight Census TIGERweb federal reservations in Nevada.",
+          source: "Census TIGERweb",
+          tier: "captured"
+        },
+        {
+          title: "Geothermal EA activity types",
+          finding: "Real geothermal EAs cover pipelines, electricity transmission, surface transportation, waste management, and vegetation and fuels management. The rule set has no corresponding reviews.",
+          evidence: uncovered.join("; ") + ".",
+          source: "PNNL NEPATEC 2.0",
+          tier: "extracted"
+        },
+        {
+          title: "Nevada well permits",
+          finding: "Nevada requires permits the rule set does not model: a Geothermal Project Area Permit, a Sundry Notice, and a well completion report due within 60 days. The rule set has one APD row.",
+          evidence: "OpenEI RAPID Nevada Drilling & Well Development narrative.",
+          source: "OpenEI RAPID",
+          tier: "captured"
+        }
+      ];
     },
 
     init() {
       this.recompute();
       this.runSequence();
-      this.loadCorpus();
+      this.loadAllData();
       this.$nextTick(() => {
         this.drawChart();
         if (this.$refs.tracks && window.ResizeObserver) {
@@ -1763,24 +2181,43 @@ function app() {
         }
       });
     },
-    fieldVal: fieldVal,
-    corpusTypes(p) {
-      const v = fieldVal(p.project_type);
-      if (Array.isArray(v)) return v;
-      if (!v) return [];
-      return String(v).split(/;\s*/);
+    originLabel(id) {
+      const r = RULES.find(x => x.id === id);
+      return r ? ORIGIN_LABEL[r.origin] : "";
     },
-    corpusPages(p) {
-      return (p.documents || []).reduce((n, d) => n + (Number(d.page_count) || 0), 0);
+    originAbbr(id) {
+      const r = RULES.find(x => x.id === id);
+      return r ? ORIGIN_ABBR[r.origin] : "";
     },
-    async loadCorpus() {
-      try {
-        const res = await fetch("./nepatec-blm-geothermal.json");
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        this.corpus = await res.json();
-      } catch (err) {
-        this.corpusError = "The NEPATEC extract could not be loaded.";
-      }
+    tierClass(payload) {
+      const t = typeof payload === "string" ? payload : payloadTier(payload);
+      return { live: t === "live", captured: t === "captured", extract: t === "extracted", sim: t === "simulated", none: t === "none" };
+    },
+    tierLabel(payload) {
+      const t = typeof payload === "string" ? payload : payloadTier(payload);
+      return this.stateLabel(t);
+    },
+    stateClass(state) {
+      return { live: state === "live", captured: state === "captured", extract: state === "extracted", sim: state === "simulated", none: state === "none" };
+    },
+    stateLabel(state) {
+      return { live: "Live API", captured: "Captured", extracted: "Extracted", simulated: "Simulated", none: "No connector" }[state] || state;
+    },
+    async loadAllData() {
+      await Promise.all(DATA_FILES.map(async name => {
+        try {
+          const data = await loadCachedJSON(name);
+          this.files = Object.assign({}, this.files, { [name]: data });
+        } catch (e) {
+          this.fileErrors[name] = true;
+          if (name === "nepatec-blm-geothermal.json") this.corpusError = "The NEPATEC extract could not be loaded.";
+        }
+      }));
+      this.$nextTick(() => this.initMap());
+    },
+    selectCorpus(p) {
+      this.selectedCorpusId = this.selectedCorpusId === p.project_ID ? null : p.project_ID;
+      if (this.selectedCorpusId && p.lat != null) this.fitWest();
     },
     snapshot() {
       if (this.pinned) return;
@@ -1857,37 +2294,9 @@ function app() {
     },
     selectReview(id) {
       this.selectedReview = this.selectedReview === id ? null : id;
-      this.selectedSource = null;
-    },
-    selectSource(id) {
-      this.selectedSource = this.selectedSource === id ? null : id;
-      this.selectedReview = null;
     },
     rowClass(id) {
-      const hl = this.isRowHighlighted(id);
-      const dim = (this.selectedSource || this.selectedReview) && !hl;
-      return { sel: this.selectedReview === id, dim: dim };
-    },
-    isRowHighlighted(id) {
-      if (this.selectedSource) {
-        const c = CONNECTORS.find(x => x.id === this.selectedSource);
-        return !!(c && c.reviews.indexOf(id) >= 0);
-      }
-      return this.selectedReview === id;
-    },
-    sourceClass(c) {
-      let hl = false;
-      if (this.selectedSource) hl = this.selectedSource === c.id;
-      else if (this.selectedReview) hl = c.reviews.indexOf(this.selectedReview) >= 0;
-      return { hl: hl, dim: (this.selectedReview || this.selectedSource) ? !hl : false };
-    },
-    sourceDeps(c) {
-      if (!this.result) return "None on the current schedule.";
-      const names = c.reviews
-        .map(id => this.result.schedule.find(s => s.id === id))
-        .filter(Boolean)
-        .map(s => s.name);
-      return names.length ? names.join("; ") : "None on the current schedule.";
+      return { sel: this.selectedReview === id, dim: !!(this.selectedReview && this.selectedReview !== id) };
     },
     idx(i) {
       return String(i + 1).padStart(2, "0");
@@ -1946,7 +2355,173 @@ function app() {
       };
       return map[id] || [];
     },
-    isLive: isLive,
+    toggleLayer(id) {
+      this.layersOn[id] = !this.layersOn[id];
+      this.applyLayerVisibility();
+    },
+    applyLayerVisibility() {
+      if (!mapInstance) return;
+      Object.keys(MAP_LAYER_IDS).forEach(id => {
+        const on = id === "nepatec" ? this.mapMode === "west" : !!this.layersOn[id];
+        MAP_LAYER_IDS[id].forEach(lid => {
+          if (mapInstance.getLayer(lid)) mapInstance.setLayoutProperty(lid, "visibility", on ? "visible" : "none");
+        });
+      });
+    },
+    fitProject() {
+      this.mapMode = "project";
+      this.applyLayerVisibility();
+      if (!mapInstance) return;
+      const ipac = this.files["ipac-dixie-valley-crithab.json"];
+      const fp = ipac && ipac.resources && ipac.resources.location && ipac.resources.location.footprint;
+      const b = fp ? this.geomBounds(fp) : [-118.22, 39.48, -117.98, 39.72];
+      mapInstance.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 36, duration: 600 });
+    },
+    fitWest() {
+      this.mapMode = "west";
+      this.applyLayerVisibility();
+      if (!mapInstance) return;
+      const pts = this.corpusProjects.filter(p => p.lat != null);
+      if (!pts.length) {
+        mapInstance.fitBounds([[-125, 31], [-108, 46]], { padding: 36, duration: 600 });
+        return;
+      }
+      const b = [
+        Math.min.apply(null, pts.map(p => p.lon)) - 1.2,
+        Math.min.apply(null, pts.map(p => p.lat)) - 1.2,
+        Math.max.apply(null, pts.map(p => p.lon)) + 1.2,
+        Math.max.apply(null, pts.map(p => p.lat)) + 1.2
+      ];
+      mapInstance.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 48, duration: 600 });
+    },
+    geomBounds(geom) {
+      const acc = [Infinity, Infinity, -Infinity, -Infinity];
+      const walk = node => {
+        if (!node) return;
+        if (typeof node[0] === "number") {
+          acc[0] = Math.min(acc[0], node[0]);
+          acc[1] = Math.min(acc[1], node[1]);
+          acc[2] = Math.max(acc[2], node[0]);
+          acc[3] = Math.max(acc[3], node[1]);
+          return;
+        }
+        node.forEach(walk);
+      };
+      walk(geom.coordinates);
+      return acc;
+    },
+    projectFeature() {
+      const ipac = this.files["ipac-dixie-valley-crithab.json"];
+      const fp = ipac && ipac.resources && ipac.resources.location && ipac.resources.location.footprint;
+      return {
+        type: "FeatureCollection",
+        features: fp ? [{ type: "Feature", properties: { name: "Dixie Valley project area" }, geometry: fp }] : []
+      };
+    },
+    nepatecCollection() {
+      return {
+        type: "FeatureCollection",
+        features: this.corpusProjects.filter(p => p.lat != null).map(p => ({
+          type: "Feature",
+          properties: { id: p.project_ID, name: p.title },
+          geometry: { type: "Point", coordinates: [p.lon, p.lat] }
+        }))
+      };
+    },
+    ensureSource(id, data) {
+      if (!mapInstance || !data) return;
+      const src = mapInstance.getSource(id);
+      if (src) src.setData(data);
+      else mapInstance.addSource(id, { type: "geojson", data: data });
+    },
+    bindMapClick(layer, kind) {
+      if (!mapInstance.getLayer(layer)) return;
+      mapInstance.on("click", layer, e => {
+        const f = e.features && e.features[0];
+        if (!f) return;
+        const p = f.properties || {};
+        if (kind === "wsa") {
+          this.mapPick = {
+            name: p.Unit_Nm || p.Loc_Nm || "Wilderness Study Area",
+            agency: (p.Mang_Name || "BLM") + (p.Mang_Type ? " (" + p.Mang_Type + ")" : ""),
+            acres: fmtAcres(Number(p.GIS_Acres)),
+            source: "USGS PAD-US"
+          };
+        } else if (kind === "tribal") {
+          const m2 = Number(p.AREALAND);
+          this.mapPick = {
+            name: p.NAME || p.BASENAME,
+            agency: "Bureau of Indian Affairs",
+            acres: fmtAcres(m2 * 0.000247105),
+            source: "Census TIGERweb"
+          };
+        } else if (kind === "nepatec") {
+          this.selectedCorpusId = p.id;
+          this.mapPick = {
+            name: p.name,
+            agency: "Bureau of Land Management",
+            acres: "—",
+            source: "PNNL NEPATEC 2.0"
+          };
+        }
+      });
+      mapInstance.on("mouseenter", layer, () => { mapInstance.getCanvas().style.cursor = "pointer"; });
+      mapInstance.on("mouseleave", layer, () => { mapInstance.getCanvas().style.cursor = ""; });
+    },
+    initMap() {
+      if (!window.maplibregl || mapInstance || !this.$refs.map) return;
+      const self = this;
+      mapInstance = new maplibregl.Map({
+        container: this.$refs.map,
+        style: {
+          version: 8,
+          sources: {},
+          layers: [{ id: "bg", type: "background", paint: { "background-color": "#0A1A4F" } }]
+        },
+        attributionControl: false,
+        renderWorldCopies: false
+      });
+      mapInstance.on("load", () => {
+        self.ensureSource("nhd", self.files["nhd-named-dixie-valley.geojson"]);
+        self.ensureSource("nwi", self.files["nwi-dixie-valley.geojson"]);
+        self.ensureSource("padus", self.files["padus-dixie-valley.geojson"]);
+        self.ensureSource("tribal", self.files["tribal-reservations-nv.geojson"]);
+        self.ensureSource("project", self.projectFeature());
+        self.ensureSource("nepatec", self.nepatecCollection());
+        const layers = [
+          { id: "nhd-line", type: "line", source: "nhd", paint: { "line-color": "#DDE2EE", "line-width": 0.8 } },
+          { id: "nwi-fill", type: "fill", source: "nwi", paint: { "fill-color": "#8B9BC8", "fill-opacity": 0.28, "fill-outline-color": "#8B9BC8" } },
+          { id: "padus-fo-fill", type: "fill", source: "padus", filter: ["!=", ["get", "Des_Tp"], "WSA"],
+            paint: { "fill-color": "#243A72", "fill-opacity": 0.16 } },
+          { id: "padus-fo-line", type: "line", source: "padus", filter: ["!=", ["get", "Des_Tp"], "WSA"],
+            paint: { "line-color": "#7A8CB8", "line-width": 1 } },
+          { id: "padus-wsa-fill", type: "fill", source: "padus", filter: ["==", ["get", "Des_Tp"], "WSA"],
+            paint: { "fill-color": "#F5B819", "fill-opacity": 0.08 } },
+          { id: "padus-wsa-line", type: "line", source: "padus", filter: ["==", ["get", "Des_Tp"], "WSA"],
+            paint: { "line-color": "#F5B819", "line-width": 2 } },
+          { id: "tribal-fill", type: "fill", source: "tribal", paint: { "fill-color": "#ffffff", "fill-opacity": 0.04 } },
+          { id: "tribal-line", type: "line", source: "tribal", paint: { "line-color": "#ffffff", "line-width": 1.6 } },
+          { id: "project-line", type: "line", source: "project",
+            paint: { "line-color": "#F5B819", "line-width": 3, "line-opacity": 1 } },
+          { id: "nepatec-circle", type: "circle", source: "nepatec",
+            paint: { "circle-radius": 6, "circle-color": "#F5B819", "circle-stroke-width": 1.5, "circle-stroke-color": "#0A1A4F" } }
+        ];
+        layers.forEach(ly => {
+          if (mapInstance.getSource(ly.source) && !mapInstance.getLayer(ly.id)) mapInstance.addLayer(ly);
+        });
+        self.bindMapClick("padus-wsa-fill", "wsa");
+        self.bindMapClick("padus-wsa-line", "wsa");
+        self.bindMapClick("tribal-fill", "tribal");
+        self.bindMapClick("tribal-line", "tribal");
+        self.bindMapClick("nepatec-circle", "nepatec");
+        self.applyLayerVisibility();
+        self.fitProject();
+        mapInstance.resize();
+      });
+      if (window.ResizeObserver && this.$refs.map) {
+        new ResizeObserver(() => { if (mapInstance) mapInstance.resize(); }).observe(this.$refs.map.parentElement || this.$refs.map);
+      }
+    },
     drawChart() {
       const d3g = window.d3;
       const tracks = this.$refs.tracks;

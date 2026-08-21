@@ -28,9 +28,9 @@ jobs:
       - name: Stage site
         run: |
           mkdir _site
-          cp index.html CNAME header.png nepatec-blm-geothermal.json _site/
+          cp index.html CNAME header.png _site/
           cp -R vendor _site/vendor
-          cp -R extracted _site/extracted
+          cp -R data _site/data
           touch _site/.nojekyll
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -1,0 +1,5275 @@
+{
+  "source": "OpenEI RAPID Toolkit",
+  "url": "https://openei.org/wiki/RAPID/Geothermal",
+  "retrieved": "2026-08-20T20:59:59Z",
+  "jurisdictions": 53,
+  "total_pages": 1089,
+  "index": {
+    "Alabama": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213421,
+        "title": "RAPID/Geothermal/Alabama/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213422,
+        "title": "RAPID/Geothermal/Alabama/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213423,
+        "title": "RAPID/Geothermal/Alabama/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213424,
+        "title": "RAPID/Geothermal/Alabama/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213425,
+        "title": "RAPID/Geothermal/Alabama/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213426,
+        "title": "RAPID/Geothermal/Alabama/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213427,
+        "title": "RAPID/Geothermal/Alabama/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213428,
+        "title": "RAPID/Geothermal/Alabama/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213429,
+        "title": "RAPID/Geothermal/Alabama/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213430,
+        "title": "RAPID/Geothermal/Alabama/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213431,
+        "title": "RAPID/Geothermal/Alabama/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213432,
+        "title": "RAPID/Geothermal/Alabama/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213433,
+        "title": "RAPID/Geothermal/Alabama/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213434,
+        "title": "RAPID/Geothermal/Alabama/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213435,
+        "title": "RAPID/Geothermal/Alabama/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213436,
+        "title": "RAPID/Geothermal/Alabama/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213437,
+        "title": "RAPID/Geothermal/Alabama/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213438,
+        "title": "RAPID/Geothermal/Alabama/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213439,
+        "title": "RAPID/Geothermal/Alabama/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213440,
+        "title": "RAPID/Geothermal/Alabama/Water Quality"
+      }
+    ],
+    "Alaska": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213441,
+        "title": "RAPID/Geothermal/Alaska/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213442,
+        "title": "RAPID/Geothermal/Alaska/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213443,
+        "title": "RAPID/Geothermal/Alaska/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213444,
+        "title": "RAPID/Geothermal/Alaska/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213445,
+        "title": "RAPID/Geothermal/Alaska/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213446,
+        "title": "RAPID/Geothermal/Alaska/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213447,
+        "title": "RAPID/Geothermal/Alaska/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213448,
+        "title": "RAPID/Geothermal/Alaska/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213449,
+        "title": "RAPID/Geothermal/Alaska/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213450,
+        "title": "RAPID/Geothermal/Alaska/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213451,
+        "title": "RAPID/Geothermal/Alaska/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213452,
+        "title": "RAPID/Geothermal/Alaska/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213453,
+        "title": "RAPID/Geothermal/Alaska/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213454,
+        "title": "RAPID/Geothermal/Alaska/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213455,
+        "title": "RAPID/Geothermal/Alaska/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213456,
+        "title": "RAPID/Geothermal/Alaska/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213457,
+        "title": "RAPID/Geothermal/Alaska/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213458,
+        "title": "RAPID/Geothermal/Alaska/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213459,
+        "title": "RAPID/Geothermal/Alaska/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213460,
+        "title": "RAPID/Geothermal/Alaska/Water Quality"
+      }
+    ],
+    "Arizona": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213461,
+        "title": "RAPID/Geothermal/Arizona/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213462,
+        "title": "RAPID/Geothermal/Arizona/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213463,
+        "title": "RAPID/Geothermal/Arizona/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213464,
+        "title": "RAPID/Geothermal/Arizona/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213465,
+        "title": "RAPID/Geothermal/Arizona/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213466,
+        "title": "RAPID/Geothermal/Arizona/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213467,
+        "title": "RAPID/Geothermal/Arizona/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213468,
+        "title": "RAPID/Geothermal/Arizona/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213469,
+        "title": "RAPID/Geothermal/Arizona/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213470,
+        "title": "RAPID/Geothermal/Arizona/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213471,
+        "title": "RAPID/Geothermal/Arizona/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213472,
+        "title": "RAPID/Geothermal/Arizona/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213473,
+        "title": "RAPID/Geothermal/Arizona/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213474,
+        "title": "RAPID/Geothermal/Arizona/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213475,
+        "title": "RAPID/Geothermal/Arizona/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213476,
+        "title": "RAPID/Geothermal/Arizona/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213477,
+        "title": "RAPID/Geothermal/Arizona/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213478,
+        "title": "RAPID/Geothermal/Arizona/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213479,
+        "title": "RAPID/Geothermal/Arizona/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213480,
+        "title": "RAPID/Geothermal/Arizona/Water Quality"
+      }
+    ],
+    "Arkansas": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213481,
+        "title": "RAPID/Geothermal/Arkansas/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213482,
+        "title": "RAPID/Geothermal/Arkansas/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213483,
+        "title": "RAPID/Geothermal/Arkansas/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213484,
+        "title": "RAPID/Geothermal/Arkansas/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213485,
+        "title": "RAPID/Geothermal/Arkansas/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213486,
+        "title": "RAPID/Geothermal/Arkansas/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213487,
+        "title": "RAPID/Geothermal/Arkansas/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213488,
+        "title": "RAPID/Geothermal/Arkansas/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213489,
+        "title": "RAPID/Geothermal/Arkansas/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213490,
+        "title": "RAPID/Geothermal/Arkansas/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213491,
+        "title": "RAPID/Geothermal/Arkansas/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213492,
+        "title": "RAPID/Geothermal/Arkansas/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213493,
+        "title": "RAPID/Geothermal/Arkansas/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213494,
+        "title": "RAPID/Geothermal/Arkansas/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213495,
+        "title": "RAPID/Geothermal/Arkansas/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213496,
+        "title": "RAPID/Geothermal/Arkansas/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213497,
+        "title": "RAPID/Geothermal/Arkansas/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213498,
+        "title": "RAPID/Geothermal/Arkansas/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213499,
+        "title": "RAPID/Geothermal/Arkansas/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213500,
+        "title": "RAPID/Geothermal/Arkansas/Water Quality"
+      }
+    ],
+    "California": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213501,
+        "title": "RAPID/Geothermal/California/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213502,
+        "title": "RAPID/Geothermal/California/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213503,
+        "title": "RAPID/Geothermal/California/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213504,
+        "title": "RAPID/Geothermal/California/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213505,
+        "title": "RAPID/Geothermal/California/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213506,
+        "title": "RAPID/Geothermal/California/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213507,
+        "title": "RAPID/Geothermal/California/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213508,
+        "title": "RAPID/Geothermal/California/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213509,
+        "title": "RAPID/Geothermal/California/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213510,
+        "title": "RAPID/Geothermal/California/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213511,
+        "title": "RAPID/Geothermal/California/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213512,
+        "title": "RAPID/Geothermal/California/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213513,
+        "title": "RAPID/Geothermal/California/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213514,
+        "title": "RAPID/Geothermal/California/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213515,
+        "title": "RAPID/Geothermal/California/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213516,
+        "title": "RAPID/Geothermal/California/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213517,
+        "title": "RAPID/Geothermal/California/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213518,
+        "title": "RAPID/Geothermal/California/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213519,
+        "title": "RAPID/Geothermal/California/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213520,
+        "title": "RAPID/Geothermal/California/Water Quality"
+      }
+    ],
+    "Colorado": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213521,
+        "title": "RAPID/Geothermal/Colorado/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213522,
+        "title": "RAPID/Geothermal/Colorado/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213523,
+        "title": "RAPID/Geothermal/Colorado/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213524,
+        "title": "RAPID/Geothermal/Colorado/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213525,
+        "title": "RAPID/Geothermal/Colorado/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213526,
+        "title": "RAPID/Geothermal/Colorado/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213527,
+        "title": "RAPID/Geothermal/Colorado/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213528,
+        "title": "RAPID/Geothermal/Colorado/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213529,
+        "title": "RAPID/Geothermal/Colorado/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213530,
+        "title": "RAPID/Geothermal/Colorado/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213531,
+        "title": "RAPID/Geothermal/Colorado/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213532,
+        "title": "RAPID/Geothermal/Colorado/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213533,
+        "title": "RAPID/Geothermal/Colorado/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 215502,
+        "title": "RAPID/Geothermal/Colorado/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213535,
+        "title": "RAPID/Geothermal/Colorado/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213536,
+        "title": "RAPID/Geothermal/Colorado/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213537,
+        "title": "RAPID/Geothermal/Colorado/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213538,
+        "title": "RAPID/Geothermal/Colorado/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213539,
+        "title": "RAPID/Geothermal/Colorado/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213540,
+        "title": "RAPID/Geothermal/Colorado/Water Quality"
+      }
+    ],
+    "Connecticut": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213541,
+        "title": "RAPID/Geothermal/Connecticut/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213542,
+        "title": "RAPID/Geothermal/Connecticut/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213543,
+        "title": "RAPID/Geothermal/Connecticut/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213544,
+        "title": "RAPID/Geothermal/Connecticut/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213545,
+        "title": "RAPID/Geothermal/Connecticut/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213546,
+        "title": "RAPID/Geothermal/Connecticut/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213547,
+        "title": "RAPID/Geothermal/Connecticut/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213548,
+        "title": "RAPID/Geothermal/Connecticut/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213549,
+        "title": "RAPID/Geothermal/Connecticut/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213550,
+        "title": "RAPID/Geothermal/Connecticut/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213551,
+        "title": "RAPID/Geothermal/Connecticut/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213552,
+        "title": "RAPID/Geothermal/Connecticut/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213553,
+        "title": "RAPID/Geothermal/Connecticut/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213554,
+        "title": "RAPID/Geothermal/Connecticut/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213555,
+        "title": "RAPID/Geothermal/Connecticut/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213556,
+        "title": "RAPID/Geothermal/Connecticut/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213557,
+        "title": "RAPID/Geothermal/Connecticut/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213558,
+        "title": "RAPID/Geothermal/Connecticut/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213559,
+        "title": "RAPID/Geothermal/Connecticut/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213560,
+        "title": "RAPID/Geothermal/Connecticut/Water Quality"
+      }
+    ],
+    "Delaware": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213561,
+        "title": "RAPID/Geothermal/Delaware/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213562,
+        "title": "RAPID/Geothermal/Delaware/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213563,
+        "title": "RAPID/Geothermal/Delaware/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213564,
+        "title": "RAPID/Geothermal/Delaware/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213565,
+        "title": "RAPID/Geothermal/Delaware/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213566,
+        "title": "RAPID/Geothermal/Delaware/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213567,
+        "title": "RAPID/Geothermal/Delaware/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213568,
+        "title": "RAPID/Geothermal/Delaware/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213569,
+        "title": "RAPID/Geothermal/Delaware/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213570,
+        "title": "RAPID/Geothermal/Delaware/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213571,
+        "title": "RAPID/Geothermal/Delaware/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213572,
+        "title": "RAPID/Geothermal/Delaware/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213573,
+        "title": "RAPID/Geothermal/Delaware/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213574,
+        "title": "RAPID/Geothermal/Delaware/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213575,
+        "title": "RAPID/Geothermal/Delaware/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213576,
+        "title": "RAPID/Geothermal/Delaware/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213577,
+        "title": "RAPID/Geothermal/Delaware/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213578,
+        "title": "RAPID/Geothermal/Delaware/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213579,
+        "title": "RAPID/Geothermal/Delaware/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213580,
+        "title": "RAPID/Geothermal/Delaware/Water Quality"
+      }
+    ],
+    "Federal": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213581,
+        "title": "RAPID/Geothermal/Federal/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213582,
+        "title": "RAPID/Geothermal/Federal/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213583,
+        "title": "RAPID/Geothermal/Federal/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213584,
+        "title": "RAPID/Geothermal/Federal/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213585,
+        "title": "RAPID/Geothermal/Federal/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213586,
+        "title": "RAPID/Geothermal/Federal/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213587,
+        "title": "RAPID/Geothermal/Federal/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213588,
+        "title": "RAPID/Geothermal/Federal/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213589,
+        "title": "RAPID/Geothermal/Federal/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213590,
+        "title": "RAPID/Geothermal/Federal/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213591,
+        "title": "RAPID/Geothermal/Federal/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213592,
+        "title": "RAPID/Geothermal/Federal/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213593,
+        "title": "RAPID/Geothermal/Federal/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213594,
+        "title": "RAPID/Geothermal/Federal/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213595,
+        "title": "RAPID/Geothermal/Federal/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213596,
+        "title": "RAPID/Geothermal/Federal/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213597,
+        "title": "RAPID/Geothermal/Federal/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213598,
+        "title": "RAPID/Geothermal/Federal/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213599,
+        "title": "RAPID/Geothermal/Federal/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213600,
+        "title": "RAPID/Geothermal/Federal/Water Quality"
+      }
+    ],
+    "Florida": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213601,
+        "title": "RAPID/Geothermal/Florida/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213602,
+        "title": "RAPID/Geothermal/Florida/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213603,
+        "title": "RAPID/Geothermal/Florida/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213604,
+        "title": "RAPID/Geothermal/Florida/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213605,
+        "title": "RAPID/Geothermal/Florida/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213606,
+        "title": "RAPID/Geothermal/Florida/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213607,
+        "title": "RAPID/Geothermal/Florida/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213608,
+        "title": "RAPID/Geothermal/Florida/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213609,
+        "title": "RAPID/Geothermal/Florida/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213610,
+        "title": "RAPID/Geothermal/Florida/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213611,
+        "title": "RAPID/Geothermal/Florida/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213612,
+        "title": "RAPID/Geothermal/Florida/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213613,
+        "title": "RAPID/Geothermal/Florida/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213614,
+        "title": "RAPID/Geothermal/Florida/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213615,
+        "title": "RAPID/Geothermal/Florida/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213616,
+        "title": "RAPID/Geothermal/Florida/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213617,
+        "title": "RAPID/Geothermal/Florida/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213618,
+        "title": "RAPID/Geothermal/Florida/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213619,
+        "title": "RAPID/Geothermal/Florida/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213620,
+        "title": "RAPID/Geothermal/Florida/Water Quality"
+      }
+    ],
+    "Georgia": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213621,
+        "title": "RAPID/Geothermal/Georgia/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213622,
+        "title": "RAPID/Geothermal/Georgia/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213623,
+        "title": "RAPID/Geothermal/Georgia/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213624,
+        "title": "RAPID/Geothermal/Georgia/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213625,
+        "title": "RAPID/Geothermal/Georgia/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213626,
+        "title": "RAPID/Geothermal/Georgia/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213627,
+        "title": "RAPID/Geothermal/Georgia/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213628,
+        "title": "RAPID/Geothermal/Georgia/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213629,
+        "title": "RAPID/Geothermal/Georgia/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213630,
+        "title": "RAPID/Geothermal/Georgia/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213631,
+        "title": "RAPID/Geothermal/Georgia/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213632,
+        "title": "RAPID/Geothermal/Georgia/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213633,
+        "title": "RAPID/Geothermal/Georgia/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213634,
+        "title": "RAPID/Geothermal/Georgia/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213635,
+        "title": "RAPID/Geothermal/Georgia/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213636,
+        "title": "RAPID/Geothermal/Georgia/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213637,
+        "title": "RAPID/Geothermal/Georgia/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213638,
+        "title": "RAPID/Geothermal/Georgia/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213639,
+        "title": "RAPID/Geothermal/Georgia/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213640,
+        "title": "RAPID/Geothermal/Georgia/Water Quality"
+      }
+    ],
+    "Grid Connection": [
+      {
+        "category": "Alaska",
+        "pageid": 204006,
+        "title": "RAPID/Geothermal/Grid Connection/Alaska"
+      },
+      {
+        "category": "California",
+        "pageid": 204007,
+        "title": "RAPID/Geothermal/Grid Connection/California"
+      },
+      {
+        "category": "Colorado",
+        "pageid": 204008,
+        "title": "RAPID/Geothermal/Grid Connection/Colorado"
+      },
+      {
+        "category": "Federal",
+        "pageid": 204023,
+        "title": "RAPID/Geothermal/Grid Connection/Federal"
+      },
+      {
+        "category": "Hawaii",
+        "pageid": 204010,
+        "title": "RAPID/Geothermal/Grid Connection/Hawaii"
+      },
+      {
+        "category": "Idaho",
+        "pageid": 204012,
+        "title": "RAPID/Geothermal/Grid Connection/Idaho"
+      },
+      {
+        "category": "Montana",
+        "pageid": 204013,
+        "title": "RAPID/Geothermal/Grid Connection/Montana"
+      },
+      {
+        "category": "Nevada",
+        "pageid": 204014,
+        "title": "RAPID/Geothermal/Grid Connection/Nevada"
+      },
+      {
+        "category": "Oregon",
+        "pageid": 204015,
+        "title": "RAPID/Geothermal/Grid Connection/Oregon"
+      },
+      {
+        "category": "Texas",
+        "pageid": 204016,
+        "title": "RAPID/Geothermal/Grid Connection/Texas"
+      },
+      {
+        "category": "Utah",
+        "pageid": 204017,
+        "title": "RAPID/Geothermal/Grid Connection/Utah"
+      }
+    ],
+    "Hawaii": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213641,
+        "title": "RAPID/Geothermal/Hawaii/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213642,
+        "title": "RAPID/Geothermal/Hawaii/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213643,
+        "title": "RAPID/Geothermal/Hawaii/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213644,
+        "title": "RAPID/Geothermal/Hawaii/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213645,
+        "title": "RAPID/Geothermal/Hawaii/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213646,
+        "title": "RAPID/Geothermal/Hawaii/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213647,
+        "title": "RAPID/Geothermal/Hawaii/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213648,
+        "title": "RAPID/Geothermal/Hawaii/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213649,
+        "title": "RAPID/Geothermal/Hawaii/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213650,
+        "title": "RAPID/Geothermal/Hawaii/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213651,
+        "title": "RAPID/Geothermal/Hawaii/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213652,
+        "title": "RAPID/Geothermal/Hawaii/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213653,
+        "title": "RAPID/Geothermal/Hawaii/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213654,
+        "title": "RAPID/Geothermal/Hawaii/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213655,
+        "title": "RAPID/Geothermal/Hawaii/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213656,
+        "title": "RAPID/Geothermal/Hawaii/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213657,
+        "title": "RAPID/Geothermal/Hawaii/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213658,
+        "title": "RAPID/Geothermal/Hawaii/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213659,
+        "title": "RAPID/Geothermal/Hawaii/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213660,
+        "title": "RAPID/Geothermal/Hawaii/Water Quality"
+      }
+    ],
+    "Idaho": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213661,
+        "title": "RAPID/Geothermal/Idaho/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213662,
+        "title": "RAPID/Geothermal/Idaho/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213663,
+        "title": "RAPID/Geothermal/Idaho/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213664,
+        "title": "RAPID/Geothermal/Idaho/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213665,
+        "title": "RAPID/Geothermal/Idaho/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213666,
+        "title": "RAPID/Geothermal/Idaho/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213667,
+        "title": "RAPID/Geothermal/Idaho/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213668,
+        "title": "RAPID/Geothermal/Idaho/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213669,
+        "title": "RAPID/Geothermal/Idaho/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213670,
+        "title": "RAPID/Geothermal/Idaho/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213671,
+        "title": "RAPID/Geothermal/Idaho/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213672,
+        "title": "RAPID/Geothermal/Idaho/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213673,
+        "title": "RAPID/Geothermal/Idaho/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213674,
+        "title": "RAPID/Geothermal/Idaho/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213675,
+        "title": "RAPID/Geothermal/Idaho/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213676,
+        "title": "RAPID/Geothermal/Idaho/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213677,
+        "title": "RAPID/Geothermal/Idaho/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213678,
+        "title": "RAPID/Geothermal/Idaho/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213679,
+        "title": "RAPID/Geothermal/Idaho/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213680,
+        "title": "RAPID/Geothermal/Idaho/Water Quality"
+      }
+    ],
+    "Illinois": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213681,
+        "title": "RAPID/Geothermal/Illinois/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213682,
+        "title": "RAPID/Geothermal/Illinois/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213683,
+        "title": "RAPID/Geothermal/Illinois/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213684,
+        "title": "RAPID/Geothermal/Illinois/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213685,
+        "title": "RAPID/Geothermal/Illinois/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213686,
+        "title": "RAPID/Geothermal/Illinois/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213687,
+        "title": "RAPID/Geothermal/Illinois/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213688,
+        "title": "RAPID/Geothermal/Illinois/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213689,
+        "title": "RAPID/Geothermal/Illinois/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213690,
+        "title": "RAPID/Geothermal/Illinois/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213691,
+        "title": "RAPID/Geothermal/Illinois/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213692,
+        "title": "RAPID/Geothermal/Illinois/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213693,
+        "title": "RAPID/Geothermal/Illinois/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213694,
+        "title": "RAPID/Geothermal/Illinois/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213695,
+        "title": "RAPID/Geothermal/Illinois/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213696,
+        "title": "RAPID/Geothermal/Illinois/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213697,
+        "title": "RAPID/Geothermal/Illinois/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213698,
+        "title": "RAPID/Geothermal/Illinois/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213699,
+        "title": "RAPID/Geothermal/Illinois/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213700,
+        "title": "RAPID/Geothermal/Illinois/Water Quality"
+      }
+    ],
+    "Indiana": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213701,
+        "title": "RAPID/Geothermal/Indiana/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213702,
+        "title": "RAPID/Geothermal/Indiana/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213703,
+        "title": "RAPID/Geothermal/Indiana/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213704,
+        "title": "RAPID/Geothermal/Indiana/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213705,
+        "title": "RAPID/Geothermal/Indiana/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213706,
+        "title": "RAPID/Geothermal/Indiana/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213707,
+        "title": "RAPID/Geothermal/Indiana/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213708,
+        "title": "RAPID/Geothermal/Indiana/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213709,
+        "title": "RAPID/Geothermal/Indiana/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213710,
+        "title": "RAPID/Geothermal/Indiana/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213711,
+        "title": "RAPID/Geothermal/Indiana/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213712,
+        "title": "RAPID/Geothermal/Indiana/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213713,
+        "title": "RAPID/Geothermal/Indiana/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213714,
+        "title": "RAPID/Geothermal/Indiana/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213715,
+        "title": "RAPID/Geothermal/Indiana/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213716,
+        "title": "RAPID/Geothermal/Indiana/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213717,
+        "title": "RAPID/Geothermal/Indiana/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213718,
+        "title": "RAPID/Geothermal/Indiana/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213719,
+        "title": "RAPID/Geothermal/Indiana/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213720,
+        "title": "RAPID/Geothermal/Indiana/Water Quality"
+      }
+    ],
+    "Iowa": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213721,
+        "title": "RAPID/Geothermal/Iowa/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213722,
+        "title": "RAPID/Geothermal/Iowa/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213723,
+        "title": "RAPID/Geothermal/Iowa/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213724,
+        "title": "RAPID/Geothermal/Iowa/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213725,
+        "title": "RAPID/Geothermal/Iowa/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213726,
+        "title": "RAPID/Geothermal/Iowa/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213727,
+        "title": "RAPID/Geothermal/Iowa/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213728,
+        "title": "RAPID/Geothermal/Iowa/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213729,
+        "title": "RAPID/Geothermal/Iowa/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213730,
+        "title": "RAPID/Geothermal/Iowa/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213731,
+        "title": "RAPID/Geothermal/Iowa/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213732,
+        "title": "RAPID/Geothermal/Iowa/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213733,
+        "title": "RAPID/Geothermal/Iowa/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213734,
+        "title": "RAPID/Geothermal/Iowa/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213735,
+        "title": "RAPID/Geothermal/Iowa/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213736,
+        "title": "RAPID/Geothermal/Iowa/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213737,
+        "title": "RAPID/Geothermal/Iowa/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213738,
+        "title": "RAPID/Geothermal/Iowa/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213739,
+        "title": "RAPID/Geothermal/Iowa/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213740,
+        "title": "RAPID/Geothermal/Iowa/Water Quality"
+      }
+    ],
+    "Kansas": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213741,
+        "title": "RAPID/Geothermal/Kansas/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213742,
+        "title": "RAPID/Geothermal/Kansas/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213743,
+        "title": "RAPID/Geothermal/Kansas/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213744,
+        "title": "RAPID/Geothermal/Kansas/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213745,
+        "title": "RAPID/Geothermal/Kansas/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213746,
+        "title": "RAPID/Geothermal/Kansas/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213747,
+        "title": "RAPID/Geothermal/Kansas/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213748,
+        "title": "RAPID/Geothermal/Kansas/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213749,
+        "title": "RAPID/Geothermal/Kansas/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213750,
+        "title": "RAPID/Geothermal/Kansas/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213751,
+        "title": "RAPID/Geothermal/Kansas/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213752,
+        "title": "RAPID/Geothermal/Kansas/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213753,
+        "title": "RAPID/Geothermal/Kansas/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213754,
+        "title": "RAPID/Geothermal/Kansas/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213755,
+        "title": "RAPID/Geothermal/Kansas/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213756,
+        "title": "RAPID/Geothermal/Kansas/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213757,
+        "title": "RAPID/Geothermal/Kansas/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213758,
+        "title": "RAPID/Geothermal/Kansas/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213759,
+        "title": "RAPID/Geothermal/Kansas/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213760,
+        "title": "RAPID/Geothermal/Kansas/Water Quality"
+      }
+    ],
+    "Kentucky": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213761,
+        "title": "RAPID/Geothermal/Kentucky/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213762,
+        "title": "RAPID/Geothermal/Kentucky/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213763,
+        "title": "RAPID/Geothermal/Kentucky/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213764,
+        "title": "RAPID/Geothermal/Kentucky/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213765,
+        "title": "RAPID/Geothermal/Kentucky/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213766,
+        "title": "RAPID/Geothermal/Kentucky/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213767,
+        "title": "RAPID/Geothermal/Kentucky/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213768,
+        "title": "RAPID/Geothermal/Kentucky/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213769,
+        "title": "RAPID/Geothermal/Kentucky/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213770,
+        "title": "RAPID/Geothermal/Kentucky/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213771,
+        "title": "RAPID/Geothermal/Kentucky/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213772,
+        "title": "RAPID/Geothermal/Kentucky/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213773,
+        "title": "RAPID/Geothermal/Kentucky/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213774,
+        "title": "RAPID/Geothermal/Kentucky/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213775,
+        "title": "RAPID/Geothermal/Kentucky/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213776,
+        "title": "RAPID/Geothermal/Kentucky/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213777,
+        "title": "RAPID/Geothermal/Kentucky/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213778,
+        "title": "RAPID/Geothermal/Kentucky/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213779,
+        "title": "RAPID/Geothermal/Kentucky/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213780,
+        "title": "RAPID/Geothermal/Kentucky/Water Quality"
+      }
+    ],
+    "Louisiana": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213781,
+        "title": "RAPID/Geothermal/Louisiana/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213782,
+        "title": "RAPID/Geothermal/Louisiana/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213783,
+        "title": "RAPID/Geothermal/Louisiana/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213784,
+        "title": "RAPID/Geothermal/Louisiana/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213785,
+        "title": "RAPID/Geothermal/Louisiana/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213786,
+        "title": "RAPID/Geothermal/Louisiana/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213787,
+        "title": "RAPID/Geothermal/Louisiana/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213788,
+        "title": "RAPID/Geothermal/Louisiana/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213789,
+        "title": "RAPID/Geothermal/Louisiana/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213790,
+        "title": "RAPID/Geothermal/Louisiana/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213791,
+        "title": "RAPID/Geothermal/Louisiana/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213792,
+        "title": "RAPID/Geothermal/Louisiana/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213793,
+        "title": "RAPID/Geothermal/Louisiana/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213794,
+        "title": "RAPID/Geothermal/Louisiana/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213795,
+        "title": "RAPID/Geothermal/Louisiana/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213796,
+        "title": "RAPID/Geothermal/Louisiana/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213797,
+        "title": "RAPID/Geothermal/Louisiana/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213798,
+        "title": "RAPID/Geothermal/Louisiana/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213799,
+        "title": "RAPID/Geothermal/Louisiana/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213800,
+        "title": "RAPID/Geothermal/Louisiana/Water Quality"
+      }
+    ],
+    "Maine": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213801,
+        "title": "RAPID/Geothermal/Maine/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213802,
+        "title": "RAPID/Geothermal/Maine/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213803,
+        "title": "RAPID/Geothermal/Maine/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213804,
+        "title": "RAPID/Geothermal/Maine/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213805,
+        "title": "RAPID/Geothermal/Maine/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213806,
+        "title": "RAPID/Geothermal/Maine/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213807,
+        "title": "RAPID/Geothermal/Maine/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213808,
+        "title": "RAPID/Geothermal/Maine/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213809,
+        "title": "RAPID/Geothermal/Maine/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213810,
+        "title": "RAPID/Geothermal/Maine/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213811,
+        "title": "RAPID/Geothermal/Maine/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213812,
+        "title": "RAPID/Geothermal/Maine/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213813,
+        "title": "RAPID/Geothermal/Maine/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213814,
+        "title": "RAPID/Geothermal/Maine/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213815,
+        "title": "RAPID/Geothermal/Maine/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213816,
+        "title": "RAPID/Geothermal/Maine/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213817,
+        "title": "RAPID/Geothermal/Maine/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213818,
+        "title": "RAPID/Geothermal/Maine/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213819,
+        "title": "RAPID/Geothermal/Maine/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213820,
+        "title": "RAPID/Geothermal/Maine/Water Quality"
+      }
+    ],
+    "Maryland": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213821,
+        "title": "RAPID/Geothermal/Maryland/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213822,
+        "title": "RAPID/Geothermal/Maryland/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213823,
+        "title": "RAPID/Geothermal/Maryland/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213824,
+        "title": "RAPID/Geothermal/Maryland/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213825,
+        "title": "RAPID/Geothermal/Maryland/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213826,
+        "title": "RAPID/Geothermal/Maryland/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213827,
+        "title": "RAPID/Geothermal/Maryland/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213828,
+        "title": "RAPID/Geothermal/Maryland/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213829,
+        "title": "RAPID/Geothermal/Maryland/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213830,
+        "title": "RAPID/Geothermal/Maryland/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213831,
+        "title": "RAPID/Geothermal/Maryland/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213832,
+        "title": "RAPID/Geothermal/Maryland/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213833,
+        "title": "RAPID/Geothermal/Maryland/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213834,
+        "title": "RAPID/Geothermal/Maryland/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213835,
+        "title": "RAPID/Geothermal/Maryland/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213836,
+        "title": "RAPID/Geothermal/Maryland/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213837,
+        "title": "RAPID/Geothermal/Maryland/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213838,
+        "title": "RAPID/Geothermal/Maryland/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213839,
+        "title": "RAPID/Geothermal/Maryland/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213840,
+        "title": "RAPID/Geothermal/Maryland/Water Quality"
+      }
+    ],
+    "Massachusetts": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213841,
+        "title": "RAPID/Geothermal/Massachusetts/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213842,
+        "title": "RAPID/Geothermal/Massachusetts/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213843,
+        "title": "RAPID/Geothermal/Massachusetts/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213844,
+        "title": "RAPID/Geothermal/Massachusetts/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213845,
+        "title": "RAPID/Geothermal/Massachusetts/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213846,
+        "title": "RAPID/Geothermal/Massachusetts/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213847,
+        "title": "RAPID/Geothermal/Massachusetts/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213848,
+        "title": "RAPID/Geothermal/Massachusetts/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213849,
+        "title": "RAPID/Geothermal/Massachusetts/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213850,
+        "title": "RAPID/Geothermal/Massachusetts/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213851,
+        "title": "RAPID/Geothermal/Massachusetts/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213852,
+        "title": "RAPID/Geothermal/Massachusetts/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213853,
+        "title": "RAPID/Geothermal/Massachusetts/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213854,
+        "title": "RAPID/Geothermal/Massachusetts/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213855,
+        "title": "RAPID/Geothermal/Massachusetts/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213856,
+        "title": "RAPID/Geothermal/Massachusetts/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213857,
+        "title": "RAPID/Geothermal/Massachusetts/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213858,
+        "title": "RAPID/Geothermal/Massachusetts/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213859,
+        "title": "RAPID/Geothermal/Massachusetts/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213860,
+        "title": "RAPID/Geothermal/Massachusetts/Water Quality"
+      }
+    ],
+    "Michigan": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213861,
+        "title": "RAPID/Geothermal/Michigan/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213862,
+        "title": "RAPID/Geothermal/Michigan/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213863,
+        "title": "RAPID/Geothermal/Michigan/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213864,
+        "title": "RAPID/Geothermal/Michigan/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213865,
+        "title": "RAPID/Geothermal/Michigan/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213866,
+        "title": "RAPID/Geothermal/Michigan/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213867,
+        "title": "RAPID/Geothermal/Michigan/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213868,
+        "title": "RAPID/Geothermal/Michigan/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213869,
+        "title": "RAPID/Geothermal/Michigan/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213870,
+        "title": "RAPID/Geothermal/Michigan/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213871,
+        "title": "RAPID/Geothermal/Michigan/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213872,
+        "title": "RAPID/Geothermal/Michigan/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213873,
+        "title": "RAPID/Geothermal/Michigan/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213874,
+        "title": "RAPID/Geothermal/Michigan/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213875,
+        "title": "RAPID/Geothermal/Michigan/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213876,
+        "title": "RAPID/Geothermal/Michigan/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213877,
+        "title": "RAPID/Geothermal/Michigan/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213878,
+        "title": "RAPID/Geothermal/Michigan/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213879,
+        "title": "RAPID/Geothermal/Michigan/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213880,
+        "title": "RAPID/Geothermal/Michigan/Water Quality"
+      }
+    ],
+    "Minnesota": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213881,
+        "title": "RAPID/Geothermal/Minnesota/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213882,
+        "title": "RAPID/Geothermal/Minnesota/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213883,
+        "title": "RAPID/Geothermal/Minnesota/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213884,
+        "title": "RAPID/Geothermal/Minnesota/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213885,
+        "title": "RAPID/Geothermal/Minnesota/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213886,
+        "title": "RAPID/Geothermal/Minnesota/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213887,
+        "title": "RAPID/Geothermal/Minnesota/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213888,
+        "title": "RAPID/Geothermal/Minnesota/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213889,
+        "title": "RAPID/Geothermal/Minnesota/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213890,
+        "title": "RAPID/Geothermal/Minnesota/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213891,
+        "title": "RAPID/Geothermal/Minnesota/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213892,
+        "title": "RAPID/Geothermal/Minnesota/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213893,
+        "title": "RAPID/Geothermal/Minnesota/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213894,
+        "title": "RAPID/Geothermal/Minnesota/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213895,
+        "title": "RAPID/Geothermal/Minnesota/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213896,
+        "title": "RAPID/Geothermal/Minnesota/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213897,
+        "title": "RAPID/Geothermal/Minnesota/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213898,
+        "title": "RAPID/Geothermal/Minnesota/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213899,
+        "title": "RAPID/Geothermal/Minnesota/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213900,
+        "title": "RAPID/Geothermal/Minnesota/Water Quality"
+      }
+    ],
+    "Mississippi": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213901,
+        "title": "RAPID/Geothermal/Mississippi/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213902,
+        "title": "RAPID/Geothermal/Mississippi/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213903,
+        "title": "RAPID/Geothermal/Mississippi/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213904,
+        "title": "RAPID/Geothermal/Mississippi/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213905,
+        "title": "RAPID/Geothermal/Mississippi/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213906,
+        "title": "RAPID/Geothermal/Mississippi/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213907,
+        "title": "RAPID/Geothermal/Mississippi/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213908,
+        "title": "RAPID/Geothermal/Mississippi/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213909,
+        "title": "RAPID/Geothermal/Mississippi/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213910,
+        "title": "RAPID/Geothermal/Mississippi/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213911,
+        "title": "RAPID/Geothermal/Mississippi/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213912,
+        "title": "RAPID/Geothermal/Mississippi/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213913,
+        "title": "RAPID/Geothermal/Mississippi/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213914,
+        "title": "RAPID/Geothermal/Mississippi/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213915,
+        "title": "RAPID/Geothermal/Mississippi/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213916,
+        "title": "RAPID/Geothermal/Mississippi/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213917,
+        "title": "RAPID/Geothermal/Mississippi/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213918,
+        "title": "RAPID/Geothermal/Mississippi/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213919,
+        "title": "RAPID/Geothermal/Mississippi/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213920,
+        "title": "RAPID/Geothermal/Mississippi/Water Quality"
+      }
+    ],
+    "Missouri": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213921,
+        "title": "RAPID/Geothermal/Missouri/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213922,
+        "title": "RAPID/Geothermal/Missouri/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213923,
+        "title": "RAPID/Geothermal/Missouri/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213924,
+        "title": "RAPID/Geothermal/Missouri/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213925,
+        "title": "RAPID/Geothermal/Missouri/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213926,
+        "title": "RAPID/Geothermal/Missouri/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213927,
+        "title": "RAPID/Geothermal/Missouri/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213928,
+        "title": "RAPID/Geothermal/Missouri/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213929,
+        "title": "RAPID/Geothermal/Missouri/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213930,
+        "title": "RAPID/Geothermal/Missouri/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213931,
+        "title": "RAPID/Geothermal/Missouri/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213932,
+        "title": "RAPID/Geothermal/Missouri/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213933,
+        "title": "RAPID/Geothermal/Missouri/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213934,
+        "title": "RAPID/Geothermal/Missouri/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213935,
+        "title": "RAPID/Geothermal/Missouri/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213936,
+        "title": "RAPID/Geothermal/Missouri/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213937,
+        "title": "RAPID/Geothermal/Missouri/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213938,
+        "title": "RAPID/Geothermal/Missouri/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213939,
+        "title": "RAPID/Geothermal/Missouri/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213940,
+        "title": "RAPID/Geothermal/Missouri/Water Quality"
+      }
+    ],
+    "Montana": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213941,
+        "title": "RAPID/Geothermal/Montana/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213942,
+        "title": "RAPID/Geothermal/Montana/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213943,
+        "title": "RAPID/Geothermal/Montana/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213944,
+        "title": "RAPID/Geothermal/Montana/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213945,
+        "title": "RAPID/Geothermal/Montana/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213946,
+        "title": "RAPID/Geothermal/Montana/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213947,
+        "title": "RAPID/Geothermal/Montana/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213948,
+        "title": "RAPID/Geothermal/Montana/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213949,
+        "title": "RAPID/Geothermal/Montana/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213950,
+        "title": "RAPID/Geothermal/Montana/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213951,
+        "title": "RAPID/Geothermal/Montana/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213952,
+        "title": "RAPID/Geothermal/Montana/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213953,
+        "title": "RAPID/Geothermal/Montana/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213954,
+        "title": "RAPID/Geothermal/Montana/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213955,
+        "title": "RAPID/Geothermal/Montana/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213956,
+        "title": "RAPID/Geothermal/Montana/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213957,
+        "title": "RAPID/Geothermal/Montana/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213958,
+        "title": "RAPID/Geothermal/Montana/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213959,
+        "title": "RAPID/Geothermal/Montana/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213960,
+        "title": "RAPID/Geothermal/Montana/Water Quality"
+      }
+    ],
+    "Nebraska": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213961,
+        "title": "RAPID/Geothermal/Nebraska/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213962,
+        "title": "RAPID/Geothermal/Nebraska/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213963,
+        "title": "RAPID/Geothermal/Nebraska/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213964,
+        "title": "RAPID/Geothermal/Nebraska/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213965,
+        "title": "RAPID/Geothermal/Nebraska/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213966,
+        "title": "RAPID/Geothermal/Nebraska/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213967,
+        "title": "RAPID/Geothermal/Nebraska/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213968,
+        "title": "RAPID/Geothermal/Nebraska/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213969,
+        "title": "RAPID/Geothermal/Nebraska/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213970,
+        "title": "RAPID/Geothermal/Nebraska/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213971,
+        "title": "RAPID/Geothermal/Nebraska/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213972,
+        "title": "RAPID/Geothermal/Nebraska/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213973,
+        "title": "RAPID/Geothermal/Nebraska/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213974,
+        "title": "RAPID/Geothermal/Nebraska/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213975,
+        "title": "RAPID/Geothermal/Nebraska/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213976,
+        "title": "RAPID/Geothermal/Nebraska/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213977,
+        "title": "RAPID/Geothermal/Nebraska/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213978,
+        "title": "RAPID/Geothermal/Nebraska/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213979,
+        "title": "RAPID/Geothermal/Nebraska/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 213980,
+        "title": "RAPID/Geothermal/Nebraska/Water Quality"
+      }
+    ],
+    "Nevada": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 213981,
+        "title": "RAPID/Geothermal/Nevada/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 213982,
+        "title": "RAPID/Geothermal/Nevada/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 213983,
+        "title": "RAPID/Geothermal/Nevada/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 213984,
+        "title": "RAPID/Geothermal/Nevada/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 213985,
+        "title": "RAPID/Geothermal/Nevada/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 213986,
+        "title": "RAPID/Geothermal/Nevada/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 213987,
+        "title": "RAPID/Geothermal/Nevada/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 213988,
+        "title": "RAPID/Geothermal/Nevada/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 213989,
+        "title": "RAPID/Geothermal/Nevada/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 213990,
+        "title": "RAPID/Geothermal/Nevada/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 213991,
+        "title": "RAPID/Geothermal/Nevada/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 213992,
+        "title": "RAPID/Geothermal/Nevada/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 213993,
+        "title": "RAPID/Geothermal/Nevada/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 213994,
+        "title": "RAPID/Geothermal/Nevada/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 213995,
+        "title": "RAPID/Geothermal/Nevada/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 213996,
+        "title": "RAPID/Geothermal/Nevada/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 213997,
+        "title": "RAPID/Geothermal/Nevada/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 213998,
+        "title": "RAPID/Geothermal/Nevada/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 213999,
+        "title": "RAPID/Geothermal/Nevada/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214000,
+        "title": "RAPID/Geothermal/Nevada/Water Quality"
+      }
+    ],
+    "New Hampshire": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214001,
+        "title": "RAPID/Geothermal/New Hampshire/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214002,
+        "title": "RAPID/Geothermal/New Hampshire/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214003,
+        "title": "RAPID/Geothermal/New Hampshire/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214004,
+        "title": "RAPID/Geothermal/New Hampshire/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214005,
+        "title": "RAPID/Geothermal/New Hampshire/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214006,
+        "title": "RAPID/Geothermal/New Hampshire/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214007,
+        "title": "RAPID/Geothermal/New Hampshire/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214008,
+        "title": "RAPID/Geothermal/New Hampshire/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214009,
+        "title": "RAPID/Geothermal/New Hampshire/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214010,
+        "title": "RAPID/Geothermal/New Hampshire/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214011,
+        "title": "RAPID/Geothermal/New Hampshire/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214012,
+        "title": "RAPID/Geothermal/New Hampshire/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214013,
+        "title": "RAPID/Geothermal/New Hampshire/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214014,
+        "title": "RAPID/Geothermal/New Hampshire/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214015,
+        "title": "RAPID/Geothermal/New Hampshire/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214016,
+        "title": "RAPID/Geothermal/New Hampshire/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214017,
+        "title": "RAPID/Geothermal/New Hampshire/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214018,
+        "title": "RAPID/Geothermal/New Hampshire/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214019,
+        "title": "RAPID/Geothermal/New Hampshire/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214020,
+        "title": "RAPID/Geothermal/New Hampshire/Water Quality"
+      }
+    ],
+    "New Jersey": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214021,
+        "title": "RAPID/Geothermal/New Jersey/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214022,
+        "title": "RAPID/Geothermal/New Jersey/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214023,
+        "title": "RAPID/Geothermal/New Jersey/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214024,
+        "title": "RAPID/Geothermal/New Jersey/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214025,
+        "title": "RAPID/Geothermal/New Jersey/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214026,
+        "title": "RAPID/Geothermal/New Jersey/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214027,
+        "title": "RAPID/Geothermal/New Jersey/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214028,
+        "title": "RAPID/Geothermal/New Jersey/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214029,
+        "title": "RAPID/Geothermal/New Jersey/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214030,
+        "title": "RAPID/Geothermal/New Jersey/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214031,
+        "title": "RAPID/Geothermal/New Jersey/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214032,
+        "title": "RAPID/Geothermal/New Jersey/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214033,
+        "title": "RAPID/Geothermal/New Jersey/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214034,
+        "title": "RAPID/Geothermal/New Jersey/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214035,
+        "title": "RAPID/Geothermal/New Jersey/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214036,
+        "title": "RAPID/Geothermal/New Jersey/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214037,
+        "title": "RAPID/Geothermal/New Jersey/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214038,
+        "title": "RAPID/Geothermal/New Jersey/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214039,
+        "title": "RAPID/Geothermal/New Jersey/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214040,
+        "title": "RAPID/Geothermal/New Jersey/Water Quality"
+      }
+    ],
+    "New Mexico": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214041,
+        "title": "RAPID/Geothermal/New Mexico/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214042,
+        "title": "RAPID/Geothermal/New Mexico/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214043,
+        "title": "RAPID/Geothermal/New Mexico/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214044,
+        "title": "RAPID/Geothermal/New Mexico/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214045,
+        "title": "RAPID/Geothermal/New Mexico/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214046,
+        "title": "RAPID/Geothermal/New Mexico/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214047,
+        "title": "RAPID/Geothermal/New Mexico/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214048,
+        "title": "RAPID/Geothermal/New Mexico/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214049,
+        "title": "RAPID/Geothermal/New Mexico/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214050,
+        "title": "RAPID/Geothermal/New Mexico/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 211368,
+        "title": "RAPID/Geothermal/New Mexico/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214051,
+        "title": "RAPID/Geothermal/New Mexico/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214052,
+        "title": "RAPID/Geothermal/New Mexico/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214053,
+        "title": "RAPID/Geothermal/New Mexico/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214054,
+        "title": "RAPID/Geothermal/New Mexico/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214055,
+        "title": "RAPID/Geothermal/New Mexico/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214056,
+        "title": "RAPID/Geothermal/New Mexico/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214057,
+        "title": "RAPID/Geothermal/New Mexico/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214058,
+        "title": "RAPID/Geothermal/New Mexico/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214059,
+        "title": "RAPID/Geothermal/New Mexico/Water Quality"
+      }
+    ],
+    "New York": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214060,
+        "title": "RAPID/Geothermal/New York/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214061,
+        "title": "RAPID/Geothermal/New York/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214062,
+        "title": "RAPID/Geothermal/New York/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214063,
+        "title": "RAPID/Geothermal/New York/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214064,
+        "title": "RAPID/Geothermal/New York/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214065,
+        "title": "RAPID/Geothermal/New York/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214066,
+        "title": "RAPID/Geothermal/New York/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214067,
+        "title": "RAPID/Geothermal/New York/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214068,
+        "title": "RAPID/Geothermal/New York/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214069,
+        "title": "RAPID/Geothermal/New York/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214070,
+        "title": "RAPID/Geothermal/New York/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214071,
+        "title": "RAPID/Geothermal/New York/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214072,
+        "title": "RAPID/Geothermal/New York/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214073,
+        "title": "RAPID/Geothermal/New York/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214074,
+        "title": "RAPID/Geothermal/New York/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214075,
+        "title": "RAPID/Geothermal/New York/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214076,
+        "title": "RAPID/Geothermal/New York/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214077,
+        "title": "RAPID/Geothermal/New York/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214078,
+        "title": "RAPID/Geothermal/New York/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214079,
+        "title": "RAPID/Geothermal/New York/Water Quality"
+      }
+    ],
+    "North Carolina": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214080,
+        "title": "RAPID/Geothermal/North Carolina/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214081,
+        "title": "RAPID/Geothermal/North Carolina/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214082,
+        "title": "RAPID/Geothermal/North Carolina/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214083,
+        "title": "RAPID/Geothermal/North Carolina/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214084,
+        "title": "RAPID/Geothermal/North Carolina/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214085,
+        "title": "RAPID/Geothermal/North Carolina/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214086,
+        "title": "RAPID/Geothermal/North Carolina/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214087,
+        "title": "RAPID/Geothermal/North Carolina/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214088,
+        "title": "RAPID/Geothermal/North Carolina/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214089,
+        "title": "RAPID/Geothermal/North Carolina/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214090,
+        "title": "RAPID/Geothermal/North Carolina/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214091,
+        "title": "RAPID/Geothermal/North Carolina/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214092,
+        "title": "RAPID/Geothermal/North Carolina/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214093,
+        "title": "RAPID/Geothermal/North Carolina/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214094,
+        "title": "RAPID/Geothermal/North Carolina/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214095,
+        "title": "RAPID/Geothermal/North Carolina/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214096,
+        "title": "RAPID/Geothermal/North Carolina/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214097,
+        "title": "RAPID/Geothermal/North Carolina/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214098,
+        "title": "RAPID/Geothermal/North Carolina/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214099,
+        "title": "RAPID/Geothermal/North Carolina/Water Quality"
+      }
+    ],
+    "North Dakota": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214100,
+        "title": "RAPID/Geothermal/North Dakota/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214101,
+        "title": "RAPID/Geothermal/North Dakota/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214102,
+        "title": "RAPID/Geothermal/North Dakota/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214103,
+        "title": "RAPID/Geothermal/North Dakota/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214104,
+        "title": "RAPID/Geothermal/North Dakota/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214105,
+        "title": "RAPID/Geothermal/North Dakota/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214106,
+        "title": "RAPID/Geothermal/North Dakota/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214107,
+        "title": "RAPID/Geothermal/North Dakota/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214108,
+        "title": "RAPID/Geothermal/North Dakota/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214109,
+        "title": "RAPID/Geothermal/North Dakota/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214110,
+        "title": "RAPID/Geothermal/North Dakota/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214111,
+        "title": "RAPID/Geothermal/North Dakota/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214112,
+        "title": "RAPID/Geothermal/North Dakota/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214113,
+        "title": "RAPID/Geothermal/North Dakota/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214114,
+        "title": "RAPID/Geothermal/North Dakota/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214115,
+        "title": "RAPID/Geothermal/North Dakota/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214116,
+        "title": "RAPID/Geothermal/North Dakota/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214117,
+        "title": "RAPID/Geothermal/North Dakota/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214118,
+        "title": "RAPID/Geothermal/North Dakota/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214119,
+        "title": "RAPID/Geothermal/North Dakota/Water Quality"
+      }
+    ],
+    "Ohio": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214120,
+        "title": "RAPID/Geothermal/Ohio/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214121,
+        "title": "RAPID/Geothermal/Ohio/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214122,
+        "title": "RAPID/Geothermal/Ohio/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214123,
+        "title": "RAPID/Geothermal/Ohio/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214124,
+        "title": "RAPID/Geothermal/Ohio/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214125,
+        "title": "RAPID/Geothermal/Ohio/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214126,
+        "title": "RAPID/Geothermal/Ohio/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214127,
+        "title": "RAPID/Geothermal/Ohio/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214128,
+        "title": "RAPID/Geothermal/Ohio/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214129,
+        "title": "RAPID/Geothermal/Ohio/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214130,
+        "title": "RAPID/Geothermal/Ohio/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214131,
+        "title": "RAPID/Geothermal/Ohio/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214132,
+        "title": "RAPID/Geothermal/Ohio/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214133,
+        "title": "RAPID/Geothermal/Ohio/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214134,
+        "title": "RAPID/Geothermal/Ohio/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214135,
+        "title": "RAPID/Geothermal/Ohio/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214136,
+        "title": "RAPID/Geothermal/Ohio/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214137,
+        "title": "RAPID/Geothermal/Ohio/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214138,
+        "title": "RAPID/Geothermal/Ohio/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214139,
+        "title": "RAPID/Geothermal/Ohio/Water Quality"
+      }
+    ],
+    "Oklahoma": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214140,
+        "title": "RAPID/Geothermal/Oklahoma/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214141,
+        "title": "RAPID/Geothermal/Oklahoma/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214142,
+        "title": "RAPID/Geothermal/Oklahoma/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214143,
+        "title": "RAPID/Geothermal/Oklahoma/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214144,
+        "title": "RAPID/Geothermal/Oklahoma/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214145,
+        "title": "RAPID/Geothermal/Oklahoma/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214146,
+        "title": "RAPID/Geothermal/Oklahoma/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214147,
+        "title": "RAPID/Geothermal/Oklahoma/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214148,
+        "title": "RAPID/Geothermal/Oklahoma/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214149,
+        "title": "RAPID/Geothermal/Oklahoma/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214150,
+        "title": "RAPID/Geothermal/Oklahoma/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214151,
+        "title": "RAPID/Geothermal/Oklahoma/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214152,
+        "title": "RAPID/Geothermal/Oklahoma/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214153,
+        "title": "RAPID/Geothermal/Oklahoma/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214154,
+        "title": "RAPID/Geothermal/Oklahoma/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214155,
+        "title": "RAPID/Geothermal/Oklahoma/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214156,
+        "title": "RAPID/Geothermal/Oklahoma/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214157,
+        "title": "RAPID/Geothermal/Oklahoma/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214158,
+        "title": "RAPID/Geothermal/Oklahoma/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214159,
+        "title": "RAPID/Geothermal/Oklahoma/Water Quality"
+      }
+    ],
+    "Oregon": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214160,
+        "title": "RAPID/Geothermal/Oregon/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214161,
+        "title": "RAPID/Geothermal/Oregon/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214162,
+        "title": "RAPID/Geothermal/Oregon/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214163,
+        "title": "RAPID/Geothermal/Oregon/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214164,
+        "title": "RAPID/Geothermal/Oregon/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214165,
+        "title": "RAPID/Geothermal/Oregon/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214166,
+        "title": "RAPID/Geothermal/Oregon/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214167,
+        "title": "RAPID/Geothermal/Oregon/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214168,
+        "title": "RAPID/Geothermal/Oregon/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214169,
+        "title": "RAPID/Geothermal/Oregon/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214170,
+        "title": "RAPID/Geothermal/Oregon/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214171,
+        "title": "RAPID/Geothermal/Oregon/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214172,
+        "title": "RAPID/Geothermal/Oregon/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214173,
+        "title": "RAPID/Geothermal/Oregon/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214174,
+        "title": "RAPID/Geothermal/Oregon/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214175,
+        "title": "RAPID/Geothermal/Oregon/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214176,
+        "title": "RAPID/Geothermal/Oregon/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214177,
+        "title": "RAPID/Geothermal/Oregon/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214178,
+        "title": "RAPID/Geothermal/Oregon/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214179,
+        "title": "RAPID/Geothermal/Oregon/Water Quality"
+      }
+    ],
+    "Pennsylvania": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214180,
+        "title": "RAPID/Geothermal/Pennsylvania/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214181,
+        "title": "RAPID/Geothermal/Pennsylvania/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214182,
+        "title": "RAPID/Geothermal/Pennsylvania/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214183,
+        "title": "RAPID/Geothermal/Pennsylvania/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214184,
+        "title": "RAPID/Geothermal/Pennsylvania/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214185,
+        "title": "RAPID/Geothermal/Pennsylvania/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214186,
+        "title": "RAPID/Geothermal/Pennsylvania/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214187,
+        "title": "RAPID/Geothermal/Pennsylvania/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214188,
+        "title": "RAPID/Geothermal/Pennsylvania/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214189,
+        "title": "RAPID/Geothermal/Pennsylvania/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214190,
+        "title": "RAPID/Geothermal/Pennsylvania/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214191,
+        "title": "RAPID/Geothermal/Pennsylvania/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214192,
+        "title": "RAPID/Geothermal/Pennsylvania/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214193,
+        "title": "RAPID/Geothermal/Pennsylvania/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214194,
+        "title": "RAPID/Geothermal/Pennsylvania/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214195,
+        "title": "RAPID/Geothermal/Pennsylvania/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214196,
+        "title": "RAPID/Geothermal/Pennsylvania/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214197,
+        "title": "RAPID/Geothermal/Pennsylvania/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214198,
+        "title": "RAPID/Geothermal/Pennsylvania/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214199,
+        "title": "RAPID/Geothermal/Pennsylvania/Water Quality"
+      }
+    ],
+    "Rhode Island": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214200,
+        "title": "RAPID/Geothermal/Rhode Island/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214201,
+        "title": "RAPID/Geothermal/Rhode Island/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214202,
+        "title": "RAPID/Geothermal/Rhode Island/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214203,
+        "title": "RAPID/Geothermal/Rhode Island/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214204,
+        "title": "RAPID/Geothermal/Rhode Island/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214205,
+        "title": "RAPID/Geothermal/Rhode Island/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214206,
+        "title": "RAPID/Geothermal/Rhode Island/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214207,
+        "title": "RAPID/Geothermal/Rhode Island/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214208,
+        "title": "RAPID/Geothermal/Rhode Island/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214209,
+        "title": "RAPID/Geothermal/Rhode Island/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214210,
+        "title": "RAPID/Geothermal/Rhode Island/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214211,
+        "title": "RAPID/Geothermal/Rhode Island/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214212,
+        "title": "RAPID/Geothermal/Rhode Island/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214213,
+        "title": "RAPID/Geothermal/Rhode Island/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214214,
+        "title": "RAPID/Geothermal/Rhode Island/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214215,
+        "title": "RAPID/Geothermal/Rhode Island/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214216,
+        "title": "RAPID/Geothermal/Rhode Island/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214217,
+        "title": "RAPID/Geothermal/Rhode Island/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214218,
+        "title": "RAPID/Geothermal/Rhode Island/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214219,
+        "title": "RAPID/Geothermal/Rhode Island/Water Quality"
+      }
+    ],
+    "Roadmap": [
+      {
+        "category": "Flowcharts",
+        "pageid": 208971,
+        "title": "RAPID/Geothermal/Roadmap/Flowcharts"
+      }
+    ],
+    "South Carolina": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214220,
+        "title": "RAPID/Geothermal/South Carolina/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214221,
+        "title": "RAPID/Geothermal/South Carolina/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214222,
+        "title": "RAPID/Geothermal/South Carolina/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214223,
+        "title": "RAPID/Geothermal/South Carolina/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214225,
+        "title": "RAPID/Geothermal/South Carolina/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214226,
+        "title": "RAPID/Geothermal/South Carolina/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214227,
+        "title": "RAPID/Geothermal/South Carolina/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214228,
+        "title": "RAPID/Geothermal/South Carolina/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214229,
+        "title": "RAPID/Geothermal/South Carolina/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214230,
+        "title": "RAPID/Geothermal/South Carolina/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214231,
+        "title": "RAPID/Geothermal/South Carolina/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214232,
+        "title": "RAPID/Geothermal/South Carolina/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214233,
+        "title": "RAPID/Geothermal/South Carolina/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214234,
+        "title": "RAPID/Geothermal/South Carolina/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214235,
+        "title": "RAPID/Geothermal/South Carolina/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214236,
+        "title": "RAPID/Geothermal/South Carolina/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214237,
+        "title": "RAPID/Geothermal/South Carolina/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214238,
+        "title": "RAPID/Geothermal/South Carolina/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214239,
+        "title": "RAPID/Geothermal/South Carolina/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214240,
+        "title": "RAPID/Geothermal/South Carolina/Water Quality"
+      }
+    ],
+    "South Dakota": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214241,
+        "title": "RAPID/Geothermal/South Dakota/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214242,
+        "title": "RAPID/Geothermal/South Dakota/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214243,
+        "title": "RAPID/Geothermal/South Dakota/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214244,
+        "title": "RAPID/Geothermal/South Dakota/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214245,
+        "title": "RAPID/Geothermal/South Dakota/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214246,
+        "title": "RAPID/Geothermal/South Dakota/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214247,
+        "title": "RAPID/Geothermal/South Dakota/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214248,
+        "title": "RAPID/Geothermal/South Dakota/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214249,
+        "title": "RAPID/Geothermal/South Dakota/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214250,
+        "title": "RAPID/Geothermal/South Dakota/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214251,
+        "title": "RAPID/Geothermal/South Dakota/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214252,
+        "title": "RAPID/Geothermal/South Dakota/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214253,
+        "title": "RAPID/Geothermal/South Dakota/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214254,
+        "title": "RAPID/Geothermal/South Dakota/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214255,
+        "title": "RAPID/Geothermal/South Dakota/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214256,
+        "title": "RAPID/Geothermal/South Dakota/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214257,
+        "title": "RAPID/Geothermal/South Dakota/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214258,
+        "title": "RAPID/Geothermal/South Dakota/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214259,
+        "title": "RAPID/Geothermal/South Dakota/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214260,
+        "title": "RAPID/Geothermal/South Dakota/Water Quality"
+      }
+    ],
+    "Tennessee": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214261,
+        "title": "RAPID/Geothermal/Tennessee/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214262,
+        "title": "RAPID/Geothermal/Tennessee/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214263,
+        "title": "RAPID/Geothermal/Tennessee/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214264,
+        "title": "RAPID/Geothermal/Tennessee/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214265,
+        "title": "RAPID/Geothermal/Tennessee/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214266,
+        "title": "RAPID/Geothermal/Tennessee/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214267,
+        "title": "RAPID/Geothermal/Tennessee/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214268,
+        "title": "RAPID/Geothermal/Tennessee/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214269,
+        "title": "RAPID/Geothermal/Tennessee/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214270,
+        "title": "RAPID/Geothermal/Tennessee/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214271,
+        "title": "RAPID/Geothermal/Tennessee/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214272,
+        "title": "RAPID/Geothermal/Tennessee/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214273,
+        "title": "RAPID/Geothermal/Tennessee/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214274,
+        "title": "RAPID/Geothermal/Tennessee/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214275,
+        "title": "RAPID/Geothermal/Tennessee/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214276,
+        "title": "RAPID/Geothermal/Tennessee/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214277,
+        "title": "RAPID/Geothermal/Tennessee/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214278,
+        "title": "RAPID/Geothermal/Tennessee/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214279,
+        "title": "RAPID/Geothermal/Tennessee/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214280,
+        "title": "RAPID/Geothermal/Tennessee/Water Quality"
+      }
+    ],
+    "Texas": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214281,
+        "title": "RAPID/Geothermal/Texas/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214282,
+        "title": "RAPID/Geothermal/Texas/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214283,
+        "title": "RAPID/Geothermal/Texas/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214284,
+        "title": "RAPID/Geothermal/Texas/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214285,
+        "title": "RAPID/Geothermal/Texas/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214286,
+        "title": "RAPID/Geothermal/Texas/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214287,
+        "title": "RAPID/Geothermal/Texas/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214288,
+        "title": "RAPID/Geothermal/Texas/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214289,
+        "title": "RAPID/Geothermal/Texas/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214290,
+        "title": "RAPID/Geothermal/Texas/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214291,
+        "title": "RAPID/Geothermal/Texas/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214292,
+        "title": "RAPID/Geothermal/Texas/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214293,
+        "title": "RAPID/Geothermal/Texas/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214294,
+        "title": "RAPID/Geothermal/Texas/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214295,
+        "title": "RAPID/Geothermal/Texas/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214296,
+        "title": "RAPID/Geothermal/Texas/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214297,
+        "title": "RAPID/Geothermal/Texas/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214298,
+        "title": "RAPID/Geothermal/Texas/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214299,
+        "title": "RAPID/Geothermal/Texas/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214300,
+        "title": "RAPID/Geothermal/Texas/Water Quality"
+      }
+    ],
+    "Utah": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214301,
+        "title": "RAPID/Geothermal/Utah/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214302,
+        "title": "RAPID/Geothermal/Utah/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214303,
+        "title": "RAPID/Geothermal/Utah/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214304,
+        "title": "RAPID/Geothermal/Utah/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214305,
+        "title": "RAPID/Geothermal/Utah/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214306,
+        "title": "RAPID/Geothermal/Utah/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214307,
+        "title": "RAPID/Geothermal/Utah/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214308,
+        "title": "RAPID/Geothermal/Utah/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214309,
+        "title": "RAPID/Geothermal/Utah/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214310,
+        "title": "RAPID/Geothermal/Utah/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214311,
+        "title": "RAPID/Geothermal/Utah/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214312,
+        "title": "RAPID/Geothermal/Utah/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214313,
+        "title": "RAPID/Geothermal/Utah/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214314,
+        "title": "RAPID/Geothermal/Utah/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214315,
+        "title": "RAPID/Geothermal/Utah/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214316,
+        "title": "RAPID/Geothermal/Utah/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214317,
+        "title": "RAPID/Geothermal/Utah/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214318,
+        "title": "RAPID/Geothermal/Utah/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214319,
+        "title": "RAPID/Geothermal/Utah/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214320,
+        "title": "RAPID/Geothermal/Utah/Water Quality"
+      }
+    ],
+    "Vermont": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214321,
+        "title": "RAPID/Geothermal/Vermont/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214322,
+        "title": "RAPID/Geothermal/Vermont/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214323,
+        "title": "RAPID/Geothermal/Vermont/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214324,
+        "title": "RAPID/Geothermal/Vermont/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214325,
+        "title": "RAPID/Geothermal/Vermont/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214326,
+        "title": "RAPID/Geothermal/Vermont/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214327,
+        "title": "RAPID/Geothermal/Vermont/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214328,
+        "title": "RAPID/Geothermal/Vermont/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214329,
+        "title": "RAPID/Geothermal/Vermont/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214330,
+        "title": "RAPID/Geothermal/Vermont/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214331,
+        "title": "RAPID/Geothermal/Vermont/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214332,
+        "title": "RAPID/Geothermal/Vermont/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214333,
+        "title": "RAPID/Geothermal/Vermont/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214334,
+        "title": "RAPID/Geothermal/Vermont/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214335,
+        "title": "RAPID/Geothermal/Vermont/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214336,
+        "title": "RAPID/Geothermal/Vermont/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214337,
+        "title": "RAPID/Geothermal/Vermont/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214338,
+        "title": "RAPID/Geothermal/Vermont/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214339,
+        "title": "RAPID/Geothermal/Vermont/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214340,
+        "title": "RAPID/Geothermal/Vermont/Water Quality"
+      }
+    ],
+    "Virginia": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214341,
+        "title": "RAPID/Geothermal/Virginia/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214342,
+        "title": "RAPID/Geothermal/Virginia/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214343,
+        "title": "RAPID/Geothermal/Virginia/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214344,
+        "title": "RAPID/Geothermal/Virginia/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214345,
+        "title": "RAPID/Geothermal/Virginia/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214346,
+        "title": "RAPID/Geothermal/Virginia/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214347,
+        "title": "RAPID/Geothermal/Virginia/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214348,
+        "title": "RAPID/Geothermal/Virginia/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214349,
+        "title": "RAPID/Geothermal/Virginia/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214350,
+        "title": "RAPID/Geothermal/Virginia/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214351,
+        "title": "RAPID/Geothermal/Virginia/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214352,
+        "title": "RAPID/Geothermal/Virginia/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214353,
+        "title": "RAPID/Geothermal/Virginia/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214354,
+        "title": "RAPID/Geothermal/Virginia/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214355,
+        "title": "RAPID/Geothermal/Virginia/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214356,
+        "title": "RAPID/Geothermal/Virginia/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214357,
+        "title": "RAPID/Geothermal/Virginia/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214358,
+        "title": "RAPID/Geothermal/Virginia/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214359,
+        "title": "RAPID/Geothermal/Virginia/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214360,
+        "title": "RAPID/Geothermal/Virginia/Water Quality"
+      }
+    ],
+    "Washington": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214361,
+        "title": "RAPID/Geothermal/Washington/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214362,
+        "title": "RAPID/Geothermal/Washington/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214363,
+        "title": "RAPID/Geothermal/Washington/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214364,
+        "title": "RAPID/Geothermal/Washington/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214365,
+        "title": "RAPID/Geothermal/Washington/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214366,
+        "title": "RAPID/Geothermal/Washington/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214367,
+        "title": "RAPID/Geothermal/Washington/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214368,
+        "title": "RAPID/Geothermal/Washington/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214369,
+        "title": "RAPID/Geothermal/Washington/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214370,
+        "title": "RAPID/Geothermal/Washington/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214371,
+        "title": "RAPID/Geothermal/Washington/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214372,
+        "title": "RAPID/Geothermal/Washington/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214373,
+        "title": "RAPID/Geothermal/Washington/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214374,
+        "title": "RAPID/Geothermal/Washington/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214375,
+        "title": "RAPID/Geothermal/Washington/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214376,
+        "title": "RAPID/Geothermal/Washington/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214377,
+        "title": "RAPID/Geothermal/Washington/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214378,
+        "title": "RAPID/Geothermal/Washington/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214379,
+        "title": "RAPID/Geothermal/Washington/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214380,
+        "title": "RAPID/Geothermal/Washington/Water Quality"
+      }
+    ],
+    "West Virginia": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214381,
+        "title": "RAPID/Geothermal/West Virginia/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214382,
+        "title": "RAPID/Geothermal/West Virginia/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214383,
+        "title": "RAPID/Geothermal/West Virginia/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214384,
+        "title": "RAPID/Geothermal/West Virginia/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214385,
+        "title": "RAPID/Geothermal/West Virginia/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214386,
+        "title": "RAPID/Geothermal/West Virginia/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214387,
+        "title": "RAPID/Geothermal/West Virginia/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214388,
+        "title": "RAPID/Geothermal/West Virginia/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214389,
+        "title": "RAPID/Geothermal/West Virginia/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214390,
+        "title": "RAPID/Geothermal/West Virginia/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214391,
+        "title": "RAPID/Geothermal/West Virginia/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214392,
+        "title": "RAPID/Geothermal/West Virginia/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214393,
+        "title": "RAPID/Geothermal/West Virginia/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214394,
+        "title": "RAPID/Geothermal/West Virginia/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214395,
+        "title": "RAPID/Geothermal/West Virginia/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214396,
+        "title": "RAPID/Geothermal/West Virginia/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214397,
+        "title": "RAPID/Geothermal/West Virginia/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214398,
+        "title": "RAPID/Geothermal/West Virginia/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214399,
+        "title": "RAPID/Geothermal/West Virginia/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214400,
+        "title": "RAPID/Geothermal/West Virginia/Water Quality"
+      }
+    ],
+    "Wisconsin": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214401,
+        "title": "RAPID/Geothermal/Wisconsin/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214402,
+        "title": "RAPID/Geothermal/Wisconsin/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214403,
+        "title": "RAPID/Geothermal/Wisconsin/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214404,
+        "title": "RAPID/Geothermal/Wisconsin/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214405,
+        "title": "RAPID/Geothermal/Wisconsin/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214406,
+        "title": "RAPID/Geothermal/Wisconsin/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214407,
+        "title": "RAPID/Geothermal/Wisconsin/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214408,
+        "title": "RAPID/Geothermal/Wisconsin/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214409,
+        "title": "RAPID/Geothermal/Wisconsin/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214410,
+        "title": "RAPID/Geothermal/Wisconsin/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214411,
+        "title": "RAPID/Geothermal/Wisconsin/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214412,
+        "title": "RAPID/Geothermal/Wisconsin/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214413,
+        "title": "RAPID/Geothermal/Wisconsin/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214414,
+        "title": "RAPID/Geothermal/Wisconsin/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214415,
+        "title": "RAPID/Geothermal/Wisconsin/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214416,
+        "title": "RAPID/Geothermal/Wisconsin/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214417,
+        "title": "RAPID/Geothermal/Wisconsin/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214418,
+        "title": "RAPID/Geothermal/Wisconsin/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214419,
+        "title": "RAPID/Geothermal/Wisconsin/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214420,
+        "title": "RAPID/Geothermal/Wisconsin/Water Quality"
+      }
+    ],
+    "Wyoming": [
+      {
+        "category": "Aesthetic & Recreational",
+        "pageid": 214421,
+        "title": "RAPID/Geothermal/Wyoming/Aesthetic & Recreational"
+      },
+      {
+        "category": "Air Quality",
+        "pageid": 214422,
+        "title": "RAPID/Geothermal/Wyoming/Air Quality"
+      },
+      {
+        "category": "Biological",
+        "pageid": 214423,
+        "title": "RAPID/Geothermal/Wyoming/Biological"
+      },
+      {
+        "category": "Construction & Transportation",
+        "pageid": 214424,
+        "title": "RAPID/Geothermal/Wyoming/Construction & Transportation"
+      },
+      {
+        "category": "Cultural",
+        "pageid": 214425,
+        "title": "RAPID/Geothermal/Wyoming/Cultural"
+      },
+      {
+        "category": "Decommissioning",
+        "pageid": 214426,
+        "title": "RAPID/Geothermal/Wyoming/Decommissioning"
+      },
+      {
+        "category": "Drilling & Well Development",
+        "pageid": 214427,
+        "title": "RAPID/Geothermal/Wyoming/Drilling & Well Development"
+      },
+      {
+        "category": "Environment",
+        "pageid": 214428,
+        "title": "RAPID/Geothermal/Wyoming/Environment"
+      },
+      {
+        "category": "Exploration",
+        "pageid": 214429,
+        "title": "RAPID/Geothermal/Wyoming/Exploration"
+      },
+      {
+        "category": "Geologic",
+        "pageid": 214430,
+        "title": "RAPID/Geothermal/Wyoming/Geologic"
+      },
+      {
+        "category": "Land Access",
+        "pageid": 214431,
+        "title": "RAPID/Geothermal/Wyoming/Land Access"
+      },
+      {
+        "category": "Land Use",
+        "pageid": 214432,
+        "title": "RAPID/Geothermal/Wyoming/Land Use"
+      },
+      {
+        "category": "On Site",
+        "pageid": 214433,
+        "title": "RAPID/Geothermal/Wyoming/On Site"
+      },
+      {
+        "category": "Power Plant",
+        "pageid": 214434,
+        "title": "RAPID/Geothermal/Wyoming/Power Plant"
+      },
+      {
+        "category": "Pre-Existing Land Use",
+        "pageid": 214435,
+        "title": "RAPID/Geothermal/Wyoming/Pre-Existing Land Use"
+      },
+      {
+        "category": "Site Considerations",
+        "pageid": 214436,
+        "title": "RAPID/Geothermal/Wyoming/Site Considerations"
+      },
+      {
+        "category": "Transmission",
+        "pageid": 214437,
+        "title": "RAPID/Geothermal/Wyoming/Transmission"
+      },
+      {
+        "category": "Waste",
+        "pageid": 214438,
+        "title": "RAPID/Geothermal/Wyoming/Waste"
+      },
+      {
+        "category": "Water Access & Rights",
+        "pageid": 214439,
+        "title": "RAPID/Geothermal/Wyoming/Water Access & Rights"
+      },
+      {
+        "category": "Water Quality",
+        "pageid": 214440,
+        "title": "RAPID/Geothermal/Wyoming/Water Quality"
+      }
+    ]
+  }
+}
