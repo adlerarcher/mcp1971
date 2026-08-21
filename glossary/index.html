@@ -29,130 +29,65 @@
     font-variant-numeric: tabular-nums;
   }
   .page { padding: 0 88px 64px; }
+  .mast {
+    position: relative;
+    height: 420px;
+    margin: 0 -88px;
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden;
+  }
   .site-nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 6;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px 28px;
     flex-wrap: wrap;
-    margin: 0 -88px;
-    padding: 14px 88px;
-    background: var(--white);
-    border-bottom: 5px solid var(--gold);
-    position: relative;
-    z-index: 6;
+    padding: 16px 88px;
+    background: transparent;
   }
-  .site-nav .brand {
-    font-family: var(--title); font-weight: 700;
-    font-size: 18px; line-height: 1;
-    color: var(--navy);
-    text-decoration: none;
-  }
+  .site-nav .brand { display: block; line-height: 0; }
+  .site-nav .brand img { display: block; width: 36px; height: 36px; }
   .site-nav nav { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: flex-end; }
   .site-nav nav a {
     font-family: var(--label); font-weight: 700;
     font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--navy); text-decoration: none;
+    color: var(--gold); text-decoration: none;
     padding-bottom: 2px; border-bottom: 2px solid transparent;
   }
-  .site-nav nav a:hover, .site-nav nav a[aria-current="page"] { border-bottom-color: var(--gold); }
-  .mast {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) 5px minmax(280px, 1fr);
-    align-items: stretch;
-    min-height: min(62vh, 620px);
-    margin: 0 -88px;
-    padding: 0 0 0 88px;
-    overflow: hidden;
-    background: var(--navy);
-    color: var(--white);
-  }
-  .mast-copy {
-    position: relative;
-    z-index: 1;
-    grid-column: 1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 88px 56px 56px 22px;
-    max-width: 48em;
-  }
-  .mast-join {
-    grid-column: 2;
-    grid-row: 1;
-    background: var(--gold);
-    transform: scaleY(0);
-    transform-origin: top;
-    animation: mastJoin .85s .15s cubic-bezier(.2,.7,.2,1) forwards;
-  }
-  .mast-visual {
-    position: relative;
-    grid-column: 3;
-    grid-row: 1;
-    overflow: hidden;
-    min-height: min(62vh, 620px);
-  }
-  .mast-art {
-    position: absolute;
-    inset: 0;
-    width: 118%;
-    height: 118%;
-    object-fit: cover;
-    object-position: 82% 46%;
-    display: block;
-    animation: mastReveal 1.35s cubic-bezier(.2,.7,.2,1) both, mastDrift 28s 1.35s ease-in-out infinite alternate;
-  }
-  .mast-scan {
-    position: absolute;
-    left: 0; right: 0;
-    height: 5px;
-    background: var(--gold);
-    top: -5px;
-    z-index: 1;
-    animation: mastScan 3.8s 1.1s cubic-bezier(.2,.7,.2,1) infinite;
-  }
+  .site-nav nav a:hover { color: var(--white); border-bottom-color: var(--gold); }
+  .site-nav nav a[aria-current="page"] { color: var(--white); border-bottom-color: var(--gold); }
   .mast-rule {
     position: absolute;
-    left: 88px;
-    top: 0;
-    width: 5px;
-    height: 0;
+    left: 88px; top: 88px;
+    width: 5px; height: 0;
     background: var(--gold);
     z-index: 1;
-    animation: mastBar 1s .08s cubic-bezier(.2,.7,.2,1) forwards;
+    animation: mastBar .7s .08s cubic-bezier(.2,.7,.2,1) forwards;
   }
   .eyebrow {
+    position: absolute;
+    top: 88px; left: 106px; right: 88px;
     margin: 0;
     font-family: var(--label); font-weight: 700;
     font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--gold);
-    line-height: 1;
+    color: var(--gold); line-height: 1;
+    z-index: 1;
     animation: mastIn .55s .2s ease both;
   }
-  .mast-nav {
-    position: absolute;
-    top: 38px;
-    right: 32px;
-    z-index: 2;
-    display: flex;
-    gap: 20px;
-  }
-  .mast-nav a {
-    font-family: var(--label); font-weight: 700;
-    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-  }
-  .mast-nav a:hover { color: var(--white); }
-  .mast-nav a[aria-current="page"] { color: var(--white); }
   h1 {
-    margin: 22px 0 0;
+    position: absolute;
+    top: 124px; left: 106px; right: 88px;
+    margin: 0;
     font-family: var(--title); font-weight: 700;
-    font-size: clamp(40px, 5.6vw, 84px);
-    line-height: 1.02;
+    font-size: clamp(32px, 4.2vw, 52px);
+    line-height: 1.04;
     letter-spacing: -0.03em;
+    max-width: 18em;
+    z-index: 1;
     color: var(--white);
   }
   h1 .mast-line { display: block; overflow: hidden; }
@@ -163,29 +98,17 @@
   h1 .mast-line:nth-child(1) span { animation-delay: .28s; }
   h1 .mast-line:nth-child(2) span { animation-delay: .42s; }
   .lede {
-    margin: 22px 0 0;
+    position: absolute;
+    top: 268px; left: 106px; right: 88px;
+    margin: 0;
     max-width: 32em;
     font-size: 19px;
     line-height: 1.38;
     color: var(--white);
+    z-index: 1;
     animation: mastIn .6s .7s ease both;
   }
-  @keyframes mastReveal {
-    from { opacity: 0; transform: scale(1.16) translate(4%, 2%); }
-    to { opacity: 1; transform: scale(1.06) translate(0, 0); }
-  }
-  @keyframes mastDrift {
-    from { transform: scale(1.06) translate(0, 0); }
-    to { transform: scale(1.16) translate(-3.2%, -1.6%); }
-  }
-  @keyframes mastBar { to { height: 100%; } }
-  @keyframes mastJoin { to { transform: scaleY(1); } }
-  @keyframes mastScan {
-    0% { top: -5px; opacity: 0; }
-    8% { opacity: 1; }
-    92% { opacity: 1; }
-    100% { top: 100%; opacity: 0; }
-  }
+  @keyframes mastBar { to { height: calc(100% - 88px); } }
   @keyframes mastIn {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: none; }
@@ -198,60 +121,72 @@
     max-width: 46em;
     padding-top: 48px;
   }
-  .article h2 {
-    font-family: var(--title); font-weight: 700;
-    font-size: 28px; line-height: 1.12;
-    margin: 42px 0 16px;
-    padding-left: 16px;
-    border-left: 5px solid var(--gold);
-    scroll-margin-top: 24px;
-  }
-  .article h2:first-child { margin-top: 0; }
-  .article h3 {
-    font-family: var(--title); font-weight: 700;
-    font-size: 22px; line-height: 1.12;
-    margin: 28px 0 12px;
-    scroll-margin-top: 24px;
-  }
   .article p { margin: 0 0 14px; }
-  .article strong { font-weight: 700; }
   .article code {
     font-family: var(--mono);
     font-size: 13px;
   }
   .article a { color: var(--navy); }
-  .jump {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    margin: 0 0 28px;
-    font-family: var(--label); font-weight: 700;
-    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  .sect { margin: 0 0 4px; }
+  .sect > summary,
+  .entry > summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18px;
+    gap: 16px;
+    align-items: start;
+    cursor: pointer;
   }
-  .jump a { color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--gold); }
-  .kicker {
+  .sect > summary::-webkit-details-marker,
+  .entry > summary::-webkit-details-marker { display: none; }
+  .sect > summary::after,
+  .entry > summary::after {
+    content: "+";
+    font-family: var(--title); font-weight: 700;
+    font-size: 22px; line-height: 1;
+    color: var(--gold);
+    justify-self: end;
+  }
+  .sect[open] > summary::after,
+  .entry[open] > summary::after { content: "−"; }
+  .sect > summary {
+    padding: 18px 0 18px 16px;
+    border-left: 5px solid var(--gold);
+    font-family: var(--title); font-weight: 700;
+    font-size: 28px; line-height: 1.12;
+    color: var(--navy);
+    scroll-margin-top: 24px;
+  }
+  .sect-body { padding: 4px 0 28px 21px; }
+  .group {
     font-family: var(--label); font-weight: 700;
     font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
     color: var(--navy);
-    margin: 0 0 6px;
+    margin: 18px 0 6px;
   }
-  .sys {
-    margin: 0 0 16px;
-    padding-left: 16px;
-    border-left: 5px solid var(--gold);
+  .entry {
+    border-top: 1px solid var(--navy);
     scroll-margin-top: 24px;
   }
-  .sys dt {
+  .entry > summary { padding: 14px 0; }
+  .entry .name {
+    display: block;
     font-family: var(--title); font-weight: 700;
     font-size: 20px; line-height: 1.12;
     margin: 0 0 4px;
+    color: var(--navy);
   }
-  .sys .expand { display: block; margin: 0 0 8px; }
-  .sys dd { margin: 0; }
+  .entry .expand {
+    display: block;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .entry .def { margin: 0 0 14px; }
   table.cov {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 0 18px;
+    margin: 8px 0 18px;
     font-size: 15px;
   }
   table.cov th, table.cov td {
@@ -264,30 +199,6 @@
     font-family: var(--label); font-weight: 700;
     font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
   }
-  table.terms {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 0 18px;
-    font-size: 15px;
-  }
-  table.terms th, table.terms td {
-    text-align: left;
-    vertical-align: top;
-    padding: 10px 14px 10px 0;
-    border-bottom: 1px solid var(--navy);
-  }
-  table.terms th {
-    font-family: var(--label); font-weight: 700;
-    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-  }
-  table.terms td:first-child {
-    font-family: var(--mono);
-    font-size: 13px;
-    white-space: nowrap;
-    width: 8.5em;
-    scroll-margin-top: 24px;
-  }
-  table.terms .full { font-weight: 700; }
   footer {
     margin-top: 48px;
     padding-top: 22px;
@@ -298,279 +209,515 @@
   footer a { color: var(--navy); }
   @media (max-width: 800px) {
     .page { padding: 0 24px 48px; }
-    .site-nav { margin: 0 -24px; padding: 14px 24px; }
-    .mast {
-      display: block;
-      margin: 0 -24px;
-      padding: 0 24px;
-      height: auto;
-      min-height: 62vh;
-    }
-    .mast-join, .mast-scan { display: none; }
-    .mast-visual {
-      position: absolute;
-      inset: 0;
-      min-height: 0;
-    }
-    .mast-nav { right: 24px; }
-    .mast-art {
-      width: 100%;
-      height: 100%;
-      opacity: .28;
-      object-position: right center;
-    }
-    .mast-copy { padding: 72px 0 40px; max-width: 36em; }
-    .mast-rule { left: 24px; }
-    h1 { font-size: clamp(36px, 11vw, 56px); }
-    table.terms td:first-child { white-space: normal; width: auto; }
+    .mast { height: auto; min-height: 420px; margin: 0 -24px; }
+    .site-nav { padding: 14px 24px; }
+    .mast-rule { left: 24px; top: 76px; }
+    .eyebrow, h1, .lede { position: relative; top: auto; left: auto; right: auto; }
+    .eyebrow { padding: 76px 24px 0 42px; }
+    h1 { padding: 16px 24px 0 42px; font-size: clamp(32px, 9vw, 44px); }
+    .lede { padding: 18px 24px 36px 42px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mast-art, .mast-rule, .mast-join, .mast-scan, .eyebrow, h1 .mast-line span, .lede { animation: none; }
-    .mast-rule { height: 100%; }
-    .mast-join { transform: none; }
-    .mast-scan { display: none; }
+    .mast-rule, .eyebrow, h1 .mast-line span, .lede { animation: none; }
+    .mast-rule { height: calc(100% - 88px); }
     h1 .mast-line span { transform: none; }
+  }
+
+  .site-loader {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: var(--navy);
+    transition: opacity .48s ease, visibility .48s ease;
+  }
+  .site-loader::before {
+    content: "";
+    position: absolute; inset: -20%;
+    background:
+      radial-gradient(ellipse 55% 45% at 50% 48%, rgba(245,184,25,.16) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 30% 70%, rgba(255,255,255,.05) 0%, transparent 50%);
+    animation: site-loader-bg-breathe 5.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .site-loader__inner { position: relative; z-index: 1; padding: 24px; }
+  .site-loader__stage {
+    position: relative;
+    width: min(22rem, 86vw);
+    height: min(22rem, 86vw);
+    max-height: min(22rem, 86vh);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .site-loader__bloom {
+    position: absolute; left: 50%; top: 50%;
+    width: 120%; height: 120%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,184,25,.22) 0%, rgba(10,26,79,.12) 38%, transparent 68%);
+    filter: blur(18px);
+    animation: site-loader-bloom-pulse 2.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .site-loader__ring {
+    position: absolute; left: 50%; top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    pointer-events: none;
+    transform-origin: center;
+  }
+  .site-loader__ring--a {
+    width: 108%; height: 108%;
+    border: 1px dashed rgba(245,184,25,.45);
+    animation: site-loader-spin 14s linear infinite;
+  }
+  .site-loader__ring--b {
+    width: 122%; height: 122%;
+    border: 1px solid rgba(255,255,255,.18);
+    border-top-color: rgba(245,184,25,.7);
+    border-bottom-color: rgba(245,184,25,.22);
+    animation: site-loader-spin 9s linear infinite reverse;
+  }
+  .site-loader__ring--c {
+    width: 138%; height: 138%;
+    border: 1px dashed rgba(245,184,25,.22);
+    opacity: .55;
+    animation: site-loader-spin 22s linear infinite;
+  }
+  .site-loader__spark {
+    position: absolute;
+    width: 5px; height: 5px;
+    background: var(--gold);
+    animation: site-loader-spark-drift 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .site-loader__spark--1 { left: 8%; top: 22%; animation-duration: 3.6s; }
+  .site-loader__spark--2 { right: 12%; top: 18%; animation-delay: -1.1s; animation-duration: 4.4s; }
+  .site-loader__spark--3 { left: 18%; bottom: 14%; width: 4px; height: 4px; animation-delay: -2.2s; animation-duration: 3.9s; }
+  .site-loader__spark--4 { right: 20%; bottom: 20%; animation-delay: -.6s; animation-duration: 5.1s; }
+  .site-loader__logo-shell {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    width: min(17.5rem, 72vw);
+    animation: site-loader-logo-float 3.2s ease-in-out infinite;
+  }
+  .site-loader__logo {
+    width: 100%; height: auto;
+    max-height: min(17.5rem, 72vh);
+    object-fit: contain; display: block;
+    animation: site-loader-logo-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes site-loader-bg-breathe {
+    0%, 100% { opacity: .75; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+  @keyframes site-loader-bloom-pulse {
+    0%, 100% { opacity: .65; scale: .92; }
+    50% { opacity: 1; scale: 1.08; }
+  }
+  @keyframes site-loader-spin { to { rotate: 360deg; } }
+  @keyframes site-loader-spark-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: .5; }
+    50% { transform: translate(6px, -10px) scale(1.25); opacity: 1; }
+  }
+  @keyframes site-loader-logo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes site-loader-logo-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+  }
+  .site-loader--exit { opacity: 0; visibility: hidden; pointer-events: none; }
+  .site-loader--exit::before,
+  .site-loader--exit .site-loader__bloom,
+  .site-loader--exit .site-loader__ring,
+  .site-loader--exit .site-loader__spark,
+  .site-loader--exit .site-loader__logo-shell,
+  .site-loader--exit .site-loader__logo { animation: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .site-loader::before,
+    .site-loader__bloom,
+    .site-loader__ring,
+    .site-loader__spark,
+    .site-loader__logo-shell,
+    .site-loader__logo { animation: none !important; }
+    .site-loader__ring { opacity: .35; }
+    .site-loader__spark { opacity: .4; }
   }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="site-nav">
-    <a class="brand" href="../">Coordination view</a>
-    <nav aria-label="Site">
-      <a href="../">Timeline</a>
-      <a href="../about/">About</a>
-      <a href="../coverage/">Coverage and gaps</a>
-      <a href="../reference/">Regulatory reference</a>
-      <a href="./" aria-current="page">Glossary</a>
-    </nav>
+<div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
+  <div class="site-loader__inner">
+    <div class="site-loader__stage">
+      <span class="site-loader__bloom" aria-hidden="true"></span>
+      <span class="site-loader__ring site-loader__ring--a" aria-hidden="true"></span>
+      <span class="site-loader__ring site-loader__ring--b" aria-hidden="true"></span>
+      <span class="site-loader__ring site-loader__ring--c" aria-hidden="true"></span>
+      <span class="site-loader__spark site-loader__spark--1" aria-hidden="true"></span>
+      <span class="site-loader__spark site-loader__spark--2" aria-hidden="true"></span>
+      <span class="site-loader__spark site-loader__spark--3" aria-hidden="true"></span>
+      <span class="site-loader__spark site-loader__spark--4" aria-hidden="true"></span>
+      <div class="site-loader__logo-shell">
+        <img id="site-loader-logo" class="site-loader__logo" src="../adler-archer-logo.png" alt="" width="512" height="512" decoding="async" fetchpriority="high">
+      </div>
+    </div>
   </div>
+</div>
+<script>
+(function () {
+  var loader = document.getElementById('site-loader');
+  if (!loader) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var start = Date.now();
+  var minMs = reduce ? 480 : 2400;
+  function finish() {
+    var wait = Math.max(0, minMs - (Date.now() - start));
+    window.setTimeout(function () {
+      loader.classList.add('site-loader--exit');
+      loader.setAttribute('aria-busy', 'false');
+      window.setTimeout(function () { loader.remove(); }, 480);
+    }, wait);
+  }
+  if (document.readyState === 'complete') finish();
+  else window.addEventListener('load', finish, { once: true });
+})();
+</script>
+<div class="page">
   <header class="mast">
-    <div class="mast-copy">
-      <p class="eyebrow">Coordination view</p>
-      <h1>
-        <span class="mast-line"><span>Glossary</span></span>
-      </h1>
-      <p class="lede">Systems used on this prototype, and the terms and acronyms spelled out.</p>
+    <div class="site-nav">
+      <a class="brand" href="../">
+        <img src="../adler-archer-logo.png" width="512" height="512" alt="Adler Archer">
+      </a>
+      <nav aria-label="Site">
+        <a href="../">Timeline</a>
+        <a href="../about/">About</a>
+        <a href="../coverage/">Coverage and gaps</a>
+        <a href="../reference/">Regulatory reference</a>
+        <a href="./" aria-current="page">Glossary</a>
+      </nav>
     </div>
-    <span class="mast-join" aria-hidden="true"></span>
-    <div class="mast-visual">
-      <img class="mast-art" src="../header.png" alt="">
-      <span class="mast-scan" aria-hidden="true"></span>
-    </div>
+    <p class="eyebrow">Coordination view</p>
+    <h1>
+      <span class="mast-line"><span>Glossary</span></span>
+    </h1>
+    <p class="lede">Systems used on this prototype, and the terms and acronyms spelled out.</p>
     <span class="mast-rule" aria-hidden="true"></span>
   </header>
 
   <article class="article">
-    <p class="jump">
-      <a href="#systems">Systems</a>
-      <a href="#terms">Terms</a>
-    </p>
-
-    <h2 id="systems">Systems</h2>
-    <p>What each named system is, and how this prototype uses it. Lease and well records from MLRS and AFMSS are simulated. Everything else is a public federal source or a published extract.</p>
-
-    <h3 id="this-prototype">This prototype</h3>
-
-    <dl>
-      <div class="sys" id="sepi">
-        <dt>SEPI</dt>
-        <span class="kicker expand">Subsurface Energy Permitting Index</span>
-        <dd>A federation layer that would surface authoritative status from systems of record and point back to those systems rather than holding records itself. It does not exist yet. This site runs against a simulated SEPI.</dd>
+    <details class="sect" id="systems">
+      <summary>Systems</summary>
+      <div class="sect-body">
+        <p>What each named system is, and how this prototype uses it. Lease and well records from MLRS and AFMSS are simulated. Everything else is a public federal source or a published extract.</p>
+        <p class="group" id="this-prototype">This prototype</p>
+    <details class="entry" id="sepi">
+      <summary><span class="name">SEPI</span><span class="expand">Subsurface Energy Permitting Index</span></summary>
+      <p class="def">A federation layer that would surface authoritative status from systems of record and point back to those systems rather than holding records itself. It does not exist yet. This site runs against a simulated SEPI.</p>
+    </details>
+    <details class="entry" id="gpcp">
+      <summary><span class="name">GPCP</span><span class="expand">Geothermal Permitting Coordination Platform</span></summary>
+      <p class="def">A coordination layer that consumes SEPI and other services to produce a view no single source system holds. This prototype is one GPCP capability: which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
+    </details>
+    <details class="entry" id="mcp">
+      <summary><span class="name">MCP</span><span class="expand">Model Context Protocol</span></summary>
+      <p class="def">The interface used to wrap each source as a local read-only server with typed tools. Each response carries its source name, endpoint, and retrieval timestamp. A static host cannot run those servers; this site publishes what they produced.</p>
+    </details>
+        <table class="cov">
+          <thead>
+            <tr><th>Server</th><th>What it wraps</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>ecfr</code></td><td>eCFR and Federal Register public APIs</td></tr>
+            <tr><td><code>ipac</code></td><td>USFWS IPaC Location API</td></tr>
+            <tr><td><code>sepi-stub</code></td><td>Simulated BLM MLRS and AFMSS response shapes</td></tr>
+            <tr><td><code>gpcp-timeline</code></td><td>Encoded dependency rule set and critical-path schedule</td></tr>
+          </tbody>
+        </table>
+        <p class="group" id="federal-systems">Federal systems and datasets</p>
+    <details class="entry" id="afmss">
+      <summary><span class="name">AFMSS</span><span class="expand">Automated Fluid Minerals Support System · BLM</span></summary>
+      <p class="def">BLM system of record for well records and Application for Permit to Drill status. No public machine interface. Represented here by a simulated response shape, marked Simulated.</p>
+    </details>
+    <details class="entry" id="eplanning">
+      <summary><span class="name">BLM ePlanning</span><span class="expand">Bureau of Land Management NEPA docket</span></summary>
+      <p class="def">Public website for NEPA documents and project dockets. The underlying platform can expose a Web API; that API is not enabled. Not connected here.</p>
+    </details>
+    <details class="entry" id="mlrs">
+      <summary><span class="name">MLRS</span><span class="expand">Mineral and Land Records System · BLM</span></summary>
+      <p class="def">BLM system of record for lease serial, status, acreage, and administrative office. Sits behind DOI network boundaries. Represented here by a simulated response shape, marked Simulated.</p>
+    </details>
+    <details class="entry" id="tigerweb">
+      <summary><span class="name">Census TIGERweb</span><span class="expand">Topologically Integrated Geographic Encoding and Referencing</span></summary>
+      <p class="def">Census Bureau geospatial service. Used here for federal American Indian reservation polygons in Nevada, which surface the tribal consultation gap.</p>
+    </details>
+    <details class="entry" id="ecfr">
+      <summary><span class="name">eCFR</span><span class="expand">Electronic Code of Federal Regulations</span></summary>
+      <p class="def">Codified federal regulations. Used here for Title 43 implementing rules that the NEPA and APD rows cite.</p>
+    </details>
+    <details class="entry" id="epa-uic">
+      <summary><span class="name">EPA UIC / SDWIS</span><span class="expand">Underground Injection Control / Safe Drinking Water Information System</span></summary>
+      <p class="def">EPA systems for underground injection control permits. No connector on this prototype. The rule set still has a UIC Class V row.</p>
+    </details>
+    <details class="entry" id="federal-register">
+      <summary><span class="name">Federal Register</span><span class="expand">Official journal of federal rules and notices</span></summary>
+      <p class="def">Public API for recent rules and proposed rules. Used here for Title 43 documents in the last twelve months.</p>
+    </details>
+    <details class="entry" id="geoplatform">
+      <summary><span class="name">GeoPlatform</span><span class="expand">Federal geospatial catalog</span></summary>
+      <p class="def">Catalog of federal geospatial services. Probed during connector inventory; the catalog API had moved as of 20 August 2026. Not a live source on this page.</p>
+    </details>
+    <details class="entry" id="gsa-scan">
+      <summary><span class="name">GSA Site Scanning</span><span class="expand">General Services Administration</span></summary>
+      <p class="def">Federal website scanning program used in the connector inventory that classified public surfaces, missing APIs, and broken endpoints.</p>
+    </details>
+    <details class="entry" id="ndep">
+      <summary><span class="name">NDEP</span><span class="expand">Nevada Division of Environmental Protection</span></summary>
+      <p class="def">State agency for UIC and water-pollution permits. Named as a coverage gap. Not connected.</p>
+    </details>
+    <details class="entry" id="ndom">
+      <summary><span class="name">NDOM</span><span class="expand">Nevada Division of Minerals</span></summary>
+      <p class="def">State agency for the Permit to Drill, Geothermal Project Area Permit, Sundry Notice, and well completion report. The rule set has a single federal APD row and nothing else at state level.</p>
+    </details>
+    <details class="entry" id="ndwr">
+      <summary><span class="name">NDWR</span><span class="expand">Nevada Division of Water Resources</span></summary>
+      <p class="def">State agency for water-right applications and decrees. The GIS host did not resolve during inventory. The rule set still has a Nevada water right row.</p>
+    </details>
+    <details class="entry" id="nepatec">
+      <summary><span class="name">NEPATEC 2.0</span><span class="expand">NEPA Text Corpus · Pacific Northwest National Laboratory</span></summary>
+      <p class="def">Extract of NEPA documents. The eight BLM geothermal Environmental Assessments on this site come from that corpus. No Nevada geothermal EA is in the extract. Marked Extracted.</p>
+    </details>
+    <details class="entry" id="nhd">
+      <summary><span class="name">NHD</span><span class="expand">National Hydrography Dataset · USGS</span></summary>
+      <p class="def">National map of surface waters. Used here for named flowline segments in the project vicinity.</p>
+    </details>
+    <details class="entry" id="nwi">
+      <summary><span class="name">NWI</span><span class="expand">National Wetlands Inventory · USFWS</span></summary>
+      <p class="def">National map of wetlands, classified in the Cowardin system. Used here as a map layer over the Dixie Valley project area.</p>
+    </details>
+    <details class="entry" id="openei-rapid">
+      <summary><span class="name">OpenEI RAPID</span><span class="expand">Open Energy Information · Regulatory and Permitting Information Desktop Toolkit</span></summary>
+      <p class="def">DOE geothermal permitting reference covering 53 jurisdictions. Used here as the regulatory reference panel and as the check that found Nevada well permits missing from the rule set.</p>
+    </details>
+    <details class="entry" id="padus">
+      <summary><span class="name">PAD-US</span><span class="expand">Protected Areas Database of the United States · USGS</span></summary>
+      <p class="def">National inventory of protected lands. Used here for Wilderness Study Areas and the Stillwater Field Office, which surface the WSA gap.</p>
+    </details>
+    <details class="entry" id="permittec">
+      <summary><span class="name">PermitTEC v0.1</span><span class="expand">NEPA litigation corpus · Pacific Northwest National Laboratory</span></summary>
+      <p class="def">Dataset of 761 NEPA cases. No Nevada geothermal litigation appears in it. Two geothermal-and-Nevada matches were false positives.</p>
+    </details>
+    <details class="entry" id="shpo">
+      <summary><span class="name">SHPO</span><span class="expand">State Historic Preservation Office · Nevada</span></summary>
+      <p class="def">State office that consults on historic properties under NHPA Section 106. Named as a coverage gap. The rule set models SHPO and has no separate tribal consultation row.</p>
+    </details>
+    <details class="entry" id="ipac">
+      <summary><span class="name">USFWS IPaC</span><span class="expand">Information for Planning and Consultation</span></summary>
+      <p class="def">USFWS location API for species screening, field office, wetlands query, and designated critical habitat. Dixie Valley is a captured retrieval. The other three Nevada cases use the same response shape, marked Simulated.</p>
+    </details>
+    <details class="entry" id="usgs-3dep">
+      <summary><span class="name">USGS 3DEP</span><span class="expand">3D Elevation Program</span></summary>
+      <p class="def">National elevation dataset. Used here as an optional hillshade on the map, off by default.</p>
+    </details>
       </div>
-      <div class="sys" id="gpcp">
-        <dt>GPCP</dt>
-        <span class="kicker expand">Geothermal Permitting Coordination Platform</span>
-        <dd>A coordination layer that consumes SEPI and other services to produce a view no single source system holds. This prototype is one GPCP capability: which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</dd>
+    </details>
+    <details class="sect" id="terms">
+      <summary>Terms</summary>
+      <div class="sect-body">
+        <p>Acronyms and short names as they are used on this site.</p>
+    <details class="entry" id="term-3dep">
+      <summary><span class="name">3DEP</span><span class="expand">3D Elevation Program</span></summary>
+      <p class="def">USGS national elevation dataset.</p>
+    </details>
+    <details class="entry" id="term-afmss">
+      <summary><span class="name">AFMSS</span><span class="expand">Automated Fluid Minerals Support System</span></summary>
+      <p class="def">BLM well and APD records.</p>
+    </details>
+    <details class="entry" id="term-api">
+      <summary><span class="name">API</span><span class="expand">Application programming interface</span></summary>
+      <p class="def">A machine-readable endpoint, as distinct from a public website.</p>
+    </details>
+    <details class="entry" id="term-apd">
+      <summary><span class="name">APD</span><span class="expand">Application for Permit to Drill</span></summary>
+      <p class="def">BLM authorization to drill a geothermal well, 43 CFR 3261.</p>
+    </details>
+    <details class="entry" id="term-ba">
+      <summary><span class="name">BA</span><span class="expand">Biological assessment</span></summary>
+      <p class="def">Document the action agency prepares before ESA Section 7 consultation. Requires field survey seasons.</p>
+    </details>
+    <details class="entry" id="term-blm">
+      <summary><span class="name">BLM</span><span class="expand">Bureau of Land Management</span></summary>
+      <p class="def">Interior bureau that manages federal geothermal leases on public land.</p>
+    </details>
+    <details class="entry" id="term-cfr">
+      <summary><span class="name">CFR</span><span class="expand">Code of Federal Regulations</span></summary>
+      <p class="def">Codified agency rules. Cited throughout the rule set.</p>
+    </details>
+    <details class="entry" id="term-doe">
+      <summary><span class="name">DOE</span><span class="expand">U.S. Department of Energy</span></summary>
+      <p class="def">This prototype is not an official DOE product.</p>
+    </details>
+    <details class="entry" id="term-doi">
+      <summary><span class="name">DOI</span><span class="expand">U.S. Department of the Interior</span></summary>
+      <p class="def">Parent department of BLM and USFWS.</p>
+    </details>
+    <details class="entry" id="term-e">
+      <summary><span class="name">E / T / PT</span><span class="expand">Endangered, Threatened, Proposed Threatened</span></summary>
+      <p class="def">IPaC listing codes. Section 7 is triggered by Endangered or Threatened, not by Proposed Threatened.</p>
+    </details>
+    <details class="entry" id="term-ea">
+      <summary><span class="name">EA</span><span class="expand">Environmental Assessment</span></summary>
+      <p class="def">NEPA document that supports a Finding of No Significant Impact or a decision to prepare an EIS.</p>
+    </details>
+    <details class="entry" id="term-ecfr">
+      <summary><span class="name">eCFR</span><span class="expand">Electronic Code of Federal Regulations</span></summary>
+    </details>
+    <details class="entry" id="term-eis">
+      <summary><span class="name">EIS</span><span class="expand">Environmental Impact Statement</span></summary>
+      <p class="def">The more intensive NEPA document. Not a row in this rule set.</p>
+    </details>
+    <details class="entry" id="term-epa">
+      <summary><span class="name">EPA</span><span class="expand">U.S. Environmental Protection Agency</span></summary>
+      <p class="def">Federal UIC program, or a delegated state.</p>
+    </details>
+    <details class="entry" id="term-esa">
+      <summary><span class="name">ESA</span><span class="expand">Endangered Species Act</span></summary>
+      <p class="def">Section 7 is the consultation process with USFWS.</p>
+    </details>
+    <details class="entry" id="term-fonsi">
+      <summary><span class="name">FONSI</span><span class="expand">Finding of No Significant Impact</span></summary>
+      <p class="def">One of two NEPA decision documents in the rule set, with ROD.</p>
+    </details>
+    <details class="entry" id="term-gis">
+      <summary><span class="name">GIS</span><span class="expand">Geographic information system</span></summary>
+      <p class="def">Spatial services used for map layers and the connector inventory.</p>
+    </details>
+    <details class="entry" id="term-gpcp-term">
+      <summary><span class="name">GPCP</span><span class="expand">Geothermal Permitting Coordination Platform</span></summary>
+    </details>
+    <details class="entry" id="term-gsa">
+      <summary><span class="name">GSA</span><span class="expand">General Services Administration</span></summary>
+    </details>
+    <details class="entry" id="term-ipac-term">
+      <summary><span class="name">IPaC</span><span class="expand">Information for Planning and Consultation</span></summary>
+      <p class="def">USFWS species-screening service.</p>
+    </details>
+    <details class="entry" id="term-laa">
+      <summary><span class="name">LAA</span><span class="expand">Likely to adversely affect</span></summary>
+      <p class="def">ESA determination that moves a project from informal to formal Section 7 consultation.</p>
+    </details>
+    <details class="entry" id="term-mcp-term">
+      <summary><span class="name">MCP</span><span class="expand">Model Context Protocol</span></summary>
+    </details>
+    <details class="entry" id="term-mlrs">
+      <summary><span class="name">MLRS</span><span class="expand">Mineral and Land Records System</span></summary>
+      <p class="def">BLM lease records.</p>
+    </details>
+    <details class="entry" id="term-ndep-term">
+      <summary><span class="name">NDEP</span><span class="expand">Nevada Division of Environmental Protection</span></summary>
+    </details>
+    <details class="entry" id="term-ndom-term">
+      <summary><span class="name">NDOM</span><span class="expand">Nevada Division of Minerals</span></summary>
+    </details>
+    <details class="entry" id="term-ndwr-term">
+      <summary><span class="name">NDWR</span><span class="expand">Nevada Division of Water Resources</span></summary>
+    </details>
+    <details class="entry" id="term-nepa">
+      <summary><span class="name">NEPA</span><span class="expand">National Environmental Policy Act</span></summary>
+    </details>
+    <details class="entry" id="term-nepatec-term">
+      <summary><span class="name">NEPATEC</span><span class="expand">NEPA Text Corpus</span></summary>
+      <p class="def">PNNL extract of NEPA documents.</p>
+    </details>
+    <details class="entry" id="term-nhd-term">
+      <summary><span class="name">NHD</span><span class="expand">National Hydrography Dataset</span></summary>
+    </details>
+    <details class="entry" id="term-nhpa">
+      <summary><span class="name">NHPA</span><span class="expand">National Historic Preservation Act</span></summary>
+      <p class="def">Section 106 is historic-property consultation.</p>
+    </details>
+    <details class="entry" id="term-nrs">
+      <summary><span class="name">NRS</span><span class="expand">Nevada Revised Statutes</span></summary>
+      <p class="def">Cited for the water-right row, NRS 533.</p>
+    </details>
+    <details class="entry" id="term-nwi-term">
+      <summary><span class="name">NWI</span><span class="expand">National Wetlands Inventory</span></summary>
+    </details>
+    <details class="entry" id="term-openei">
+      <summary><span class="name">OpenEI</span><span class="expand">Open Energy Information</span></summary>
+      <p class="def">Host of the RAPID Toolkit.</p>
+    </details>
+    <details class="entry" id="term-padus-term">
+      <summary><span class="name">PAD-US</span><span class="expand">Protected Areas Database of the United States</span></summary>
+    </details>
+    <details class="entry" id="term-pnnl">
+      <summary><span class="name">PNNL</span><span class="expand">Pacific Northwest National Laboratory</span></summary>
+      <p class="def">Source of NEPATEC and PermitTEC.</p>
+    </details>
+    <details class="entry" id="term-rapid">
+      <summary><span class="name">RAPID</span><span class="expand">Regulatory and Permitting Information Desktop Toolkit</span></summary>
+    </details>
+    <details class="entry" id="term-rod">
+      <summary><span class="name">ROD</span><span class="expand">Record of Decision</span></summary>
+      <p class="def">NEPA decision document used when an EIS is prepared.</p>
+    </details>
+    <details class="entry" id="term-sdwis">
+      <summary><span class="name">SDWIS</span><span class="expand">Safe Drinking Water Information System</span></summary>
+      <p class="def">EPA drinking-water and UIC records.</p>
+    </details>
+    <details class="entry" id="term-sepi-term">
+      <summary><span class="name">SEPI</span><span class="expand">Subsurface Energy Permitting Index</span></summary>
+    </details>
+    <details class="entry" id="term-shpo-term">
+      <summary><span class="name">SHPO</span><span class="expand">State Historic Preservation Office or Officer</span></summary>
+    </details>
+    <details class="entry" id="term-tiger">
+      <summary><span class="name">TIGER</span><span class="expand">Topologically Integrated Geographic Encoding and Referencing</span></summary>
+      <p class="def">Census geographic framework.</p>
+    </details>
+    <details class="entry" id="term-uic">
+      <summary><span class="name">UIC</span><span class="expand">Underground Injection Control</span></summary>
+      <p class="def">Class V covers geothermal injection wells.</p>
+    </details>
+    <details class="entry" id="term-usda">
+      <summary><span class="name">USDA</span><span class="expand">U.S. Department of Agriculture</span></summary>
+      <p class="def">Appears in the NEPATEC corpus agencies, not as a row in this rule set.</p>
+    </details>
+    <details class="entry" id="term-usfws">
+      <summary><span class="name">USFWS</span><span class="expand">U.S. Fish and Wildlife Service</span></summary>
+    </details>
+    <details class="entry" id="term-usgs">
+      <summary><span class="name">USGS</span><span class="expand">U.S. Geological Survey</span></summary>
+    </details>
+    <details class="entry" id="term-wsa">
+      <summary><span class="name">WSA</span><span class="expand">Wilderness Study Area</span></summary>
+      <p class="def">BLM-managed lands under non-impairment standards. Adjacent to the Dixie Valley project; not a row in the rule set.</p>
+    </details>
       </div>
-      <div class="sys" id="mcp">
-        <dt>MCP</dt>
-        <span class="kicker expand">Model Context Protocol</span>
-        <dd>The interface used to wrap each source as a local read-only server with typed tools. Each response carries its source name, endpoint, and retrieval timestamp. A static host cannot run those servers; this site publishes what they produced.</dd>
-      </div>
-    </dl>
-    <table class="cov">
-      <thead>
-        <tr><th>Server</th><th>What it wraps</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><code>ecfr</code></td><td>eCFR and Federal Register public APIs</td></tr>
-        <tr><td><code>ipac</code></td><td>USFWS IPaC Location API</td></tr>
-        <tr><td><code>sepi-stub</code></td><td>Simulated BLM MLRS and AFMSS response shapes</td></tr>
-        <tr><td><code>gpcp-timeline</code></td><td>Encoded dependency rule set and critical-path schedule</td></tr>
-      </tbody>
-    </table>
-
-    <h3 id="federal-systems">Federal systems and datasets</h3>
-
-    <dl>
-      <div class="sys" id="afmss">
-        <dt>AFMSS</dt>
-        <span class="kicker expand">Automated Fluid Minerals Support System · BLM</span>
-        <dd>BLM system of record for well records and Application for Permit to Drill status. No public machine interface. Represented here by a simulated response shape, marked Simulated.</dd>
-      </div>
-      <div class="sys" id="eplanning">
-        <dt>BLM ePlanning</dt>
-        <span class="kicker expand">Bureau of Land Management NEPA docket</span>
-        <dd>Public website for NEPA documents and project dockets. The underlying platform can expose a Web API; that API is not enabled. Not connected here.</dd>
-      </div>
-      <div class="sys" id="mlrs">
-        <dt>MLRS</dt>
-        <span class="kicker expand">Mineral and Land Records System · BLM</span>
-        <dd>BLM system of record for lease serial, status, acreage, and administrative office. Sits behind DOI network boundaries. Represented here by a simulated response shape, marked Simulated.</dd>
-      </div>
-      <div class="sys" id="tigerweb">
-        <dt>Census TIGERweb</dt>
-        <span class="kicker expand">Topologically Integrated Geographic Encoding and Referencing</span>
-        <dd>Census Bureau geospatial service. Used here for federal American Indian reservation polygons in Nevada, which surface the tribal consultation gap.</dd>
-      </div>
-      <div class="sys" id="ecfr">
-        <dt>eCFR</dt>
-        <span class="kicker expand">Electronic Code of Federal Regulations</span>
-        <dd>Codified federal regulations. Used here for Title 43 implementing rules that the NEPA and APD rows cite.</dd>
-      </div>
-      <div class="sys" id="epa-uic">
-        <dt>EPA UIC / SDWIS</dt>
-        <span class="kicker expand">Underground Injection Control / Safe Drinking Water Information System</span>
-        <dd>EPA systems for underground injection control permits. No connector on this prototype. The rule set still has a UIC Class V row.</dd>
-      </div>
-      <div class="sys" id="federal-register">
-        <dt>Federal Register</dt>
-        <span class="kicker expand">Official journal of federal rules and notices</span>
-        <dd>Public API for recent rules and proposed rules. Used here for Title 43 documents in the last twelve months.</dd>
-      </div>
-      <div class="sys" id="geoplatform">
-        <dt>GeoPlatform</dt>
-        <span class="kicker expand">Federal geospatial catalog</span>
-        <dd>Catalog of federal geospatial services. Probed during connector inventory; the catalog API had moved as of 20 August 2026. Not a live source on this page.</dd>
-      </div>
-      <div class="sys" id="gsa-scan">
-        <dt>GSA Site Scanning</dt>
-        <span class="kicker expand">General Services Administration</span>
-        <dd>Federal website scanning program used in the connector inventory that classified public surfaces, missing APIs, and broken endpoints.</dd>
-      </div>
-      <div class="sys" id="ndep">
-        <dt>NDEP</dt>
-        <span class="kicker expand">Nevada Division of Environmental Protection</span>
-        <dd>State agency for UIC and water-pollution permits. Named as a coverage gap. Not connected.</dd>
-      </div>
-      <div class="sys" id="ndom">
-        <dt>NDOM</dt>
-        <span class="kicker expand">Nevada Division of Minerals</span>
-        <dd>State agency for the Permit to Drill, Geothermal Project Area Permit, Sundry Notice, and well completion report. The rule set has a single federal APD row and nothing else at state level.</dd>
-      </div>
-      <div class="sys" id="ndwr">
-        <dt>NDWR</dt>
-        <span class="kicker expand">Nevada Division of Water Resources</span>
-        <dd>State agency for water-right applications and decrees. The GIS host did not resolve during inventory. The rule set still has a Nevada water right row.</dd>
-      </div>
-      <div class="sys" id="nepatec">
-        <dt>NEPATEC 2.0</dt>
-        <span class="kicker expand">NEPA Text Corpus · Pacific Northwest National Laboratory</span>
-        <dd>Extract of NEPA documents. The eight BLM geothermal Environmental Assessments on this site come from that corpus. No Nevada geothermal EA is in the extract. Marked Extracted.</dd>
-      </div>
-      <div class="sys" id="nhd">
-        <dt>NHD</dt>
-        <span class="kicker expand">National Hydrography Dataset · USGS</span>
-        <dd>National map of surface waters. Used here for named flowline segments in the project vicinity.</dd>
-      </div>
-      <div class="sys" id="nwi">
-        <dt>NWI</dt>
-        <span class="kicker expand">National Wetlands Inventory · USFWS</span>
-        <dd>National map of wetlands, classified in the Cowardin system. Used here as a map layer over the Dixie Valley project area.</dd>
-      </div>
-      <div class="sys" id="openei-rapid">
-        <dt>OpenEI RAPID</dt>
-        <span class="kicker expand">Open Energy Information · Regulatory and Permitting Information Desktop Toolkit</span>
-        <dd>DOE geothermal permitting reference covering 53 jurisdictions. Used here as the regulatory reference panel and as the check that found Nevada well permits missing from the rule set.</dd>
-      </div>
-      <div class="sys" id="padus">
-        <dt>PAD-US</dt>
-        <span class="kicker expand">Protected Areas Database of the United States · USGS</span>
-        <dd>National inventory of protected lands. Used here for Wilderness Study Areas and the Stillwater Field Office, which surface the WSA gap.</dd>
-      </div>
-      <div class="sys" id="permittec">
-        <dt>PermitTEC v0.1</dt>
-        <span class="kicker expand">NEPA litigation corpus · Pacific Northwest National Laboratory</span>
-        <dd>Dataset of 761 NEPA cases. No Nevada geothermal litigation appears in it. Two geothermal-and-Nevada matches were false positives.</dd>
-      </div>
-      <div class="sys" id="shpo">
-        <dt>SHPO</dt>
-        <span class="kicker expand">State Historic Preservation Office · Nevada</span>
-        <dd>State office that consults on historic properties under NHPA Section 106. Named as a coverage gap. The rule set models SHPO and has no separate tribal consultation row.</dd>
-      </div>
-      <div class="sys" id="ipac">
-        <dt>USFWS IPaC</dt>
-        <span class="kicker expand">Information for Planning and Consultation</span>
-        <dd>USFWS location API for species screening, field office, wetlands query, and designated critical habitat. Dixie Valley is a captured retrieval. The other three Nevada cases use the same response shape, marked Simulated.</dd>
-      </div>
-      <div class="sys" id="usgs-3dep">
-        <dt>USGS 3DEP</dt>
-        <span class="kicker expand">3D Elevation Program</span>
-        <dd>National elevation dataset. Used here as an optional hillshade on the map, off by default.</dd>
-      </div>
-    </dl>
-
-    <h2 id="terms">Terms</h2>
-    <p>Acronyms and short names as they are used on this site.</p>
-    <table class="terms">
-      <thead>
-        <tr><th>Term</th><th>Spelled out</th></tr>
-      </thead>
-      <tbody>
-        <tr><td id="term-3dep">3DEP</td><td><span class="full">3D Elevation Program.</span> USGS national elevation dataset.</td></tr>
-        <tr><td id="term-afmss">AFMSS</td><td><span class="full">Automated Fluid Minerals Support System.</span> BLM well and APD records.</td></tr>
-        <tr><td id="term-api">API</td><td><span class="full">Application programming interface.</span> A machine-readable endpoint, as distinct from a public website.</td></tr>
-        <tr><td id="term-apd">APD</td><td><span class="full">Application for Permit to Drill.</span> BLM authorization to drill a geothermal well, 43 CFR 3261.</td></tr>
-        <tr><td id="term-ba">BA</td><td><span class="full">Biological assessment.</span> Document the action agency prepares before ESA Section 7 consultation. Requires field survey seasons.</td></tr>
-        <tr><td id="term-blm">BLM</td><td><span class="full">Bureau of Land Management.</span> Interior bureau that manages federal geothermal leases on public land.</td></tr>
-        <tr><td id="term-cfr">CFR</td><td><span class="full">Code of Federal Regulations.</span> Codified agency rules. Cited throughout the rule set.</td></tr>
-        <tr><td id="term-doe">DOE</td><td><span class="full">U.S. Department of Energy.</span> This prototype is not an official DOE product.</td></tr>
-        <tr><td id="term-doi">DOI</td><td><span class="full">U.S. Department of the Interior.</span> Parent department of BLM and USFWS.</td></tr>
-        <tr><td id="term-e">E / T / PT</td><td><span class="full">Endangered, Threatened, Proposed Threatened.</span> IPaC listing codes. Section 7 is triggered by Endangered or Threatened, not by Proposed Threatened.</td></tr>
-        <tr><td id="term-ea">EA</td><td><span class="full">Environmental Assessment.</span> NEPA document that supports a Finding of No Significant Impact or a decision to prepare an EIS.</td></tr>
-        <tr><td id="term-ecfr">eCFR</td><td><span class="full">Electronic Code of Federal Regulations.</span></td></tr>
-        <tr><td id="term-eis">EIS</td><td><span class="full">Environmental Impact Statement.</span> The more intensive NEPA document. Not a row in this rule set.</td></tr>
-        <tr><td id="term-epa">EPA</td><td><span class="full">U.S. Environmental Protection Agency.</span> Federal UIC program, or a delegated state.</td></tr>
-        <tr><td id="term-esa">ESA</td><td><span class="full">Endangered Species Act.</span> Section 7 is the consultation process with USFWS.</td></tr>
-        <tr><td id="term-fonsi">FONSI</td><td><span class="full">Finding of No Significant Impact.</span> One of two NEPA decision documents in the rule set, with ROD.</td></tr>
-        <tr><td id="term-gis">GIS</td><td><span class="full">Geographic information system.</span> Spatial services used for map layers and the connector inventory.</td></tr>
-        <tr><td id="term-gpcp-term">GPCP</td><td><span class="full">Geothermal Permitting Coordination Platform.</span></td></tr>
-        <tr><td id="term-gsa">GSA</td><td><span class="full">General Services Administration.</span></td></tr>
-        <tr><td id="term-ipac-term">IPaC</td><td><span class="full">Information for Planning and Consultation.</span> USFWS species-screening service.</td></tr>
-        <tr><td id="term-laa">LAA</td><td><span class="full">Likely to adversely affect.</span> ESA determination that moves a project from informal to formal Section 7 consultation.</td></tr>
-        <tr><td id="term-mcp-term">MCP</td><td><span class="full">Model Context Protocol.</span></td></tr>
-        <tr><td id="term-mlrs">MLRS</td><td><span class="full">Mineral and Land Records System.</span> BLM lease records.</td></tr>
-        <tr><td id="term-ndep-term">NDEP</td><td><span class="full">Nevada Division of Environmental Protection.</span></td></tr>
-        <tr><td id="term-ndom-term">NDOM</td><td><span class="full">Nevada Division of Minerals.</span></td></tr>
-        <tr><td id="term-ndwr-term">NDWR</td><td><span class="full">Nevada Division of Water Resources.</span></td></tr>
-        <tr><td id="term-nepa">NEPA</td><td><span class="full">National Environmental Policy Act.</span></td></tr>
-        <tr><td id="term-nepatec-term">NEPATEC</td><td><span class="full">NEPA Text Corpus.</span> PNNL extract of NEPA documents.</td></tr>
-        <tr><td id="term-nhd-term">NHD</td><td><span class="full">National Hydrography Dataset.</span></td></tr>
-        <tr><td id="term-nhpa">NHPA</td><td><span class="full">National Historic Preservation Act.</span> Section 106 is historic-property consultation.</td></tr>
-        <tr><td id="term-nrs">NRS</td><td><span class="full">Nevada Revised Statutes.</span> Cited for the water-right row, NRS 533.</td></tr>
-        <tr><td id="term-nwi-term">NWI</td><td><span class="full">National Wetlands Inventory.</span></td></tr>
-        <tr><td id="term-openei">OpenEI</td><td><span class="full">Open Energy Information.</span> Host of the RAPID Toolkit.</td></tr>
-        <tr><td id="term-padus-term">PAD-US</td><td><span class="full">Protected Areas Database of the United States.</span></td></tr>
-        <tr><td id="term-pnnl">PNNL</td><td><span class="full">Pacific Northwest National Laboratory.</span> Source of NEPATEC and PermitTEC.</td></tr>
-        <tr><td id="term-rapid">RAPID</td><td><span class="full">Regulatory and Permitting Information Desktop Toolkit.</span></td></tr>
-        <tr><td id="term-rod">ROD</td><td><span class="full">Record of Decision.</span> NEPA decision document used when an EIS is prepared.</td></tr>
-        <tr><td id="term-sdwis">SDWIS</td><td><span class="full">Safe Drinking Water Information System.</span> EPA drinking-water and UIC records.</td></tr>
-        <tr><td id="term-sepi-term">SEPI</td><td><span class="full">Subsurface Energy Permitting Index.</span></td></tr>
-        <tr><td id="term-shpo-term">SHPO</td><td><span class="full">State Historic Preservation Office</span> or <span class="full">Officer.</span></td></tr>
-        <tr><td id="term-tiger">TIGER</td><td><span class="full">Topologically Integrated Geographic Encoding and Referencing.</span> Census geographic framework.</td></tr>
-        <tr><td id="term-uic">UIC</td><td><span class="full">Underground Injection Control.</span> Class V covers geothermal injection wells.</td></tr>
-        <tr><td id="term-usda">USDA</td><td><span class="full">U.S. Department of Agriculture.</span> Appears in the NEPATEC corpus agencies, not as a row in this rule set.</td></tr>
-        <tr><td id="term-usfws">USFWS</td><td><span class="full">U.S. Fish and Wildlife Service.</span></td></tr>
-        <tr><td id="term-usgs">USGS</td><td><span class="full">U.S. Geological Survey.</span></td></tr>
-        <tr><td id="term-wsa">WSA</td><td><span class="full">Wilderness Study Area.</span> BLM-managed lands under non-impairment standards. Adjacent to the Dixie Valley project; not a row in the rule set.</td></tr>
-      </tbody>
-    </table>
+    </details>
   </article>
 
   <footer>
     <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a> · <a href="../about/">About</a>.</p>
   </footer>
 </div>
+
+<script>
+(function () {
+  function openHash() {
+    var id = (location.hash || '').replace(/^#/, '');
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    var node = el;
+    while (node) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
+    el.scrollIntoView();
+  }
+  openHash();
+  window.addEventListener('hashchange', openHash);
+})();
+</script>
 </body>
 </html>
