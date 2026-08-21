@@ -143,7 +143,7 @@
     font-family: var(--label); font-weight: 700;
     font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
   }
-  table.cov .deps { font-size: 14px; }
+  table.cov .deps a { overflow-wrap: anywhere; }
   .gaps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -371,7 +371,7 @@
     </div>
     <p class="eyebrow">Coordination view</p>
     <h1>Coverage and gaps</h1>
-    <p class="lede">Connector state for each source, and four findings against the rule set.</p>
+    <p class="lede">Connector state for each source, and five findings against the rule set.</p>
     <span class="mast-rule" aria-hidden="true"></span>
   </header>
 
@@ -398,8 +398,8 @@
         <tr><td>USGS PAD-US</td><td><span class="tag captured">Captured</span></td><td class="deps">Federal management layer, WSA gap</td></tr>
         <tr><td>USGS NHD</td><td><span class="tag captured">Captured</span></td><td class="deps">Hydrography map layer</td></tr>
         <tr><td>Census TIGERweb</td><td><span class="tag captured">Captured</span></td><td class="deps">Tribal reservation layer, consultation gap</td></tr>
-        <tr><td>BLM MLRS</td><td><span class="tag sim">Simulated</span></td><td class="deps">APD row, metadata strip</td></tr>
-        <tr><td>BLM AFMSS</td><td><span class="tag sim">Simulated</span></td><td class="deps">APD row</td></tr>
+        <tr><td>BLM MLRS</td><td><span class="tag captured">Captured</span></td><td class="deps">Lease map layer, APD row, metadata strip. Endpoint: <a href="https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0">https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0</a></td></tr>
+        <tr><td>BLM AFMSS</td><td><span class="tag sim">Simulated</span></td><td class="deps">APD row. No published well-record service.</td></tr>
         <tr><td>BLM ePlanning</td><td><span class="tag none">No connector</span></td><td class="deps">NEPA EA, NEPA decision</td></tr>
         <tr><td>EPA UIC / SDWIS</td><td><span class="tag none">No connector</span></td><td class="deps">UIC permit</td></tr>
         <tr><td>Nevada Division of Water Resources</td><td><span class="tag none">No connector</span></td><td class="deps">Nevada water right</td></tr>
@@ -410,7 +410,7 @@
     </table>
 
     <h2 id="gaps">Gaps against the rule set</h2>
-    <p>Each was found by comparing the rule set against real federal data, not by review. Implications live on the <a href="../about/#four-gaps">About</a> page.</p>
+    <p>Each was found by comparing the rule set against real federal data, not by review. Implications live on the <a href="../about/#five-gaps">About</a> page.</p>
     <div class="gaps-grid">
       <article class="gap-card">
         <h3><a href="../about/#wilderness-study-areas">Wilderness Study Areas</a></h3>
@@ -436,11 +436,17 @@
         <p><span class="kicker">Evidence</span><br>OpenEI RAPID Nevada Drilling &amp; Well Development narrative.</p>
         <p><span class="kicker">Source</span><br>OpenEI RAPID <span class="tag captured">Captured</span></p>
       </article>
+      <article class="gap-card">
+        <h3><a href="../about/#phase-coverage">Phase coverage</a></h3>
+        <p><span class="kicker">Finding</span><br>The rule set begins at NEPA and ends at APD approval. BLM tracks geothermal in three phases: exploration, drilling operations, and utilization. The rule set models only part of the middle phase. Exploration authorizations and post-drilling utilization, including power plant construction and lifecycle monitoring, have no reviews.</p>
+        <p><span class="kicker">Evidence</span><br>This is the gap BLM has asked about directly.</p>
+        <p><span class="kicker">Source</span><br>BLM program interviews</p>
+      </article>
     </div>
   </article>
 
   <footer>
-    <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
+    <p>Prototype. Well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
   </footer>
 </div>
 </body>

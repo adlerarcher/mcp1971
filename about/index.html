@@ -435,19 +435,19 @@
       <span class="mast-line"><span>About this</span></span>
       <span class="mast-line"><span>prototype</span></span>
     </h1>
-    <p class="lede">What this page is, how it was assembled, and the four gaps found against the rule set.</p>
+    <p class="lede">What this page is, how it was assembled, and the five gaps found against the rule set.</p>
     <span class="mast-rule" aria-hidden="true"></span>
   </header>
 
   <article class="article">
     <h2 id="what-this-is">What this is</h2>
     <p>A working prototype of one coordination capability, built against public federal sources over a single working session. It answers a question no single government system answers today: for a given geothermal project, which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
-    <p>It is not an official product of the U.S. Department of Energy or any agency. Lease and well records shown here are simulated and are marked as such. All other data comes from public federal sources, captured 20 August 2026. Nothing here is authoritative for any permitting decision.</p>
+    <p>It is not an official product of the U.S. Department of Energy or any agency. Well records shown here are simulated and are marked as such. Geothermal lease records are captured from the public BLM MLRS FeatureServer. All other data comes from public federal sources, captured 20–21 August 2026. Nothing here is authoritative for any permitting decision.</p>
 
     <h2 id="two-layers">Two layers, and which one this is</h2>
     <p><strong>SEPI</strong>, the Subsurface Energy Permitting Index, is a federation layer. It surfaces authoritative status from systems of record across agencies and points back to those systems rather than holding records itself. It does not exist yet.</p>
     <p><strong>GPCP</strong>, the Geothermal Permitting Coordination Platform, is a coordination layer. It consumes SEPI and other services to produce a view no single source system holds.</p>
-    <p>This prototype is a GPCP capability running against a simulated SEPI. The two servers standing in for BLM systems return fabricated data in the response shapes those systems would use. They exist to show the shape of a connector that has not been built, which turns a general statement about integration needs into a specific one.</p>
+    <p>This prototype is a GPCP capability running against a simulated SEPI. The <code>sepi-stub</code> server stands in for BLM AFMSS well records, which have no published service. Geothermal lease polygons are captured from the public BLM MLRS FeatureServer. The stub exists to show the shape of a connector that has not been built, which turns a general statement about integration needs into a specific one.</p>
 
     <h2 id="how-it-was-assembled">How it was assembled</h2>
     <p>Four Model Context Protocol servers. Each wraps one source and exposes read-only tools with typed inputs. Each response carries its source name, endpoint, and retrieval timestamp.</p>
@@ -458,7 +458,7 @@
       <tbody>
         <tr><td><code>ecfr</code></td><td>eCFR and Federal Register public APIs</td></tr>
         <tr><td><code>ipac</code></td><td>USFWS IPaC Location API</td></tr>
-        <tr><td><code>sepi-stub</code></td><td>Simulated BLM MLRS and AFMSS response shapes</td></tr>
+        <tr><td><code>sepi-stub</code></td><td>Simulated BLM AFMSS well-record response shapes</td></tr>
         <tr><td><code>gpcp-timeline</code></td><td>Encoded dependency rule set</td></tr>
       </tbody>
     </table>
@@ -474,11 +474,10 @@
       <span><span class="tag sim">Simulated</span></span>
     </div>
     <div class="tier"><p class="kicker">Live API</p><p>Returned by a public federal endpoint during a session.</p></div>
-    <div class="tier"><p class="kicker">Captured</p><p>Returned by a public federal endpoint on 20 August 2026 and stored.</p></div>
+    <div class="tier"><p class="kicker">Captured</p><p>Returned by a public federal endpoint on 20–21 August 2026 and stored.</p></div>
     <div class="tier"><p class="kicker">Extracted</p><p>Derived from a published dataset by a third party, including machine extraction that may not have been human reviewed.</p></div>
-    <div class="tier"><p class="kicker">Simulated</p><p>Fabricated. Represents the response shape of a system with no available interface.</p></div>
-
-    <h2 id="four-gaps">Four gaps in the rule set</h2>
+    <span id="four-gaps"></span>
+    <h2 id="five-gaps">Five gaps in the rule set</h2>
     <p>Each was found by comparing the rule set against real federal data, not by review.</p>
 
     <h3 id="wilderness-study-areas">1. Wilderness Study Areas</h3>
@@ -517,6 +516,15 @@
       <p>RAPID covers 53 jurisdictions across 20 permitting categories. It is a validated reference against which any rule set of this kind should be checked before it is used for anything.</p>
     </div>
 
+    <h3 id="phase-coverage">5. Phase coverage</h3>
+    <p>The rule set begins at NEPA and ends at APD approval. BLM tracks geothermal in three phases: exploration, drilling operations, and utilization. The rule set models only part of the middle phase. Exploration authorizations and post-drilling utilization, including power plant construction and lifecycle monitoring, have no reviews.</p>
+    <p>This is the gap BLM has asked about directly.</p>
+    <p class="source">Source: BLM program interviews.</p>
+    <div class="implication">
+      <p class="kicker">Implication</p>
+      <p>A coordination view that stops at APD answers a drilling-permit question. Covering geothermal as BLM tracks it means adding reviews for exploration authorizations and for utilization, so the schedule spans all three phases.</p>
+    </div>
+
     <h2 id="three-null-results">Three null results</h2>
     <p>Reported because absence is a finding.</p>
     <div class="null">
@@ -534,7 +542,7 @@
     <p>Three distinct states, each implying a different remedy:</p>
     <div class="tier">
       <p class="kicker">No public surface</p>
-      <p>BLM MLRS and AFMSS sit behind DOI network boundaries and identity management. Access requires an interagency agreement and a connector built inside the agency.</p>
+      <p>BLM AFMSS sits behind DOI network boundaries and identity management. Access requires an interagency agreement and a connector built inside the agency. Well records have no published service.</p>
     </div>
     <div class="tier">
       <p class="kicker">Public, no machine interface</p>
@@ -547,12 +555,12 @@
     <p>That last category is the argument for a maintained federation layer. Endpoints drift, and every program that wires up its own connectors absorbs that drift separately.</p>
 
     <h2 id="sources">Sources</h2>
-    <p>USFWS IPaC · eCFR · Federal Register · USGS PAD-US · USFWS National Wetlands Inventory · USGS National Hydrography Dataset · USGS 3DEP · Census TIGERweb · OpenEI RAPID Toolkit · PNNL NEPATEC 2.0 · PNNL PermitTEC v0.1 · GSA Site Scanning</p>
-    <p>Rule set v0.2.0. Data captured 20 August 2026.</p>
+    <p>USFWS IPaC · eCFR · Federal Register · USGS PAD-US · USFWS National Wetlands Inventory · USGS National Hydrography Dataset · USGS 3DEP · Census TIGERweb · BLM MLRS · OpenEI RAPID Toolkit · PNNL NEPATEC 2.0 · PNNL PermitTEC v0.1 · GSA Site Scanning</p>
+    <p>Rule set v0.2.0. Data captured 20–21 August 2026.</p>
   </article>
 
   <footer>
-    <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
+    <p>Prototype. Well records simulated. Not an official DOE product. <a href="../">Timeline</a>.</p>
   </footer>
 </div>
 </body>

@@ -733,6 +733,7 @@
     font-size: 14px;
   }
   .map-pick .empty { color: var(--muted); }
+  .map-pick p { margin: 0; font-size: 15px; }
   .zooms { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
   .rapid-select {
     font-family: var(--body);
@@ -1239,7 +1240,7 @@
       <div class="meta">
         <div class="meta-sim">
           <span class="tag" :class="caseTierClass(project)" x-text="caseTierLabel(project)"></span>
-          <span class="tag sim" x-show="caseTierLabel(project) === 'Captured'">Lease simulated</span>
+          <span class="tag sim" x-show="leaseSimulated(project) && caseTierLabel(project) === 'Captured'">Lease simulated</span>
         </div>
         <dl class="meta-fields">
           <template x-for="row in metaRows" :key="row.k">
@@ -1439,7 +1440,7 @@
 
     <div class="card mark map-card">
       <h2>Spatial context</h2>
-      <p class="fold-sub">CARTO Positron basemap, hydrography, wetlands, federal management, reservations. No critical habitat designated.</p>
+      <p class="fold-sub">CARTO Positron basemap, hydrography, wetlands, federal management, reservations, geothermal leases. Closed in navy; authorized, non-producing in gold. No critical habitat designated.</p>
       <div class="zooms">
         <button type="button" :class="mapMode === 'project' ? '' : 'ghost'" @click="fitProject()">Project extent</button>
         <button type="button" :class="mapMode === 'west' ? '' : 'ghost'" @click="fitWest()">Western United States</button>
@@ -1451,7 +1452,7 @@
         <button type="button" class="fold-head" @click="toggleLayers()" :aria-expanded="layersOpen">
           <div>
             <h3>Layers</h3>
-            <p class="fold-sub">Basemap, hillshade, hydrography, wetlands, federal management, reservations</p>
+            <p class="fold-sub">Basemap, hillshade, hydrography, wetlands, federal management, reservations, geothermal leases</p>
           </div>
           <span class="fold-sign" aria-hidden="true" x-text="layersOpen ? '−' : '+'"></span>
         </button>
@@ -1476,8 +1477,18 @@
       <div class="map-pick-wrap">
         <p class="kicker">Selection</p>
         <div class="map-pick">
-          <div class="empty" x-show="!mapPick">Select a Wilderness Study Area or a tribal reservation.</div>
-          <template x-if="mapPick">
+          <div class="empty" x-show="!mapPick">Select a lease, a Wilderness Study Area, or a tribal reservation.</div>
+          <template x-if="mapPick && mapPick.kind === 'lease'">
+            <div>
+              <div class="kv"><div class="k">Case serial number</div><div class="v serial" x-text="mapPick.serial"></div></div>
+              <div class="kv"><div class="k">Disposition</div><div class="v" x-text="mapPick.disposition"></div></div>
+              <div class="kv"><div class="k">Acreage</div><div class="v" x-text="mapPick.acres"></div></div>
+              <div class="kv"><div class="k">Effective date</div><div class="v" x-text="mapPick.effective"></div></div>
+              <div class="kv"><div class="k">Production status</div><div class="v" x-text="mapPick.production"></div></div>
+              <div class="kv"><div class="k">Source</div><div class="v"><span x-text="mapPick.source"></span> <span class="tag captured">Captured</span></div></div>
+            </div>
+          </template>
+          <template x-if="mapPick && mapPick.kind !== 'lease'">
             <div>
               <div class="kv"><div class="k">Name</div><div class="v" x-text="mapPick.name"></div></div>
               <div class="kv"><div class="k">Managing agency</div><div class="v" x-text="mapPick.agency"></div></div>
@@ -1485,6 +1496,12 @@
               <div class="kv"><div class="k">Source</div><div class="v"><span x-text="mapPick.source"></span> <span class="tag captured">Captured</span></div></div>
             </div>
           </template>
+        </div>
+      </div>
+      <div class="map-pick-wrap">
+        <p class="kicker">Lease records</p>
+        <div class="map-pick">
+          <p>Across MLRS geothermal lease records, case names are blank or null, and expiration dates include values in the year 3000. Fifty years of leasing at this location shows 41 closed cases and 32 currently authorized, none producing.</p>
         </div>
       </div>
     </div>
@@ -1536,7 +1553,7 @@
   </div>
 
   <footer>
-    <p class="banner">Prototype. Lease and well records simulated. Not an official DOE product. <a href="about/">About</a>.</p>
+    <p class="banner">Prototype. Well records simulated. Not an official DOE product. <a href="about/">About</a>.</p>
   </footer>
 </div>
 
@@ -1651,9 +1668,11 @@ const DATA_FILES = [
   "padus-dixie-valley.geojson",
   "nhd-named-dixie-valley.geojson",
   "tribal-reservations-nv.geojson",
-  "ipac-dixie-valley-crithab.json"
+  "ipac-dixie-valley-crithab.json",
+  "mlrs-geothermal-dixie-valley.geojson",
+  "mlrs-authorized-dixie.geojson"
 ];
-const DATA_CACHE = "mcp1971-data-v1";
+const DATA_CACHE = "mcp1971-data-v2";
 
 const NEPATEC_TYPE_TO_RULES = {
   "Renewable Energy Production - Geothermal": ["nepa_ea", "nepa_decision", "apd_approval"],
@@ -1711,10 +1730,10 @@ const COVERAGE = [
     holds: "Federal American Indian reservations.",
     url: "https://tigerweb.geo.census.gov/",
     depends: "Tribal reservation layer, consultation gap" },
-  { id: "mlrs", name: "BLM MLRS", state: "simulated",
-    holds: "Lease serial, status, acreage, and administrative office.",
-    url: "",
-    depends: "APD row, metadata strip" },
+  { id: "mlrs", name: "BLM MLRS", state: "captured",
+    holds: "Geothermal lease serial, disposition, acreage, effective date, and production status.",
+    url: "https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0",
+    depends: "Lease map layer, APD row, metadata strip" },
   { id: "afmss", name: "BLM AFMSS", state: "simulated",
     holds: "Well records and APD status.",
     url: "",
@@ -1764,25 +1783,25 @@ const IPAC = {
   retrieved: "2026-08-20T21:32:04.391Z"
 };
 
-const SEPI_LEASE = {
+const MLRS_LEASE = {
   data: { found: true, lease: {
-    serial_number: "NVN-091234", case_type: "Geothermal Lease", status: "Authorized",
-    effective_date: "2019-03-01", expiration_date: "2029-02-28", acres: 2560,
+    serial_number: "NVN-086890", case_type: "Geothermal Lease", status: "Authorized",
+    effective_date: "2009-09-01", expiration_date: "2032-04-30", acres: 3840,
     county: "Churchill", state: "NV", admin_office: "Stillwater Field Office",
-    lessee: "Example Geothermal Operations LLC" } },
-  source: "SEPI (simulated)",
-  disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
-  retrieved: "2026-08-20T21:30:40.245Z"
+    production_status: "Non-Producing" } },
+  source: "BLM MLRS",
+  url: "https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0",
+  retrieved: "2026-08-21T10:15:00.000Z"
 };
 
 const SEPI_WELLS = {
-  data: { serial_number: "NVN-091234", count: 2, wells: [
+  data: { serial_number: "NVN-086890", count: 2, wells: [
     { api_number: "27-001-90001", well_name: "DV 21-14", type: "Production",
       status: "APD Approved", apd_approved: "2024-06-11", spud_date: null },
     { api_number: "27-001-90002", well_name: "DV 22-14", type: "Injection",
       status: "APD Pending", apd_submitted: "2026-02-03", spud_date: null } ] },
   source: "SEPI (simulated)",
-  disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+  disclaimer: "SIMULATED - represents AFMSS well-record response shape. Not authoritative.",
   retrieved: "2026-08-20T21:30:52.110Z"
 };
 
@@ -1822,7 +1841,7 @@ const PROJECTS = [
     id: "dixie",
     name: "Dixie Valley",
     conditions: Object.assign({}, ALL_TRUE),
-    lease: SEPI_LEASE,
+    lease: MLRS_LEASE,
     wells: SEPI_WELLS,
     species: IPAC
   },
@@ -1840,7 +1859,7 @@ const PROJECTS = [
         county: "Pershing", state: "NV", admin_office: "Winnemucca Field Office",
         lessee: "Humboldt Range Geothermal LLC" } },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents MLRS lease response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:40.245Z"
     },
     wells: {
@@ -1848,7 +1867,7 @@ const PROJECTS = [
         { api_number: "27-027-90010", well_name: "PR 11-22", type: "Production",
           status: "APD Approved", apd_approved: "2025-04-18", spud_date: null } ] },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents AFMSS well-record response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:52.110Z"
     },
     species: {
@@ -1875,7 +1894,7 @@ const PROJECTS = [
         county: "Elko", state: "NV", admin_office: "Tuscarora Field Office",
         lessee: "Ruby Valley Geothermal LLC" } },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents MLRS lease response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:40.245Z"
     },
     wells: {
@@ -1883,7 +1902,7 @@ const PROJECTS = [
         { api_number: "27-007-90040", well_name: "EK 24-8", type: "Production",
           status: "APD Pending", apd_submitted: "2026-01-15", spud_date: null } ] },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents AFMSS well-record response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:52.110Z"
     },
     species: {
@@ -1915,7 +1934,7 @@ const PROJECTS = [
         admin_office: "Carson City Field Office / Nevada Division of State Lands",
         lessee: "Steamboat Hills Operations LLC" } },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents MLRS lease response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:40.245Z"
     },
     wells: {
@@ -1925,7 +1944,7 @@ const PROJECTS = [
         { api_number: "27-031-90008", well_name: "WA 13-3", type: "Injection",
           status: "APD Pending", apd_submitted: "2026-03-21", spud_date: null } ] },
       source: "SEPI (simulated)",
-      disclaimer: "SIMULATED - represents MLRS/AFMSS response shape. Not authoritative.",
+      disclaimer: "SIMULATED - represents AFMSS well-record response shape. Not authoritative.",
       retrieved: "2026-08-20T21:30:52.110Z"
     },
     species: {
@@ -2082,6 +2101,12 @@ function fmtAcres(n) {
   if (n == null || isNaN(n)) return "—";
   return Math.round(n).toLocaleString("en-US") + " acres";
 }
+function fmtIsoDate(s) {
+  if (!s) return "—";
+  const iso = String(s).slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return String(s);
+  return fmtDate(parseISODate(iso));
+}
 async function loadCachedJSON(name) {
   const url = "./data/" + name;
   const key = "mcp1971:" + name;
@@ -2137,6 +2162,7 @@ const MAP_LAYERS = [
   { id: "wetlands", name: "Wetlands", source: "USFWS National Wetlands Inventory", url: "https://www.fws.gov/program/national-wetlands-inventory" },
   { id: "padus", name: "Federal management", source: "USGS PAD-US", url: "https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview" },
   { id: "tribal", name: "Tribal reservations", source: "Census TIGERweb", url: "https://tigerweb.geo.census.gov/" },
+  { id: "leases", name: "Geothermal leases", source: "BLM MLRS", url: "https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0", note: "Closed leases in navy; authorized, non-producing leases in gold." },
   { id: "project", name: "Project area", source: "USFWS IPaC", url: "https://ipac.ecosphere.fws.gov/location/api/resources" },
   { id: "crithab", name: "Critical habitat", finding: true, note: "No critical habitat is designated at this location.", source: "USFWS IPaC", url: "https://ipac.ecosphere.fws.gov/location/api/resources" }
 ];
@@ -2149,6 +2175,7 @@ const MAP_LAYER_IDS = {
   wetlands: ["nwi-fill"],
   padus: ["padus-fo-fill", "padus-fo-line", "padus-wsa-fill", "padus-wsa-line"],
   tribal: ["tribal-fill", "tribal-line"],
+  leases: ["leases-closed-fill", "leases-closed-line", "leases-auth-fill", "leases-auth-line"],
   project: ["project-line"],
   nepatec: ["nepatec-circle"]
 };
@@ -2181,7 +2208,7 @@ function app() {
     corpusError: "",
     selectedCorpusId: null,
     rapidJur: "Nevada",
-    layersOn: { positron: true, hillshade: false, hydro: true, wetlands: true, padus: true, tribal: true, project: true },
+    layersOn: { positron: true, hillshade: false, hydro: true, wetlands: true, padus: true, tribal: true, leases: true, project: true },
     mapMode: "project",
     mapPick: null,
     layersOpen: false,
@@ -2203,6 +2230,9 @@ function app() {
     },
     caseTierLabel(p) {
       return this.tierLabel(payloadTier(p.species));
+    },
+    leaseSimulated(p) {
+      return payloadTier(p.lease) === "simulated";
     },
     get metaRows() {
       const L = this.project.lease.data.lease;
@@ -2233,7 +2263,7 @@ function app() {
       return [
         { name: "sepi.get_authorization_status",
           detail: L.serial_number + " — " + L.case_type + ", " + L.status + ", " + L.acres.toLocaleString("en-US") + " acres, " + L.admin_office,
-          src: "SIMULATED" },
+          src: payloadTier(p.lease) === "simulated" ? "SIMULATED" : "MLRS" },
         { name: "sepi.get_well_records",
           detail: wells.count + " well" + (wells.count === 1 ? "" : "s") + " — " + wells.wells.map(w => w.status).join(", "),
           src: "SIMULATED" },
@@ -2436,6 +2466,14 @@ function app() {
           evidence: "OpenEI RAPID Nevada Drilling & Well Development narrative.",
           source: "OpenEI RAPID",
           tier: "captured"
+        },
+        {
+          title: "Phase coverage",
+          href: "about/#phase-coverage",
+          finding: "The rule set begins at NEPA and ends at APD approval. BLM tracks geothermal in three phases: exploration, drilling operations, and utilization. The rule set models only part of the middle phase. Exploration authorizations and post-drilling utilization, including power plant construction and lifecycle monitoring, have no reviews.",
+          evidence: "This is the gap BLM has asked about directly.",
+          source: "BLM program interviews",
+          tier: ""
         }
       ];
     },
@@ -2485,6 +2523,7 @@ function app() {
           if (name === "nepatec-blm-geothermal.json") this.corpusError = "The NEPATEC extract could not be loaded.";
         }
       }));
+      this.loadMapSources();
       this.$nextTick(() => this.readyMap());
     },
     togglePanel(id) {
@@ -2666,9 +2705,23 @@ function app() {
       this.mapMode = "project";
       this.applyLayerVisibility();
       if (!mapInstance) return;
+      const boxes = [];
       const ipac = this.files["ipac-dixie-valley-crithab.json"];
       const fp = ipac && ipac.resources && ipac.resources.location && ipac.resources.location.footprint;
-      const b = fp ? this.geomBounds(fp) : [-118.22, 39.48, -117.98, 39.72];
+      if (fp) boxes.push(this.geomBounds(fp));
+      ["mlrs-geothermal-dixie-valley.geojson", "mlrs-authorized-dixie.geojson"].forEach(name => {
+        const fc = this.files[name];
+        (fc && fc.features || []).forEach(f => {
+          if (f.geometry) boxes.push(this.geomBounds(f.geometry));
+        });
+      });
+      const valid = boxes.filter(b => isFinite(b[0]) && isFinite(b[1]));
+      const b = valid.length ? [
+        Math.min.apply(null, valid.map(x => x[0])),
+        Math.min.apply(null, valid.map(x => x[1])),
+        Math.max.apply(null, valid.map(x => x[2])),
+        Math.max.apply(null, valid.map(x => x[3]))
+      ] : [-118.22, 39.48, -117.98, 39.72];
       mapInstance.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 36, duration: 600 });
     },
     fitWest() {
@@ -2722,6 +2775,18 @@ function app() {
         }))
       };
     },
+    loadMapSources() {
+      if (!mapInstance) return;
+      const empty = { type: "FeatureCollection", features: [] };
+      this.ensureSource("nhd", this.files["nhd-named-dixie-valley.geojson"] || empty);
+      this.ensureSource("nwi", this.files["nwi-dixie-valley.geojson"] || empty);
+      this.ensureSource("padus", this.files["padus-dixie-valley.geojson"] || empty);
+      this.ensureSource("tribal", this.files["tribal-reservations-nv.geojson"] || empty);
+      this.ensureSource("leases-closed", this.files["mlrs-geothermal-dixie-valley.geojson"] || empty);
+      this.ensureSource("leases-auth", this.files["mlrs-authorized-dixie.geojson"] || empty);
+      this.ensureSource("project", this.projectFeature());
+      this.ensureSource("nepatec", this.nepatecCollection());
+    },
     ensureSource(id, data) {
       if (!mapInstance || !data) return;
       const src = mapInstance.getSource(id);
@@ -2736,6 +2801,7 @@ function app() {
         const p = f.properties || {};
         if (kind === "wsa") {
           this.mapPick = {
+            kind: "wsa",
             name: p.Unit_Nm || p.Loc_Nm || "Wilderness Study Area",
             agency: (p.Mang_Name || "BLM") + (p.Mang_Type ? " (" + p.Mang_Type + ")" : ""),
             acres: fmtAcres(Number(p.GIS_Acres)),
@@ -2744,6 +2810,7 @@ function app() {
         } else if (kind === "tribal") {
           const m2 = Number(p.AREALAND);
           this.mapPick = {
+            kind: "tribal",
             name: p.NAME || p.BASENAME,
             agency: "Bureau of Indian Affairs",
             acres: fmtAcres(m2 * 0.000247105),
@@ -2752,10 +2819,21 @@ function app() {
         } else if (kind === "nepatec") {
           this.selectedCorpusId = p.id;
           this.mapPick = {
+            kind: "nepatec",
             name: p.name,
             agency: "Bureau of Land Management",
             acres: "—",
             source: "PNNL NEPATEC 2.0"
+          };
+        } else if (kind === "lease") {
+          this.mapPick = {
+            kind: "lease",
+            serial: p.case_serial || p.mlrs_id || "—",
+            disposition: p.disposition || "—",
+            acres: fmtAcres(Number(p.acres)),
+            effective: fmtIsoDate(p.effective_date),
+            production: p.production_status || "—",
+            source: "BLM MLRS"
           };
         }
       });
@@ -2797,12 +2875,7 @@ function app() {
             tileSize: 512
           });
         }
-        self.ensureSource("nhd", self.files["nhd-named-dixie-valley.geojson"]);
-        self.ensureSource("nwi", self.files["nwi-dixie-valley.geojson"]);
-        self.ensureSource("padus", self.files["padus-dixie-valley.geojson"]);
-        self.ensureSource("tribal", self.files["tribal-reservations-nv.geojson"]);
-        self.ensureSource("project", self.projectFeature());
-        self.ensureSource("nepatec", self.nepatecCollection());
+        self.loadMapSources();
         const layers = [
           { id: "positron", type: "raster", source: "positron" },
           { id: "hillshade", type: "raster", source: "hillshade", paint: { "raster-opacity": 0.22 } },
@@ -2818,6 +2891,14 @@ function app() {
             paint: { "line-color": "#F5B819", "line-width": 2 } },
           { id: "tribal-fill", type: "fill", source: "tribal", paint: { "fill-color": "#0A1A4F", "fill-opacity": 0.05 } },
           { id: "tribal-line", type: "line", source: "tribal", paint: { "line-color": "#0A1A4F", "line-width": 1.6 } },
+          { id: "leases-closed-fill", type: "fill", source: "leases-closed",
+            paint: { "fill-color": "#0A1A4F", "fill-opacity": 0.14, "fill-outline-color": "#0A1A4F" } },
+          { id: "leases-closed-line", type: "line", source: "leases-closed",
+            paint: { "line-color": "#0A1A4F", "line-width": 1, "line-dasharray": [2, 2] } },
+          { id: "leases-auth-fill", type: "fill", source: "leases-auth",
+            paint: { "fill-color": "#F5B819", "fill-opacity": 0.22, "fill-outline-color": "#F5B819" } },
+          { id: "leases-auth-line", type: "line", source: "leases-auth",
+            paint: { "line-color": "#F5B819", "line-width": 2 } },
           { id: "project-line", type: "line", source: "project",
             paint: { "line-color": "#F5B819", "line-width": 3, "line-opacity": 1 } },
           { id: "nepatec-circle", type: "circle", source: "nepatec",
@@ -2830,6 +2911,10 @@ function app() {
         self.bindMapClick("padus-wsa-line", "wsa");
         self.bindMapClick("tribal-fill", "tribal");
         self.bindMapClick("tribal-line", "tribal");
+        self.bindMapClick("leases-closed-fill", "lease");
+        self.bindMapClick("leases-closed-line", "lease");
+        self.bindMapClick("leases-auth-fill", "lease");
+        self.bindMapClick("leases-auth-line", "lease");
         self.bindMapClick("nepatec-circle", "nepatec");
         self.applyLayerVisibility();
         if (self.mapMode === "west") self.fitWest();

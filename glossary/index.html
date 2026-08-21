@@ -402,7 +402,7 @@
     <details class="sect" id="systems">
       <summary>Systems</summary>
       <div class="sect-body">
-        <p>What each named system is, and how this prototype uses it. Lease and well records from MLRS and AFMSS are simulated. Everything else is a public federal source or a published extract.</p>
+        <p>What each named system is, and how this prototype uses it. Well records from AFMSS are simulated. Geothermal leases are captured from the public BLM MLRS FeatureServer. Everything else is a public federal source or a published extract.</p>
         <p class="group" id="this-prototype">This prototype</p>
     <details class="entry" id="sepi">
       <summary><span class="name">SEPI</span><span class="expand">Subsurface Energy Permitting Index</span></summary>
@@ -424,7 +424,7 @@
           <div class="entry-row"><span class="name">ipac</span><span class="expand">USFWS IPaC Location API</span></div>
         </div>
         <div class="entry" id="server-sepi-stub">
-          <div class="entry-row"><span class="name">sepi-stub</span><span class="expand">Simulated BLM MLRS and AFMSS response shapes</span></div>
+          <div class="entry-row"><span class="name">sepi-stub</span><span class="expand">Simulated BLM AFMSS well-record response shapes</span></div>
         </div>
         <div class="entry" id="server-gpcp-timeline">
           <div class="entry-row"><span class="name">gpcp-timeline</span><span class="expand">Encoded dependency rule set and critical-path schedule</span></div>
@@ -440,7 +440,7 @@
     </details>
     <details class="entry" id="mlrs">
       <summary><span class="name">MLRS</span><span class="expand">Mineral and Land Records System · BLM</span></summary>
-      <p class="def">BLM system of record for lease serial, status, acreage, and administrative office. Sits behind DOI network boundaries. Represented here by a simulated response shape, marked Simulated.</p>
+      <p class="def">BLM system of record for lease serial, status, acreage, and administrative office. Geothermal lease polygons are published on a public FeatureServer and captured here, marked Captured. Case names in those records are blank or null; some expiration dates fall in the year 3000.</p>
     </details>
     <details class="entry" id="tigerweb">
       <summary><span class="name">Census TIGERweb</span><span class="expand">Topologically Integrated Geographic Encoding and Referencing</span></summary>
@@ -606,7 +606,7 @@
     </details>
     <details class="entry" id="term-mlrs">
       <summary><span class="name">MLRS</span><span class="expand">Mineral and Land Records System</span></summary>
-      <p class="def">BLM lease records.</p>
+      <p class="def">BLM lease records. Captured here from the public MLRS geothermal leases FeatureServer.</p>
     </details>
     <details class="entry" id="term-ndep-term">
       <summary><span class="name">NDEP</span><span class="expand">Nevada Division of Environmental Protection</span></summary>
@@ -693,7 +693,7 @@
   </article>
 
   <footer>
-    <p>Prototype. Lease and well records simulated. Not an official DOE product. <a href="../">Timeline</a> · <a href="../about/">About</a>.</p>
+    <p>Prototype. Well records simulated. Not an official DOE product. <a href="../">Timeline</a> · <a href="../about/">About</a>.</p>
   </footer>
 </div>
 
