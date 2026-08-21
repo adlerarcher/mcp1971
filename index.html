@@ -332,13 +332,30 @@
     letter-spacing: .12em;
   }
   .ctrl-speed .band button {
-    padding: 11px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px 10px;
     font-size: 12px;
   }
   .ctrl-speed .band button.on {
     background: var(--navy);
     color: var(--white);
     border-color: var(--navy);
+  }
+  .pace-arrows {
+    display: flex;
+    gap: 4px;
+    height: 8px;
+    pointer-events: none;
+  }
+  .pace-arrows i {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid var(--gold);
   }
   .ctrl-tools {
     margin-left: auto;
@@ -1673,7 +1690,12 @@
         <p class="kicker">Set the review speed</p>
         <div class="band">
           <template x-for="b in bands" :key="b">
-            <button type="button" :class="{ on: band === b }" @click="setBand(b)" x-text="bandCaption(b)"></button>
+            <button type="button" :class="{ on: band === b }" @click="setBand(b)">
+              <span x-text="bandCaption(b)"></span>
+              <span class="pace-arrows" aria-hidden="true">
+                <template x-for="n in paceMarks(b)" :key="n"><i></i></template>
+              </span>
+            </button>
           </template>
         </div>
       </div>
@@ -2857,7 +2879,7 @@ function app() {
     ORIGIN_ABBR: ORIGIN_ABBR,
     conditionKeys: CONDITION_KEYS,
     conditionLabels: CONDITION_LABELS,
-    bands: ["low", "typical", "high"],
+    bands: ["high", "typical", "low"],
     projectId: "dixie",
     conditions: Object.assign({}, PROJECTS[0].conditions),
     band: "typical",
@@ -2900,6 +2922,10 @@ function app() {
     },
     bandCaption(b) {
       return { low: "Faster", typical: "Typical", high: "Slower" }[b] || b;
+    },
+    paceMarks(b) {
+      const n = { low: 3, typical: 2, high: 1 }[b] || 1;
+      return Array.from({ length: n }, (_, i) => i);
     },
     projectLabel(p) {
       const county = p.lease.data.lease.county;

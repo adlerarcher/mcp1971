@@ -105,13 +105,34 @@
     to { opacity: 1; transform: none; }
   }
   .article { max-width: 52em; padding-top: 42px; }
-  .article h2 {
+  .section {
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    margin: 0 0 14px;
+    background: var(--white);
+  }
+  .section > .fold-head {
+    grid-template-columns: minmax(0, 1fr) 18px;
+    padding: 18px 22px;
+    align-items: center;
+  }
+  .section > .fold-head h2 {
     font-family: var(--title); font-weight: 700;
     font-size: 22px; line-height: 1.12;
-    margin: 36px 0 14px;
+    margin: 0;
   }
-  .article h2:first-child { margin-top: 0; }
-  .article > p { margin: 0 0 14px; max-width: 46em; }
+  .section-sub {
+    margin: 6px 0 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-body {
+    padding: 16px 22px 22px;
+    border-top: 1px solid var(--navy);
+  }
+  .section-body > p { margin: 0 0 14px; max-width: 46em; }
+  .section-body > p:last-child { margin-bottom: 0; }
   .compass-note {
     margin: 0 0 18px;
     padding: 16px 18px;
@@ -200,6 +221,31 @@
     text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--navy);
   }
   .gap-table td { padding: 10px; border-bottom: 1px solid var(--navy); vertical-align: top; }
+  .origin-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    margin: 0 0 18px;
+  }
+  .clock-wrap { overflow-x: auto; margin: 0 0 18px; max-width: 52em; }
+  .clock-table { width: 100%; min-width: 40em; border-collapse: collapse; font-size: 14px; }
+  .clock-table th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--navy);
+    white-space: nowrap;
+  }
+  .clock-table td { padding: 10px; border-bottom: 1px solid var(--navy); vertical-align: top; }
+  .clock-table .n {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--mono);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .clock-table .cite { font-size: 13px; color: var(--muted); }
+  .tag.stat { background: var(--gold); color: var(--navy); }
+  .tag.agency { background: var(--navy); color: var(--white); }
+  .tag.assume { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
   a { color: var(--navy); }
   footer {
     margin-top: 48px;
@@ -398,12 +444,115 @@
     </div>
     <p class="eyebrow">Coordination view</p>
     <h1>Regulatory reference</h1>
-    <p class="lede">OpenEI RAPID geothermal toolkit, and INFRA-COMPASS ordinance extracts. Topics modelled in the rule set are marked.</p>
+    <p class="lede">Clocks in the rule set, OpenEI RAPID, and INFRA-COMPASS. Where a duration is statutory, agency-published, or assumed.</p>
     <span class="mast-rule" aria-hidden="true"></span>
   </header>
 
   <div class="article">
-    <h2 id="compass">INFRA-COMPASS</h2>
+    <article class="section" id="clocks">
+      <button type="button" class="fold-head" @click="toggleSection('clocks')" :aria-expanded="openSection === 'clocks'">
+        <div>
+          <h2>Where the days come from</h2>
+          <p class="section-sub">Nine reviews · statutory, agency, assumption</p>
+        </div>
+        <span class="fold-sign" aria-hidden="true" x-text="openSection === 'clocks' ? '−' : '+'"></span>
+      </button>
+      <div class="section-body" x-show="openSection === 'clocks'" x-cloak>
+    <p>The timeline’s Slower / Typical / Faster control does not pull live agency clocks. Each of nine reviews in the rule set carries three duration estimates, in days, and a tag for where that number came from. Faster uses the low column, Typical the middle, Slower the high. The large day count on the timeline is the longest path to an Application for Permit to Drill, not the sum of every row. Reviews that can run in parallel do.</p>
+
+    <div class="origin-key">
+      <span><span class="tag stat">Statutory clock</span> written into regulation</span>
+      <span><span class="tag agency">Agency figure</span> published by an agency, not a statutory maximum</span>
+      <span><span class="tag assume">Assumption</span> planning estimate encoded in the rule set</span>
+    </div>
+
+    <p><strong>Statutory clock.</strong> Only ESA Section 7 formal consultation is tagged this way: 90 / 135 / 180 days. The typical 135 is <a href="https://www.ecfr.gov/current/title-50/part-402/section-402.14">50 CFR 402.14</a> — 90 days to conclude consultation, 45 days to issue the biological opinion. The slow band (180) is the rule set’s allowance for a longer case, not a second statutory number.</p>
+    <p><strong>Published agency figure.</strong> NEPA environmental assessment (270 / 365 / 540) and ESA informal consultation (45 / 60 / 90). These are numbers agencies publish, not scraped from a docket for Dixie Valley.</p>
+    <p><strong>Stated assumption.</strong> Section 106, UIC Class V, biological assessment and survey seasons, Nevada water right, NEPA decision, and APD. Citations on those rows name the statute or regulation that creates the review. They do not, by themselves, supply the days.</p>
+
+    <div class="clock-wrap">
+      <table class="clock-table">
+        <thead>
+          <tr>
+            <th>Review</th>
+            <th>Authority</th>
+            <th>Faster</th>
+            <th>Typical</th>
+            <th>Slower</th>
+            <th>Origin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NHPA Section 106</td>
+            <td class="cite">54 U.S.C. 306108; 36 CFR 800</td>
+            <td class="n">90</td><td class="n">120</td><td class="n">180</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+          <tr>
+            <td>UIC Class V permit</td>
+            <td class="cite">42 U.S.C. 300h; 40 CFR 144</td>
+            <td class="n">180</td><td class="n">270</td><td class="n">365</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+          <tr>
+            <td>NEPA environmental assessment</td>
+            <td class="cite">42 U.S.C. 4332; 43 CFR 46</td>
+            <td class="n">270</td><td class="n">365</td><td class="n">540</td>
+            <td><span class="tag agency">Agency figure</span></td>
+          </tr>
+          <tr>
+            <td>Biological assessment and survey seasons</td>
+            <td class="cite">50 CFR 402.12</td>
+            <td class="n">270</td><td class="n">365</td><td class="n">540</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+          <tr>
+            <td>Nevada water right</td>
+            <td class="cite">NRS 533</td>
+            <td class="n">270</td><td class="n">365</td><td class="n">540</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+          <tr>
+            <td>ESA informal consultation</td>
+            <td class="cite">16 U.S.C. 1536(a)(2); 50 CFR 402.13</td>
+            <td class="n">45</td><td class="n">60</td><td class="n">90</td>
+            <td><span class="tag agency">Agency figure</span></td>
+          </tr>
+          <tr>
+            <td>ESA formal consultation</td>
+            <td class="cite">16 U.S.C. 1536(a)(2); 50 CFR 402.14</td>
+            <td class="n">90</td><td class="n">135</td><td class="n">180</td>
+            <td><span class="tag stat">Statutory clock</span></td>
+          </tr>
+          <tr>
+            <td>NEPA decision (FONSI or ROD)</td>
+            <td class="cite">43 CFR 46.325</td>
+            <td class="n">45</td><td class="n">60</td><td class="n">90</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+          <tr>
+            <td>Application for Permit to Drill</td>
+            <td class="cite">43 CFR 3261</td>
+            <td class="n">120</td><td class="n">180</td><td class="n">270</td>
+            <td><span class="tag assume">Assumption</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The same rows, with triggers and prerequisites, are on the timeline under Rule set. The 570–1170 range under the typical total is this table’s low and high columns run on the current conditions, not a confidence interval from a model.</p>
+      </div>
+    </article>
+
+    <article class="section" id="compass">
+      <button type="button" class="fold-head" @click="toggleSection('compass')" :aria-expanded="openSection === 'compass'">
+        <div>
+          <h2>INFRA-COMPASS</h2>
+          <p class="section-sub">Wind and solar ordinances · geothermal not yet published</p>
+        </div>
+        <span class="fold-sign" aria-hidden="true" x-text="openSection === 'compass' ? '−' : '+'"></span>
+      </button>
+      <div class="section-body" x-show="openSection === 'compass'" x-cloak>
     <p>LLM-based extraction of state and local codes and ordinances for energy infrastructure. National Laboratories of the Rockies. Open source at <a href="https://github.com/NatLabRockies/COMPASS">github.com/NatLabRockies/COMPASS</a>. Datasets publish annually to OpenEI.</p>
     <p><span class="tag extract">Published, wind and solar only</span></p>
     <ul class="compass-sets">
@@ -421,8 +570,18 @@
     <div class="compass-note">
       <p>COMPASS records carry a source URL back to the original ordinance document and are marked as LLM-extracted, requiring validation for critical use. That is the same provenance discipline used on this site, from an existing DOE program.</p>
     </div>
+      </div>
+    </article>
 
-    <h2 id="rapid">OpenEI RAPID</h2>
+    <article class="section" id="rapid">
+      <button type="button" class="fold-head" @click="toggleSection('rapid')" :aria-expanded="openSection === 'rapid'">
+        <div>
+          <h2>OpenEI RAPID</h2>
+          <p class="section-sub"><span x-text="rapidCount"></span> jurisdictions · captured toolkit</p>
+        </div>
+        <span class="fold-sign" aria-hidden="true" x-text="openSection === 'rapid' ? '−' : '+'"></span>
+      </button>
+      <div class="section-body" x-show="openSection === 'rapid'" x-cloak>
     <p class="corpus-lede">OpenEI RAPID geothermal toolkit. <span x-text="rapidCount"></span> jurisdictions. <span class="tag captured">Captured</span> Source: <a href="https://openei.org/wiki/RAPID/Geothermal">openei.org/wiki/RAPID/Geothermal</a>.</p>
     <label class="kicker" for="rapid-jur">Jurisdiction</label>
     <select id="rapid-jur" class="menu" x-model="rapidJur" @change="openTopic = null">
@@ -465,6 +624,8 @@
         </article>
       </template>
     </div>
+      </div>
+    </article>
   </div>
 
   <footer>
@@ -542,6 +703,10 @@ function app() {
     files: {},
     rapidJur: "Nevada",
     openTopic: null,
+    openSection: null,
+    toggleSection(id) {
+      this.openSection = this.openSection === id ? null : id;
+    },
     get rapidNames() {
       const c = this.files["rapid-geothermal-content.json"];
       return c && c.data ? Object.keys(c.data) : [];
@@ -591,6 +756,8 @@ function app() {
       this.openTopic = this.openTopic === name ? null : name;
     },
     async init() {
+      const hash = (location.hash || "").replace("#", "");
+      if (hash === "clocks" || hash === "compass" || hash === "rapid") this.openSection = hash;
       const names = ["rapid-geothermal-content.json", "rapid-geothermal-index.json"];
       await Promise.all(names.map(async name => {
         try {
