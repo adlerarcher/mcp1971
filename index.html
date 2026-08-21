@@ -42,13 +42,21 @@
     display: grid;
     grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
     align-items: stretch;
-    min-height: 440px;
+    min-height: 0;
     height: auto;
     margin: 0 -88px;
     padding: 0;
     background: var(--navy);
     color: var(--white);
     overflow: hidden;
+  }
+  .mast-copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .mast-visual {
+    grid-column: 2;
+    grid-row: 1;
   }
   .site-nav {
     position: absolute;
@@ -83,7 +91,7 @@
   .mast-copy {
     position: relative;
     z-index: 2;
-    padding: 108px 48px 40px 106px;
+    padding: 108px 48px 48px 106px;
     min-width: 0;
   }
   .mast-visual {
@@ -91,8 +99,18 @@
     z-index: 1;
     min-height: 440px;
     align-self: stretch;
-    border-left: 5px solid var(--gold);
     background: var(--navy);
+  }
+  .mast-visual::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 108px;
+    bottom: 0;
+    width: 5px;
+    background: var(--gold);
+    z-index: 2;
+    pointer-events: none;
   }
   .mast-visual img {
     position: absolute;
@@ -111,6 +129,18 @@
     z-index: 3;
     animation: mastBar .7s .08s cubic-bezier(.2,.7,.2,1) forwards;
   }
+  .mast-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    flex-wrap: wrap;
+    margin: 0 0 22px;
+    animation: mastIn .55s .2s ease both;
+  }
+  .mast-top .eyebrow { margin: 0; animation: none; }
   .eyebrow {
     position: relative;
     margin: 0 0 24px;
@@ -122,12 +152,12 @@
   }
   h1 {
     position: relative;
-    margin: 0 0 36px;
+    margin: 0 0 12px;
     font-family: var(--title); font-weight: 700;
-    font-size: clamp(32px, 4.2vw, 52px);
-    line-height: 1.04;
-    letter-spacing: -0.03em;
-    max-width: 18em;
+    font-size: clamp(44px, 6.2vw, 84px);
+    line-height: .92;
+    letter-spacing: -0.04em;
+    max-width: 9em;
     z-index: 1;
   }
   h1 .mast-line { display: block; overflow: hidden; }
@@ -137,14 +167,51 @@
   }
   h1 .mast-line:nth-child(1) span { animation-delay: .28s; }
   h1 .mast-line:nth-child(2) span { animation-delay: .42s; }
-  .lede {
+  .mast-kind {
     position: relative;
-    margin: 0;
-    max-width: 32em;
-    font-size: 19px; line-height: 1.38;
-    color: var(--white);
     z-index: 1;
-    animation: mastIn .6s .7s ease both;
+    margin: 0 0 6px;
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--gold);
+    animation: mastIn .55s .48s ease both;
+  }
+  .mast-place {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 18px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--white);
+    animation: mastIn .55s .52s ease both;
+  }
+  .mast-deck {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 22px;
+    max-width: 26em;
+    font-size: 18px;
+    line-height: 1.35;
+    animation: mastIn .55s .58s ease both;
+  }
+  .mast-case {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 16px 0 0;
+    border-top: 4px solid var(--gold);
+    animation: mastIn .55s .64s ease both;
+  }
+  .mast-facts {
+    margin: 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--white);
   }
   @keyframes mastBar { to { height: calc(100% - 108px); } }
   @keyframes mastIn {
@@ -155,7 +222,40 @@
     from { transform: translateY(110%); }
     to { transform: translateY(0); }
   }
-  .stage { padding-top: 0; position: relative; z-index: 2; }
+  .stage { padding-top: 22px; position: relative; z-index: 2; }
+  .stage-nav {
+    position: sticky;
+    top: 0;
+    z-index: 12;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 0 12px;
+    margin: 0 0 18px;
+    background: var(--white);
+    border-bottom: 1px solid var(--navy);
+  }
+  .stage-nav button {
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: .12em;
+  }
+  .stage-nav button::after { display: none; }
+  .stage-nav button.on {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+  .stage-nav button.ghost { color: var(--navy); }
+  .checks-panel {
+    margin: -8px 0 18px;
+    padding: 14px 0 4px;
+    border-bottom: 1px solid var(--navy);
+  }
+  #stage-main, #panel-ids, #panel-corpus {
+    scroll-margin-top: 64px;
+  }
+  #stage-main .map-card { margin-top: 0; }
   .banner {
     margin: 14px 0 0;
     padding: 0;
@@ -165,100 +265,20 @@
   }
   .banner a { color: var(--navy); }
 
-  .meta-wrap {
-    position: relative;
-    z-index: 3;
-    margin: 0 0 32px;
-  }
-  .meta-wrap::after {
-    content: "";
-    position: absolute;
-    top: 6px; left: 6px; right: -6px; bottom: -6px;
+  .mast .tag.captured {
     background: var(--gold);
-    z-index: 0;
-  }
-  .meta {
-    position: relative;
-    z-index: 1;
-    background: var(--white);
     color: var(--navy);
-    border: 1px solid var(--navy);
-    border-left: 5px solid var(--gold);
-    padding: 0;
   }
-  .meta-sim {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    z-index: 2;
+  .mast .tag.sim {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .mast-sim {
     display: flex;
-    justify-content: flex-end;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 0;
   }
-  .meta-fields {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: 1fr 1fr;
-    margin: 0;
-    background-image:
-      linear-gradient(var(--navy), var(--navy)),
-      linear-gradient(var(--navy), var(--navy)),
-      linear-gradient(var(--navy), var(--navy));
-    background-size: 1px 100%, 1px 100%, 100% 1px;
-    background-position: calc(100% / 3) 0, calc(200% / 3) 0, 0 50%;
-    background-repeat: no-repeat;
-  }
-  .meta-item {
-    min-width: 0;
-    margin: 0;
-    padding: 20px 24px 18px;
-    border: none;
-    animation: metaIn .55s cubic-bezier(.2,.7,.2,1) both;
-  }
-  .meta-item:nth-of-type(1) { animation-delay: .04s; }
-  .meta-item:nth-of-type(2) { animation-delay: .12s; }
-  .meta-item:nth-of-type(3) { animation-delay: .2s; }
-  .meta-item:nth-of-type(4) { animation-delay: .28s; }
-  .meta-item:nth-of-type(5) { animation-delay: .36s; }
-  .meta-item:nth-of-type(6) { animation-delay: .44s; }
-  .meta-item:nth-of-type(-n+3) { padding-top: 44px; }
-  .meta dt {
-    font-family: var(--label); font-weight: 700;
-    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--navy); margin: 0 0 10px; line-height: 1;
-    white-space: nowrap;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .meta dt::before {
-    content: "";
-    width: 7px; height: 7px;
-    background: var(--gold);
-    flex: none;
-  }
-  .meta dd {
-    font-family: var(--body); font-weight: 400;
-    font-size: clamp(16px, 1.5vw, 22px);
-    line-height: 1.12;
-    margin: 0;
-    color: var(--navy);
-  }
-  .meta dd::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 3px;
-    margin-top: 10px;
-    background: var(--gold);
-    animation: metaRule .45s .55s ease forwards;
-  }
-  .meta dd.serial { font-family: var(--mono); font-weight: 400; font-size: 15px; letter-spacing: .04em; }
-  @keyframes metaIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: none; }
-  }
-  @keyframes metaRule { to { width: 2.25rem; } }
 
   .kicker {
     font-family: var(--label); font-weight: 700;
@@ -290,7 +310,7 @@
   }
   .ctrl { min-width: 0; }
   .ctrl:has(.checks) {
-    flex: 1 1 100%;
+    flex: 1 1 auto;
     min-width: 0;
   }
   .ctrl .kicker { margin: 0 0 6px; }
@@ -383,33 +403,148 @@
     font-size: 14px;
     color: var(--navy);
   }
-  .outcome {
-    margin: 0 0 22px;
-    padding: 21px 31px;
-    border: 1px solid var(--navy);
-    border-left: 5px solid var(--gold);
-    background: var(--white);
+  .outcome { margin: 0; }
+  .seq-head { margin: 0 0 28px; padding: 2px 0 0; }
+  .seq-mast {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 8px 56px;
+    align-items: end;
+    padding: 0 0 28px;
   }
-  .outcome .n {
+  .seq-num {
     font-family: var(--title); font-weight: 700;
-    font-size: clamp(56px, 8vw, 88px);
-    line-height: 1;
-    letter-spacing: -0.03em;
+    font-size: clamp(88px, 11vw, 132px);
+    line-height: .78;
+    letter-spacing: -0.05em;
     font-variant-numeric: tabular-nums;
     color: var(--navy);
   }
-  .outcome .unit {
+  .seq-unit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 6px;
     font-family: var(--label); font-weight: 700;
-    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-    margin: 10px 0 0;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .seq-unit::before {
+    content: "";
+    width: 10px; height: 10px;
+    background: var(--gold);
+    flex: none;
+  }
+  .seq-range {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .seq-aside {
+    min-width: 0;
+    padding: 0 0 6px 28px;
+    border-left: 6px solid var(--gold);
+  }
+  .seq-when-kicker {
+    margin: 0 0 10px;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
     color: var(--navy);
   }
-  .outcome .sub {
-    margin: 6px 0 0;
+  .seq-when {
+    margin: 0 0 18px;
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .seq-when span { display: block; }
+  .seq-when-rule {
+    display: block;
+    width: 32px;
+    height: 4px;
+    margin: 10px 0;
+    background: var(--gold);
+  }
+  .seq-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .seq-stats li {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .seq-stats b {
+    display: block;
+    font-family: var(--title); font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: none;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .seq-pathrow {
+    display: grid;
+    grid-template-columns: 11ch minmax(0, 1fr);
+    gap: 10px 24px;
+    align-items: center;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--navy);
+  }
+  .seq-path-kicker {
+    margin: 0;
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .seq-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .seq-chain li {
+    display: flex;
+    align-items: center;
+  }
+  .seq-chain li + li::before {
+    content: "";
+    width: 7px; height: 7px;
+    margin: 0 12px;
+    background: var(--gold);
+    flex: none;
+  }
+  .seq-chain button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--navy);
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    line-height: 1.2;
+  }
+  .seq-chain button::after { display: none; }
+  .seq-chain button:hover { color: var(--gold); }
+  .seq-chain-empty {
+    margin: 0;
     font-size: 15px;
     color: var(--muted);
   }
-  .outcome .delta { margin-top: 10px; }
+  .seq-head .delta { margin: 14px 0 0; }
+  .gantt { margin-top: 0; }
 
   .board {
     display: grid;
@@ -512,11 +647,8 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .step .detail { color: var(--muted); min-width: 0; }
-  .step .src {
-    font-family: var(--label); font-weight: 700;
-    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-    text-align: right; color: var(--navy);
-  }
+  .id-card .steps { margin: 12px 0 0; }
+  .id-card .step { opacity: 1; }
 
   .headline { margin-top: 22px; }
   .metrics { display: flex; gap: 36px; flex-wrap: wrap; }
@@ -531,7 +663,6 @@
     margin-top: 6px;
   }
 
-  .gantt { margin-top: 22px; }
   .gantt-head { margin: 0 0 22px; }
   .gantt-lead {
     display: grid;
@@ -574,22 +705,41 @@
   }
   .gantt-labels { display: flex; flex-direction: column; }
   .gantt-label-head { display: none; }
-  .axis-svg { height: 56px; }
+  .gantt-plot {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
   .gantt-well {
     position: relative;
     background: var(--white);
     border: 1px solid var(--navy);
     z-index: 1;
-    margin: 0 6px 6px 0;
+    margin: 0 6px 0 0;
   }
   .gantt-well::after {
     content: "";
     position: absolute;
-    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    top: 6px; left: 6px; right: -6px; bottom: 0;
     background: var(--gold);
     z-index: -1;
   }
-  .gantt-tracks { position: relative; min-height: 12px; z-index: 1; }
+  .gantt-axis {
+    position: relative;
+    z-index: 1;
+    margin: 0 6px 6px 0;
+    height: 48px;
+    background: var(--gold);
+  }
+  .gantt-axis::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 6px; right: -6px; bottom: -6px;
+    background: var(--gold);
+    z-index: -1;
+  }
+  .axis-svg { height: 48px; overflow: hidden; }
+  .gantt-tracks { position: relative; min-height: 12px; z-index: 1; overflow: hidden; }
   .gantt-grid, .axis-svg { display: block; width: 100%; }
   .gantt-grid {
     position: absolute; inset: 0;
@@ -597,7 +747,6 @@
     pointer-events: none;
     z-index: 0;
   }
-  .axis-svg { overflow: visible; }
   .axis-svg .domain, .axis-svg .tick line { display: none; }
   .axis-svg .tick text {
     fill: var(--navy);
@@ -1193,27 +1342,21 @@
       min-height: 0;
       margin: 0 -24px;
     }
-    .mast-copy { padding: 96px 24px 28px 42px; }
+    .mast-copy { padding: 96px 24px 28px 42px; grid-column: 1; grid-row: 1; }
     .mast-visual {
       min-height: 200px;
       height: 200px;
-      border-left: none;
       border-top: 5px solid var(--gold);
+      grid-column: 1;
+      grid-row: 2;
     }
+    .mast-visual::before { display: none; }
     .site-nav { padding: 14px 24px; }
     .mast-rule { left: 24px; top: 96px; }
-    .eyebrow { margin: 0 0 16px; }
-    h1 { margin: 0 0 18px; font-size: clamp(32px, 9vw, 44px); }
-    .lede { margin: 0; }
-    .meta-fields {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(3, 1fr);
-      background-size: 1px 100%, 100% 1px, 100% 1px;
-      background-position: 50% 0, 0 calc(100% / 3), 0 calc(200% / 3);
-    }
-    .meta-item { padding: 18px 20px; }
-    .meta-item:nth-of-type(-n+3) { padding-top: 18px; }
-    .meta-item:nth-of-type(-n+2) { padding-top: 44px; }
+    .mast-top { margin: 0 0 16px; }
+    h1 { margin: 0 0 10px; font-size: clamp(40px, 11vw, 56px); }
+    .mast-place { margin: 0 0 14px; }
+    .mast-deck { margin: 0 0 18px; }
     .checks { grid-template-columns: repeat(2, max-content); }
     .card { padding: 18px 20px; }
     .kv { grid-template-columns: 1fr; }
@@ -1233,11 +1376,20 @@
     .bar-date { top: 4px; }
     .step { grid-template-columns: 10px 1fr auto; }
     .step .detail { grid-column: 2 / 3; }
+    .seq-mast {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .seq-aside {
+      padding: 0 0 0 20px;
+    }
+    .seq-pathrow {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    .meta-item { animation: none; }
-    .meta dd::after { animation: none; width: 2.25rem; }
-    .mast-rule, .eyebrow, h1 .mast-line span, .lede { animation: none; }
+    .mast-rule, .eyebrow, .mast-top, .mast-kind, .mast-place, .mast-deck, .mast-case, h1 .mast-line span { animation: none; }
     .mast-rule { height: calc(100% - 108px); }
     h1 .mast-line span { transform: none; }
   }
@@ -1377,7 +1529,7 @@
       <span class="site-loader__spark site-loader__spark--3" aria-hidden="true"></span>
       <span class="site-loader__spark site-loader__spark--4" aria-hidden="true"></span>
       <div class="site-loader__logo-shell">
-        <img id="site-loader-logo" class="site-loader__logo" src="adler-archer-logo.png" alt="" width="512" height="512" decoding="async" fetchpriority="high">
+        <img id="site-loader-logo" class="site-loader__logo" src="thermal-underground-logo.png" alt="Thermal Underground" width="256" height="256" decoding="async" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -1405,7 +1557,7 @@
   <header class="mast">
     <div class="site-nav">
       <a class="brand" href="./">
-        <img src="adler-archer-logo.png" width="512" height="512" alt="Adler Archer">
+        <img src="thermal-underground-logo.png" width="256" height="256" alt="Thermal Underground">
       </a>
       <nav aria-label="Site">
         <a href="./" aria-current="page">Timeline</a>
@@ -1416,12 +1568,22 @@
       </nav>
     </div>
     <div class="mast-copy">
-      <p class="eyebrow">Coordination view</p>
+      <div class="mast-top">
+        <p class="eyebrow">Coordination view</p>
+        <div class="mast-sim">
+          <span class="tag" :class="caseTierClass(project)" x-text="caseTierLabel(project)"></span>
+          <span class="tag sim" x-show="leaseSimulated(project) && caseTierLabel(project) === 'Captured'">Lease simulated</span>
+        </div>
+      </div>
       <h1>
-        <span class="mast-line"><span>Permitting</span></span>
-        <span class="mast-line"><span>coordination timeline</span></span>
+        <span class="mast-line"><span x-text="project.name"></span></span>
       </h1>
-      <p class="lede">For a given geothermal project, which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
+      <p class="mast-kind" x-text="mastKind"></p>
+      <p class="mast-place" x-text="mastPlace"></p>
+      <p class="mast-deck" x-text="project.deck"></p>
+      <div class="mast-case">
+        <p class="mast-facts" x-text="mastFacts"></p>
+      </div>
     </div>
     <div class="mast-visual" aria-hidden="true">
       <img src="hero-dixie.png" alt="" width="1536" height="1024" decoding="async">
@@ -1430,43 +1592,25 @@
   </header>
 
   <div class="stage">
-    <div class="meta-wrap">
-      <div class="meta">
-        <div class="meta-sim">
-          <span class="tag" :class="caseTierClass(project)" x-text="caseTierLabel(project)"></span>
-          <span class="tag sim" x-show="leaseSimulated(project) && caseTierLabel(project) === 'Captured'">Lease simulated</span>
-        </div>
-        <div class="meta-fields">
-          <template x-for="row in metaRows" :key="row.k">
-            <dl class="meta-item">
-              <dt x-text="row.k"></dt>
-              <dd :class="{ serial: row.serial }" x-text="row.v"></dd>
-            </dl>
-          </template>
-        </div>
-      </div>
-    </div>
-
-    <p class="kicker">Nevada cases</p>
-    <div class="projects">
-      <select class="menu" :value="projectId" @change="selectProject($event.target.value)">
-        <template x-for="p in projects" :key="p.id">
-          <option :value="p.id" x-text="projectLabel(p) + ' · ' + caseTierLabel(p)"></option>
-        </template>
-      </select>
-    </div>
+    <nav class="stage-nav" aria-label="On this page">
+      <button type="button" class="ghost" :class="{ on: stageView === 'sequence' }" @click="showStage('sequence')">Sequence</button>
+      <button type="button" class="ghost" :class="{ on: stageView === 'map' }" @click="showStage('map')">Map</button>
+      <button type="button" class="ghost" :class="{ on: openPanel === 'ids' }" @click="jumpPanel('ids')">Identifiers</button>
+      <button type="button" class="ghost" :class="{ on: openPanel === 'corpus' }" @click="jumpPanel('corpus')">Corpus</button>
+    </nav>
 
     <div class="controls">
       <div class="ctrl">
-        <p class="kicker">Conditions</p>
-        <div class="checks">
-          <template x-for="key in conditionKeys" :key="key">
-            <label>
-              <input type="checkbox" :checked="conditions[key]" @change="setCondition(key, $event.target.checked)">
-              <span x-text="conditionLabels[key]"></span>
-            </label>
+        <p class="kicker">Nevada case</p>
+        <select class="menu" :value="projectId" @change="selectProject($event.target.value)">
+          <template x-for="p in projects" :key="p.id">
+            <option :value="p.id" x-text="projectLabel(p) + ' · ' + caseTierLabel(p)"></option>
           </template>
-        </div>
+        </select>
+      </div>
+      <div class="ctrl">
+        <p class="kicker">Conditions</p>
+        <button type="button" class="ghost" @click="conditionsOpen = !conditionsOpen" :aria-expanded="conditionsOpen" x-text="conditionSummary"></button>
       </div>
       <div class="ctrl">
         <p class="kicker">Band</p>
@@ -1492,104 +1636,52 @@
         </div>
       </div>
     </div>
-
-    <div class="board">
-      <div class="left">
-        <div class="outcome" x-show="result">
-          <div class="n" x-text="result.total_duration_days"></div>
-          <p class="unit">Days to APD</p>
-          <p class="sub">
-            <span x-text="band"></span>
-            <span x-text="' · range ' + range.low + '–' + range.high + ' days'"></span>
-          </p>
-          <p class="delta" x-show="baseline" x-text="deltaCopy"></p>
-        </div>
-        <div class="card">
-          <div class="steps">
-            <template x-for="(s, i) in steps" :key="s.name">
-              <div class="step" :class="{ on: i < logActive }">
-                <span class="dot"></span>
-                <span class="name" x-text="s.name"></span>
-                <span class="detail" x-text="i < logActive ? s.detail : '…'"></span>
-                <span class="src" x-text="i < logActive ? s.src : ''"></span>
-              </div>
-            </template>
-          </div>
-        </div>
-
-        <div class="card mark headline" x-show="result && logActive >= steps.length">
-          <div class="metrics">
-            <div class="metric"><div class="n" x-text="result.total_duration_days"></div><div class="l">Days to APD</div></div>
-            <div class="metric"><div class="n" x-text="result.total_duration_months"></div><div class="l">Months</div></div>
-            <div class="metric"><div class="n" x-text="result.reviews_triggered"></div><div class="l">Reviews triggered</div></div>
-            <div class="metric"><div class="n" x-text="agencyCount"></div><div class="l">Agencies involved</div></div>
-          </div>
-        </div>
+    <div class="checks-panel" x-show="conditionsOpen" x-cloak>
+      <div class="checks">
+        <template x-for="key in conditionKeys" :key="key">
+          <label>
+            <input type="checkbox" :checked="conditions[key]" @change="setCondition(key, $event.target.checked)">
+            <span x-text="conditionLabels[key]"></span>
+          </label>
+        </template>
       </div>
-
-      <aside class="card mark prov-card">
-        <h2>Provenance</h2>
-        <div class="prov">
-          <div class="empty" x-show="!selectedReview">No review is selected.</div>
-          <template x-if="selectedReview && selectedRow">
-            <div>
-              <div class="kv"><div class="k">Review</div><div class="v" x-text="selectedRow.name"></div></div>
-              <div class="kv"><div class="k">Agency</div><div class="v" x-text="selectedRow.agency"></div></div>
-              <div class="kv"><div class="k">Authority</div><div class="v cite" x-text="selectedRow.authority"></div></div>
-              <div class="kv"><div class="k">Window</div><div class="v" x-text="windowCopy(selectedRow)"></div></div>
-              <div class="kv">
-                <div class="k">Critical path</div>
-                <div class="v"><span class="tag crit" x-show="selectedRow.on_critical_path">On the critical path</span><span x-show="!selectedRow.on_critical_path">Not on the critical path</span></div>
-              </div>
-              <div class="kv"><div class="k">Duration</div><div class="v"><span x-text="selectedRow.duration_days"></span> days <i class="orig" :title="originLabel(selectedRow.id)" x-text="originAbbr(selectedRow.id)"></i></div></div>
-              <template x-if="evidenceFor(selectedReview).length === 0">
-                <div class="kv">
-                  <div class="k">Source-system evidence</div>
-                  <div class="v">No connector. The review is on the schedule from the rule set; no captured payload supports it.</div>
-                </div>
-              </template>
-              <template x-for="(payload, pi) in evidenceFor(selectedReview)" :key="pi">
-                <div>
-                  <div class="kv">
-                    <div class="k">Source</div>
-                    <div class="v">
-                      <span x-text="payload.source"></span>
-                      <span class="tag" :class="tierClass(payload)" x-text="tierLabel(payload)"></span>
-                    </div>
-                  </div>
-                  <div class="kv"><div class="k">Retrieved</div><div class="v cite" x-text="payload.retrieved"></div></div>
-                  <div class="kv" x-show="payload.url"><div class="k">Citation</div><div class="v cite" x-text="payload.url"></div></div>
-                  <div class="kv">
-                    <div class="k">Payload</div>
-                    <div class="v">
-                      <details class="payload-fold">
-                        <summary>Show captured payload</summary>
-                        <pre x-text="JSON.stringify(payload.data, null, 2)"></pre>
-                      </details>
-                    </div>
-                  </div>
-                </div>
-              </template>
-            </div>
-          </template>
-        </div>
-      </aside>
     </div>
 
-    <div class="card mark gantt" x-show="result && logActive >= steps.length">
-      <header class="gantt-head">
-        <p class="kicker">Critical path</p>
-        <div class="gantt-lead">
-          <div class="gantt-stat">
-            <span class="n" x-text="result.total_duration_days"></span>
-            <span class="u">Days</span>
+    <div id="stage-main">
+    <div class="card mark gantt" x-show="stageView === 'sequence' && result">
+      <header class="seq-head">
+        <div class="seq-mast">
+          <div class="seq-hero">
+            <div class="seq-num" x-text="result.total_duration_days"></div>
+            <p class="seq-unit">Days to APD</p>
+            <p class="seq-range" x-text="band + ' · ' + range.low + '–' + range.high"></p>
           </div>
-          <div>
-            <p class="gantt-span" x-text="spanCopy"></p>
-            <p class="gantt-chain" x-text="pathCopy"></p>
-            <p class="est-note">Durations are planning estimates. Citations are statutory.</p>
+          <div class="seq-aside">
+            <p class="seq-when-kicker">Window</p>
+            <p class="seq-when">
+              <span x-text="spanStart"></span>
+              <i class="seq-when-rule" aria-hidden="true"></i>
+              <span x-text="spanEnd"></span>
+            </p>
+            <ul class="seq-stats">
+              <li><b x-text="result.total_duration_months"></b> Months</li>
+              <li><b x-text="result.reviews_triggered"></b> Reviews</li>
+              <li><b x-text="agencyCount"></b> Agencies</li>
+            </ul>
           </div>
         </div>
+        <div class="seq-pathrow">
+          <p class="seq-path-kicker">Path</p>
+          <ol class="seq-chain" x-show="pathSteps.length">
+            <template x-for="step in pathSteps" :key="step.id">
+              <li>
+                <button type="button" @click="selectReview(step.id)" x-text="step.name"></button>
+              </li>
+            </template>
+          </ol>
+          <p class="seq-chain-empty" x-show="!pathSteps.length">No review sits on the critical path.</p>
+        </div>
+        <p class="delta" x-show="baseline" x-text="deltaCopy"></p>
       </header>
       <div class="gantt-figure">
         <div class="gantt-labels">
@@ -1607,21 +1699,25 @@
             </div>
           </template>
         </div>
-        <div class="gantt-well">
-          <div class="gantt-tracks" x-ref="tracks">
-            <svg class="gantt-grid" x-ref="grid" aria-hidden="true"></svg>
-            <template x-for="row in overlayRows" :key="row.id">
-              <div class="grow" :class="rowClass(row.id)" @click="selectReview(row.id)">
-                <div class="track">
-                  <span class="track-cap" x-text="chartName(row)"></span>
-                  <div class="bar held" x-show="row.held" :style="barStyle(row.held, row.agency)"></div>
-                  <div class="bar" x-show="row.current" :class="{ crit: row.current && row.current.on_critical_path }" :style="barStyle(row.current, row.agency)"></div>
-                  <span class="bar-date" x-show="row.current && row.current.on_critical_path" :style="dateStyle(row.current)" x-text="row.current ? endLabel(row.current) : ''"></span>
+        <div class="gantt-plot">
+          <div class="gantt-well">
+            <div class="gantt-tracks" x-ref="tracks">
+              <svg class="gantt-grid" x-ref="grid" aria-hidden="true"></svg>
+              <template x-for="row in overlayRows" :key="row.id">
+                <div class="grow" :class="rowClass(row.id)" @click="selectReview(row.id)">
+                  <div class="track">
+                    <span class="track-cap" x-text="chartName(row)"></span>
+                    <div class="bar held" x-show="row.held" :style="barStyle(row.held, row.agency)"></div>
+                    <div class="bar" x-show="row.current" :class="{ crit: row.current && row.current.on_critical_path }" :style="barStyle(row.current, row.agency)"></div>
+                    <span class="bar-date" x-show="row.current && row.current.on_critical_path" :style="dateStyle(row.current)" x-text="row.current ? endLabel(row.current) : ''"></span>
+                  </div>
                 </div>
-              </div>
-            </template>
+              </template>
+            </div>
           </div>
-          <svg class="axis-svg" x-ref="axis" aria-hidden="true"></svg>
+          <div class="gantt-axis">
+            <svg class="axis-svg" x-ref="axis" aria-hidden="true"></svg>
+          </div>
         </div>
       </div>
       <div class="legend">
@@ -1635,7 +1731,7 @@
       </div>
     </div>
 
-    <div class="card mark map-card">
+    <div class="card mark map-card" x-show="stageView === 'map'" x-cloak>
       <h2>Spatial context</h2>
       <p class="fold-sub">CARTO Positron basemap, hydrography, wetlands, federal management, reservations, geothermal leases. Closed in navy; authorized, non-producing in gold. No critical habitat designated.</p>
       <div class="zooms">
@@ -1702,17 +1798,91 @@
         </div>
       </div>
     </div>
+    </div>
 
-    <div class="card mark fold id-card" :class="{ open: openPanel === 'ids' }">
+    <div id="panel-ids" class="card mark fold id-card" :class="{ open: openPanel === 'ids' }">
       <button type="button" class="fold-head" @click="togglePanel('ids')" :aria-expanded="openPanel === 'ids'">
         <div>
           <h2>Shared identifier layer</h2>
-          <p class="fold-sub">Seven identifier schemes. Spatial intersection resolves some joins. No published crosswalk resolves the rest.</p>
+          <p class="fold-sub">Source calls, provenance, identifier schemes, spatial joins.</p>
         </div>
         <span class="fold-sign" aria-hidden="true" x-text="openPanel === 'ids' ? '−' : '+'"></span>
       </button>
       <div class="fold-body" x-show="openPanel === 'ids'" x-cloak>
       <p>Each source names the same geothermal location with a different identifier. The project polygon is the only key that currently joins those names. Joins that would connect a lease to a NEPA docket or a well record do not resolve.</p>
+
+      <div class="fold id-part" :class="{ open: idOpen.calls }">
+        <button type="button" class="fold-head" @click="toggleId('calls')" :aria-expanded="idOpen.calls">
+          <h3>Source calls</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.calls ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.calls" x-cloak>
+          <p>The records this case is assembled from, in the order they were retrieved. Tool names are MCP calls. Source systems remain authoritative.</p>
+          <div class="steps">
+            <template x-for="(s, i) in steps" :key="s.name">
+              <div class="step on">
+                <span class="dot"></span>
+                <span class="name" x-text="s.name"></span>
+                <span class="detail" x-text="s.detail"></span>
+                <span class="src" x-text="s.src"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <div class="fold id-part" :class="{ open: idOpen.provenance }">
+        <button type="button" class="fold-head" @click="toggleId('provenance')" :aria-expanded="idOpen.provenance">
+          <h3>Provenance</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.provenance ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.provenance" x-cloak>
+          <div class="prov">
+            <div class="empty" x-show="!selectedReview">Select a review on the sequence to see its source, authority, and captured payload.</div>
+            <template x-if="selectedReview && selectedRow">
+              <div>
+                <div class="kv"><div class="k">Review</div><div class="v" x-text="selectedRow.name"></div></div>
+                <div class="kv"><div class="k">Agency</div><div class="v" x-text="selectedRow.agency"></div></div>
+                <div class="kv"><div class="k">Authority</div><div class="v cite" x-text="selectedRow.authority"></div></div>
+                <div class="kv"><div class="k">Window</div><div class="v" x-text="windowCopy(selectedRow)"></div></div>
+                <div class="kv">
+                  <div class="k">Critical path</div>
+                  <div class="v"><span class="tag crit" x-show="selectedRow.on_critical_path">On the critical path</span><span x-show="!selectedRow.on_critical_path">Not on the critical path</span></div>
+                </div>
+                <div class="kv"><div class="k">Duration</div><div class="v"><span x-text="selectedRow.duration_days"></span> days <i class="orig" :title="originLabel(selectedRow.id)" x-text="originAbbr(selectedRow.id)"></i></div></div>
+                <template x-if="evidenceFor(selectedReview).length === 0">
+                  <div class="kv">
+                    <div class="k">Source-system evidence</div>
+                    <div class="v">No connector. The review is on the schedule from the rule set; no captured payload supports it.</div>
+                  </div>
+                </template>
+                <template x-for="(payload, pi) in evidenceFor(selectedReview)" :key="pi">
+                  <div>
+                    <div class="kv">
+                      <div class="k">Source</div>
+                      <div class="v">
+                        <span x-text="payload.source"></span>
+                        <span class="tag" :class="tierClass(payload)" x-text="tierLabel(payload)"></span>
+                      </div>
+                    </div>
+                    <div class="kv"><div class="k">Retrieved</div><div class="v cite" x-text="payload.retrieved"></div></div>
+                    <div class="kv" x-show="payload.url"><div class="k">Citation</div><div class="v cite" x-text="payload.url"></div></div>
+                    <div class="kv">
+                      <div class="k">Payload</div>
+                      <div class="v">
+                        <details class="payload-fold">
+                          <summary>Show captured payload</summary>
+                          <pre x-text="JSON.stringify(payload.data, null, 2)"></pre>
+                        </details>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
 
       <div class="fold id-part" :class="{ open: idOpen.schemes }">
         <button type="button" class="fold-head" @click="toggleId('schemes')" :aria-expanded="idOpen.schemes">
@@ -1872,7 +2042,7 @@
       </div>
     </div>
 
-    <div class="card mark fold corpus-card" :class="{ open: openPanel === 'corpus' }">
+    <div id="panel-corpus" class="card mark fold corpus-card" :class="{ open: openPanel === 'corpus' }">
       <button type="button" class="fold-head" @click="togglePanel('corpus')" :aria-expanded="openPanel === 'corpus'">
         <div>
           <h2>Document corpus</h2>
@@ -2210,6 +2380,7 @@ const PROJECTS = [
   {
     id: "dixie",
     name: "Dixie Valley",
+    deck: "A closed basin in Nevada’s Basin and Range, between the Stillwater Range and the Clan Alpine Mountains. An authorized BLM geothermal lease, not producing, and the only home of the endangered Dixie Valley toad.",
     conditions: Object.assign({}, ALL_TRUE),
     lease: MLRS_LEASE,
     wells: SEPI_WELLS,
@@ -2218,6 +2389,7 @@ const PROJECTS = [
   {
     id: "pershing",
     name: "Pershing County",
+    deck: "A simulated geothermal lease in the Humboldt Range. Authorized, not producing.",
     conditions: Object.assign({}, ALL_TRUE, {
       listed_species_present: false,
       likely_to_adversely_affect: false
@@ -2256,6 +2428,7 @@ const PROJECTS = [
   {
     id: "elko",
     name: "Elko County",
+    deck: "A simulated geothermal lease in Ruby Valley. Authorized, not producing.",
     conditions: Object.assign({}, ALL_TRUE, { injection_proposed: false }),
     lease: {
       data: { found: true, lease: {
@@ -2295,6 +2468,7 @@ const PROJECTS = [
   {
     id: "washoe",
     name: "Washoe County",
+    deck: "A simulated geothermal lease at Steamboat Hills. Authorized, not producing.",
     conditions: Object.assign({}, ALL_TRUE, { likely_to_adversely_affect: false }),
     lease: {
       data: { found: true, lease: {
@@ -2643,12 +2817,18 @@ function app() {
     layersOpen: false,
     openPanel: null,
     openTopic: null,
-    idOpen: { schemes: false, intersect: false, graph: false, unresolved: false },
+    stageView: "sequence",
+    conditionsOpen: false,
+    idOpen: { calls: true, provenance: true, schemes: false, intersect: false, graph: false, unresolved: false },
     _ro: null,
     _mapBound: false,
 
     get project() {
       return this.projects.find(p => p.id === this.projectId) || this.projects[0];
+    },
+    get conditionSummary() {
+      const n = this.conditionKeys.filter(k => this.conditions[k]).length;
+      return n + " of " + this.conditionKeys.length + " on";
     },
     projectLabel(p) {
       const county = p.lease.data.lease.county;
@@ -2664,16 +2844,27 @@ function app() {
     leaseSimulated(p) {
       return payloadTier(p.lease) === "simulated";
     },
-    get metaRows() {
+    get mastKind() {
+      const t = this.project.lease.data.lease.case_type || "Geothermal lease";
+      return "Federal " + t.replace(/^federal\s+/i, "").toLowerCase();
+    },
+    get mastPlace() {
       const L = this.project.lease.data.lease;
-      return [
-        { k: "Project", v: this.project.name },
-        { k: "County", v: L.county },
-        { k: "State", v: L.state },
-        { k: "Administrative office", v: L.admin_office },
-        { k: "Lease serial", v: L.serial_number, serial: true },
-        { k: "Lease status", v: L.status }
-      ];
+      const county = L.county || "";
+      const state = L.state === "NV" ? "Nevada" : (L.state || "");
+      if (county && state) return county + " County, " + state;
+      return [county, state].filter(Boolean).join(", ");
+    },
+    get mastFacts() {
+      const L = this.project.lease.data.lease;
+      const acres = L.acres != null ? Math.round(L.acres).toLocaleString("en-US") + " acres" : "";
+      return [L.serial_number, L.status, acres, L.admin_office].filter(Boolean).join("  ·  ");
+    },
+    get metaFactLine() {
+      const L = this.project.lease.data.lease;
+      const acres = L.acres != null ? Math.round(L.acres).toLocaleString("en-US") + " acres" : "";
+      return [L.serial_number, L.status, acres, L.county + ", " + L.state, L.admin_office]
+        .filter(Boolean).join("  ·  ");
     },
     get steps() {
       const p = this.project;
@@ -2745,29 +2936,38 @@ function app() {
       return "Current total is " + this.result.total_duration_days + " days. Compared schedule is " +
         this.baseline.total_duration_days + " days. Difference: " + rel + ".";
     },
-    get spanCopy() {
+    get spanStart() {
       if (!this.result) return "";
-      const start = parseISODate(this.startDate);
-      const end = addDays(start, this.result.total_duration_days);
-      return fmtDate(start) + " – " + fmtDate(end) + " · " + this.band +
-        " · range " + this.range.low + "–" + this.range.high + " days";
+      return fmtDate(parseISODate(this.startDate));
+    },
+    get spanEnd() {
+      if (!this.result) return "";
+      return fmtDate(addDays(parseISODate(this.startDate), this.result.total_duration_days));
+    },
+    get spanDates() {
+      if (!this.result) return "";
+      return this.spanStart + " – " + this.spanEnd;
+    },
+    get pathSteps() {
+      if (!this.result) return [];
+      const short = {
+        nhpa_section106: "NHPA 106",
+        uic_permit: "UIC",
+        nepa_ea: "NEPA EA",
+        biological_assessment: "Biological assessment",
+        nv_water_right: "Water right",
+        esa_section7_informal: "ESA informal",
+        esa_section7_formal: "ESA formal",
+        nepa_decision: "NEPA decision",
+        apd_approval: "APD"
+      };
+      return this.result.schedule
+        .filter(s => s.on_critical_path)
+        .map(s => ({ id: s.id, name: short[s.id] || s.name }));
     },
     get pathCopy() {
-      if (!this.result) return "";
-      const short = {
-        nhpa_section106: "NHPA Section 106",
-        uic_permit: "UIC permit",
-        nepa_ea: "NEPA environmental assessment",
-        biological_assessment: "biological assessment",
-        nv_water_right: "Nevada water right",
-        esa_section7_informal: "ESA informal consultation",
-        esa_section7_formal: "ESA formal consultation",
-        nepa_decision: "NEPA decision",
-        apd_approval: "APD approval"
-      };
-      const names = this.result.schedule.filter(s => s.on_critical_path).map(s => short[s.id] || s.name);
-      if (!names.length) return "No review sits on the critical path under the current conditions.";
-      return "Longest chain: " + names.join(" · ") + ".";
+      if (!this.pathSteps.length) return "No review sits on the critical path under the current conditions.";
+      return "Longest chain: " + this.pathSteps.map(s => s.name).join(" · ") + ".";
     },
     get corpusProjects() {
       const raw = this.files["nepatec-blm-geothermal.json"];
@@ -3035,11 +3235,10 @@ function app() {
 
     init() {
       this.recompute();
-      this.runSequence();
+      this.logActive = this.steps.length;
       this.loadAllData();
       this.$nextTick(() => {
         this.drawChart();
-        this.readyMap();
         if (this.$refs.tracks && window.ResizeObserver) {
           this._ro = new ResizeObserver(() => this.drawChart());
           this._ro.observe(this.$refs.tracks);
@@ -3079,7 +3278,23 @@ function app() {
         }
       }));
       this.loadMapSources();
-      this.$nextTick(() => this.readyMap());
+      if (this.stageView === "map") this.$nextTick(() => this.readyMap());
+    },
+    showStage(id) {
+      this.stageView = id;
+      this.$nextTick(() => {
+        if (id === "map") this.readyMap();
+        else this.drawChart();
+        const el = document.getElementById("stage-main");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    },
+    jumpPanel(id) {
+      this.openPanel = id;
+      this.$nextTick(() => {
+        const el = document.getElementById("panel-" + id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     },
     togglePanel(id) {
       this.openPanel = this.openPanel === id ? null : id;
@@ -3107,6 +3322,7 @@ function app() {
     selectCorpus(p) {
       this.selectedCorpusId = this.selectedCorpusId === p.project_ID ? null : p.project_ID;
       if (this.selectedCorpusId && p.lat != null) {
+        this.stageView = "map";
         this.mapMode = "west";
         this.readyMap();
         this.$nextTick(() => { if (mapInstance) this.fitWest(); });
@@ -3129,7 +3345,7 @@ function app() {
     },
     selectProject(id) {
       if (id === this.projectId) {
-        this.runSequence();
+        this.recompute();
         return;
       }
       this.snapshot();
@@ -3138,7 +3354,6 @@ function app() {
       this.selectedReview = null;
       this.selectedSource = null;
       this.recompute();
-      this.runSequence();
     },
     setCondition(key, val) {
       this.snapshot();
@@ -3171,22 +3386,18 @@ function app() {
       this.selectedReview = null;
       this.selectedSource = null;
       this.recompute();
-      this.runSequence();
     },
     runSequence() {
-      const token = ++this.seqToken;
-      this.logActive = 0;
-      const n = this.steps.length;
-      const tick = i => {
-        if (token !== this.seqToken) return;
-        this.logActive = i;
-        if (i < n) setTimeout(() => tick(i + 1), 280);
-        else this.$nextTick(() => this.drawChart());
-      };
-      setTimeout(() => tick(1), 60);
+      this.recompute();
+      this.$nextTick(() => this.drawChart());
     },
     selectReview(id) {
       this.selectedReview = this.selectedReview === id ? null : id;
+      if (this.selectedReview) {
+        const next = Object.assign({}, this.idOpen);
+        next.provenance = true;
+        this.idOpen = next;
+      }
     },
     rowClass(id) {
       return { sel: this.selectedReview === id, dim: !!(this.selectedReview && this.selectedReview !== id) };
@@ -3533,14 +3744,20 @@ function app() {
         .attr("stroke", "#0A1A4F").attr("stroke-opacity", 0.28).attr("stroke-width", 1);
 
       const axisSvg = d3g.select(axisEl);
-      axisSvg.attr("width", width).attr("height", 56);
+      axisSvg.attr("width", width).attr("height", 48);
       axisSvg.selectAll("*").remove();
-      const axis = d3g.axisBottom(x).tickValues(ticks).tickFormat(d3g.timeFormat("%b %Y")).tickSize(0).tickPadding(10);
-      axisSvg.append("g").attr("transform", "translate(0,10)").call(axis);
+      const axis = d3g.axisBottom(x).tickValues(ticks).tickFormat(d3g.timeFormat("%b %Y")).tickSize(0).tickPadding(8);
+      axisSvg.append("g").attr("transform", "translate(0,8)").call(axis);
+      axisSvg.selectAll(".tick text").attr("text-anchor", (d, i, nodes) => {
+        if (i === 0) return "start";
+        if (i === nodes.length - 1) return "end";
+        return "middle";
+      });
       axisSvg.selectAll("text.fy").data(fyBands).join("text")
         .attr("class", "fy-lab")
-        .attr("x", d => x(d.start) + 8)
-        .attr("y", 50)
+        .attr("x", d => Math.min(width - 8, Math.max(8, x(d.start) + 8)))
+        .attr("y", 42)
+        .attr("text-anchor", "start")
         .text(d => "FY " + d.year);
     },
     exportCsv() {

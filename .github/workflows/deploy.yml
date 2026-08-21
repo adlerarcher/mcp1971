@@ -28,7 +28,7 @@ jobs:
       - name: Stage site
         run: |
           mkdir _site
-          cp index.html CNAME adler-archer-logo.png about.md _site/
+          cp index.html CNAME thermal-underground-logo.png hero-dixie.png about.md _site/
           mkdir _site/about _site/glossary _site/coverage _site/reference
           cp about/index.html _site/about/
           cp glossary/index.html _site/glossary/
