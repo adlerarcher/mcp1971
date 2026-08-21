@@ -308,7 +308,16 @@
     border-top: 1px solid var(--navy);
     border-bottom: 1px solid var(--navy);
   }
-  .ctrl { min-width: 0; }
+  .ctrl-lead {
+    flex: 1 1 100%;
+    margin: 0 0 8px;
+    max-width: 46em;
+    font-size: 16px;
+    line-height: 1.38;
+  }
+  .ctrl-tools {
+    margin-left: auto;
+  }
   .ctrl:has(.checks) {
     flex: 1 1 auto;
     min-width: 0;
@@ -1600,8 +1609,9 @@
     </nav>
 
     <div class="controls">
+      <p class="ctrl-lead">This estimates the required reviews from a start date to an APD — an Application for Permit to Drill. Change the lease, what applies, or how long each review is assumed to take. The sequence updates. Click a review to see its source.</p>
       <div class="ctrl">
-        <p class="kicker">Nevada case</p>
+        <p class="kicker">Which lease</p>
         <select class="menu" :value="projectId" @change="selectProject($event.target.value)">
           <template x-for="p in projects" :key="p.id">
             <option :value="p.id" x-text="projectLabel(p) + ' · ' + caseTierLabel(p)"></option>
@@ -1609,27 +1619,26 @@
         </select>
       </div>
       <div class="ctrl">
-        <p class="kicker">Conditions</p>
+        <p class="kicker">What applies</p>
         <button type="button" class="ghost" @click="conditionsOpen = !conditionsOpen" :aria-expanded="conditionsOpen" x-text="conditionSummary"></button>
       </div>
       <div class="ctrl">
-        <p class="kicker">Band</p>
+        <p class="kicker">How long each review takes</p>
         <div class="band">
           <template x-for="b in bands" :key="b">
-            <button type="button" :class="{ on: band === b }" @click="setBand(b)" x-text="b"></button>
+            <button type="button" :class="{ on: band === b }" @click="setBand(b)" x-text="bandCaption(b)"></button>
           </template>
         </div>
       </div>
       <div class="ctrl">
-        <p class="kicker">Start</p>
-        <input type="date" x-model="startDate" @change="drawChart()">
+        <p class="kicker">Clock starts</p>
+        <input type="date" x-model="startDate" @change="runSequence()">
       </div>
-      <div class="ctrl">
-        <p class="kicker">Actions</p>
+      <div class="ctrl ctrl-tools">
+        <p class="kicker">Also</p>
         <div class="actions">
-          <button type="button" class="primary" @click="runSequence()">Run</button>
           <button type="button" class="ghost" @click="clearView()">Reset</button>
-          <button type="button" class="ghost" :class="{ on: pinned }" @click="pinSchedule()">Compare</button>
+          <button type="button" class="ghost" :class="{ on: pinned }" @click="pinSchedule()" x-text="pinned ? 'Comparing' : 'Hold to compare'"></button>
           <button type="button" class="ghost" @click="rulesOpen = true">Rule set</button>
           <button type="button" class="ghost" @click="exportCsv()">CSV</button>
           <button type="button" class="ghost" @click="exportJson()">JSON</button>
@@ -1654,7 +1663,7 @@
           <div class="seq-hero">
             <div class="seq-num" x-text="result.total_duration_days"></div>
             <p class="seq-unit">Days to APD</p>
-            <p class="seq-range" x-text="band + ' · ' + range.low + '–' + range.high"></p>
+            <p class="seq-range" x-text="bandCaption(band) + ' · ' + range.low + '–' + range.high"></p>
           </div>
           <div class="seq-aside">
             <p class="seq-when-kicker">Window</p>
@@ -1671,7 +1680,7 @@
           </div>
         </div>
         <div class="seq-pathrow">
-          <p class="seq-path-kicker">Path</p>
+          <p class="seq-path-kicker">Select</p>
           <ol class="seq-chain" x-show="pathSteps.length">
             <template x-for="step in pathSteps" :key="step.id">
               <li>
@@ -2828,7 +2837,13 @@ function app() {
     },
     get conditionSummary() {
       const n = this.conditionKeys.filter(k => this.conditions[k]).length;
-      return n + " of " + this.conditionKeys.length + " on";
+      const total = this.conditionKeys.length;
+      if (n === total) return "All " + total + " apply";
+      if (n === 0) return "None apply";
+      return n + " of " + total + " apply";
+    },
+    bandCaption(b) {
+      return { low: "Faster", typical: "Typical", high: "Slower" }[b] || b;
     },
     projectLabel(p) {
       const county = p.lease.data.lease.county;
