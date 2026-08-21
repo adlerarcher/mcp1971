@@ -39,8 +39,13 @@
   .page { padding: 0 88px 64px; }
   .mast {
     position: relative;
-    height: 420px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
+    align-items: stretch;
+    min-height: 440px;
+    height: auto;
     margin: 0 -88px;
+    padding: 0;
     background: var(--navy);
     color: var(--white);
     overflow: hidden;
@@ -75,18 +80,40 @@
   }
   .site-nav nav a:hover { color: var(--white); border-bottom-color: var(--gold); }
   .site-nav nav a[aria-current="page"] { color: var(--white); border-bottom-color: var(--gold); }
+  .mast-copy {
+    position: relative;
+    z-index: 2;
+    padding: 108px 48px 40px 106px;
+    min-width: 0;
+  }
+  .mast-visual {
+    position: relative;
+    z-index: 1;
+    min-height: 440px;
+    align-self: stretch;
+    border-left: 5px solid var(--gold);
+    background: var(--navy);
+  }
+  .mast-visual img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 68% 42%;
+  }
   .mast-rule {
     position: absolute;
     left: 88px; top: 108px;
     width: 5px; height: 0;
     background: var(--gold);
-    z-index: 1;
+    z-index: 3;
     animation: mastBar .7s .08s cubic-bezier(.2,.7,.2,1) forwards;
   }
   .eyebrow {
-    position: absolute;
-    top: 108px; left: 106px; right: 88px;
-    margin: 0;
+    position: relative;
+    margin: 0 0 24px;
     font-family: var(--label); font-weight: 700;
     font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
     color: var(--gold); line-height: 1;
@@ -94,9 +121,8 @@
     animation: mastIn .55s .2s ease both;
   }
   h1 {
-    position: absolute;
-    top: 144px; left: 106px; right: 88px;
-    margin: 0;
+    position: relative;
+    margin: 0 0 36px;
     font-family: var(--title); font-weight: 700;
     font-size: clamp(32px, 4.2vw, 52px);
     line-height: 1.04;
@@ -112,8 +138,7 @@
   h1 .mast-line:nth-child(1) span { animation-delay: .28s; }
   h1 .mast-line:nth-child(2) span { animation-delay: .42s; }
   .lede {
-    position: absolute;
-    top: 288px; left: 106px; right: 88px;
+    position: relative;
     margin: 0;
     max-width: 32em;
     font-size: 19px; line-height: 1.38;
@@ -143,7 +168,7 @@
   .meta-wrap {
     position: relative;
     z-index: 3;
-    margin: 28px 0 32px;
+    margin: 0 0 32px;
   }
   .meta-wrap::after {
     content: "";
@@ -159,34 +184,46 @@
     color: var(--navy);
     border: 1px solid var(--navy);
     border-left: 5px solid var(--gold);
-    padding: 16px 31px 12px;
+    padding: 0;
   }
   .meta-sim {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 2;
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 0 0 8px;
+    margin: 0;
   }
   .meta-fields {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr;
     margin: 0;
+    background-image:
+      linear-gradient(var(--navy), var(--navy)),
+      linear-gradient(var(--navy), var(--navy)),
+      linear-gradient(var(--navy), var(--navy));
+    background-size: 1px 100%, 1px 100%, 100% 1px;
+    background-position: calc(100% / 3) 0, calc(200% / 3) 0, 0 50%;
+    background-repeat: no-repeat;
   }
   .meta-item {
     min-width: 0;
-    padding: 14px 24px 18px 0;
-    border-right: 1px solid var(--navy);
+    margin: 0;
+    padding: 20px 24px 18px;
+    border: none;
     animation: metaIn .55s cubic-bezier(.2,.7,.2,1) both;
   }
-  .meta-item:nth-child(1) { animation-delay: .04s; }
-  .meta-item:nth-child(2) { animation-delay: .12s; }
-  .meta-item:nth-child(3) { animation-delay: .2s; }
-  .meta-item:nth-child(4) { animation-delay: .28s; }
-  .meta-item:nth-child(5) { animation-delay: .36s; }
-  .meta-item:nth-child(6) { animation-delay: .44s; }
-  .meta-item:nth-child(3n) { border-right: none; padding-right: 0; }
-  .meta-item:nth-child(n+4) { border-top: 1px solid var(--navy); padding-top: 18px; }
+  .meta-item:nth-of-type(1) { animation-delay: .04s; }
+  .meta-item:nth-of-type(2) { animation-delay: .12s; }
+  .meta-item:nth-of-type(3) { animation-delay: .2s; }
+  .meta-item:nth-of-type(4) { animation-delay: .28s; }
+  .meta-item:nth-of-type(5) { animation-delay: .36s; }
+  .meta-item:nth-of-type(6) { animation-delay: .44s; }
+  .meta-item:nth-of-type(-n+3) { padding-top: 44px; }
   .meta dt {
     font-family: var(--label); font-weight: 700;
     font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
@@ -270,23 +307,24 @@
   .checks input {
     -webkit-appearance: none;
     appearance: none;
-    width: 14px; height: 14px; margin: 0;
-    border: 1px solid var(--navy);
+    width: 18px; height: 18px; margin: 0;
+    border: 1.5px solid var(--navy);
     background: var(--white);
     flex: none;
-    display: grid;
-    place-items: center;
+    display: inline-block;
     padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
   }
   .checks input:checked {
-    background: var(--navy);
+    background-color: var(--navy);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23F5B819' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter' d='M2.4 8.1 6.4 12 13.6 3.8'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
     border-color: var(--navy);
   }
-  .checks input:checked::after {
-    content: "";
-    width: 8px; height: 8px;
-    background: var(--gold);
-  }
+  .checks input:checked::after { content: none; }
   .band { display: flex; gap: 6px; flex-wrap: wrap; }
   .band button { padding: 7px 12px; }
   .band button.on {
@@ -303,18 +341,20 @@
     padding: 7px 10px;
     background: var(--white);
   }
-  .range {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0;
-    flex: 1 1 12em;
+  .controls .actions {
+    gap: 8px;
+    align-items: center;
   }
-  .range b {
-    font-family: var(--title); font-weight: 700;
-    color: var(--navy); font-size: 16px;
+  .controls .actions button.ghost {
+    padding: 7px 12px;
+    font-size: 11px;
+    letter-spacing: .1em;
   }
-  .controls .actions { gap: 8px; }
-  .controls .actions button { padding: 7px 12px; }
+  .controls .actions button.primary {
+    padding: 16px 32px;
+    font-size: 15px;
+    letter-spacing: .12em;
+  }
   button.ghost.on {
     background: var(--gold); color: var(--navy); border-color: var(--gold);
   }
@@ -343,6 +383,33 @@
     font-size: 14px;
     color: var(--navy);
   }
+  .outcome {
+    margin: 0 0 22px;
+    padding: 21px 31px;
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    background: var(--white);
+  }
+  .outcome .n {
+    font-family: var(--title); font-weight: 700;
+    font-size: clamp(56px, 8vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--navy);
+  }
+  .outcome .unit {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    margin: 10px 0 0;
+    color: var(--navy);
+  }
+  .outcome .sub {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .outcome .delta { margin-top: 10px; }
 
   .board {
     display: grid;
@@ -350,6 +417,7 @@
     gap: 22px;
     align-items: start;
   }
+  .left { min-width: 0; }
   .card {
     border: 1px solid var(--navy);
     background: var(--white);
@@ -670,7 +738,7 @@
     font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
   }
   .tier-legend span { display: flex; align-items: center; gap: 8px; }
-  .map-card, .rapid-card, .gaps-card, .cov-card, .corpus-card { margin-top: 22px; }
+  .map-card, .rapid-card, .gaps-card, .cov-card, .corpus-card, .id-card { margin-top: 22px; }
   .map-well {
     position: relative;
     height: 460px;
@@ -756,6 +824,112 @@
   .wiki p:last-child { margin-bottom: 0; }
   .wiki p:empty { display: none; }
   .tag.modelled { background: var(--navy); color: var(--white); }
+  .id-card > p, .id-card .fold-body > p { max-width: 46em; }
+  .id-card .id-part {
+    border-top: 1px solid var(--navy);
+  }
+  .id-card .id-part .fold-head {
+    padding: 14px 0;
+  }
+  .id-card .id-part .fold-head h3 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 18px; line-height: 1.12;
+    margin: 0;
+  }
+  .id-card .id-part .fold-body {
+    padding: 0 0 16px;
+    border-top: none;
+  }
+  .id-schemes { width: 100%; border-collapse: collapse; font-size: 15px; margin: 0 0 8px; min-width: 720px; }
+  .id-schemes-wrap { overflow-x: auto; }
+  .id-schemes th, .id-schemes td {
+    text-align: left; vertical-align: top;
+    padding: 10px 14px 10px 0;
+    border-bottom: 1px solid var(--navy);
+  }
+  .id-schemes th {
+    font-family: var(--label); font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .id-schemes .ex {
+    font-family: var(--mono); font-size: 12px;
+    word-break: break-all;
+  }
+  .id-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 0 0 8px;
+  }
+  .id-item {
+    border: 1px solid var(--navy);
+    border-left: 5px solid var(--gold);
+    padding: 16px 18px;
+  }
+  .id-item.miss {
+    border-style: dashed;
+    border-left-style: solid;
+  }
+  .id-item h4 {
+    font-family: var(--title); font-weight: 700;
+    font-size: 17px; line-height: 1.12;
+    margin: 0 0 8px;
+  }
+  .id-item p { margin: 0 0 8px; font-size: 15px; }
+  .id-item p:last-child { margin-bottom: 0; }
+  .id-item .vals {
+    font-family: var(--mono); font-size: 12px;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .id-graph-wrap {
+    overflow-x: auto;
+    margin: 8px 0 18px;
+    border: 1px solid var(--navy);
+    background: var(--white);
+  }
+  .id-graph { display: block; min-width: 920px; }
+  .id-graph .node-lab {
+    font-family: var(--label); font-weight: 700;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    fill: var(--navy);
+  }
+  .id-graph .node-sub {
+    font-family: var(--body);
+    font-size: 11px;
+    fill: var(--muted);
+  }
+  .id-legend {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    margin: 0 0 14px;
+    font-size: 14px;
+  }
+  .id-legend i {
+    display: inline-block;
+    width: 28px; height: 0;
+    border-top: 2px solid var(--navy);
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  .id-legend i.dash {
+    border-top-style: dashed;
+    border-top-color: var(--gold);
+  }
+  .id-arg {
+    margin: 16px 0 0;
+    max-width: 46em;
+    padding: 16px 18px;
+    border: 1px dashed var(--gold);
+    border-left: 5px solid var(--gold);
+  }
+  .id-arg p { margin: 0; }
+  .id-grid.fail {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: 900px) {
+    .id-grid { grid-template-columns: 1fr; }
+    .id-grid.fail { grid-template-columns: 1fr; }
+  }
   .gaps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -787,11 +961,12 @@
   .gap-card p a { color: var(--navy); font-family: var(--label); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
   .tag.captured { background: var(--navy); color: var(--white); }
   .tag.extract { background: var(--white); color: var(--navy); border: 1px dashed var(--navy); }
-  .prov-card h2, .cov-card h2, .sheet h2, .corpus-card h2, .map-card h2, .rapid-card h2, .gaps-card h2 {
+  .prov-card h2, .cov-card h2, .sheet h2, .corpus-card h2, .map-card h2, .rapid-card h2, .gaps-card h2, .id-card h2 {
     font-family: var(--title); font-weight: 700;
     font-size: 22px; line-height: 1.12; margin: 0 0 16px;
     white-space: nowrap; overflow: hidden;
   }
+  .id-card h2 { white-space: normal; overflow: visible; }
   .prov { font-size: 15px; }
   .prov .empty { color: var(--muted); }
   .kv { margin: 0 0 12px; display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 4px 14px; align-items: baseline; }
@@ -1013,18 +1188,32 @@
   @media (max-width: 800px) {
     .page { padding: 0 24px 48px; }
     .sheet { padding: 28px 24px 48px; }
-    .mast { height: auto; min-height: 420px; margin: 0 -24px; }
+    .mast {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      margin: 0 -24px;
+    }
+    .mast-copy { padding: 96px 24px 28px 42px; }
+    .mast-visual {
+      min-height: 200px;
+      height: 200px;
+      border-left: none;
+      border-top: 5px solid var(--gold);
+    }
     .site-nav { padding: 14px 24px; }
     .mast-rule { left: 24px; top: 96px; }
-    .eyebrow, h1, .lede { position: relative; top: auto; left: auto; right: auto; }
-    .eyebrow { padding: 96px 24px 0 42px; }
-    h1 { padding: 16px 24px 0 42px; font-size: clamp(32px, 9vw, 44px); }
-    .lede { padding: 18px 24px 36px 42px; }
-    .meta-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .meta-item { padding: 14px 20px 18px 0; border-right: 1px solid var(--navy); border-top: none; }
-    .meta-item:nth-child(3n) { border-right: 1px solid var(--navy); padding-right: 20px; }
-    .meta-item:nth-child(even) { border-right: none; padding-right: 0; }
-    .meta-item:nth-child(n+3) { border-top: 1px solid var(--navy); padding-top: 18px; }
+    .eyebrow { margin: 0 0 16px; }
+    h1 { margin: 0 0 18px; font-size: clamp(32px, 9vw, 44px); }
+    .lede { margin: 0; }
+    .meta-fields {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(3, 1fr);
+      background-size: 1px 100%, 100% 1px, 100% 1px;
+      background-position: 50% 0, 0 calc(100% / 3), 0 calc(200% / 3);
+    }
+    .meta-item { padding: 18px 20px; }
+    .meta-item:nth-of-type(-n+3) { padding-top: 18px; }
+    .meta-item:nth-of-type(-n+2) { padding-top: 44px; }
     .checks { grid-template-columns: repeat(2, max-content); }
     .card { padding: 18px 20px; }
     .kv { grid-template-columns: 1fr; }
@@ -1226,12 +1415,17 @@
         <a href="glossary/">Glossary</a>
       </nav>
     </div>
-    <p class="eyebrow">Coordination view</p>
-    <h1>
-      <span class="mast-line"><span>Permitting</span></span>
-      <span class="mast-line"><span>coordination timeline</span></span>
-    </h1>
-    <p class="lede">For a given geothermal project, which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
+    <div class="mast-copy">
+      <p class="eyebrow">Coordination view</p>
+      <h1>
+        <span class="mast-line"><span>Permitting</span></span>
+        <span class="mast-line"><span>coordination timeline</span></span>
+      </h1>
+      <p class="lede">For a given geothermal project, which reviews are required, who runs each one, what blocks what, and how long the sequence runs.</p>
+    </div>
+    <div class="mast-visual" aria-hidden="true">
+      <img src="hero-dixie.png" alt="" width="1536" height="1024" decoding="async">
+    </div>
     <span class="mast-rule" aria-hidden="true"></span>
   </header>
 
@@ -1242,14 +1436,14 @@
           <span class="tag" :class="caseTierClass(project)" x-text="caseTierLabel(project)"></span>
           <span class="tag sim" x-show="leaseSimulated(project) && caseTierLabel(project) === 'Captured'">Lease simulated</span>
         </div>
-        <dl class="meta-fields">
+        <div class="meta-fields">
           <template x-for="row in metaRows" :key="row.k">
-            <div class="meta-item">
+            <dl class="meta-item">
               <dt x-text="row.k"></dt>
               <dd :class="{ serial: row.serial }" x-text="row.v"></dd>
-            </div>
+            </dl>
           </template>
-        </dl>
+        </div>
       </div>
     </div>
 
@@ -1289,7 +1483,7 @@
       <div class="ctrl">
         <p class="kicker">Actions</p>
         <div class="actions">
-          <button type="button" @click="runSequence()">Run</button>
+          <button type="button" class="primary" @click="runSequence()">Run</button>
           <button type="button" class="ghost" @click="clearView()">Reset</button>
           <button type="button" class="ghost" :class="{ on: pinned }" @click="pinSchedule()">Compare</button>
           <button type="button" class="ghost" @click="rulesOpen = true">Rule set</button>
@@ -1297,16 +1491,19 @@
           <button type="button" class="ghost" @click="exportJson()">JSON</button>
         </div>
       </div>
-      <p class="range" x-show="result">
-        <b x-text="result.total_duration_days"></b>
-        <span x-text="' days · ' + band"></span>
-        <span x-text="' · range ' + range.low + '–' + range.high + ' days'"></span>
-      </p>
-      <p class="delta" x-show="baseline && result" x-text="deltaCopy"></p>
     </div>
 
     <div class="board">
       <div class="left">
+        <div class="outcome" x-show="result">
+          <div class="n" x-text="result.total_duration_days"></div>
+          <p class="unit">Days to APD</p>
+          <p class="sub">
+            <span x-text="band"></span>
+            <span x-text="' · range ' + range.low + '–' + range.high + ' days'"></span>
+          </p>
+          <p class="delta" x-show="baseline" x-text="deltaCopy"></p>
+        </div>
         <div class="card">
           <div class="steps">
             <template x-for="(s, i) in steps" :key="s.name">
@@ -1503,6 +1700,175 @@
         <div class="map-pick">
           <p>Across MLRS geothermal lease records, case names are blank or null, and expiration dates include values in the year 3000. Fifty years of leasing at this location shows 41 closed cases and 32 currently authorized, none producing.</p>
         </div>
+      </div>
+    </div>
+
+    <div class="card mark fold id-card" :class="{ open: openPanel === 'ids' }">
+      <button type="button" class="fold-head" @click="togglePanel('ids')" :aria-expanded="openPanel === 'ids'">
+        <div>
+          <h2>Shared identifier layer</h2>
+          <p class="fold-sub">Seven identifier schemes. Spatial intersection resolves some joins. No published crosswalk resolves the rest.</p>
+        </div>
+        <span class="fold-sign" aria-hidden="true" x-text="openPanel === 'ids' ? '−' : '+'"></span>
+      </button>
+      <div class="fold-body" x-show="openPanel === 'ids'" x-cloak>
+      <p>Each source names the same geothermal location with a different identifier. The project polygon is the only key that currently joins those names. Joins that would connect a lease to a NEPA docket or a well record do not resolve.</p>
+
+      <div class="fold id-part" :class="{ open: idOpen.schemes }">
+        <button type="button" class="fold-head" @click="toggleId('schemes')" :aria-expanded="idOpen.schemes">
+          <h3>Identifier schemes</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.schemes ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.schemes" x-cloak>
+          <div class="id-schemes-wrap">
+            <table class="id-schemes">
+              <thead>
+                <tr>
+                  <th>Scheme</th>
+                  <th>Example</th>
+                  <th>Issuing system</th>
+                  <th>Format</th>
+                  <th>Identifies</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="s in idSchemes" :key="s.id">
+                  <tr>
+                    <td x-text="s.name"></td>
+                    <td class="ex" x-text="s.example"></td>
+                    <td x-text="s.system"></td>
+                    <td x-text="s.format"></td>
+                    <td x-text="s.identifies"></td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="fold id-part" :class="{ open: idOpen.intersect }">
+        <button type="button" class="fold-head" @click="toggleId('intersect')" :aria-expanded="idOpen.intersect">
+          <h3>Records intersect</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.intersect ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.intersect" x-cloak>
+          <p>Given the IPaC location polygon, the following records intersect it. Every resolved link uses the same join basis: spatial intersection.</p>
+          <div class="id-grid">
+            <template x-for="row in idResolved" :key="row.id">
+              <article class="id-item">
+                <h4 x-text="row.title"></h4>
+                <p class="vals" x-text="row.values"></p>
+                <p><span class="kicker">Join basis</span><br>Spatial intersection</p>
+              </article>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <div class="fold id-part" :class="{ open: idOpen.graph }">
+        <button type="button" class="fold-head" @click="toggleId('graph')" :aria-expanded="idOpen.graph">
+          <h3>Join graph</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.graph ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.graph" x-cloak>
+          <div class="id-legend">
+            <span><i></i>Resolved · spatial intersection</span>
+            <span><i class="dash"></i>Unresolved · no published crosswalk</span>
+          </div>
+          <div class="id-graph-wrap">
+            <svg class="id-graph" viewBox="0 0 960 500" role="img" aria-label="Identifier join graph. Solid navy lines are spatial intersections. Dashed gold lines are joins with no published crosswalk.">
+              <line x1="275" y1="84" x2="275" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="125" y1="84" x2="275" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="125" y1="244" x2="275" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="125" y1="404" x2="275" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="275" y1="404" x2="275" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="275" y1="244" x2="485" y2="244" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="275" y1="244" x2="485" y2="404" stroke="#0A1A4F" stroke-width="1.5"></line>
+              <line x1="485" y1="244" x2="810" y2="84" stroke="#F5B819" stroke-width="1.5" stroke-dasharray="7 5"></line>
+              <line x1="485" y1="244" x2="810" y2="244" stroke="#F5B819" stroke-width="1.5" stroke-dasharray="7 5"></line>
+              <line x1="485" y1="244" x2="810" y2="404" stroke="#F5B819" stroke-width="1.5" stroke-dasharray="7 5"></line>
+              <g>
+                <rect x="190" y="60" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="200" y="78">State / county</text>
+                <text class="node-sub" x="200" y="94">Churchill, Nevada</text>
+              </g>
+              <g>
+                <rect x="40" y="60" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="50" y="78">PAD-US Source_PAID</text>
+                <text class="node-sub" x="50" y="94" x-text="idGraphSub.padus"></text>
+              </g>
+              <g>
+                <rect x="40" y="220" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="50" y="238">NWI wetlands</text>
+                <text class="node-sub" x="50" y="254" x-text="idGraphSub.nwi"></text>
+              </g>
+              <g>
+                <rect x="40" y="380" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="50" y="398">USFWS field office</text>
+                <text class="node-sub" x="50" y="414" x-text="idGraphSub.fws"></text>
+              </g>
+              <g>
+                <rect x="190" y="220" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="200" y="238">IPaC polygon</text>
+                <text class="node-sub" x="200" y="254">Project location</text>
+              </g>
+              <g>
+                <rect x="190" y="380" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="200" y="398">RAPID path</text>
+                <text class="node-sub" x="200" y="414">Nevada</text>
+              </g>
+              <g>
+                <rect x="400" y="220" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="410" y="238">MLRS case serial</text>
+                <text class="node-sub" x="410" y="254" x-text="idGraphSub.mlrs"></text>
+              </g>
+              <g>
+                <rect x="400" y="380" width="170" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="410" y="398">Census GEOID</text>
+                <text class="node-sub" x="410" y="414" x-text="idGraphSub.census"></text>
+              </g>
+              <g>
+                <rect x="720" y="60" width="180" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="730" y="78">NEPATEC project_ID</text>
+                <text class="node-sub" x="730" y="94">No serial join</text>
+              </g>
+              <g>
+                <rect x="720" y="220" width="180" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="730" y="238">Well record</text>
+                <text class="node-sub" x="730" y="254">No serial join</text>
+              </g>
+              <g>
+                <rect x="720" y="380" width="180" height="48" fill="#ffffff" stroke="#0A1A4F"></rect>
+                <text class="node-lab" x="730" y="398">ePlanning number</text>
+                <text class="node-sub" x="730" y="414">No serial join</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="fold id-part" :class="{ open: idOpen.unresolved }">
+        <button type="button" class="fold-head" @click="toggleId('unresolved')" :aria-expanded="idOpen.unresolved">
+          <h3>Joins that do not resolve</h3>
+          <span class="fold-sign" aria-hidden="true" x-text="idOpen.unresolved ? '−' : '+'"></span>
+        </button>
+        <div class="fold-body" x-show="idOpen.unresolved" x-cloak>
+          <p>These pairs have equal standing with the spatial joins. They fail for the same reason: the identifiers do not point at each other.</p>
+          <div class="id-grid fail">
+            <template x-for="row in idUnresolved" :key="row.id">
+              <article class="id-item miss">
+                <h4 x-text="row.title"></h4>
+                <p x-text="row.detail"></p>
+                <p><span class="kicker">Join basis</span><br>None</p>
+              </article>
+            </template>
+          </div>
+          <div class="id-arg">
+            <p>No published crosswalk exists between these schemes in any direction. Spatial intersection is the only resolution method currently available.</p>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
 
@@ -1714,6 +2080,10 @@ const COVERAGE = [
     holds: "Eight BLM geothermal Environmental Assessments.",
     url: "https://huggingface.co/datasets/PNNL/NEPATEC2.0",
     depends: "Document corpus, activity-type gaps" },
+  { id: "compass", name: "INFRA-COMPASS", state: "extracted",
+    holds: "LLM-extracted state and local energy-infrastructure ordinances. Published datasets cover wind and solar only. Geothermal zoning, BLM resource management plans, and water ordinances are in the FY26 program scope.",
+    url: "https://github.com/NatLabRockies/COMPASS",
+    depends: "Local conditional use, setbacks, and water ordinances. The rule set has no local review at any level." },
   { id: "nwi", name: "USFWS NWI", state: "captured",
     holds: "Cowardin-classified wetland polygons.",
     url: "https://www.fws.gov/program/national-wetlands-inventory",
@@ -2167,6 +2537,65 @@ const MAP_LAYERS = [
   { id: "crithab", name: "Critical habitat", finding: true, note: "No critical habitat is designated at this location.", source: "USFWS IPaC", url: "https://ipac.ecosphere.fws.gov/location/api/resources" }
 ];
 
+const ID_SCHEMES = [
+  {
+    id: "mlrs",
+    name: "BLM MLRS case serial",
+    example: "NVNV105591070",
+    system: "BLM Mineral and Land Records System",
+    format: "NVNV followed by a numeric case id. Legacy serial NVN-######; this case is also NVN-029861.",
+    identifies: "A geothermal lease case: disposition, acreage, dates, production status, and polygon."
+  },
+  {
+    id: "ipac",
+    name: "IPaC location polygon",
+    example: "MultiPolygon −118.15, −118.05, 39.55, 39.65",
+    system: "USFWS IPaC Location API",
+    format: "GeoJSON MultiPolygon, WGS 84.",
+    identifies: "The query location used for species screening, field office, and wetlands."
+  },
+  {
+    id: "padus",
+    name: "PAD-US Source_PAID",
+    example: "NLCS000668",
+    system: "USGS PAD-US",
+    format: "NLCS plus six digits (National Landscape Conservation System unit id).",
+    identifies: "A protected-area unit. NLCS000668 is the Clan Alpine Mountains Wilderness Study Area."
+  },
+  {
+    id: "nepatec",
+    name: "NEPATEC project_ID",
+    example: "3bf7312730f4b45477fa9047b6afa042",
+    system: "PNNL NEPATEC 2.0",
+    format: "32-character hexadecimal hash.",
+    identifies: "An extracted NEPA project in the corpus. It does not encode lease serial, docket number, or location."
+  },
+  {
+    id: "rapid",
+    name: "RAPID jurisdiction/topic path",
+    example: "RAPID/Geothermal/Nevada/Drilling & Well Development",
+    system: "OpenEI RAPID Toolkit",
+    format: "RAPID/Geothermal/{jurisdiction}/{topic}.",
+    identifies: "A permitting narrative for one jurisdiction and one activity class."
+  },
+  {
+    id: "census",
+    name: "Census GEOID",
+    example: "GEOID (AIANNH). This extract stored NAME, not GEOID.",
+    system: "Census TIGERweb",
+    format: "GEOID for American Indian / Alaska Native / Native Hawaiian Areas.",
+    identifies: "A federal reservation polygon. Eight Nevada reservations are in the extract, keyed here by name."
+  },
+  {
+    id: "eplanning",
+    name: "ePlanning project number",
+    example: "DOI-BLM-ID-T020-2015-0016-EA",
+    system: "BLM ePlanning",
+    format: "DOI-BLM-{state}-{office}-{year}-{sequence}-{document type}.",
+    identifies: "A NEPA docket. The format appears inside NEPATEC documents. No ePlanning number exists for this location."
+  }
+];
+
 let mapInstance = null;
 const MAP_LAYER_IDS = {
   positron: ["positron"],
@@ -2214,6 +2643,7 @@ function app() {
     layersOpen: false,
     openPanel: null,
     openTopic: null,
+    idOpen: { schemes: false, intersect: false, graph: false, unresolved: false },
     _ro: null,
     _mapBound: false,
 
@@ -2375,6 +2805,131 @@ function app() {
     get mapLayers() {
       return MAP_LAYERS;
     },
+    get idSchemes() {
+      return ID_SCHEMES;
+    },
+    get projectBBox() {
+      const ipac = this.files["ipac-dixie-valley-crithab.json"];
+      const fp = ipac && ipac.resources && ipac.resources.location && ipac.resources.location.footprint;
+      return fp ? this.geomBounds(fp) : [-118.15, 39.55, -118.05, 39.65];
+    },
+    bboxOverlap(a, b) {
+      return !(a[2] < b[0] || a[0] > b[2] || a[3] < b[1] || a[1] > b[3]);
+    },
+    intersectingFeatures(name) {
+      const fc = this.files[name];
+      const box = this.projectBBox;
+      if (!fc || !fc.features) return [];
+      return fc.features.filter(f => f.geometry && this.bboxOverlap(this.geomBounds(f.geometry), box));
+    },
+    get idResolved() {
+      const leases = this.intersectingFeatures("mlrs-geothermal-dixie-valley.geojson")
+        .concat(this.intersectingFeatures("mlrs-authorized-dixie.geojson"));
+      const leaseVals = leases.length
+        ? leases.map(f => {
+            const p = f.properties || {};
+            return (p.mlrs_id || p.case_serial) +
+              (p.case_serial && p.case_serial !== p.mlrs_id ? " (" + p.case_serial + ")" : "") +
+              (p.disposition ? ", " + p.disposition : "");
+          }).join("; ")
+        : "None intersect the project polygon.";
+      const pad = this.intersectingFeatures("padus-dixie-valley.geojson").map(f => {
+        const p = f.properties || {};
+        const nm = p.Unit_Nm || p.Loc_Nm || "Unnamed unit";
+        return p.Source_PAID ? nm + " (" + p.Source_PAID + ")" : nm;
+      });
+      const trib = this.intersectingFeatures("tribal-reservations-nv.geojson").map(f => (f.properties || {}).NAME);
+      const nwi = this.intersectingFeatures("nwi-dixie-valley.geojson");
+      const codes = [];
+      nwi.forEach(f => {
+        const c = (f.properties || {})["Wetlands.ATTRIBUTE"];
+        if (c && codes.indexOf(c) < 0) codes.push(c);
+      });
+      const ipac = this.files["ipac-dixie-valley-crithab.json"];
+      const offices = ipac && ipac.resources && ipac.resources.fieldOffices
+        ? ipac.resources.fieldOffices.map(o => o.officeName).filter(Boolean)
+        : [];
+      const loc = ipac && ipac.resources && ipac.resources.location;
+      const place = loc && loc.description ? loc.description.replace(/\s+/g, " ").trim() : "Churchill County, Nevada";
+      return [
+        {
+          id: "leases",
+          title: "MLRS leases",
+          values: leases.length
+            ? leases.length + " intersecting case" + (leases.length === 1 ? "" : "s") + ". " + leaseVals
+            : leaseVals
+        },
+        {
+          id: "padus",
+          title: "PAD-US managing units",
+          values: pad.length ? pad.join("; ") : "None intersect the project polygon."
+        },
+        {
+          id: "tribal",
+          title: "Tribal reservations",
+          values: trib.length ? trib.join("; ") : "None intersect the project polygon. Eight Nevada reservations are in the extract; consultation range is not a spatial join on this polygon."
+        },
+        {
+          id: "nwi",
+          title: "Wetlands",
+          values: nwi.length
+            ? nwi.length + " NWI polygon" + (nwi.length === 1 ? "" : "s") + (codes.length ? " · " + codes.join(", ") : "")
+            : "None intersect the project polygon."
+        },
+        {
+          id: "fws",
+          title: "USFWS field office",
+          values: offices.length ? offices.join("; ") : "Reno Fish And Wildlife Office"
+        },
+        {
+          id: "place",
+          title: "State and county",
+          values: place
+        },
+        {
+          id: "rapid",
+          title: "RAPID jurisdiction",
+          values: "RAPID/Geothermal/Nevada"
+        }
+      ];
+    },
+    get idUnresolved() {
+      return [
+        {
+          id: "mlrs-nepa",
+          title: "MLRS case serial → NEPA document",
+          detail: "NVNV105591070 does not appear in NEPATEC project_ID hashes, and NEPATEC hashes do not contain a lease serial. No ePlanning number exists for this location."
+        },
+        {
+          id: "mlrs-well",
+          title: "MLRS case serial → well record",
+          detail: "AFMSS well records have no published service. No crosswalk from case serial to API number is available. Well rows on this page are simulated."
+        },
+        {
+          id: "eplan-mlrs",
+          title: "ePlanning project number → case serial",
+          detail: "The ePlanning number format is DOI-BLM-{state}-{office}-{year}-{sequence}-{type}. Nothing in that string is an MLRS serial, and nothing in an MLRS serial is an ePlanning number."
+        }
+      ];
+    },
+    get idGraphSub() {
+      const leases = this.intersectingFeatures("mlrs-geothermal-dixie-valley.geojson")
+        .concat(this.intersectingFeatures("mlrs-authorized-dixie.geojson"));
+      const pad = this.intersectingFeatures("padus-dixie-valley.geojson");
+      const trib = this.intersectingFeatures("tribal-reservations-nv.geojson");
+      const nwi = this.intersectingFeatures("nwi-dixie-valley.geojson");
+      const ipac = this.files["ipac-dixie-valley-crithab.json"];
+      const office = ipac && ipac.resources && ipac.resources.fieldOffices && ipac.resources.fieldOffices[0]
+        ? ipac.resources.fieldOffices[0].officeName.replace(/ Fish And Wildlife Office/i, " FWO")
+        : "Reno FWO";
+      return {
+        mlrs: leases.length ? leases.length + " intersecting" : "None intersecting",
+        padus: pad.length ? pad.length + " intersecting" : "None intersecting",
+        nwi: nwi.length ? nwi.length + " intersecting" : "None intersecting",
+        fws: office,
+        census: trib.length ? trib.length + " intersecting" : "None intersecting"
+      };
+    },
     get rapidNames() {
       const c = this.files["rapid-geothermal-content.json"];
       return c && c.data ? Object.keys(c.data) : [];
@@ -2528,6 +3083,11 @@ function app() {
     },
     togglePanel(id) {
       this.openPanel = this.openPanel === id ? null : id;
+    },
+    toggleId(name) {
+      const next = Object.assign({}, this.idOpen);
+      next[name] = !next[name];
+      this.idOpen = next;
     },
     toggleLayers() {
       this.layersOpen = !this.layersOpen;

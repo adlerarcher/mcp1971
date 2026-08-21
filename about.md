@@ -118,6 +118,6 @@ That last category is the argument for a maintained federation layer. Endpoints 
 
 ## Sources
 
-USFWS IPaC · eCFR · Federal Register · USGS PAD-US · USFWS National Wetlands Inventory · USGS National Hydrography Dataset · USGS 3DEP · Census TIGERweb · BLM MLRS · OpenEI RAPID Toolkit · PNNL NEPATEC 2.0 · PNNL PermitTEC v0.1 · GSA Site Scanning
+USFWS IPaC · eCFR · Federal Register · USGS PAD-US · USFWS National Wetlands Inventory · USGS National Hydrography Dataset · USGS 3DEP · Census TIGERweb · BLM MLRS · OpenEI RAPID Toolkit · INFRA-COMPASS · PNNL NEPATEC 2.0 · PNNL PermitTEC v0.1 · GSA Site Scanning
 
 Rule set v0.2.0. Data captured 20–21 August 2026.
